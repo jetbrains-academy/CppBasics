@@ -1,0 +1,7 @@
+.idea/*
+
+cmake
+cmake-build-debug
+cmake-build-release
+test-framework/googletest-build/
+test-framework/CMakeFiles/

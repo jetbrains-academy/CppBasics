@@ -1,0 +1,18 @@
+type: marketplace
+title: 'CSC C++ Basics '
+language: English
+summary: "The course is dedicated for beginners who want to learn C/C++ language basics.\n\
+  \nThe main goal of the course is to introduce the C++ language, its philosophy (zero-cost\
+  \ abstractions), its distinctive features compared to other languages (in particular,\
+  \ manual memory management), and its areas of use (high-performance applications,\
+  \ graphics, system programming). \n\nAfter successfully completing this course students\
+  \ will be able to read and write C++ code and develop their own programs of medium\
+  \ complexity.\n\nSome of the topics covered in the course are listed below.   \n\
+  * Basic programming primitives in C++. \n* Manual memory management.   \n* Multi-file\
+  \ projects and program compilation.\n* Object-oriented programming in C++.\n* Template\
+  \ meta-programming.  \n* Functional programming features of C++. \n* Overview of\
+  \ standard library."
+programming_language: C/C++
+environment: GoogleTest
+content:
+- WarmUp
