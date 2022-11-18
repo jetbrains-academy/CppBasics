@@ -60,4 +60,3 @@ programming_language: C/C++
 environment: GoogleTest
 content:
 - WarmUp
-- MemoryManagement
