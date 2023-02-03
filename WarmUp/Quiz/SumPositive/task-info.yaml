@@ -1,0 +1,14 @@
+type: edu
+custom_name: Sum of Positives
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 45
+    length: 147
+    placeholder_text: return 0;
+- name: test/test.cpp
+  visible: false
+  editable: true

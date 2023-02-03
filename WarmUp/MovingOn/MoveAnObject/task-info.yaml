@@ -1,0 +1,16 @@
+type: edu
+custom_name: Move an Object
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: false
+- name: src/move.cpp
+  visible: true
+  placeholders:
+  - offset: 213
+    length: 27
+    placeholder_text: position
+- name: test/test.cpp
+  visible: false
+  editable: true

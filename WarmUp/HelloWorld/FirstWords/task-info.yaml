@@ -1,0 +1,13 @@
+type: output
+custom_name: First Words
+files:
+- name: test/output.txt
+  visible: false
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true
+  placeholders:
+  - offset: 38
+    length: 28
+    placeholder_text: /* TODO */

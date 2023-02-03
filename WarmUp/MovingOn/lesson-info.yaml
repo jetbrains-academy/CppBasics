@@ -1,0 +1,17 @@
+type: framework
+custom_name: Moving On
+content:
+- StartTheGame
+- MoveAnObject
+- LookAround
+- HavingFun
+- MovingUp
+- GivingDirection
+- DrawALine
+- ConsumeAnObject
+- ALittleSpontaneity
+- RunningInALoop
+- KeepSpinning
+- LimitsOfPossible
+- HuntingBugs
+- PlayAround

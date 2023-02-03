@@ -1,0 +1,10 @@
+sum 10 2
+sum 10 -2
+sub 10 2
+sub 0 3
+mul 0 10
+mul 2 8
+div 10 2
+div 11 2
+exit
+sum 1 1

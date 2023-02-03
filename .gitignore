@@ -1,7 +1,13 @@
 .idea/*
 
-cmake
 cmake-build-debug
 cmake-build-release
-test-framework/googletest-build/
-test-framework/CMakeFiles/
+test-framework/*
+sfml/*
+
+.coursecreator
+
+*-remote-info.yaml
+
+Makefile
+CMakeCache.txt

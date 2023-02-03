@@ -1,0 +1,7 @@
+type: theory
+custom_name: Let's Start
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true
