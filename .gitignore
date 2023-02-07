@@ -7,7 +7,5 @@ sfml/*
 
 .coursecreator
 
-*-remote-info.yaml
-
 Makefile
 CMakeCache.txt
