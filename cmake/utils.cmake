@@ -71,6 +71,7 @@ macro(prepare_sfml_framework_lesson_task _lesson_path _target_name _test_name)
     # as a dirty quickfix we simply add this directory manually
     if (${APPLE})
         include_directories(/usr/local/include)
+        include_directories(/opt/homebrew/include)
     endif()
     include_directories(${_lesson_path}/include/)
     target_copy_resources(${_target_name} "${_lesson_path}")
