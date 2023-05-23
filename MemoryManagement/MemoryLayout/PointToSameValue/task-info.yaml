@@ -1,0 +1,13 @@
+type: edu
+custom_name: Point to Same Variables?
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 44
+    length: 65
+    placeholder_text: return false;
+- name: test/test.cpp
+  visible: false

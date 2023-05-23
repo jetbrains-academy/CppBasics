@@ -58,10 +58,10 @@ macro(target_link_sfml _target_name)
 endmacro()
 
 # Copies resource files to the build directory
-macro(target_copy_resources _target_name _resources_path)
+macro(target_copy_resources _target_name)
     add_custom_command(TARGET ${_target_name} PRE_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${_resources_path}/resources/ $<TARGET_FILE_DIR:${_target_name}>/resources/)
+            ${CMAKE_SOURCE_DIR}/resources/ $<TARGET_FILE_DIR:${_target_name}>/resources/)
 endmacro()
 
 macro(prepare_sfml_framework_lesson_task _lesson_path _target_name _test_name)
@@ -73,8 +73,8 @@ macro(prepare_sfml_framework_lesson_task _lesson_path _target_name _test_name)
         include_directories(/usr/local/include)
         include_directories(/opt/homebrew/include)
     endif()
-    include_directories(${_lesson_path}/include/)
-    target_copy_resources(${_target_name} "${_lesson_path}")
+    include_directories(${CMAKE_SOURCE_DIR}/include/)
+    target_copy_resources(${_target_name})
     target_link_sfml(${_target_name})
     if (${_test_name})
         target_link_sfml(${_test_name})

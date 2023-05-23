@@ -66,4 +66,22 @@ with each module covering specific topics and aspects of the C++ language.
   * _(static)_ arrays
   * random numbers
   * program debugging in IDE
+  
+* __Memory Management__
+  * size of a type, `sizeof` operator
+  * address of variable, address of operator `&`
+  * pointers, `nullptr`, dereference operator `*`, pointer arithmetic
+  * primitive types, array and custom data type (`struct`, `enum`) memory layout
+  * function pointers
+  * memory regions: static, stack, and heap memory  
+  * dynamic memory allocation and freeing: `malloc` and `free`
+  * memory errors: address escape, out-of-bounds accesses, memory leaks, use after free, double free
+  * detecting memory errors in IDE with dynamic code analysis: valgrind and memory sanitizer
+  * constantness and mutability, `const` keyword
+  * references
+  * passing arguments by value, by reference, or by pointer
+  * type cast operators: C style casts, `static_cast`, `reinterpret_cast`
+  * C style strings
+
 * __TBA__ ... 
+ 

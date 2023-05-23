@@ -55,7 +55,6 @@ files:
       is_visible: false
 - name: src/main.cpp
   visible: true
-  editable: true
 - name: CMakeLists.txt
   visible: false
 - name: test/test.cpp

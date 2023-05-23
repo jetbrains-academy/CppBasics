@@ -1,0 +1,12 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: test/test.cpp
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 90
+    length: 109
+    placeholder_text: return 0;

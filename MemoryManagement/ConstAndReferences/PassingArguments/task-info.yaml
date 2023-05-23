@@ -1,0 +1,7 @@
+type: theory
+custom_name: Passing Arguments
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true

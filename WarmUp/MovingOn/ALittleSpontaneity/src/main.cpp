@@ -73,12 +73,18 @@ int main() {
     }
     Circle playerCircle = { {player.getPosition().x, player.getPosition().y}, player.getRadius() };
 
-    sf::CircleShape consumable;
     sf::Texture consumableTexture;
+    status = initConsumableTexture(consumableTexture);
+    if (status != 0) {
+        return status;
+    }
+
+    sf::CircleShape consumable;
     status = initConsumableRandom(consumable, consumableTexture, playerCircle);
     if (status != 0) {
         return status;
     }
+
     bool consumed = false;
 
     sf::Clock clock;

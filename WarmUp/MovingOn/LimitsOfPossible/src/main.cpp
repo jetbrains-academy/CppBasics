@@ -75,11 +75,16 @@ int main() {
     }
     Circle playerCircle = { {player.getPosition().x, player.getPosition().y}, player.getRadius() };
 
+    sf::Texture consumableTexture;
+    status = initConsumableTexture(consumableTexture);
+    if (status != 0) {
+        return status;
+    }
+
     const int COUNT = 4;
     sf::CircleShape consumable[COUNT];
     Circle consumableCircles[COUNT];
-    sf::Texture consumableTexture;
-    status = initConsumablesRandom(consumable, COUNT,consumableTexture, playerCircle);
+    status = initConsumablesRandom(consumable, COUNT, consumableTexture, playerCircle);
     if (status != 0) {
         return status;
     }

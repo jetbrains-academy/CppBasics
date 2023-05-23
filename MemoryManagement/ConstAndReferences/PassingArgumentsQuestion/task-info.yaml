@@ -1,0 +1,21 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: function `f` takes both arguments by value
+  is_correct: true
+- text: function `g` takes both arguments by reference
+  is_correct: false
+- text: function `g` takes argument `p` by pointer
+  is_correct: true
+- text: function `h` takes argument `rect` by pointer
+  is_correct: false
+- text: function `h` takes argument `rect` by reference
+  is_correct: true
+quiz_header: 'Select options from the list:'
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true
+custom_name: How Arguments are Passed?
+local_check: true

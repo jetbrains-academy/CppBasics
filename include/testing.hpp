@@ -3,6 +3,10 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <memory>
+#include <type_traits>
+
+#include <gtest/gtest.h>
 
 #include "scene.hpp"
 
@@ -27,6 +31,7 @@ public:
 };
 
 const int N_ITER = 10;
+const float EPS = 0.0001f;
 
 template <typename TestDataGen, typename TestAssert>
 void property_test(TestDataGen gen, TestAssert test) {
@@ -68,6 +73,31 @@ void randomness_test(TestDataGen gen, TestDataCmp cmp, TestDataPrint print) {
                            << "Generated sequence: " << seq;
 }
 
-const float EPS = 0.0001f;
+// RAII clean-up for plain C style pointers,
+// adapted from: https://stackoverflow.com/a/43626234/4676150
+
+struct free_deleter {
+    template <typename T>
+    void operator()(T *p) const {
+        std::free(const_cast<std::remove_const_t<T>*>(p));
+    }
+};
+
+template <typename T>
+using unique_Cptr = std::unique_ptr<T, free_deleter>;
+
+typedef unique_Cptr<char> unique_Cstr;
+
+inline unique_Cstr random_Cstr() {
+    size_t len = rand() % 10;
+    char* str = (char*) malloc(len + 1);
+    memset(str, '\0', len + 1);
+    for (int i = 0; i < len; ++i) {
+        int rng = 'z' - 'a' + 1;
+        char c = 'a' + (rand() % rng);
+        str[i] = c;
+    }
+    return unique_Cstr(str);
+}
 
 #endif //CPPBASICS_TESTING_HPP

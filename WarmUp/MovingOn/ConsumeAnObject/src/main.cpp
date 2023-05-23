@@ -70,12 +70,19 @@ int main() {
         return status;
     }
 
-    sf::CircleShape consumable;
+
     sf::Texture consumableTexture;
+    status = initConsumableTexture(consumableTexture);
+    if (status != 0) {
+        return status;
+    }
+
+    sf::CircleShape consumable;
     status = initConsumable(consumable, consumableTexture);
     if (status != 0) {
         return status;
     }
+
     bool consumed = false;
 
     sf::Clock clock;

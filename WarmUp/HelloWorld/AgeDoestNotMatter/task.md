@@ -1,6 +1,6 @@
 ## Age does not matter!
  
-As a final quiz in this lesson, we kindly ask you 
+As the final quiz in this lesson, we kindly ask you 
 to write another program.
 In addition to the person's name, 
 this program  should ask about their age. 

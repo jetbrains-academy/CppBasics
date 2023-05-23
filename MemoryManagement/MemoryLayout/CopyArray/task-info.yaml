@@ -1,0 +1,13 @@
+type: edu
+custom_name: Copy Array
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 57
+    length: 172
+    placeholder_text: return nullptr;
+- name: test/test.cpp
+  visible: false

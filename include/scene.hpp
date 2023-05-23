@@ -71,6 +71,12 @@ void approachingLoop(Circle player, Circle consumable[], bool warned[], int size
 float generateCoordinate(float min, float max);
 Circle generateCircle(float radius);
 
+struct Consumable {
+    Circle circle;
+    bool concerned;
+    bool destroyed;
+};
+
 /******************************************************************************/
 
 inline int initWindow(sf::RenderWindow& window) {
@@ -106,20 +112,29 @@ inline int initPlayer(sf::CircleShape& shape, sf::Texture& texture) {
 const float CONSUMABLE_START_X = 600.0f;
 const float CONSUMABLE_START_Y = 150.0f;
 
-inline int initConsumable(sf::CircleShape& shape, sf::Texture& texture, int id = 0) {
-    shape.setRadius(CONSUMABLE_RADIUS);
-    shape.setOrigin(CONSUMABLE_RADIUS, CONSUMABLE_RADIUS);
-    shape.setPosition(CONSUMABLE_START_X, CONSUMABLE_START_Y);
+inline int initConsumableTexture(sf::Texture& texture) {
     std::string filename = "resources/star.png";
     if (!texture.loadFromFile(filename)) {
         return 1;
     }
     texture.setSmooth(true);
+    return 0;
+}
+
+inline int initConsumable(sf::CircleShape& shape, const Circle& circle, const sf::Texture& texture) {
+    shape.setRadius(circle.radius);
+    shape.setOrigin(circle.radius, circle.radius);
+    shape.setPosition(circle.center.x, circle.center.y);
     shape.setTexture(&texture);
     return 0;
 }
 
-inline int initConsumableRandom(sf::CircleShape& shape, sf::Texture& texture, Circle playerCircle) {
+inline int initConsumable(sf::CircleShape& shape, const sf::Texture& texture) {
+    Circle circle = { { CONSUMABLE_START_X, CONSUMABLE_START_Y }, CONSUMABLE_RADIUS };
+    return initConsumable(shape, circle, texture);
+}
+
+inline int initConsumableRandom(sf::CircleShape& shape, const sf::Texture& texture, Circle playerCircle) {
     Circle consumableCircle;
     while (true) {
         consumableCircle = generateCircle(CONSUMABLE_RADIUS);
@@ -127,25 +142,10 @@ inline int initConsumableRandom(sf::CircleShape& shape, sf::Texture& texture, Ci
             continue;
         break;
     }
-    shape.setRadius(CONSUMABLE_RADIUS);
-    shape.setOrigin(CONSUMABLE_RADIUS, CONSUMABLE_RADIUS);
-    shape.setPosition(consumableCircle.center.x, consumableCircle.center.y);
-    std::string filename = "resources/star.png";
-    if (!texture.loadFromFile(filename)) {
-        return 1;
-    }
-    texture.setSmooth(true);
-    shape.setTexture(&texture);
-    return 0;
+    return initConsumable(shape, consumableCircle, texture);
 }
 
-inline int initConsumablesRandom(sf::CircleShape* shapes, int count, sf::Texture& texture, Circle playerCircle) {
-    std::string filename = "resources/star.png";
-    if (!texture.loadFromFile(filename)) {
-        return 1;
-    }
-    texture.setSmooth(true);
-
+inline int initConsumablesRandom(sf::CircleShape* shapes, int count, const sf::Texture& texture, Circle playerCircle) {
     std::vector<Circle> circles(count);
     for (int i = 0; i < count; ++i) {
         while (true) {
@@ -157,10 +157,10 @@ inline int initConsumablesRandom(sf::CircleShape* shapes, int count, sf::Texture
             if (collides) continue;
             break;
         }
-        shapes[i].setRadius(circles[i].radius);
-        shapes[i].setOrigin(circles[i].radius, circles[i].radius);
-        shapes[i].setPosition(circles[i].center.x, circles[i].center.y);
-        shapes[i].setTexture(&texture);
+        int status = initConsumable(shapes[i], circles[i], texture);
+        if (status != 0) {
+            return status;
+        }
     }
     return 0;
 }
@@ -183,4 +183,4 @@ inline Point2D calculateVelocity() {
     return velocity;
 }
 
-#endif //CPPBASICS_SCENE_HPP
+#endif // CPPBASICS_SCENE_HPP

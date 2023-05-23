@@ -1,0 +1,7 @@
+type: theory
+custom_name: C and C++ styles
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true
