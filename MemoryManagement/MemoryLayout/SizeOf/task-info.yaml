@@ -1,14 +1,6 @@
-type: output
+type: theory
 files:
 - name: CMakeLists.txt
   visible: false
-- name: test/output.txt
-  visible: false
-- name: test/output.cpp
-  visible: false
 - name: src/main.cpp
   visible: true
-  placeholders:
-  - offset: 53
-    length: 788
-    placeholder_text: /* TODO */

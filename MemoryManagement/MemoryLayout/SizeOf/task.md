@@ -61,10 +61,10 @@ in modern computer architectures.
 Below, you can find a table containing the information about common predefined types:
 whether their size is platform dependent, what their exact or typical size is,
 and what value range they encode. 
-In order to complete this task, print the sizes of these types to the terminal
-(in the same order as they appear in the table, each number on its own line).
-Check if the printed numbers match their counterparts in the table.
-
+You can also run the program attached to this step to print 
+the sizes of these types to the terminal. 
+Therefore, you can check whether the sizes of these types on your system 
+match the numbers given in the table.
 
 | Type            | Description                                                | Platform Dependent? | Size* | Value Range        |
 |-----------------|------------------------------------------------------------|---------------------|-------|--------------------|
@@ -87,9 +87,8 @@ Check if the printed numbers match their counterparts in the table.
 | `bool`          | boolean values                                             | Yes                 | 1     | false, true        |
 
 
-
-*Size is given in bytes, for platform-independent types exact size is given, 
-for platform-dependent types typical size is given. 
+*Size is given in bytes, for platform-independent types the exact size is given, 
+for platform-dependent types the typical size is given. 
 
 
 

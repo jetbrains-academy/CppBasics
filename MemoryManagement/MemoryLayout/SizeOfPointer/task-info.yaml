@@ -1,15 +1,7 @@
-type: output
+type: theory
 custom_name: SizeOf Pointers
 files:
 - name: CMakeLists.txt
   visible: false
-- name: test/output.txt
-  visible: false
-- name: test/output.cpp
-  visible: false
 - name: src/main.cpp
   visible: true
-  placeholders:
-  - offset: 38
-    length: 135
-    placeholder_text: /* TODO */

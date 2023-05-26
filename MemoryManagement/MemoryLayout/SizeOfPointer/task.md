@@ -22,14 +22,15 @@ meaning that its value range includes negative values.
 This is expected, since one can subtract a "bigger" pointer `q` from a "smaller" pointer `p`
 and get a negative number as the result.
 
-In order to complete this task, print the sizes of the `char*`, `size_t`, and `ptrdiff_t` types to the terminal
-(in this order, each number on its own line).
+The program attached to this step prints the sizes of the `char*`, `size_t`, and `ptrdiff_t` types to the terminal.
 
 
-| Type        | Description                               | Platform Dependent? | Size in bytes (exact or typical) | Signed/Unsigned |
-|-------------|-------------------------------------------|---------------------|----------------------------------|-----------------|
-| `char*`     | pointer type                              | Yes                 | 4 (x32), 8 (x64)                 | -               |
-| `size_t`    | type to store size of types               | Yes                 | 4 (x32), 8 (x64)                 | Unsigned        |
-| `ptrdiff_t` | type to store difference between pointers | Yes                 | 4 (x32), 8 (x64)                 | Signed          |
+| Type        | Description                               | Platform Dependent? | Size*            | Signed/Unsigned |
+|-------------|-------------------------------------------|---------------------|------------------|-----------------|
+| `char*`     | pointer type                              | Yes                 | 4 (x32), 8 (x64) | -               |
+| `size_t`    | type to store size of types               | Yes                 | 4 (x32), 8 (x64) | Unsigned        |
+| `ptrdiff_t` | type to store difference between pointers | Yes                 | 4 (x32), 8 (x64) | Signed          |
 
 
+*Size is given in bytes, for platform-independent types the exact size is given,
+for platform-dependent types the typical size is given. 
