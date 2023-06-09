@@ -2,7 +2,7 @@
 
 int main() {
     int* p = nullptr;
-    std::cout << p << std::endl;
-    std::cout << *p << std::endl;
+    std::cout << p << "\n";
+    std::cout << *p << "\n";
     return 0;
 }

@@ -24,7 +24,7 @@ int* escape() {
 
 void escapeCaller() {
     int* p = escape();
-    std::cout << (void*) p << std::endl;
+    std::cout << (void*) p << "\n";
 }
 ```
 
@@ -55,7 +55,7 @@ To see an example of memory leak, consider the following function.
 ```c++
 void leak() {
     char* p = (char*) malloc(8);
-    std::cout << (void*) p << std::endl;
+    std::cout << (void*) p << "\n";
 }
 ```
 

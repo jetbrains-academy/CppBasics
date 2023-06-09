@@ -1,7 +1,7 @@
 #include <iostream>
 
 void callee(int* p) {
-    std::cout << p << " -> " << *p << std::endl;
+    std::cout << p << " -> " << *p << "\n";
 }
 
 void caller() {
@@ -16,7 +16,7 @@ int* escape() {
 
 void escapeCaller() {
     int* p = escape();
-    std::cout << p << " -> " << *p << std::endl;
+    std::cout << p << " -> " << *p << "\n";
 }
 
 int* q = nullptr;
@@ -28,7 +28,7 @@ void escapeGlobal() {
 
 void escapeGlobalCaller() {
     escapeGlobal();
-    std::cout << q << " -> " << *q << std::endl;
+    std::cout << q << " -> " << *q << "\n";
 }
 
 int main() {

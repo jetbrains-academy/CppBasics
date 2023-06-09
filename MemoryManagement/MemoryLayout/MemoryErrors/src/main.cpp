@@ -7,12 +7,12 @@ int* escape() {
 
 void escapeCaller() {
     int* p = escape();
-    std::cout << (void*) p << std::endl;
+    std::cout << (void*) p << "\n";
 }
 
 void leak() {
     char* p = (char*) malloc(8);
-    std::cout << (void*) p << std::endl;
+    std::cout << (void*) p << "\n";
 }
 
 int main() {

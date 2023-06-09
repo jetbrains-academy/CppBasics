@@ -28,8 +28,8 @@ namespace expected {
 
 std::string error_msg(Point2D p) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  position = { " << p.x << ", " << p.y << " }" << std::endl;
+    stream << "Test data:" << "\n"
+           << "  position = { " << p.x << ", " << p.y << " }" << "\n";
     return stream.str();
 }
 

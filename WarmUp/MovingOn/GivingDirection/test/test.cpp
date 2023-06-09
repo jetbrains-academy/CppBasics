@@ -9,7 +9,7 @@ testing::Environment* const env =
 std::string error_msg(Direction direction) {
     std::ostringstream stream;
     stream << "Incorrect vector for direction: "
-           << directionToString(direction) << std::endl;
+           << directionToString(direction) << "\n";
     return stream.str();
 }
 

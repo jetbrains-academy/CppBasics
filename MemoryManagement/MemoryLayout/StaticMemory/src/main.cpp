@@ -4,7 +4,7 @@ int a = 0;
 int b = 1;
 
 int main() {
-    std::cout << &a << std::endl;
-    std::cout << &b << std::endl;
+    std::cout << &a << "\n";
+    std::cout << &b << "\n";
     return 0;
 }

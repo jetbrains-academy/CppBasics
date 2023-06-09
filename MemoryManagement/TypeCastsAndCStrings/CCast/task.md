@@ -8,7 +8,7 @@ it will be _implicitly converted_ into `double`.
 ```c++
 int x = 4;
 // prints 2.0
-std::cout << sqrt(x) << std::endl;
+std::cout << sqrt(x) << "\n";
 ```
 
 The C and C++ languages have a large, complex (and slightly different) 
@@ -22,7 +22,7 @@ are also allowed. For example, a `double` variable can be converted into `int`.
 double pi = 3.14;
 int a = pi;
 // prints 2
-std::cout << a << std::endl;
+std::cout << a << "\n";
 ```
 
 However, not all reasonable type casts can be performed implicitly.

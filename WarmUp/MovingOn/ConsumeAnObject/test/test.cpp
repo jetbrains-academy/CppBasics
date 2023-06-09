@@ -36,9 +36,9 @@ const float MAX = 10e6;
 
 std::string distance_error_msg(Point2D a, Point2D b) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  a = { " << a.x << ", " << a.y << " }" << std::endl
-           << "  b = { " << b.x << ", " << b.y << " }" << std::endl;
+    stream << "Test data:" << "\n"
+           << "  a = { " << a.x << ", " << a.y << " }" << "\n"
+           << "  b = { " << b.x << ", " << b.y << " }" << "\n";
     return stream.str();
 }
 
@@ -61,13 +61,13 @@ TEST(distanceTest, distanceTestRandom) {
 
 std::string collision_error_msg(Circle circle1, Circle circle2) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
+    stream << "Test data:" << "\n"
            << "  circle1 = { "
            << "{ " << circle1.center.x << ", " << circle1.center.y << " }, " << circle1.radius
-           << " }" << std::endl
+           << " }" << "\n"
            << "  circle2 = { "
            << "{ " << circle2.center.x << ", " << circle2.center.y << " }, " << circle2.radius
-           << " }" << std::endl;
+           << " }" << "\n";
     return stream.str();
 }
 

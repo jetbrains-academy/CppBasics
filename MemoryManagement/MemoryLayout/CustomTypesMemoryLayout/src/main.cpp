@@ -28,30 +28,30 @@ struct Bar {
 
 int main() {
 
-    std::cout << sizeof(int) << std::endl;
-    std::cout << sizeof(Color) << std::endl;
+    std::cout << sizeof(int) << "\n";
+    std::cout << sizeof(Color) << "\n";
 
-    std::cout << sizeof(Foo) << std::endl;
-    std::cout << alignof(Foo) << std::endl;
+    std::cout << sizeof(Foo) << "\n";
+    std::cout << alignof(Foo) << "\n";
 
-    std::cout << sizeof(FooLayout) << std::endl;
-    std::cout << alignof(FooLayout) << std::endl;
+    std::cout << sizeof(FooLayout) << "\n";
+    std::cout << alignof(FooLayout) << "\n";
 
-    std::cout << sizeof(Bar) << std::endl;
-    std::cout << alignof(Bar) << std::endl;
+    std::cout << sizeof(Bar) << "\n";
+    std::cout << alignof(Bar) << "\n";
 
     Bar bar;
-    std::cout << (void*) &bar << std::endl;
-    std::cout << (void*) &(bar.x) << std::endl;
-    std::cout << (void*) &(bar.a) << std::endl;
-    std::cout << (void*) &(bar.y) << std::endl;
-    std::cout << (void*) &(bar.b) << std::endl;
+    std::cout << (void*) &bar << "\n";
+    std::cout << (void*) &(bar.x) << "\n";
+    std::cout << (void*) &(bar.a) << "\n";
+    std::cout << (void*) &(bar.y) << "\n";
+    std::cout << (void*) &(bar.b) << "\n";
 
     char* p = (char*)&bar;
     p += offsetof(struct Bar, y);
     int* pi = (int*) p;
     * pi = 42;
-    std::cout << bar.y << std::endl;
+    std::cout << bar.y << "\n";
 
     return 0;
 }

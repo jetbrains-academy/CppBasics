@@ -10,7 +10,7 @@ defined inside the body of the `caller` function is passed to the function `call
 
 ```c++
 void callee(int* p) {
-    std::cout << p << " -> " << *p << std::endl;
+    std::cout << p << " -> " << *p << "\n";
 }
 
 void caller() {
@@ -35,7 +35,7 @@ int* escape() {
 
 void escapeCaller() {
     int* p = escape();
-    std::cout << p << " -> " << *p << std::endl;
+    std::cout << p << " -> " << *p << "\n";
 }
 ```
 
@@ -59,6 +59,6 @@ void escapeGlobal() {
 
 void escapeGlobalCaller() {
     escapeGlobal();
-    std::cout << q << " -> " << *q << std::endl;
+    std::cout << q << " -> " << *q << "\n";
 }
 ```

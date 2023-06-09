@@ -20,7 +20,7 @@ int main() {
     int z = 17;
     int* const r = &z;
     *r = 21;
-    std::cout << z << std::endl;
+    std::cout << z << "\n";
     // int w = 32;
     // r = &w;
 

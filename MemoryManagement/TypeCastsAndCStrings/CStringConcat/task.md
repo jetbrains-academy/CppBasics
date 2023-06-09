@@ -16,7 +16,7 @@ const char* hello = "Hello ";
 const char* world = "World!";
 const char* helloWorld = concat(hello, world);
 // should print "Hello World!" 
-std::cout << helloWorld << std::endl;
+std::cout << helloWorld << "\n";
 ```
 
 <div class="hint">

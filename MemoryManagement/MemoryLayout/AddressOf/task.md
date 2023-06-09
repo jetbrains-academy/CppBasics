@@ -19,7 +19,7 @@ in front of the variable's name.
 
 ```c++
 int a;
-std::cout << &a << std::endl;
+std::cout << &a << "\n";
 ```
 
 The small program attached to this task prints 

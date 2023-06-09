@@ -36,7 +36,7 @@ Functions with no return value have the return type `void`.
 
 ```c++
 void printInt(int a) {
-    std::cout << a << std::endl;
+    std::cout << a << "\n";
 }
 ```
 

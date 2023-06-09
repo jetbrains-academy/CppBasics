@@ -24,7 +24,7 @@ Now, the function `plus` can be called through the pointer `fptr`:
 
 ```c++
 // should print 3
-std::cout << fptr(1, 2) << std::endl;
+std::cout << fptr(1, 2) << "\n";
 ```
 
 To complete this task, please implement the function `fold`
@@ -50,5 +50,5 @@ const int size = 4;
 int array[4] = { 1, 2, 3, 4 };
 int res = fold(array, size, 0, plus);
 // should print 10
-std::cout << res << std::endl;
+std::cout << res << "\n";
 ```

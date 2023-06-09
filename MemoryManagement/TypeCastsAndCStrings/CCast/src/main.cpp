@@ -5,12 +5,12 @@ int main() {
 
     // (1): implicit conversion from int to double
     int x = 4;
-    std::cout << sqrt(x) << std::endl;
+    std::cout << sqrt(x) << "\n";
 
     // (2): implicit conversion from double to int
     double pi = 3.14;
     int a = pi;
-    std::cout << a << std::endl;
+    std::cout << a << "\n";
 
     // (3): C style cast from void* to int*
     void* q = malloc(2 * sizeof(int));

@@ -23,9 +23,9 @@ int a = 5;
 int b = 7;
 swap(a, b);
 // prints 5
-std::cout << a << std::endl;
+std::cout << a << "\n";
 // prints 7
-std::cout << b << std::endl;
+std::cout << b << "\n";
 ```
 
 This is because arguments are passed by value and thus copied. 
@@ -58,7 +58,7 @@ the `Rectangle` structure occupies 4 * 4 = 16 bytes.
 
 ```c++
 // prints 16
-std::cout << sizeof(Rectangle) << std::endl;
+std::cout << sizeof(Rectangle) << "\n";
 ```
 
 Thus, any function taking the `Rectangle` structure by value 

@@ -31,7 +31,7 @@ char* p0 = &a[0];
 Now, `p0` points to the first element of the array.
 
 ```c++
-std::cout << *p0 << std::endl;
+std::cout << *p0 << "\n";
 // prints a
 ```
 
@@ -45,7 +45,7 @@ char* p1 = p0 + 1;
 Now, `p1` points to the second element of the array. 
 
 ```c++
-std::cout << *p1 << std::endl;
+std::cout << *p1 << "\n";
 // prints b
 ```
 
@@ -53,7 +53,7 @@ It is not necessary to save the derived pointer into a variable,
 we can also dereference it directly. 
 
 ```c++
-std::cout << *(p0 + 1) << std::endl;
+std::cout << *(p0 + 1) << "\n";
 // also prints b
 ```
 
@@ -62,14 +62,14 @@ You can also use increments and decrements on pointers.
 ```c++
 char* p = p0;
 ++p;
-std::cout << *p << std::endl;
+std::cout << *p << "\n";
 // also prints b
 ```
 
 Similarly, it is possible to obtain a pointer to any element of an array.
 
 ```c++
-std::cout << *(p0 + 5) << std::endl;
+std::cout << *(p0 + 5) << "\n";
 // prints f
 ```
 
@@ -79,7 +79,7 @@ the array leads to undefined behavior!
 For example, the following code snippet is erroneous.
 
 ```c++
-std::cout << *(p0 + 20) << std::endl;
+std::cout << *(p0 + 20) << "\n";
 ```
 
 It might not lead to an immediate program crash.
@@ -101,7 +101,7 @@ just remember that the pointer should remain within the memory chunk of the arra
 
 ```c++
 char* q = p1 - 1;
-std::cout << *q << std::endl;
+std::cout << *q << "\n";
 // prints a
 ```
 
@@ -111,7 +111,7 @@ that is, to compute the distance between them as the number of memory cells.
 ```c++
 char* p8 = p0 + 8;
 int diff = p8 - p0;
-std::cout << diff << std::endl;
+std::cout << diff << "\n";
 // prints 8
 ```
 
@@ -131,7 +131,7 @@ not the second memory cell.
 ```c++
 int* r = &b[0];
 ++r;
-std::cout << *r << std::endl;
+std::cout << *r << "\n";
 // prints 1
 ```
 

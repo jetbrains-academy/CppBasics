@@ -6,24 +6,24 @@ int main() {
     int* p = &a;
 
     int b = *p;
-    std::cout << b << std::endl;
+    std::cout << b << "\n";
 
-    std::cout << p << std::endl;
-    std::cout << *p << std::endl;
+    std::cout << p << "\n";
+    std::cout << *p << "\n";
 
     *p = 23;
-    std::cout << *p << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    std::cout << *p << "\n";
+    std::cout << a << "\n";
+    std::cout << b << "\n";
 
     int* q = p;
-    std::cout << "p = " << p << ", *p = " << *p << std::endl;
-    std::cout << "q = " << q << ", *q = " << *q << std::endl;
+    std::cout << "p = " << p << ", *p = " << *p << "\n";
+    std::cout << "q = " << q << ", *q = " << *q << "\n";
 
     int c = 23;
     p = &c;
-    std::cout << "p = " << p << ", *p = " << *p << std::endl;
-    std::cout << "q = " << q << ", *q = " << *q << std::endl;
+    std::cout << "p = " << p << ", *p = " << *p << "\n";
+    std::cout << "q = " << q << ", *q = " << *q << "\n";
 
     return 0;
 }

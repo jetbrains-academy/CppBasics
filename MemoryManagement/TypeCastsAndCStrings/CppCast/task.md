@@ -24,7 +24,7 @@ For example, `static_cast` can be used to convert `double` to `int`.
 double pi = 3.14;
 int a = static_cast<int>(pi);
 // prints 3
-std::cout << a << std::endl;
+std::cout << a << "\n";
 ```
 
 In C++, it is generally recommended to use `static_cast` even
@@ -44,7 +44,7 @@ int red_code    = static_cast<int>(RED);
 int green_code  = static_cast<int>(GREEN);
 int blue_code   = static_cast<int>(BLUE);
 // prints 0, 1, 2
-std::cout << red_code << ", " << green_code << ", " << blue_code << std::endl;
+std::cout << red_code << ", " << green_code << ", " << blue_code << "\n";
 ```
 
 We will discover more examples of user-defined conversion through the course. 

@@ -22,9 +22,9 @@ regular assignment operator.
 ```c++
 r = 2;
 // prints 2
-std::cout << r << std::endl;
+std::cout << r << "\n";
 // also prints 2
-std::cout << x << std::endl;
+std::cout << x << "\n";
 ```
 
 It is also possible to define a read-only (immutable) reference using the `const` modifier:
@@ -32,7 +32,7 @@ It is also possible to define a read-only (immutable) reference using the `const
 ```c++
 const int& cr = x;
 // prints 2
-std::cout << cr << std::endl;
+std::cout << cr << "\n";
 // the next line will not compile
 cr = 3;
 ```
@@ -60,8 +60,8 @@ return the address of the referenced variable.
 
 ```c++
 // the following two statements will always print the same address 
-std::cout << &x << std::endl;
-std::cout << &r << std::endl;
+std::cout << &x << "\n";
+std::cout << &r << "\n";
 ```
 
 As a byproduct of the last rule, you cannot have nested references

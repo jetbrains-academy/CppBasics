@@ -38,12 +38,12 @@ TEST(generateCoordinateTest, generateCoordinateTestRandomness) {
 
 std::string error_msg(float radius, Circle circle) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  radius = " << radius << std::endl;
-    stream << "Generated data:" << std::endl
+    stream << "Test data:" << "\n"
+           << "  radius = " << radius << "\n";
+    stream << "Generated data:" << "\n"
            << "  circle = { "
            << "{ " << circle.center.x << ", " << circle.center.y << " }, " << circle.radius
-           << " }" << std::endl;
+           << " }" << "\n";
     return stream.str();
 }
 

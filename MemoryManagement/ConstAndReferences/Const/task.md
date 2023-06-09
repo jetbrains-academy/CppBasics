@@ -47,7 +47,7 @@ int z = 17;
 int* const r = &z;
 *r = 21;
 // prints 21
-std::cout << z << std::endl;
+std::cout << z << "\n";
 // the following code causes compilation error
 int w = 32;
 r = &w;

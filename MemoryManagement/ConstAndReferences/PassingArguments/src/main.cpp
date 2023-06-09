@@ -45,11 +45,11 @@ int main() {
     int a = 5;
     int b = 7;
     swap(a, b);
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    std::cout << a << "\n";
+    std::cout << b << "\n";
 
     // (2): size of Rectangle type
-    std::cout << sizeof(Rectangle) << std::endl;
+    std::cout << sizeof(Rectangle) << "\n";
 
     // (3): arguments passed by reference are not copied
     //      and can be modified inside called function
@@ -57,7 +57,7 @@ int main() {
     scale(rect, 2);
     // prints { {1, 5}, {11, 1} }
     print(rect);
-    std::cout << std::endl;
+    std::cout << "\n";
 
     return 0;
 }

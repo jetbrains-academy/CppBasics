@@ -32,9 +32,9 @@ const float MAX = 10e6;
 
 std::string add_error_msg(Point2D a, Point2D b) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  a = { " << a.x << ", " << a.y << " }" << std::endl
-           << "  b = { " << b.x << ", " << b.y << " }" << std::endl;
+    stream << "Test data:" << "\n"
+           << "  a = { " << a.x << ", " << a.y << " }" << "\n"
+           << "  b = { " << b.x << ", " << b.y << " }" << "\n";
     return stream.str();
 }
 
@@ -131,9 +131,9 @@ TEST(AddTest, AddTestRandom) {
 
 std::string mul_error_msg(float s, Point2D a) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  s = " << s << std::endl
-           << "  a = { " << a.x << ", " << a.y << " }" << std::endl;
+    stream << "Test data:" << "\n"
+           << "  s = " << s << "\n"
+           << "  a = { " << a.x << ", " << a.y << " }" << "\n";
     return stream.str();
 }
 
@@ -215,10 +215,10 @@ TEST(MulTest, MulTestRandom) {
 
 std::string move_error_msg(Point2D position, Point2D velocity, float delta) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  position = { " << position.x << ", " << position.y << " }" << std::endl
-           << "  velocity = { " << velocity.x << ", " << velocity.y << " }" << std::endl
-           << "  delta = "    << delta    << std::endl;
+    stream << "Test data:" << "\n"
+           << "  position = { " << position.x << ", " << position.y << " }" << "\n"
+           << "  velocity = { " << velocity.x << ", " << velocity.y << " }" << "\n"
+           << "  delta = "    << delta    << "\n";
     return stream.str();
 }
 

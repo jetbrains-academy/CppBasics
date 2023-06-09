@@ -12,11 +12,11 @@ const char* str = "Hello, World!";
 const char** res = nullptr;
 size_t size = split(str, " ,!", res);
 // should print 2
-std::cout << size << std::endl;
+std::cout << size << "\n";
 // should print "Hello"
-std::cout << res[0] << std::endl;
+std::cout << res[0] << "\n";
 // should print "World"
-std::cout << res[1] << std::endl;
+std::cout << res[1] << "\n";
 ```
 
 This function takes as its first argument `str` the string that needs to be split.

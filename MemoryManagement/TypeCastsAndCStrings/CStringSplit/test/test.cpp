@@ -61,12 +61,12 @@ std::string error_msg(const char* str, const char* seps,
                       const char** actual, size_t actual_size) {
     std::ostringstream stream;
 
-    stream << "Test data:"             << std::endl
-           << "  str  = "   << str     << std::endl
-           << "  seps = "   << seps    << std::endl;
+    stream << "Test data:"             << "\n"
+           << "  str  = "   << str     << "\n"
+           << "  seps = "   << seps    << "\n";
 
-    stream << "Expected: "                   << std::endl
-           << "  size   = " << expected_size << std::endl
+    stream << "Expected: "                   << "\n"
+           << "  size   = " << expected_size << "\n"
            << "  result = ";
     if (expected) {
         stream << "[ ";
@@ -76,13 +76,13 @@ std::string error_msg(const char* str, const char* seps,
                 stream << ", ";
             }
         }
-        stream << " ]" << std::endl;
+        stream << " ]" << "\n";
     } else {
-        stream << "nullptr" << std::endl;
+        stream << "nullptr" << "\n";
     }
 
-    stream << "Actual: "                   << std::endl
-           << "  size   = " << actual_size << std::endl
+    stream << "Actual: "                   << "\n"
+           << "  size   = " << actual_size << "\n"
            << "  result = ";
 
     if (actual) {
@@ -93,9 +93,9 @@ std::string error_msg(const char* str, const char* seps,
                 stream << ", ";
             }
         }
-        stream << " ]" << std::endl;
+        stream << " ]" << "\n";
     } else {
-        stream << "nullptr" << std::endl;
+        stream << "nullptr" << "\n";
     }
 
     return stream.str();

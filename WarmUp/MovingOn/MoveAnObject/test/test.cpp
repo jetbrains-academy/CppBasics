@@ -18,10 +18,10 @@ const float MAX = 10e6;
 
 std::string error_msg(float position, float velocity, float delta) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
-           << "  position = " << position << std::endl
-           << "  velocity = " << velocity << std::endl
-           << "  delta = "    << delta    << std::endl;
+    stream << "Test data:" << "\n"
+           << "  position = " << position << "\n"
+           << "  velocity = " << velocity << "\n"
+           << "  delta = "    << delta    << "\n";
     return stream.str();
 }
 

@@ -13,8 +13,8 @@ run the following code to make sure that
 the types `Color` and `int` occupy exactly the same amount of memory:
 
 ```c++
-std::cout << sizeof(int) << std::endl;
-std::cout << sizeof(Color) << std::endl;
+std::cout << sizeof(int) << "\n";
+std::cout << sizeof(Color) << "\n";
 ```
 
 Memory layout of structs is more complex, 
@@ -31,9 +31,9 @@ alignment typically equals the size of the type,
 but it does not have to be true for all types.
 
 ```c++
-std::cout << alignof(int) << std::endl;
+std::cout << alignof(int) << "\n";
 // prints 4 on most modern machines
-std::cout << alignof(double) << std::endl;
+std::cout << alignof(double) << "\n";
 // prints 8 on most modern machines
 ```
 
@@ -70,9 +70,9 @@ Assuming `int` occupies 4 bytes, this struct has the size of 12 bytes and the al
 This is because the compiler inserts 2 additional padding bytes between the fields `b` and `y`.
 
 ```c++
-std::cout << sizeof(Foo) << std::endl;
+std::cout << sizeof(Foo) << "\n";
 // prints 12
-std::cout << alignof(Foo) << std::endl;
+std::cout << alignof(Foo) << "\n";
 // prints 4
 ```
 
@@ -93,9 +93,9 @@ You can check it by printing its size and alignment.
 
 ```c++
 // prints 12
-std::cout << sizeof(FooLayout) << std::endl;
+std::cout << sizeof(FooLayout) << "\n";
 // prints 4
-std::cout << alignof(FooLayout) << std::endl;
+std::cout << alignof(FooLayout) << "\n";
 ```
 
 Because of the alignment requirements, two structures 
@@ -117,9 +117,9 @@ unlike the struct `Foo`, has the size of 16 bytes.
 
 ```c++
 // prints 16
-std::cout << sizeof(Bar) << std::endl;
+std::cout << sizeof(Bar) << "\n";
 // prints 4
-std::cout << alignof(Bar) << std::endl;
+std::cout << alignof(Bar) << "\n";
 ```
 
 Given a pointer to a structure, you can access its fields using the member access operator `->`.
@@ -146,11 +146,11 @@ printing the corresponding addresses of some allocated structure.
 
 ```c++
 Bar bar;
-std::cout << (void*) &bar << std::endl;
-std::cout << (void*) &(bar.x) << std::endl;
-std::cout << (void*) &(bar.a) << std::endl;
-std::cout << (void*) &(bar.y) << std::endl;
-std::cout << (void*) &(bar.b) << std::endl;
+std::cout << (void*) &bar << "\n";
+std::cout << (void*) &(bar.x) << "\n";
+std::cout << (void*) &(bar.a) << "\n";
+std::cout << (void*) &(bar.y) << "\n";
+std::cout << (void*) &(bar.b) << "\n";
 ```
 
 Note the `(void*)` part – it is the _C style type case operator_.
@@ -172,5 +172,5 @@ int* pi = (int*) p;
 // we can now assign a value into y field
 * pi = 42;
 // prints 42
-std::cout << bar.y << std::endl;
+std::cout << bar.y << "\n";
 ```

@@ -13,9 +13,9 @@ For now, just remember that it is a really **bad** thing that you should avoid.
 ```c++
 int* p = nullptr;
 // prints 0
-std::cout << p << std::endl;
+std::cout << p << "\n";
 // program crashes
-std::cout << *p << std::endl;
+std::cout << *p << "\n";
 ```
 
 Despite the fact that a null pointer cannot be dereferenced, 

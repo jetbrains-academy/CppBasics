@@ -52,7 +52,7 @@ all the elements of the array can be written as follows:
 
 ```c++
 for (int* p = begin; p < end; ++p) {
-    std::cout << *p << std::endl;
+    std::cout << *p << "\n";
 }
 ```
 

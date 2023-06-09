@@ -4,7 +4,7 @@ In C, a strings is represented as a pointer to `char` type:
 
 ```c++
 const char* greetings = "Hello World!";
-std::cout << greetings << std::endl;
+std::cout << greetings << "\n";
 ```
 
 Note that a variable of `char*` type does not store any information
@@ -17,7 +17,7 @@ The C standard library provides a function doing exactly that:
 
 ```c++
 // prints 12
-std::cout << strlen(greetings) << std::endl;
+std::cout << strlen(greetings) << "\n";
 ```
 
 Since C-style strings do not explicitly store the length, 
@@ -32,7 +32,7 @@ and does not overwrite memory past the end of the string:
 const size_t size = 20;
 char name[size];
 std::cin.getline(name, size);
-std::cout << name << std::endl;
+std::cout << name << "\n";
 ```
 
 <div class="hint">

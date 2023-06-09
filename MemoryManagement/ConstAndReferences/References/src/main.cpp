@@ -8,12 +8,12 @@ int main() {
 
     // (2): usage of reference
     r = 2;
-    std::cout << r << std::endl;
-    std::cout << x << std::endl;
+    std::cout << r << "\n";
+    std::cout << x << "\n";
 
     // (3): definition of reference to constant
     const int& cr = x;
-    std::cout << cr << std::endl;
+    std::cout << cr << "\n";
     // cr = 3;
 
     // (4): reference should be initialized
@@ -23,8 +23,8 @@ int main() {
     // int& s = nullptr;
 
     // (6): reference does not have its own memory address
-    std::cout << &x << std::endl;
-    std::cout << &r << std::endl;
+    std::cout << &x << "\n";
+    std::cout << &r << "\n";
 
     // Put your code here
     return 0;

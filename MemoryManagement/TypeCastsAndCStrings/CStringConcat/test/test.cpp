@@ -21,11 +21,11 @@ namespace expected {
 std::string error_msg(const char* fst, const char* snd,
                       const char* expected, const char* actual) {
     std::ostringstream stream;
-    stream << "Test data:"             << std::endl
-           << "  fst = "   << fst      << std::endl
-           << "  snd = "   << snd      << std::endl;
-    stream << "Expected: " << expected << std::endl;
-    stream << "Actual: "   << actual   << std::endl;
+    stream << "Test data:"             << "\n"
+           << "  fst = "   << fst      << "\n"
+           << "  snd = "   << snd      << "\n";
+    stream << "Expected: " << expected << "\n";
+    stream << "Actual: "   << actual   << "\n";
     return stream.str();
 }
 

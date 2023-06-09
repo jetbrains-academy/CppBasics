@@ -13,14 +13,14 @@ const float MAX = 10e6;
 
 std::string error_msg(Circle player, Circle consumable, bool consumed) {
     std::ostringstream stream;
-    stream << "Test data:" << std::endl
+    stream << "Test data:" << "\n"
            << "  player = { "
            << "{ " << player.center.x << ", " << player.center.y << " }, " << player.radius
-           << " }" << std::endl
+           << " }" << "\n"
            << "  consumable = { "
            << "{ " << consumable.center.x << ", " << consumable.center.y << " }, " << consumable.radius
-           << " }" << std::endl
-           << "consumed " << consumed << std::endl;
+           << " }" << "\n"
+           << "consumed " << consumed << "\n";
     return stream.str();
 }
 

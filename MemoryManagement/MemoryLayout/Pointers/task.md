@@ -27,7 +27,7 @@ It is done with the help of the dereferencing operator `*`.
 
 ```c++
 int b = *p;
-std::cout << b << std::endl;
+std::cout << b << "\n";
 // prints 42
 ```
 
@@ -41,10 +41,10 @@ and dereferencing the pointer and reading the value it points to.
 // for example, 0x7ffee3c260cc; 
 // (the actual value is non-deterministic and 
 //  may change between different runs of the same program) 
-std::cout << p << std::endl;
+std::cout << p << "\n";
 // prints the value that p points to, 
 // in this case, 42
-std::cout << *p << std::endl;
+std::cout << *p << "\n";
 ```
 
 Using dereferencing operator it is possible both 
@@ -52,11 +52,11 @@ to read pointed-to data, as well as to rewrite it.
 
 ```c++
 *p = 23;
-std::cout << *p << std::endl;
+std::cout << *p << "\n";
 // prints 23
-std::cout << a << std::endl;
+std::cout << a << "\n";
 // also prints 23
-std::cout << b << std::endl;
+std::cout << b << "\n";
 // but last line prints 42!
 ```
 

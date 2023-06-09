@@ -12,7 +12,7 @@ int a = 42;
 int b = 23;
 swap(&a, &b);
 // prints 23
-std::cout << a << std::endl;
+std::cout << a << "\n";
 // prints 42
-std::cout << b << std::endl;
+std::cout << b << "\n";
 ```

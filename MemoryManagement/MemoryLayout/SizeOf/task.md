@@ -7,7 +7,7 @@ In C++, one can know the size of the type in
 using the `sizeof` operator.
 
 ```c++
-std::cout << sizeof(int) << std::endl;
+std::cout << sizeof(int) << "\n";
 ```
 
 Note that the size of some predefined types, such as `int`, depends 
