@@ -5,21 +5,12 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "point.hpp"
+
 const float RADIUS = 40.0f;
 const float CONSUMABLE_RADIUS = 20.0f;
 
 float move(float position, float velocity, float delta);
-
-struct Point2D {
-    float x;
-    float y;
-};
-
-Point2D add(Point2D a, Point2D b);
-
-Point2D mul(float s, Point2D a);
-
-Point2D move(Point2D position, Point2D velocity, float delta);
 
 enum Direction {
     North,
@@ -29,21 +20,6 @@ enum Direction {
 };
 
 Point2D getDirection(Direction direction);
-
-inline std::string directionToString(Direction direction) {
-    switch (direction) {
-        case North:
-            return "North";
-        case East:
-            return "East";
-        case South:
-            return "South";
-        case West:
-            return "West";
-        default:
-            return "";
-    }
-}
 
 const float SPEED = 150.0f;
 

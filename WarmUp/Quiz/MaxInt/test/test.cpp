@@ -11,6 +11,8 @@ TEST(MaxIntTest, MaxIntTest) {
     for (int i = 0; i < N_ITER; ++i) {
         int a = -1000 + rand() % 2000;
         int b = -1000 + rand() % 2000;
-        ASSERT_EQ(std::max(a, b), maxInt(a, b));
+        int max = std::max(a, b);
+        ASSERT_EQ(max, maxInt(a, b))
+            << "  a = " << a << ", b = " << b << "\n";
     }
 }

@@ -3,24 +3,24 @@
 #include <cmath>
 
 #include "scene.hpp"
+#include "operators.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =
     testing::AddGlobalTestEnvironment(new TestEnvironment);
 
-const float MIN = -10e6;
-const float MAX = 10e6;
-
-std::string error_msg(Circle player, Circle consumable, bool consumed) {
+std::string error_msg(Circle player, Circle consumable, bool consumed, bool expected, bool actual) {
     std::ostringstream stream;
+    stream << "Testing statement:\n"
+           << "  collisionLoop(player, consumable, consumed, N)" << "\n";
     stream << "Test data:" << "\n"
-           << "  player = { "
-           << "{ " << player.center.x << ", " << player.center.y << " }, " << player.radius
-           << " }" << "\n"
-           << "  consumable = { "
-           << "{ " << consumable.center.x << ", " << consumable.center.y << " }, " << consumable.radius
-           << " }" << "\n"
-           << "consumed " << consumed << "\n";
+           << "  player = " << player << "\n"
+           << "  consumable[i] = " << consumable << "\n"
+           << "  consumed[i] = " << consumed << "\n";
+    stream << "Expected result:\n"
+           << "  consumed[i] = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  consumed[i] = " << actual << "\n";
     return stream.str();
 }
 
@@ -29,10 +29,10 @@ TEST(collisionLoopTest, collisionLoopTest) {
 
     const int N_CIRCLES = 4;
 
-    Circle circle1 = { {RADIUS / 2, RADIUS / 2}, 2 * RADIUS };
-    Circle circle2 = { {RADIUS / 4, -RADIUS / 4}, RADIUS };
-    Circle circle3 = {{EAST_BORDER, SOUTH_BORDER}, RADIUS };
-    Circle circle4 = {{WEST_BORDER, NORTH_BORDER}, RADIUS };
+    Circle circle1 = { { RADIUS / 2, RADIUS / 2 }, 2 * RADIUS };
+    Circle circle2 = { { RADIUS / 4, -RADIUS / 4 }, RADIUS };
+    Circle circle3 = { { EAST_BORDER, SOUTH_BORDER }, RADIUS };
+    Circle circle4 = { { WEST_BORDER, NORTH_BORDER }, RADIUS };
 
     Circle consumable[N_CIRCLES] = {circle1, circle2, circle3, circle4 };
     bool consumed[N_CIRCLES] = { false, true, false, true };
@@ -42,9 +42,9 @@ TEST(collisionLoopTest, collisionLoopTest) {
     for (int i = 0; i < N_CIRCLES; ++i) {
         actual[i] = consumed[i];
     }
-    collisionLoop(player, consumable, consumed, N_CIRCLES);
+    collisionLoop(player, consumable, actual, N_CIRCLES);
 
     for (int i = 0; i < N_CIRCLES; ++i) {
-        ASSERT_EQ(expected[i], consumed[i]) << error_msg(player, consumable[i], consumed[i]);
+        ASSERT_EQ(expected[i], actual[i]) << error_msg(player, consumable[i], consumed[i], expected[i], actual[i]);
     }
 }

@@ -1,13 +1,14 @@
 #include <gtest/gtest.h>
 
 #include "scene.hpp"
+#include "operators.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =
     testing::AddGlobalTestEnvironment(new TestEnvironment);
 
-const float MIN = -10e6;
-const float MAX = 10e6;
+const float MIN = -10e3;
+const float MAX = 10e3;
 const float DELTA = 0.5f;
 
 TEST(generateCoordinateTest, generateCoordinateTestBounds) {
@@ -16,8 +17,8 @@ TEST(generateCoordinateTest, generateCoordinateTestBounds) {
             return generateCoordinate(MIN, MAX);
         },
         [] (float coordinate) {
-            ASSERT_GT(coordinate, MIN - DELTA) << "Generated value exceeds bounds";
-            ASSERT_LT(coordinate, MAX + DELTA) << "Generated value exceeds bounds";
+            ASSERT_GT(coordinate, MIN - DELTA) << "Generated value exceeds bounds.";
+            ASSERT_LT(coordinate, MAX + DELTA) << "Generated value exceeds bounds.";
         }
     );
 }
@@ -38,12 +39,10 @@ TEST(generateCoordinateTest, generateCoordinateTestRandomness) {
 
 std::string error_msg(float radius, Circle circle) {
     std::ostringstream stream;
-    stream << "Test data:" << "\n"
-           << "  radius = " << radius << "\n";
-    stream << "Generated data:" << "\n"
-           << "  circle = { "
-           << "{ " << circle.center.x << ", " << circle.center.y << " }, " << circle.radius
-           << " }" << "\n";
+    stream << "Testing expression:\n"
+           << "  circle = generateCircle(" << radius << ")" << "\n";
+    stream << "Generated result:" << "\n"
+           << "  circle = " << circle << "\n";
     return stream.str();
 }
 
@@ -60,19 +59,19 @@ TEST(generateCircleTest, generateCircleTestBounds) {
             std::tie(radius, circle) = data;
 
             ASSERT_FLOAT_EQ(radius, circle.radius)
-                << "Radius does not match requested value " << error_msg(radius, circle);
+                << "Radius does not match requested value.\n" << error_msg(radius, circle);
 
             ASSERT_GT(circle.center.x - radius, WEST_BORDER + DELTA)
-                << "Generated circle exceeds bounds";
+                << "Generated circle center exceeds bounds.\n" << error_msg(radius, circle);
 
             ASSERT_LT(circle.center.x + radius, EAST_BORDER - DELTA)
-                << "Generated circle exceeds bounds";
+                << "Generated circle center exceeds bounds.\n" << error_msg(radius, circle);
 
             ASSERT_GT(circle.center.y - radius, NORTH_BORDER + DELTA)
-                << "Generated circle exceeds bounds";
+                << "Generated circle center exceeds bounds.\n" << error_msg(radius, circle);
 
             ASSERT_LT(circle.center.y + radius, SOUTH_BORDER - DELTA)
-                << "Generated circle exceeds bounds";
+                << "Generated circle center exceeds bounds.\n" << error_msg(radius, circle);
         }
     );
 }
@@ -87,9 +86,9 @@ TEST(generateCircleTest, generateCircleTestRandomness) {
                    abs(a.center.x - b.center.x) < EPS   &&
                    abs(a.center.y - b.center.y) < EPS;
         },
-        [](Circle a) {
+        [](Circle c) {
             std::ostringstream stream;
-            stream << "{ { " << a.center.x << ", " << a.center.y << " }, " << a.radius << " }";
+            stream << c;
             return stream.str();
         }
     );

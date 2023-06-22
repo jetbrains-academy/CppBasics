@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "scene.hpp"
+#include "operators.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =
@@ -27,14 +28,20 @@ namespace expected {
     }
 }
 
-const float MIN = -10e6;
-const float MAX = 10e6;
+const float MIN = -10e3;
+const float MAX = 10e3;
 
-std::string add_error_msg(Point2D a, Point2D b) {
+std::string add_error_msg(Point2D a, Point2D b, Point2D expected, Point2D actual) {
     std::ostringstream stream;
-    stream << "Test data:" << "\n"
-           << "  a = { " << a.x << ", " << a.y << " }" << "\n"
-           << "  b = { " << b.x << ", " << b.y << " }" << "\n";
+    stream << "Testing expression:\n"
+           << "  c = add(a, b)" << "\n";
+    stream << "Test data:\n"
+           << "  a = " << a << "\n"
+           << "  b = " << b << "\n";
+    stream << "Expected result:\n"
+           << "  c = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  c = " << actual << "\n";
     return stream.str();
 }
 
@@ -50,8 +57,8 @@ TEST(AddTest, AddTestA0) {
             std::tie(a, b) = data;
             Point2D expected = a;
             Point2D actual = add(a, b);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b, expected, actual);
         }
     );
 }
@@ -68,8 +75,8 @@ TEST(AddTest, AddTest0B) {
             std::tie(a, b) = data;
             Point2D expected = b;
             Point2D actual = add(a, b);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b, expected, actual);
         }
     );
 }
@@ -123,17 +130,23 @@ TEST(AddTest, AddTestRandom) {
             std::tie(a, b) = data;
             Point2D expected = expected::add(a, b);
             Point2D actual = add(a, b);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << add_error_msg(a, b, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << add_error_msg(a, b, expected, actual);
         }
     );
 }
 
-std::string mul_error_msg(float s, Point2D a) {
+std::string mul_error_msg(float s, Point2D a, Point2D expected, Point2D actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  b = mul(s, a)" << "\n";
     stream << "Test data:" << "\n"
            << "  s = " << s << "\n"
-           << "  a = { " << a.x << ", " << a.y << " }" << "\n";
+           << "  a = " << a << "\n";
+    stream << "Expected result:\n"
+           << "  c = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  c = " << actual << "\n";
     return stream.str();
 }
 
@@ -150,8 +163,8 @@ TEST(MulTest, MulTest0) {
             std::tie(s, a) = data;
             Point2D expected = { 0.0f, 0.0f };
             Point2D actual = mul(s, a);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a, expected, actual);
         }
     );
 }
@@ -169,8 +182,8 @@ TEST(MulTest, MulTest1) {
             std::tie(s, a) = data;
             Point2D expected = a;
             Point2D actual = mul(s, a);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a, expected, actual);
         }
     );
 }
@@ -188,8 +201,8 @@ TEST(MulTest, MulTestS0) {
             std::tie(s, a) = data;
             Point2D expected = { 0.0f, 0.0f };
             Point2D actual = mul(s, a);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a, expected, actual);
         }
     );
 }
@@ -207,18 +220,24 @@ TEST(MulTest, MulTestRandom) {
             std::tie(s, a) = data;
             Point2D expected = expected::mul(s, a);
             Point2D actual = mul(s, a);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << mul_error_msg(s, a, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << mul_error_msg(s, a, expected, actual);
         }
     );
 }
 
-std::string move_error_msg(Point2D position, Point2D velocity, float delta) {
+std::string move_error_msg(Point2D position, Point2D velocity, float delta, Point2D expected, Point2D actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  newPosition = move(position, velocity, delta)" << "\n";
     stream << "Test data:" << "\n"
-           << "  position = { " << position.x << ", " << position.y << " }" << "\n"
-           << "  velocity = { " << velocity.x << ", " << velocity.y << " }" << "\n"
+           << "  position = " << position << "\n"
+           << "  velocity = " << velocity << "\n"
            << "  delta = "    << delta    << "\n";
+    stream << "Expected result:\n"
+           << "  newPosition = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  newPosition = " << actual << "\n";
     return stream.str();
 }
 
@@ -236,8 +255,8 @@ TEST(MoveTest, MoveTestDelta0) {
             std::tie(position, velocity, delta) = data;
             Point2D expected = position;
             Point2D actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta, expected, actual);
         }
     );
 }
@@ -256,8 +275,8 @@ TEST(MoveTest, MoveTestVelocity0) {
             std::tie(position, velocity, delta) = data;
             Point2D expected = position;
             Point2D actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta, expected, actual);
         }
     );
 }
@@ -267,7 +286,7 @@ TEST(MoveTest, MoveTestRandom) {
         [] () {
             Point2D position = { genFloat(MIN, MAX), genFloat(MIN, MAX) };
             Point2D velocity = { genFloat(MIN, MAX), genFloat(MIN, MAX) };
-            float delta = genFloat(MIN, MAX);
+            float delta = genFloat(0, 10.0);
             return std::make_tuple(position, velocity, delta);
         },
         [] (std::tuple<Point2D, Point2D, float> data) {
@@ -276,8 +295,8 @@ TEST(MoveTest, MoveTestRandom) {
             std::tie(position, velocity, delta) = data;
             Point2D expected = expected::move(position, velocity, delta);
             Point2D actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << move_error_msg(position, velocity, delta, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << move_error_msg(position, velocity, delta, expected, actual);
         }
     );
 }

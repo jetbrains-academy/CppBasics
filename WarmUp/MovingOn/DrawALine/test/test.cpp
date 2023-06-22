@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "scene.hpp"
+#include "operators.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =
@@ -26,10 +27,16 @@ namespace expected {
     }
 }
 
-std::string error_msg(Point2D p) {
+std::string error_msg(Point2D p, Point2D expected, Point2D actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  newPosition = adjustToBorders(position)" << "\n";
     stream << "Test data:" << "\n"
-           << "  position = { " << p.x << ", " << p.y << " }" << "\n";
+           << "  position = " << p << "\n";
+    stream << "Expected result:\n"
+           << "  newPosition = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  newPosition = " << actual << "\n";
     return stream.str();
 }
 
@@ -40,9 +47,9 @@ TEST(adjustToBordersTest, adjustToBordersTestNorth) {
             return position;
         },
         [] (Point2D position) {
-            float expected = NORTH_BORDER + RADIUS;
+            Point2D expected = { position.x, NORTH_BORDER + RADIUS };
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected, actual.y) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position, expected, actual);
         }
     );
 }
@@ -54,9 +61,9 @@ TEST(adjustToBordersTest, adjustToBordersTestSouth) {
             return position;
         },
         [] (Point2D position) {
-            float expected = SOUTH_BORDER - RADIUS;
+            Point2D expected = { position.x, SOUTH_BORDER - RADIUS };
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected, actual.y) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position, expected, actual);
         }
     );
 }
@@ -68,9 +75,9 @@ TEST(adjustToBordersTest, adjustToBordersTestEast) {
             return position;
         },
         [] (Point2D position) {
-            float expected = WEST_BORDER + RADIUS;
+            Point2D expected = { WEST_BORDER + RADIUS, position.y };
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected, actual.x) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position, expected, actual);
         }
     );
 }
@@ -82,9 +89,9 @@ TEST(adjustToBordersTest, adjustToBordersTestWest) {
             return position;
         },
         [] (Point2D position) {
-            float expected = EAST_BORDER - RADIUS;
+            Point2D expected = { EAST_BORDER - RADIUS, position.y };
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected, actual.x) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position, expected, actual);
         }
     );
 }
@@ -99,8 +106,8 @@ TEST(adjustToBordersTest, adjustToBordersTestId) {
         [] (Point2D position) {
             Point2D expected = position;
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position, expected, actual);
         }
     );
 }
@@ -114,8 +121,8 @@ TEST(adjustToBordersTest, adjustToBordersTestRandom) {
         [] (Point2D position) {
             Point2D expected = expected::adjustToBorders(position);
             Point2D actual = adjustToBorders(position);
-            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position);
-            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position);
+            ASSERT_FLOAT_EQ(expected.x, actual.x) << error_msg(position, expected, actual);
+            ASSERT_FLOAT_EQ(expected.y, actual.y) << error_msg(position, expected, actual);
         }
     );
 }

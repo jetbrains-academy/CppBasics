@@ -16,12 +16,18 @@ namespace expected {
 const float MIN = -10e6;
 const float MAX = 10e6;
 
-std::string error_msg(float position, float velocity, float delta) {
+std::string error_msg(float position, float velocity, float delta, float expected, float actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  newPosition = move(position, velocity, delta)" << "\n";
     stream << "Test data:" << "\n"
            << "  position = " << position << "\n"
            << "  velocity = " << velocity << "\n"
            << "  delta = "    << delta    << "\n";
+    stream << "Expected result:\n"
+           << "  newPosition = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  newPosition = " << actual << "\n";
     return stream.str();
 }
 
@@ -35,7 +41,7 @@ TEST(MoveTest, MoveTestDelta0) {
             std::tie(position, velocity, delta) = data;
             float expected = position;
             float actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta, expected, actual);
         }
     );
 }
@@ -50,7 +56,7 @@ TEST(MoveTest, MoveTestVelocity0) {
             std::tie(position, velocity, delta) = data;
             float expected = position;
             float actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta, expected, actual);
         }
     );
 }
@@ -65,7 +71,7 @@ TEST(MoveTest, MoveTestRandom) {
             std::tie(position, velocity, delta) = data;
             float expected = expected::move(position, velocity, delta);
             float actual = move(position, velocity, delta);
-            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta);
+            ASSERT_FLOAT_EQ(expected, actual) << error_msg(position, velocity, delta, expected, actual);
         }
     );
 }

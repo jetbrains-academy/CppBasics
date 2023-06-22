@@ -4,10 +4,10 @@ files:
 - name: src/generate.cpp
   visible: true
   placeholders:
-  - offset: 130
-    length: 169
+  - offset: 121
+    length: 197
     placeholder_text: /* TODO */
-  - offset: 375
+  - offset: 394
     length: 49
     placeholder_text: return min;
 - name: src/collision.cpp

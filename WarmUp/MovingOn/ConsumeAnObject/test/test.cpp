@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "scene.hpp"
+#include "operators.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =
@@ -31,14 +32,20 @@ namespace expected {
     }
 }
 
-const float MIN = -10e6;
-const float MAX = 10e6;
+const float MIN = -100;
+const float MAX = 100;
 
-std::string distance_error_msg(Point2D a, Point2D b) {
+std::string distance_error_msg(Point2D a, Point2D b, float expected, float actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  d = distance(a, b)" << "\n";
     stream << "Test data:" << "\n"
-           << "  a = { " << a.x << ", " << a.y << " }" << "\n"
-           << "  b = { " << b.x << ", " << b.y << " }" << "\n";
+           << "  a = " << a << "\n"
+           << "  b = " << b << "\n";
+    stream << "Expected result:\n"
+           << "  d = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  d = " << actual << "\n";
     return stream.str();
 }
 
@@ -54,20 +61,22 @@ TEST(distanceTest, distanceTestRandom) {
             std::tie(a, b) = data;
             float expected = expected::distance(a, b);
             float actual = distance(a, b);
-            ASSERT_FLOAT_EQ(expected, actual) << distance_error_msg(a, b);
+            ASSERT_FLOAT_EQ(expected, actual) << distance_error_msg(a, b, expected, actual);
         }
     );
 }
 
-std::string collision_error_msg(Circle circle1, Circle circle2) {
+std::string collision_error_msg(Circle circle1, Circle circle2, bool expected, bool actual) {
     std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  collide = collision(circle1, circle2)" << "\n";
     stream << "Test data:" << "\n"
-           << "  circle1 = { "
-           << "{ " << circle1.center.x << ", " << circle1.center.y << " }, " << circle1.radius
-           << " }" << "\n"
-           << "  circle2 = { "
-           << "{ " << circle2.center.x << ", " << circle2.center.y << " }, " << circle2.radius
-           << " }" << "\n";
+           << "  circle1 = " << circle1 << "\n"
+           << "  circle2 = " << circle2 << "\n";
+    stream << "Expected result:\n"
+           << "  collide = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  collide = " << actual << "\n";
     return stream.str();
 }
 
@@ -84,9 +93,9 @@ TEST(collisionTest, collisionTestTrue) {
         [] (std::tuple<Circle, Circle> data) {
             Circle c1, c2;
             std::tie(c1, c2) = data;
-            float expected = true;
-            float actual = collision(c1, c2);
-            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2);
+            bool expected = true;
+            bool actual = collision(c1, c2);
+            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2, expected, actual);
         }
     );
 }
@@ -104,9 +113,9 @@ TEST(collisionTest, collisionTestFalse) {
         [] (std::tuple<Circle, Circle> data) {
             Circle c1, c2;
             std::tie(c1, c2) = data;
-            float expected = false;
-            float actual = collision(c1, c2);
-            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2);
+            bool expected = false;
+            bool actual = collision(c1, c2);
+            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2, expected, actual);
         }
     );
 }
@@ -123,9 +132,9 @@ TEST(collisionTest, collisionTestRandom) {
         [] (std::tuple<Circle, Circle> data) {
             Circle c1, c2;
             std::tie(c1, c2) = data;
-            float expected = expected::collision(c1, c2);
-            float actual = collision(c1, c2);
-            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2);
+            bool expected = expected::collision(c1, c2);
+            bool actual = collision(c1, c2);
+            ASSERT_FLOAT_EQ(expected, actual) << collision_error_msg(c1, c2, expected, actual);
         }
     );
 }

@@ -16,7 +16,7 @@ inline void initGen() {
 }
 
 inline float genFloat(float min, float max) {
-    return min + (rand() / (RAND_MAX / (max - min)));
+    return min + ((float) rand() / RAND_MAX) * (max - min);
 }
 
 class TestEnvironment : public ::testing::Environment {
@@ -37,6 +37,8 @@ template <typename TestDataGen, typename TestAssert>
 void property_test(TestDataGen gen, TestAssert test) {
     for (int i = 0; i < N_ITER; ++i) {
         test(gen());
+        if (::testing::Test::HasFailure())
+            return;
     }
 }
 
@@ -69,8 +71,8 @@ void randomness_test(TestDataGen gen, TestDataCmp cmp, TestDataPrint print) {
         }
     }
 
-    ASSERT_TRUE(different) << "Failed to generate sequence of different random values\n"
-                           << "Generated sequence: " << seq;
+    ASSERT_TRUE(different) << "Failed to generate sequence of different random values.\n"
+                           << "Generated sequence: " << seq << "\n";
 }
 
 // RAII clean-up for plain C style pointers,
