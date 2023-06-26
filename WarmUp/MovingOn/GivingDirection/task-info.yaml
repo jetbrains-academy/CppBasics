@@ -44,7 +44,7 @@ files:
   visible: true
   placeholders:
   - offset: 69
-    length: 29
+    length: 27
     placeholder_text: position
     dependency:
       section: WarmUp

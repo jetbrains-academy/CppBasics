@@ -8,7 +8,7 @@ files:
 - name: src/move.cpp
   visible: true
   placeholders:
-  - offset: 213
+  - offset: 69
     length: 27
     placeholder_text: position
 - name: test/test.cpp
