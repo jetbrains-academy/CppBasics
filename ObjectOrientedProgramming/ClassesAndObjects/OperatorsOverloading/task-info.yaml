@@ -1,0 +1,11 @@
+type: edu
+custom_name: Operators Overloading
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: src/operators.cpp
+  visible: true
+- name: src/point.cpp
+  visible: true
+- name: test/test.cpp
+  visible: false
