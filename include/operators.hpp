@@ -32,4 +32,12 @@ inline std::ostream& operator<<(std::ostream& os, Direction direction) {
     return os << to_string(direction);
 }
 
+Point2D operator+(Point2D a, Point2D b);
+
+Point2D operator-(Point2D a);
+
+Point2D operator-(Point2D a, Point2D b);
+
+Point2D operator*(float s, Point2D a);
+
 #endif // CPPBASICS_OPERATORS_HPP
