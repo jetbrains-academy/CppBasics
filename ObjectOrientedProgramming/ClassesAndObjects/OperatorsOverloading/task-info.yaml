@@ -5,6 +5,19 @@ files:
   visible: false
 - name: src/operators.cpp
   visible: true
+  placeholders:
+    - offset: 68
+      length: 17
+      placeholder_text: "return { 0.0f, 0.0f };"
+    - offset: 124
+      length: 22
+      placeholder_text: "return { 0.0f, 0.0f, };"
+    - offset: 196
+      length: 18
+      placeholder_text: "return { 0.0f, 0.0f, };"
+    - offset: 262
+      length: 17
+      placeholder_text: "return { 0.0f, 0.0f, };"
 - name: src/point.cpp
   visible: true
 - name: test/test.cpp
