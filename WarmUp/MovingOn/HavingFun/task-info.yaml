@@ -14,9 +14,8 @@ files:
       file: src/move.cpp
       placeholder: 1
       is_visible: false
-- name: src/main.cpp
-  visible: true
-  editable: true
 - name: CMakeLists.txt
   visible: false
+- name: src/main.cpp
+  visible: true
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Having+Fun

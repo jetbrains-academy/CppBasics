@@ -1,4 +1,4 @@
-#include "scene.hpp"
+#include "game.hpp"
 
 Point2D add(Point2D a, Point2D b) {
     Point2D c = { 0, 0 };

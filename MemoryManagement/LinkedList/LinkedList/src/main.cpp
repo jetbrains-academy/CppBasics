@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "scene.hpp"
+#include "game.hpp"
 #include "dllist.hpp"
 
 const int MAX_CONSUMABLES_COUNT = 8;

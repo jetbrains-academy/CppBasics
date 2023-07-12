@@ -1,4 +1,4 @@
-#include "scene.hpp"
+#include "game.hpp"
 
 Point2D getDirection(Direction direction) {
     switch (direction) {

@@ -1,42 +1,18 @@
-#ifndef CPPBASICS_SCENE_HPP
-#define CPPBASICS_SCENE_HPP
+#ifndef CPPBASICS_GAME_HPP
+#define CPPBASICS_GAME_HPP
 
 #include <string>
 
 #include <SFML/Graphics.hpp>
 
 #include "point.hpp"
-
-const float RADIUS = 40.0f;
-const float CONSUMABLE_RADIUS = 20.0f;
+#include "circle.hpp"
+#include "direction.hpp"
+#include "constants.hpp"
 
 float move(float position, float velocity, float delta);
 
-enum Direction {
-    North,
-    East,
-    South,
-    West,
-};
-
-Point2D getDirection(Direction direction);
-
-const float SPEED = 150.0f;
-
-const float SCENE_WIDTH  = 800.0f;
-const float SCENE_HEIGHT = 600.0f;
-
-const float NORTH_BORDER = 0.0f;
-const float WEST_BORDER  = 0.0f;
-const float EAST_BORDER  = WEST_BORDER + SCENE_WIDTH;
-const float SOUTH_BORDER = NORTH_BORDER + SCENE_HEIGHT;
-
 Point2D adjustToBorders(Point2D position);
-
-struct Circle {
-    Point2D center;
-    float radius;
-};
 
 float distance(Point2D a, Point2D b);
 
@@ -71,8 +47,6 @@ inline int initBackrground(sf::Sprite& sprite, sf::Texture& texture) {
     return 0;
 }
 
-const float PLAYER_START_X = 400.0f;
-const float PLAYER_START_Y = 300.0f;
 
 inline int initPlayer(sf::CircleShape& shape, sf::Texture& texture) {
     shape.setRadius(RADIUS);
@@ -84,9 +58,6 @@ inline int initPlayer(sf::CircleShape& shape, sf::Texture& texture) {
     shape.setTexture(&texture);
     return 0;
 }
-
-const float CONSUMABLE_START_X = 600.0f;
-const float CONSUMABLE_START_Y = 150.0f;
 
 inline int initConsumableTexture(sf::Texture& texture) {
     std::string filename = "resources/star.png";
@@ -141,22 +112,5 @@ inline int initConsumablesRandom(sf::CircleShape* shapes, int count, const sf::T
     return 0;
 }
 
-inline Point2D calculateVelocity() {
-    Point2D velocity = { 0.0f, 0.0f };
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        velocity = add(velocity, getDirection(North));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        velocity = add(velocity, getDirection(East));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        velocity = add(velocity, getDirection(South));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        velocity = add(velocity, getDirection(West));
-    }
-    velocity = mul(SPEED, velocity);
-    return velocity;
-}
 
-#endif // CPPBASICS_SCENE_HPP
+#endif // CPPBASICS_GAME_HPP

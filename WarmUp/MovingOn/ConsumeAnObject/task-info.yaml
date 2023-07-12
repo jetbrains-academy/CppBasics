@@ -4,16 +4,16 @@ files:
 - name: src/collision.cpp
   visible: true
   placeholders:
-  - offset: 83
-    length: 83
-    placeholder_text: return 0.0f;
-  - offset: 223
-    length: 82
-    placeholder_text: return false;
+    - offset: 82
+      length: 83
+      placeholder_text: return 0.0f;
+    - offset: 222
+      length: 82
+      placeholder_text: return false;
 - name: src/borders.cpp
   visible: true
   placeholders:
-  - offset: 101
+  - offset: 100
     length: 359
     placeholder_text: /* TODO */
     dependency:
@@ -26,7 +26,7 @@ files:
 - name: src/direction.cpp
   visible: true
   placeholders:
-  - offset: 70
+  - offset: 69
     length: 304
     placeholder_text: "return { 0.0f, 0.0f };"
     dependency:
@@ -39,7 +39,7 @@ files:
 - name: src/point.cpp
   visible: true
   placeholders:
-  - offset: 88
+  - offset: 87
     length: 37
     placeholder_text: /* TODO */
     dependency:
@@ -49,7 +49,7 @@ files:
       file: src/point.cpp
       placeholder: 1
       is_visible: false
-  - offset: 207
+  - offset: 206
     length: 33
     placeholder_text: /* TODO */
     dependency:
@@ -59,7 +59,7 @@ files:
       file: src/point.cpp
       placeholder: 2
       is_visible: false
-  - offset: 333
+  - offset: 332
     length: 35
     placeholder_text: position
     dependency:
@@ -72,20 +72,20 @@ files:
 - name: src/move.cpp
   visible: true
   placeholders:
-  - offset: 69
-    length: 27
-    placeholder_text: position
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: DrawALine
-      file: src/move.cpp
-      placeholder: 1
-      is_visible: false
+    - offset: 69
+      length: 27
+      placeholder_text: position
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: DrawALine
+        file: src/move.cpp
+        placeholder: 1
+        is_visible: false
+- name: test/test.cpp
+  visible: false
 - name: src/main.cpp
   visible: true
 - name: CMakeLists.txt
-  visible: false
-- name: test/test.cpp
   visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Consume+an+Object

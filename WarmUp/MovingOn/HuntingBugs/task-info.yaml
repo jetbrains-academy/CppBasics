@@ -3,6 +3,7 @@ custom_name: Hunting Bugs
 files:
 - name: src/approaching.cpp
   visible: true
+<<<<<<< HEAD
   placeholders:
   - offset: 113
     length: 215
@@ -14,23 +15,25 @@ files:
                   concerned[i] = dist < warnDist;
               }
           }
+=======
+>>>>>>> ffb8328 (rename `scene.hpp` into `game.hpp`, split it into several files)
 - name: src/loop.cpp
   visible: true
   placeholders:
-  - offset: 110
-    length: 136
-    placeholder_text: return;
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/loop.cpp
-      placeholder: 1
-      is_visible: false
+    - offset: 109
+      length: 136
+      placeholder_text: return;
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/loop.cpp
+        placeholder: 1
+        is_visible: false
 - name: src/generate.cpp
   visible: true
   placeholders:
-  - offset: 121
+  - offset: 120
     length: 197
     placeholder_text: /* TODO */
     dependency:
@@ -40,7 +43,7 @@ files:
       file: src/generate.cpp
       placeholder: 1
       is_visible: false
-  - offset: 394
+  - offset: 393
     length: 49
     placeholder_text: return min;
     dependency:
@@ -53,7 +56,7 @@ files:
 - name: src/collision.cpp
   visible: true
   placeholders:
-  - offset: 83
+  - offset: 82
     length: 83
     placeholder_text: return 0.0f;
     dependency:
@@ -63,7 +66,7 @@ files:
       file: src/collision.cpp
       placeholder: 1
       is_visible: false
-  - offset: 223
+  - offset: 222
     length: 82
     placeholder_text: return false;
     dependency:
@@ -76,7 +79,7 @@ files:
 - name: src/borders.cpp
   visible: true
   placeholders:
-  - offset: 101
+  - offset: 100
     length: 359
     placeholder_text: /* TODO */
     dependency:
@@ -89,66 +92,68 @@ files:
 - name: src/direction.cpp
   visible: true
   placeholders:
-  - offset: 70
-    length: 304
-    placeholder_text: "return { 0.0f, 0.0f };"
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/direction.cpp
-      placeholder: 1
-      is_visible: false
+    - offset: 69
+      length: 304
+      placeholder_text: "return { 0.0f, 0.0f };"
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/direction.cpp
+        placeholder: 1
+        is_visible: false
 - name: src/point.cpp
   visible: true
   placeholders:
-  - offset: 88
-    length: 37
-    placeholder_text: /* TODO */
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/point.cpp
-      placeholder: 1
-      is_visible: false
-  - offset: 207
-    length: 33
-    placeholder_text: /* TODO */
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/point.cpp
-      placeholder: 2
-      is_visible: false
-  - offset: 333
-    length: 35
-    placeholder_text: position
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/point.cpp
-      placeholder: 3
-      is_visible: false
+    - offset: 87
+      length: 37
+      placeholder_text: /* TODO */
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/point.cpp
+        placeholder: 1
+        is_visible: false
+    - offset: 206
+      length: 33
+      placeholder_text: /* TODO */
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/point.cpp
+        placeholder: 2
+        is_visible: false
+    - offset: 332
+      length: 35
+      placeholder_text: position
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/point.cpp
+        placeholder: 3
+        is_visible: false
 - name: src/move.cpp
   visible: true
   placeholders:
-  - offset: 69
-    length: 27
-    placeholder_text: position
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: LimitsOfPossible
-      file: src/move.cpp
-      placeholder: 1
-      is_visible: false
-- name: CMakeLists.txt
-  visible: false
+    - offset: 69
+      length: 27
+      placeholder_text: position
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: LimitsOfPossible
+        file: src/move.cpp
+        placeholder: 1
+        is_visible: false
 - name: src/main.cpp
   visible: true
+<<<<<<< HEAD
 - name: test/test.cpp
+=======
+- name: CMakeLists.txt
+>>>>>>> ffb8328 (rename `scene.hpp` into `game.hpp`, split it into several files)
   visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Hunting+Bugs
