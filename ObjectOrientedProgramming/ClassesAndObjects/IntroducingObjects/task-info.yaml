@@ -1,0 +1,58 @@
+type: edu
+custom_name: Introducing Objects
+files:
+- name: CMakeLists.txt
+  visible: false
+- name: test/test.cpp
+  visible: false
+- name: src/gobject.cpp
+  visible: true
+- name: src/operators.cpp
+  visible: true
+  placeholders:
+  - offset: 67
+    length: 17
+    placeholder_text: "return { 0.0f, 0.0f };"
+    dependency:
+      section: ObjectOrientedProgramming
+      lesson: ClassesAndObjects
+      task: OperatorsOverloading
+      file: src/operators.cpp
+      placeholder: 1
+      is_visible: false
+  - offset: 123
+    length: 22
+    placeholder_text: "return { 0.0f, 0.0f, };"
+    dependency:
+      section: ObjectOrientedProgramming
+      lesson: ClassesAndObjects
+      task: OperatorsOverloading
+      file: src/operators.cpp
+      placeholder: 2
+      is_visible: false
+  - offset: 195
+    length: 18
+    placeholder_text: "return { 0.0f, 0.0f, };"
+    dependency:
+      section: ObjectOrientedProgramming
+      lesson: ClassesAndObjects
+      task: OperatorsOverloading
+      file: src/operators.cpp
+      placeholder: 3
+      is_visible: false
+  - offset: 261
+    length: 17
+    placeholder_text: "return { 0.0f, 0.0f, };"
+    dependency:
+      section: ObjectOrientedProgramming
+      lesson: ClassesAndObjects
+      task: OperatorsOverloading
+      file: src/operators.cpp
+      placeholder: 4
+      is_visible: false
+- name: src/point.cpp
+  visible: true
+- name: src/scene.cpp
+  visible: true
+- name: src/cgobject.cpp
+  visible: true

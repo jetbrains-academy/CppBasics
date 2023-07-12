@@ -3,22 +3,22 @@ custom_name: Operators Overloading
 files:
 - name: CMakeLists.txt
   visible: false
+- name: test/test.cpp
+  visible: false
 - name: src/operators.cpp
   visible: true
   placeholders:
-    - offset: 68
-      length: 17
-      placeholder_text: "return { 0.0f, 0.0f };"
-    - offset: 124
-      length: 22
-      placeholder_text: "return { 0.0f, 0.0f, };"
-    - offset: 196
-      length: 18
-      placeholder_text: "return { 0.0f, 0.0f, };"
-    - offset: 262
-      length: 17
-      placeholder_text: "return { 0.0f, 0.0f, };"
+  - offset: 67
+    length: 17
+    placeholder_text: "return { 0.0f, 0.0f };"
+  - offset: 123
+    length: 22
+    placeholder_text: "return { 0.0f, 0.0f, };"
+  - offset: 195
+    length: 18
+    placeholder_text: "return { 0.0f, 0.0f, };"
+  - offset: 261
+    length: 17
+    placeholder_text: "return { 0.0f, 0.0f, };"
 - name: src/point.cpp
   visible: true
-- name: test/test.cpp
-  visible: false
