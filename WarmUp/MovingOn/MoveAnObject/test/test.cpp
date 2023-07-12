@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "scene.hpp"
+#include "game.hpp"
 #include "testing.hpp"
 
 testing::Environment* const env =

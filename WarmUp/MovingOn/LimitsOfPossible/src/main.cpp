@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "scene.hpp"
+#include "game.hpp"
 
 void processEvent(sf::RenderWindow& window, const sf::Event& event) {
     switch (event.type) {
