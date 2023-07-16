@@ -5,8 +5,11 @@
 
 #include "point.hpp"
 #include "rectangle.hpp"
-#include "operators.hpp"
-#include "gevent.hpp"
+#include "collision.hpp"
+
+enum GameObjectState {
+    LIVE, DEAD
+};
 
 class GameObject {
 public:
@@ -19,9 +22,13 @@ public:
 
     virtual Rectangle boundingBox() const = 0;
 
+    virtual GameObjectState getState() const = 0;
+
+    virtual void setState(GameObjectState newState) = 0;
+
     virtual void draw(sf::RenderWindow& window) const = 0;
 
-    virtual void processEvent(const GameEvent& event) = 0;
+    virtual void onCollision(const GameObject& object, const CollisionData& collisionData) = 0;
 
     virtual ~GameObject() {}
 

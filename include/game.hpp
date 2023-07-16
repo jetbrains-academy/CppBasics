@@ -8,13 +8,12 @@
 #include "point.hpp"
 #include "circle.hpp"
 #include "direction.hpp"
+#include "utils.hpp"
 #include "constants.hpp"
 
 float move(float position, float velocity, float delta);
 
 Point2D adjustToBorders(Point2D position);
-
-float distance(Point2D a, Point2D b);
 
 bool collision(Circle circle1, Circle circle2);
 void collisionLoop(Circle player, Circle consumable[], bool consumed[], int size);
