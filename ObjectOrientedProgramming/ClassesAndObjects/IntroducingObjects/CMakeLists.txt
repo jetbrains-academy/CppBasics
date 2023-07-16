@@ -3,14 +3,22 @@ cmake_minimum_required(VERSION 3.25)
 project(ObjectOrientedProgramming-ClassesAndObjects-IntroducingObjects)
 
 set(TASK
-        src/gobject.cpp)
+        src/cgobject.cpp)
 
 set(SRC
-        ${TASK} src/operators.cpp src/point.cpp)
+        ${TASK}
+        src/scene.cpp src/gobject.cpp src/player.cpp src/consumable.cpp src/enemy.cpp
+        src/collision.cpp src/operators.cpp src/rectangle.cpp src/point.cpp)
 
 set(TEST
         test/test.cpp)
 
-include_directories(${CMAKE_SOURCE_DIR}/include/)
+add_executable(${PROJECT_NAME}-run ${SRC})
 
 configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+
+prepare_sfml_framework_lesson_task(
+        "${CMAKE_CURRENT_SOURCE_DIR}/.."
+        ${PROJECT_NAME}-run
+        ${PROJECT_NAME}-test
+)

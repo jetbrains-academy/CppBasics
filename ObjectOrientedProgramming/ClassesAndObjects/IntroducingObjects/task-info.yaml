@@ -5,8 +5,6 @@ files:
   visible: false
 - name: test/test.cpp
   visible: false
-- name: src/gobject.cpp
-  visible: true
 - name: src/operators.cpp
   visible: true
   placeholders:
@@ -55,4 +53,18 @@ files:
 - name: src/scene.cpp
   visible: true
 - name: src/cgobject.cpp
+  visible: true
+- name: src/gobject.cpp
+  visible: true
+- name: src/collision.cpp
+  visible: true
+- name: src/rectangle.cpp
+  visible: true
+- name: src/simplscene.cpp
+  visible: true
+- name: src/consumable.cpp
+  visible: true
+- name: src/player.cpp
+  visible: true
+- name: src/enemy.cpp
   visible: true
