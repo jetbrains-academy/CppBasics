@@ -61,3 +61,5 @@ environment: GoogleTest
 content:
 - WarmUp
 - MemoryManagement
+tags:
+- Beginner-friendly
