@@ -23,6 +23,10 @@ Rectangle CircleGameObject::boundingBox() const {
     return createRectangle(p1, p2);
 }
 
+Circle CircleGameObject::getCircle() const {
+    return circle;
+}
+
 GameObjectState CircleGameObject::getState() const {
     return state;
 }

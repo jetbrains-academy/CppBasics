@@ -18,8 +18,10 @@ public:
     }
 
     void update(sf::Time delta) override {
-        Point2D playerVelocity = calculateVelocity();
-        move(player, playerVelocity);
+        move(player, 0.001f * delta.asMilliseconds() * player.getVelocity());
+        detectCollision(player, consumable);
+        detectCollision(enemy, player);
+        detectCollision(enemy, consumable);
     }
 
     void render() override {

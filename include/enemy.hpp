@@ -5,7 +5,11 @@
 
 class EnemyObject : public CircleGameObject {
 public:
-    void onCollision(const GameObject &object, const CollisionData &collisionData) override;
+    EnemyObject(Circle circle, sf::Texture* texture);
+
+    Point2D getVelocity() const override;
+
+    void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
 };
 
 #endif // CPPBASICS_ENEMY_HPP
