@@ -16,6 +16,8 @@ public:
 
     Rectangle boundingBox() const override;
 
+    Circle getCircle() const;
+
     GameObjectState getState() const override;
 
     void setState(GameObjectState newState) override;

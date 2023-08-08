@@ -50,8 +50,6 @@ files:
       is_visible: false
 - name: src/point.cpp
   visible: true
-- name: src/scene.cpp
-  visible: true
 - name: src/cgobject.cpp
   visible: true
 - name: src/gobject.cpp
@@ -60,11 +58,15 @@ files:
   visible: true
 - name: src/rectangle.cpp
   visible: true
-- name: src/simplscene.cpp
-  visible: true
 - name: src/consumable.cpp
   visible: true
 - name: src/player.cpp
   visible: true
 - name: src/enemy.cpp
+  visible: true
+- name: src/scene.cpp
+  visible: true
+- name: src/direction.cpp
+  visible: true
+- name: src/simplscene.cpp
   visible: true

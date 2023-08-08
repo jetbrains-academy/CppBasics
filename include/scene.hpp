@@ -26,6 +26,8 @@ protected:
 
     void move(GameObject& object, Point2D vector);
 
+    void detectCollision(GameObject& object1, GameObject& object2);
+
     void draw(const GameObject& object);
 
     sf::RenderWindow window;

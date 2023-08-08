@@ -27,6 +27,12 @@ void Scene::fitInto(GameObject &object) {
     object.setPosition(center(rect));
 }
 
+void Scene::detectCollision(GameObject &object1, GameObject &object2) {
+    CollisionInfo info = collision(object1, object2);
+    object1.onCollision(object2, info);
+    object2.onCollision(object1, info);
+}
+
 void Scene::draw(const GameObject &object) {
     if (object.getState() == LIVE) {
         object.draw(window);

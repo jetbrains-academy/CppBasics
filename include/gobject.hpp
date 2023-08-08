@@ -20,6 +20,8 @@ public:
 
     virtual void setPosition(Point2D position) = 0;
 
+    virtual Point2D getVelocity() const = 0;
+
     virtual Rectangle boundingBox() const = 0;
 
     virtual GameObjectState getState() const = 0;
@@ -28,7 +30,7 @@ public:
 
     virtual void draw(sf::RenderWindow& window) const = 0;
 
-    virtual void onCollision(const GameObject& object, const CollisionData& collisionData) = 0;
+    virtual void onCollision(const GameObject& object, const CollisionInfo& collisionData) = 0;
 
     virtual ~GameObject() {}
 
