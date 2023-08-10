@@ -27,7 +27,7 @@ void Scene::fitInto(GameObject &object) {
     object.setPosition(center(rect));
 }
 
-void Scene::detectCollision(GameObject &object1, GameObject &object2) {
+void Scene::detectCollision(GameObject& object1, GameObject& object2) {
     CollisionInfo info = collision(object1, object2);
     object1.onCollision(object2, info);
     object2.onCollision(object1, info);

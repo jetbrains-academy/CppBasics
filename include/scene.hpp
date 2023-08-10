@@ -5,6 +5,7 @@
 
 #include "point.hpp"
 #include "gobject.hpp"
+#include "textures.hpp"
 
 class Scene {
 public:
@@ -30,10 +31,12 @@ protected:
 
     void draw(const GameObject& object);
 
-    sf::RenderWindow window;
-private:
     void fitInto(GameObject& object);
 
+protected:
+    sf::RenderWindow window;
+    TextureManager textureManager;
+private:
     float width;
     float height;
 };
