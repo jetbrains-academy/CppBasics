@@ -17,12 +17,11 @@ class TextureManager {
 public:
     bool initialize();
 
-    const sf::Texture* getTexture(GameTextureID id);
+    const sf::Texture* getTexture(GameTextureID id) const;
 private:
     static const size_t SIZE = static_cast<size_t>(GameTextureID::SIZE);
 
     sf::Texture textures[SIZE];
-
 };
 
 #endif // CPPBASICS_TEXTURES_HPP

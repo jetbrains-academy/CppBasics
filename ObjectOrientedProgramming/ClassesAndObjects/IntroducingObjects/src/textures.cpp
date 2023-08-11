@@ -33,6 +33,6 @@ bool TextureManager::initialize() {
     return true;
 }
 
-const sf::Texture* TextureManager::getTexture(GameTextureID id) {
+const sf::Texture* TextureManager::getTexture(GameTextureID id) const {
     return &textures[static_cast<size_t>(id)];
 }

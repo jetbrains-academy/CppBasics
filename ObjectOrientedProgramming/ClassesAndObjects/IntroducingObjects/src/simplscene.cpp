@@ -17,8 +17,8 @@ void SimpleScene::update(sf::Time delta) {
     detectCollision(enemy, consumable);
 }
 
-void SimpleScene::render() {
-    draw(player);
-    draw(consumable);
-    draw(enemy);
+void SimpleScene::draw() {
+    Scene::draw(player);
+    Scene::draw(consumable);
+    Scene::draw(enemy);
 }
