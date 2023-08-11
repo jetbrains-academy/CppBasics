@@ -3,6 +3,7 @@
 
 const float RADIUS = 40.0f;
 const float CONSUMABLE_RADIUS = 20.0f;
+const float ENEMY_RADIUS = 40.0f;
 
 const float SPEED = 150.0f;
 
@@ -20,5 +21,7 @@ const float PLAYER_START_Y = 300.0f;
 const float CONSUMABLE_START_X = 600.0f;
 const float CONSUMABLE_START_Y = 150.0f;
 
+const float ENEMY_START_X = 100.0f;
+const float ENEMY_START_Y = 450.0f;
 
 #endif // CPPBASICS_CONSTANTS_HPP

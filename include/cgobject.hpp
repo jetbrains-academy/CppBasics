@@ -8,7 +8,7 @@
 
 class CircleGameObject : public GameObject {
 public:
-    CircleGameObject(Circle circle, sf::Texture* texture);
+    CircleGameObject();
 
     Point2D getPosition() const override;
 
@@ -22,12 +22,11 @@ public:
 
     void setState(GameObjectState newState) override;
 
-    void draw(sf::RenderWindow &window) const override;
+    void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
 protected:
     Circle circle;
     GameObjectState state;
-    sf::Texture* texture;
 };
 
 #endif // CPPBASICS_CGOBJECT_HPP

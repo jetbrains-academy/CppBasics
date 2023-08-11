@@ -14,15 +14,22 @@ public:
 
     virtual ~Scene() {}
 
+    void run();
+
+    static Scene* create();
+
+protected:
+
+    void processInput();
+
     virtual void processEvent(const sf::Event& event) = 0;
 
     virtual void update(sf::Time delta) = 0;
 
     virtual void render() = 0;
 
-    static Scene* create();
+    void close();
 
-protected:
     Rectangle boundingBox() const;
 
     void move(GameObject& object, Point2D vector);
@@ -32,13 +39,12 @@ protected:
     void draw(const GameObject& object);
 
     void fitInto(GameObject& object);
-
-protected:
+private:
     sf::RenderWindow window;
     TextureManager textureManager;
-private:
     float width;
     float height;
+    bool active;
 };
 
 #endif // CPPBASICS_SCENE_HPP

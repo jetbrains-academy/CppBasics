@@ -5,9 +5,11 @@
 
 class ConsumableObject : public CircleGameObject {
 public:
-    ConsumableObject(Circle circle, sf::Texture *texture);
+    ConsumableObject();
 
     Point2D getVelocity() const override;
+
+    const sf::Texture* getTexture(TextureManager& textureManager) const override;
 
     void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
 };
