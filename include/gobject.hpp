@@ -9,8 +9,12 @@
 #include "textures.hpp"
 
 // TODO: use enum class (?)
-enum GameObjectState {
+enum class GameObjectState {
     LIVE, DEAD
+};
+
+enum class GameObjectKind {
+    PLAYER, CONSUMABLE, ENEMY
 };
 
 class GameObject {
@@ -29,6 +33,8 @@ public:
     virtual GameObjectState getState() const = 0;
 
     virtual void setState(GameObjectState newState) = 0;
+
+    virtual GameObjectKind getKind() const = 0;
 
     virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;
 

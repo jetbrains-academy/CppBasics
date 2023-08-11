@@ -24,6 +24,7 @@ public:
 
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
+// TODO: make private
 protected:
     Circle circle;
     GameObjectState state;
