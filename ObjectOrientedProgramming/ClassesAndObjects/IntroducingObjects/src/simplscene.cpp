@@ -11,8 +11,12 @@ void SimpleScene::processEvent(const sf::Event& event) {
 }
 
 void SimpleScene::update(sf::Time delta) {
-    move(player, 0.001f * delta.asMilliseconds() * player.getVelocity());
-    move(enemy, 0.001f * delta.asMilliseconds() * enemy.getVelocity());
+    player.update(delta);
+    consumable.update(delta);
+    enemy.update(delta);
+    move(player, delta);
+    move(enemy, delta);
+    move(consumable, delta);
     detectCollision(player, consumable);
     detectCollision(enemy, player);
     detectCollision(enemy, consumable);

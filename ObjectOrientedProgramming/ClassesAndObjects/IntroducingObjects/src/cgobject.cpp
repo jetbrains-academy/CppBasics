@@ -4,7 +4,7 @@
 
 CircleGameObject::CircleGameObject(Circle circle)
     : circle(circle)
-    , state(GameObjectState::LIVE)
+    , state(GameObjectState::NORMAL)
 {}
 
 Point2D CircleGameObject::getPosition() const {

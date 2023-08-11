@@ -12,6 +12,8 @@ const char* getTextureFilename(GameTextureID id) {
             return "resources/planetDead.png";
         case GameTextureID::STAR:
             return "resources/star.png";
+        case GameTextureID::STAR_CONCERNED:
+            return "resources/starConcerned.png";
         case GameTextureID::BLACKHOLE:
             return "resources/blackhole.png";
         default:

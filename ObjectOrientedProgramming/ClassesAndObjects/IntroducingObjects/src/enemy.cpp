@@ -25,6 +25,10 @@ const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const
     return textureManager.getTexture(GameTextureID::BLACKHOLE);
 }
 
+void EnemyObject::update(sf::Time delta) {
+    return;
+}
+
 void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
     return;
 }

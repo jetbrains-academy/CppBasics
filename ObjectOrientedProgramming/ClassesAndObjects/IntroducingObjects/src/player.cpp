@@ -33,13 +33,17 @@ GameObjectKind PlayerObject::getKind() const {
 
 const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
     switch (CircleGameObject::getState()) {
-        case GameObjectState::LIVE:
+        case GameObjectState::NORMAL:
             return textureManager.getTexture(GameTextureID::PLANET);
         case GameObjectState::DEAD:
             return textureManager.getTexture(GameTextureID::PLANET_DEAD);
         default:
             return nullptr;
     }
+}
+
+void PlayerObject::update(sf::Time delta) {
+    return;
 }
 
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {

@@ -12,8 +12,10 @@ Point2D ConsumableObject::getVelocity() const {
 
 const sf::Texture* ConsumableObject::getTexture(TextureManager& textureManager) const {
     switch (CircleGameObject::getState()) {
-        case GameObjectState::LIVE:
+        case GameObjectState::NORMAL:
             return textureManager.getTexture(GameTextureID::STAR);
+        case GameObjectState::CONCERNED:
+            return textureManager.getTexture(GameTextureID::STAR_CONCERNED);
         default:
             return nullptr;
     }
@@ -23,9 +25,25 @@ GameObjectKind ConsumableObject::getKind() const {
     return GameObjectKind::CONSUMABLE;
 }
 
+void ConsumableObject::update(sf::Time delta) {
+    if (CircleGameObject::getState() != GameObjectState::DEAD) {
+        CircleGameObject::setState(GameObjectState::NORMAL);
+    }
+}
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
+    if (CircleGameObject::getState() == GameObjectState::DEAD) {
+        return;
+    }
     if (collisionData.collide) {
         CircleGameObject::setState(GameObjectState::DEAD);
+        return;
+    }
+    if (CircleGameObject::getState() == GameObjectState::CONCERNED) {
+        return;
+    }
+    if (collisionData.distance < 6 * getCircle().radius) {
+        CircleGameObject::setState(GameObjectState::CONCERNED);
+        return;
     }
 }
