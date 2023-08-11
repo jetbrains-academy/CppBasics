@@ -26,7 +26,9 @@ protected:
 
     virtual void update(sf::Time delta) = 0;
 
-    virtual void render() = 0;
+    virtual void draw() = 0;
+
+    void render();
 
     void close();
 
@@ -34,11 +36,14 @@ protected:
 
     void move(GameObject& object, Point2D vector);
 
+    void fitInto(GameObject& object);
+
     void detectCollision(GameObject& object1, GameObject& object2);
+
+    sf::Sprite background() const;
 
     void draw(const GameObject& object);
 
-    void fitInto(GameObject& object);
 private:
     sf::RenderWindow window;
     TextureManager textureManager;

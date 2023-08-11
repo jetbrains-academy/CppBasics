@@ -25,7 +25,6 @@ void Scene::run() {
         processInput();
         update(delta);
         render();
-        window.display();
     }
 }
 
@@ -34,6 +33,13 @@ void Scene::processInput() {
     while (window.pollEvent(event)) {
         processEvent(event);
     }
+}
+
+void Scene::render() {
+    window.clear(sf::Color::White);
+    window.draw(background());
+    draw();
+    window.display();
 }
 
 void Scene::close() {
@@ -62,6 +68,13 @@ void Scene::detectCollision(GameObject& object1, GameObject& object2) {
     CollisionInfo info = collision(object1, object2);
     object1.onCollision(object2, info);
     object2.onCollision(object1, info);
+}
+
+sf::Sprite Scene::background() const {
+    sf::Sprite background;
+    background.setTexture(*textureManager.getTexture(GameTextureID::SPACE));
+    background.setTextureRect(sf::IntRect(0, 0, width, height));
+    return background;
 }
 
 void Scene::draw(const GameObject &object) {

@@ -15,7 +15,7 @@ public:
 
     void update(sf::Time delta) override;
 
-    void render() override;
+    void draw() override;
 
 private:
     PlayerObject player;

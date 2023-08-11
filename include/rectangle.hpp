@@ -23,7 +23,7 @@ inline float height(const Rectangle& rect) {
 
 inline Point2D center(const Rectangle& rect) {
     // TODO: explain this C++ initialization syntax
-    return 0.5f * Point2D { width(rect), height(rect) };
+    return rect.topLeft + 0.5f * Point2D { width(rect), height(rect) };
 }
 
 inline Rectangle createRectangle(Point2D p1, Point2D p2) {

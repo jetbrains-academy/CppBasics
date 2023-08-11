@@ -40,7 +40,7 @@ void CircleGameObject::draw(sf::RenderWindow &window, TextureManager& textureMan
         return;
     sf::CircleShape shape;
     shape.setPosition(circle.center.x, circle.center.y);
-    shape.setOrigin(circle.center.x, circle.center.y);
+    // shape.setOrigin(circle.center.x, circle.center.y);
     shape.setRadius(circle.radius);
     shape.setTexture(texture);
     window.draw(shape);
