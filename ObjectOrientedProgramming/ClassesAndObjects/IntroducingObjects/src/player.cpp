@@ -3,9 +3,9 @@
 #include "direction.hpp"
 #include "constants.hpp"
 
-PlayerObject::PlayerObject(Circle circle, sf::Texture *texture)
-    : CircleGameObject(circle, texture)
-{}
+PlayerObject::PlayerObject() {
+    circle = { { PLAYER_START_X, PLAYER_START_Y }, RADIUS };
+}
 
 Point2D PlayerObject::getVelocity() const {
     Point2D velocity = { 0.0f, 0.0f };
@@ -23,6 +23,10 @@ Point2D PlayerObject::getVelocity() const {
     }
     velocity = SPEED * velocity;
     return velocity;
+}
+
+const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
+    return textureManager.getTexture(GameTextureID::PLANET);
 }
 
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {

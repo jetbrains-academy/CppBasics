@@ -2,10 +2,9 @@
 
 #include "operators.hpp"
 
-CircleGameObject::CircleGameObject(Circle circle, sf::Texture *texture)
-    : circle(circle)
+CircleGameObject::CircleGameObject()
+    : circle({ { 0.0f, 0.0f }, 0.0f })
     , state(LIVE)
-    , texture(texture)
 {}
 
 Point2D CircleGameObject::getPosition() const {
@@ -35,7 +34,10 @@ void CircleGameObject::setState(GameObjectState newState) {
     state = newState;
 }
 
-void CircleGameObject::draw(sf::RenderWindow &window) const {
+void CircleGameObject::draw(sf::RenderWindow &window, TextureManager& textureManager) const {
+    const sf::Texture* texture = getTexture(textureManager);
+    if (texture == nullptr)
+        return;
     sf::CircleShape shape;
     shape.setPosition(circle.center.x, circle.center.y);
     shape.setOrigin(circle.center.x, circle.center.y);

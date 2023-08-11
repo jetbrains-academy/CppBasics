@@ -4,6 +4,8 @@
 #include <iostream>
 
 #include "point.hpp"
+#include "circle.hpp"
+#include "direction.hpp"
 
 inline std::ostream& operator<<(std::ostream& os, const Point2D& p) {
     return os << "(" << p.x << ", " << p.y << ")";

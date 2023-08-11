@@ -1,13 +1,44 @@
 #include "scene.hpp"
 
 #include "constants.hpp"
+#include "simplscene.hpp"
 
 Scene::Scene()
     : width(SCENE_WIDTH)
     , height(SCENE_HEIGHT)
+    , active(true)
 {
     window.create(sf::VideoMode(width, height), "Space Game");
     window.setFramerateLimit(60);
+    active &= textureManager.initialize();
+}
+
+Scene* Scene::create() {
+    static SimpleScene scene;
+    return &scene;
+}
+
+void Scene::run() {
+    sf::Clock clock;
+    while (active && window.isOpen()) {
+        sf::Time delta = clock.restart();
+        processInput();
+        update(delta);
+        render();
+        window.display();
+    }
+}
+
+void Scene::processInput() {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        processEvent(event);
+    }
+}
+
+void Scene::close() {
+    active = false;
+    window.close();
 }
 
 Rectangle Scene::boundingBox() const {
@@ -34,7 +65,5 @@ void Scene::detectCollision(GameObject& object1, GameObject& object2) {
 }
 
 void Scene::draw(const GameObject &object) {
-    if (object.getState() == LIVE) {
-        object.draw(window);
-    }
+    object.draw(window, textureManager);
 }

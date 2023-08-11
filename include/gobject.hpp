@@ -6,7 +6,9 @@
 #include "point.hpp"
 #include "rectangle.hpp"
 #include "collision.hpp"
+#include "textures.hpp"
 
+// TODO: use enum class (?)
 enum GameObjectState {
     LIVE, DEAD
 };
@@ -28,12 +30,16 @@ public:
 
     virtual void setState(GameObjectState newState) = 0;
 
-    virtual void draw(sf::RenderWindow& window) const = 0;
+    virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;
+
+    virtual void draw(sf::RenderWindow& window, TextureManager& textureManager) const = 0;
 
     virtual void onCollision(const GameObject& object, const CollisionInfo& collisionData) = 0;
 
     virtual ~GameObject() {}
 
 };
+
+CollisionInfo collision(const GameObject& object1, const GameObject& object2);
 
 #endif // CPPBASICS_GOBJECT_HPP

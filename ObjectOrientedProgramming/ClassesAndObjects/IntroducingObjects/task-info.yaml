@@ -58,17 +58,19 @@ files:
   visible: true
 - name: src/rectangle.cpp
   visible: true
-- name: src/consumable.cpp
-  visible: true
 - name: src/player.cpp
   visible: true
 - name: src/enemy.cpp
   visible: true
-- name: src/scene.cpp
-  visible: true
 - name: src/direction.cpp
   visible: true
-- name: src/simplscene.cpp
-  visible: true
 - name: src/textures.cpp
+  visible: true
+- name: src/scene.cpp
+  visible: true
+- name: src/main.cpp
+  visible: true
+- name: src/consumable.cpp
+  visible: true
+- name: src/simplscene.cpp
   visible: true

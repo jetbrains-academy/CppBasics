@@ -6,6 +6,13 @@
 #include "cgobject.hpp"
 #include "utils.hpp"
 
+// TODO: move to utils.cpp (?)
+float distance(Point2D a, Point2D b) {
+    float dx = a.x - b.x;
+    float dy = a.y - b.y;
+    return sqrt(dx * dx + dy * dy);
+}
+
 CollisionInfo collision(const Circle& circle1, const Circle& circle2) {
     float dx = circle2.center.x - circle1.center.x;
     float dy = circle2.center.y - circle1.center.y;

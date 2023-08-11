@@ -3,11 +3,11 @@ custom_name: C Style Strings Concatenation
 files:
 - name: CMakeLists.txt
   visible: false
-- name: test/test.cpp
-  visible: false
 - name: src/task.cpp
   visible: true
   placeholders:
   - offset: 92
     length: 201
     placeholder_text: return nullptr;
+- name: test/test.cpp
+  visible: false
