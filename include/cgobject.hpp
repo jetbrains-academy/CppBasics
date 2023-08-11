@@ -8,7 +8,7 @@
 
 class CircleGameObject : public GameObject {
 public:
-    CircleGameObject();
+    CircleGameObject(Circle circle);
 
     Point2D getPosition() const override;
 
@@ -24,8 +24,7 @@ public:
 
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
-// TODO: make private
-protected:
+private:
     Circle circle;
     GameObjectState state;
 };

@@ -1,6 +1,0 @@
-#ifndef CPPBASICS_GEVENT_HPP
-#define CPPBASICS_GEVENT_HPP
-
-class GameEvent {};
-
-#endif //CPPBASICS_GEVENT_HPP
