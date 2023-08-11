@@ -3,13 +3,13 @@
 #include "direction.hpp"
 #include "constants.hpp"
 
-PlayerObject::PlayerObject() {
-    circle = { { PLAYER_START_X, PLAYER_START_Y }, RADIUS };
-}
+PlayerObject::PlayerObject()
+    : CircleGameObject({ { PLAYER_START_X, PLAYER_START_Y }, RADIUS })
+{}
 
 Point2D PlayerObject::getVelocity() const {
     Point2D velocity = { 0.0f, 0.0f };
-    if (state == GameObjectState::DEAD)
+    if (CircleGameObject::getState() == GameObjectState::DEAD)
         return velocity;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         velocity = velocity + getDirection(North);
@@ -32,13 +32,14 @@ GameObjectKind PlayerObject::getKind() const {
 }
 
 const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
-    switch (state) {
+    switch (CircleGameObject::getState()) {
         case GameObjectState::LIVE:
             return textureManager.getTexture(GameTextureID::PLANET);
         case GameObjectState::DEAD:
             return textureManager.getTexture(GameTextureID::PLANET_DEAD);
+        default:
+            return nullptr;
     }
-    return nullptr;
 }
 
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {

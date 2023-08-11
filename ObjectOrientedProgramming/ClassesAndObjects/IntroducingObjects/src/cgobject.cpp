@@ -2,8 +2,8 @@
 
 #include "operators.hpp"
 
-CircleGameObject::CircleGameObject()
-    : circle({ { 0.0f, 0.0f }, 0.0f })
+CircleGameObject::CircleGameObject(Circle circle)
+    : circle(circle)
     , state(GameObjectState::LIVE)
 {}
 
