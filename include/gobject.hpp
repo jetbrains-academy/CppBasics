@@ -10,7 +10,7 @@
 
 // TODO: use enum class (?)
 enum class GameObjectState {
-    LIVE, DEAD
+    NORMAL, CONCERNED, DEAD,
 };
 
 enum class GameObjectKind {
@@ -37,6 +37,8 @@ public:
     virtual GameObjectKind getKind() const = 0;
 
     virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;
+
+    virtual void update(sf::Time delta) = 0;
 
     virtual void draw(sf::RenderWindow& window, TextureManager& textureManager) const = 0;
 

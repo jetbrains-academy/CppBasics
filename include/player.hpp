@@ -13,6 +13,8 @@ public:
 
     const sf::Texture* getTexture(TextureManager& textureManager) const override;
 
+    void update(sf::Time delta) override;
+
     void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
 };
 

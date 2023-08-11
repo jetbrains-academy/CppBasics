@@ -54,6 +54,10 @@ Rectangle Scene::boundingBox() const {
     return box;
 }
 
+void Scene::move(GameObject& object, sf::Time delta) {
+    move(object, 0.001f * delta.asMilliseconds() * object.getVelocity());
+}
+
 void Scene::move(GameObject &object, Point2D vector) {
     object.move(vector);
     fitInto(object);
