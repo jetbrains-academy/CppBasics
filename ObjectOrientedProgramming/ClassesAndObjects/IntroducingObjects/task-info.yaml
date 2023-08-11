@@ -74,3 +74,5 @@ files:
   visible: true
 - name: src/simplscene.cpp
   visible: true
+- name: src/utils.cpp
+  visible: true

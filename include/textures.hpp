@@ -8,8 +8,9 @@
 enum class GameTextureID {
     SPACE,
     PLANET,
+    PLANET_DEAD,
     STAR,
-    BLACK_HOLE,
+    BLACKHOLE,
     SIZE
 };
 
