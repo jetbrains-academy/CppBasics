@@ -8,12 +8,6 @@ EnemyObject::EnemyObject()
 {}
 
 Point2D EnemyObject::getVelocity() const {
-    Point2D velocity = { 0.0f, 0.0f };
-    if (CircleGameObject::getState() == GameObjectState::DEAD)
-        return velocity;
-    velocity.x = generateBool() ? 1.0f : -1.0f;
-    velocity.y = generateBool() ? 1.0f : -1.0f;
-    velocity = SPEED * velocity;
     return velocity;
 }
 
@@ -26,7 +20,16 @@ const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const
 }
 
 void EnemyObject::update(sf::Time delta) {
-    return;
+    if (CircleGameObject::getState() == GameObjectState::DEAD)
+        return;
+    updateTimer += delta;
+    if (updateTimer < sf::seconds(1.0f))
+        return;
+    updateTimer = sf::milliseconds(0.0f);
+    velocity = { 0.0f, 0.0f };
+    velocity.x = generateBool() ? 1.0f : -1.0f;
+    velocity.y = generateBool() ? 1.0f : -1.0f;
+    velocity = SPEED * velocity;
 }
 
 void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {

@@ -16,6 +16,10 @@ public:
     void update(sf::Time delta) override;
 
     void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
+
+private:
+    Point2D velocity;
+    sf::Time updateTimer;
 };
 
 #endif // CPPBASICS_ENEMY_HPP
