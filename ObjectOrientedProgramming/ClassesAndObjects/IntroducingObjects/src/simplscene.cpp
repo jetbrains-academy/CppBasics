@@ -1,5 +1,11 @@
 #include "simplscene.hpp"
 
+void SimpleScene::initialize() {
+    fitInto(player);
+    fitInto(consumable);
+    fitInto(enemy);
+}
+
 void SimpleScene::processEvent(const sf::Event& event) {
     switch (event.type) {
         case sf::Event::Closed:

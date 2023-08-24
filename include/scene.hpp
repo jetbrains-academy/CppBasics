@@ -20,15 +20,17 @@ public:
 
 protected:
 
+    virtual void initialize() = 0;
+
     void processInput();
 
     virtual void processEvent(const sf::Event& event) = 0;
 
     virtual void update(sf::Time delta) = 0;
 
-    virtual void draw() = 0;
-
     void render();
+
+    virtual void draw() = 0;
 
     void close();
 
