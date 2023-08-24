@@ -16,6 +16,32 @@ public:
         tail->prev = head.get();
     }
 
+    GameObjectList(const GameObjectList& other) : GameObjectList() {
+        Node* cursor = head.get();
+        Node* curr = other.head->next.get();
+        while (curr != other.tail) {
+            link(cursor, std::make_unique<Node>());
+            cursor = cursor->next.get();
+            cursor->object = curr->object;
+            curr = curr->next.get();
+        }
+    }
+
+    GameObjectList(GameObjectList&& other) noexcept : GameObjectList() {
+        swap(*this, other);
+    }
+
+    GameObjectList& operator=(GameObjectList other) {
+        swap(*this, other);
+        return *this;
+    }
+
+    friend void swap(GameObjectList& first, GameObjectList& second) {
+        using std::swap;
+        swap(first.head, second.head);
+        swap(first.tail, second.tail);
+    }
+
     void insert(const std::shared_ptr<GameObject>& object) {
         if (!object) {
             return;

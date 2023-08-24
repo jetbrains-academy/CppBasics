@@ -15,8 +15,8 @@ Scene::Scene()
 }
 
 Scene* Scene::create() {
-    static StaticScene scene;
-    // static DynamicScene scene;
+    // static StaticScene scene;
+    static DynamicScene scene;
     return &scene;
 }
 
