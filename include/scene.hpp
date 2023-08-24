@@ -34,6 +34,8 @@ protected:
 
     Rectangle boundingBox() const;
 
+    void setPosition(GameObject& object, Point2D position);
+
     void move(GameObject& object, sf::Time delta);
 
     void move(GameObject& object, Point2D vector);
