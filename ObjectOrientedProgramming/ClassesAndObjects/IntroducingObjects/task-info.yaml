@@ -76,3 +76,7 @@ files:
   visible: true
 - name: src/utils.cpp
   visible: true
+- name: src/gobjectlist.cpp
+  visible: true
+- name: src/dynscene.cpp
+  visible: true
