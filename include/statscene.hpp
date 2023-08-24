@@ -1,5 +1,5 @@
-#ifndef CPPBASICS_SIMPLSCENE_HPP
-#define CPPBASICS_SIMPLSCENE_HPP
+#ifndef CPPBASICS_STATSCENE_HPP
+#define CPPBASICS_STATSCENE_HPP
 
 #include <SFML/Graphics.hpp>
 
@@ -8,7 +8,7 @@
 #include "consumable.hpp"
 #include "enemy.hpp"
 
-class SimpleScene : public Scene {
+class StaticScene : public Scene {
 public:
 
     void initialize() override;
@@ -25,4 +25,4 @@ private:
     EnemyObject enemy;
 };
 
-#endif // CPPBASICS_SIMPLSCENE_HPP
+#endif // CPPBASICS_STATSCENE_HPP

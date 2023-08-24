@@ -1,7 +1,7 @@
 #include "scene.hpp"
 
 #include "constants.hpp"
-#include "simplscene.hpp"
+#include "statscene.hpp"
 #include "dynscene.hpp"
 
 Scene::Scene()
@@ -15,8 +15,8 @@ Scene::Scene()
 }
 
 Scene* Scene::create() {
-    // static SimpleScene scene;
-    static DynamicScene scene;
+    static StaticScene scene;
+    // static DynamicScene scene;
     return &scene;
 }
 
