@@ -1,12 +1,12 @@
-#include "simplscene.hpp"
+#include "statscene.hpp"
 
-void SimpleScene::initialize() {
+void StaticScene::initialize() {
     fitInto(player);
     fitInto(consumable);
     fitInto(enemy);
 }
 
-void SimpleScene::processEvent(const sf::Event& event) {
+void StaticScene::processEvent(const sf::Event& event) {
     switch (event.type) {
         case sf::Event::Closed:
             close();
@@ -16,7 +16,7 @@ void SimpleScene::processEvent(const sf::Event& event) {
     }
 }
 
-void SimpleScene::update(sf::Time delta) {
+void StaticScene::update(sf::Time delta) {
     player.update(delta);
     consumable.update(delta);
     enemy.update(delta);
@@ -28,7 +28,7 @@ void SimpleScene::update(sf::Time delta) {
     detectCollision(enemy, consumable);
 }
 
-void SimpleScene::draw() {
+void StaticScene::draw() {
     Scene::draw(player);
     Scene::draw(consumable);
     Scene::draw(enemy);

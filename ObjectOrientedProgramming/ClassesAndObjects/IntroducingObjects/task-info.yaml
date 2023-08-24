@@ -66,17 +66,17 @@ files:
   visible: true
 - name: src/textures.cpp
   visible: true
-- name: src/scene.cpp
-  visible: true
 - name: src/main.cpp
   visible: true
 - name: src/consumable.cpp
-  visible: true
-- name: src/simplscene.cpp
   visible: true
 - name: src/utils.cpp
   visible: true
 - name: src/gobjectlist.cpp
   visible: true
 - name: src/dynscene.cpp
+  visible: true
+- name: src/statscene.cpp
+  visible: true
+- name: src/scene.cpp
   visible: true
