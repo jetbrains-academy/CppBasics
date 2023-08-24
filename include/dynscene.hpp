@@ -12,6 +12,8 @@
 class DynamicScene : public Scene {
 public:
 
+    void initialize() override;
+
     void processEvent(const sf::Event &event) override;
 
     void update(sf::Time delta) override;
@@ -20,11 +22,12 @@ public:
 
 protected:
 
+    void updateObjectsList();
+
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
 private:
     GameObjectList objects;
-    PlayerObject* player;
 };
 
 

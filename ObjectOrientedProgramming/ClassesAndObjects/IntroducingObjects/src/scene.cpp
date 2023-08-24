@@ -2,6 +2,7 @@
 
 #include "constants.hpp"
 #include "simplscene.hpp"
+#include "dynscene.hpp"
 
 Scene::Scene()
     : width(SCENE_WIDTH)
@@ -14,11 +15,13 @@ Scene::Scene()
 }
 
 Scene* Scene::create() {
-    static SimpleScene scene;
+    // static SimpleScene scene;
+    static DynamicScene scene;
     return &scene;
 }
 
 void Scene::run() {
+    initialize();
     sf::Clock clock;
     while (active && window.isOpen()) {
         sf::Time delta = clock.restart();

@@ -11,6 +11,8 @@
 class SimpleScene : public Scene {
 public:
 
+    void initialize() override;
+
     void processEvent(const sf::Event &event) override;
 
     void update(sf::Time delta) override;

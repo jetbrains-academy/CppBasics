@@ -10,7 +10,10 @@ class GameObjectList {
 public:
 
     GameObjectList() {
-
+        head = std::make_unique<Node>();
+        head->next = std::make_unique<Node>();
+        tail = head->next.get();
+        tail->prev = head.get();
     }
 
     void insert(const std::shared_ptr<GameObject>& object) {
@@ -24,7 +27,7 @@ public:
 
     void remove(const std::function<bool (const GameObject&)>& pred) {
         Node* curr = head->next.get();
-        while (curr) {
+        while (curr != tail) {
             Node* next = curr->next.get();
             if (pred(*curr->object)) {
                 unlink(curr);
@@ -35,7 +38,7 @@ public:
 
     void foreach(const std::function<void (GameObject&)>& apply) {
         Node* curr = head->next.get();
-        while (curr) {
+        while (curr != tail) {
             apply(*curr->object);
             curr = curr->next.get();
         }
@@ -61,6 +64,7 @@ private:
     }
 
     std::unique_ptr<Node> head;
+    Node* tail;
 };
 
 #endif // CPPBASICS_GOBJECTLIST_HPP
