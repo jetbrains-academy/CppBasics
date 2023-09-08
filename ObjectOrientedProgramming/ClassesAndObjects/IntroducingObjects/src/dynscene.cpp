@@ -44,7 +44,7 @@ void DynamicScene::update(sf::Time delta) {
 
 void DynamicScene::updateObjectsList() {
     objects.remove([] (const GameObject& object) {
-        return (object.getState() == GameObjectState::DEAD)
+        return (object.getState() == GameObjectState::DESTROYED)
             && (object.getKind() != GameObjectKind::PLAYER);
     });
     int consumableCount = 0;

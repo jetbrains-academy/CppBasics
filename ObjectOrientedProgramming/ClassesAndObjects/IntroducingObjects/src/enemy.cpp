@@ -20,7 +20,7 @@ const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const
 }
 
 void EnemyObject::update(sf::Time delta) {
-    if (CircleGameObject::getState() == GameObjectState::DEAD)
+    if (CircleGameObject::getState() == GameObjectState::DESTROYED)
         return;
     updateTimer += delta;
     if (updateTimer < sf::seconds(1.0f))
