@@ -31,12 +31,12 @@ public:
     /**
      * Returns the current state of the object.
      */
-    virtual GameObjectState getState() const = 0;
+    virtual GameObjectStatus getStatus() const = 0;
 
     /**
      * Changes the current state of the object.
      */
-    virtual void setState(GameObjectState newState) = 0;
+    virtual void setStatus(GameObjectStatus status) = 0;
 
     /**
      * Returns the kind of the object.
@@ -60,7 +60,7 @@ public:
     void move(Point2D vector);
 
     /**
-     * Updates the object based on the elapsed time.
+     * Updates the state of an object based on the elapsed time.
      *
      * @param delta The time elapsed since last update.
      */

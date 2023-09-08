@@ -1,7 +1,7 @@
 #ifndef CPPBASICS_ENUMS_HPP
 #define CPPBASICS_ENUMS_HPP
 
-enum class GameObjectState {
+enum class GameObjectStatus {
     NORMAL, CONCERNED, DESTROYED,
 };
 

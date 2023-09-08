@@ -11,10 +11,10 @@ Point2D ConsumableObject::getVelocity() const {
 }
 
 const sf::Texture* ConsumableObject::getTexture(TextureManager& textureManager) const {
-    switch (CircleGameObject::getState()) {
-        case GameObjectState::NORMAL:
+    switch (CircleGameObject::getStatus()) {
+        case GameObjectStatus::NORMAL:
             return textureManager.getTexture(GameTextureID::STAR);
-        case GameObjectState::CONCERNED:
+        case GameObjectStatus::CONCERNED:
             return textureManager.getTexture(GameTextureID::STAR_CONCERNED);
         default:
             return nullptr;
@@ -26,24 +26,24 @@ GameObjectKind ConsumableObject::getKind() const {
 }
 
 void ConsumableObject::update(sf::Time delta) {
-    if (CircleGameObject::getState() != GameObjectState::DESTROYED) {
-        CircleGameObject::setState(GameObjectState::NORMAL);
+    if (CircleGameObject::getStatus() != GameObjectStatus::DESTROYED) {
+        CircleGameObject::setStatus(GameObjectStatus::NORMAL);
     }
 }
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
-    if (CircleGameObject::getState() == GameObjectState::DESTROYED) {
+    if (CircleGameObject::getStatus() == GameObjectStatus::DESTROYED) {
         return;
     }
     if (collisionData.collide) {
-        CircleGameObject::setState(GameObjectState::DESTROYED);
+        CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
         return;
     }
-    if (CircleGameObject::getState() == GameObjectState::CONCERNED) {
+    if (CircleGameObject::getStatus() == GameObjectStatus::CONCERNED) {
         return;
     }
     if (collisionData.distance < 6 * getCircle().radius) {
-        CircleGameObject::setState(GameObjectState::CONCERNED);
+        CircleGameObject::setStatus(GameObjectStatus::CONCERNED);
         return;
     }
 }

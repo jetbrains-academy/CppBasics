@@ -18,15 +18,15 @@ public:
 
     Circle getCircle() const;
 
-    GameObjectState getState() const override;
+    GameObjectStatus getStatus() const override;
 
-    void setState(GameObjectState newState) override;
+    void setStatus(GameObjectStatus newState) override;
 
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
 private:
     Circle circle;
-    GameObjectState state;
+    GameObjectStatus state;
 };
 
 #endif // CPPBASICS_CGOBJECT_HPP
