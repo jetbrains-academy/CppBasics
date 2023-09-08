@@ -26,9 +26,10 @@ Point2D move(Point2D position, Point2D velocity, float delta) {
 }
 ```
 
-As you can see, it is much easier to grasp the meaning of the first code.
-Fortunately, with operator overloading, it is possible to make the second 
-code fragment look just like the first one!
+As you may notice, the meaning of the latter code fragment is less evident 
+and harder to grasp at the first sight.
+Fortunately, with operator overloading, it is possible to make 
+the two versions of the function look identical!
 
 ```c++
 Point2D move(Point2D position, Point2D velocity, float delta) {
@@ -36,7 +37,7 @@ Point2D move(Point2D position, Point2D velocity, float delta) {
 }
 ```
 
-In fact, to enable this syntax, it is enough just to define 
+To enable this syntax, it is sufficient to define 
 a special function with `operator` prefix in its name:
 
 ```c++
