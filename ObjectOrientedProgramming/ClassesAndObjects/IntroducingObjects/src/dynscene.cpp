@@ -96,7 +96,7 @@ std::shared_ptr<GameObject> DynamicScene::addNewGameObject(GameObjectKind kind) 
         // set random position for consumable and enemy objects
         if (kind == GameObjectKind::CONSUMABLE ||
             kind == GameObjectKind::ENEMY) {
-            setPosition(*object, generatePoint(boundingBox()));
+            setObjectPosition(*object, generatePoint(boundingBox()));
         } else {
             fitInto(*object);
         }

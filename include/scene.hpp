@@ -22,33 +22,33 @@ protected:
 
     virtual void initialize() = 0;
 
+    void close();
+
     void processInput();
 
     virtual void processEvent(const sf::Event& event) = 0;
 
-    virtual void update(sf::Time delta) = 0;
-
-    void render();
-
-    virtual void draw() = 0;
-
-    void close();
+    void setObjectPosition(GameObject& object, Point2D position);
 
     Rectangle boundingBox() const;
 
-    void setPosition(GameObject& object, Point2D position);
+    void fitInto(GameObject& object);
 
     void move(GameObject& object, sf::Time delta);
 
     void move(GameObject& object, Point2D vector);
 
-    void fitInto(GameObject& object);
-
     void detectCollision(GameObject& object1, GameObject& object2);
 
-    sf::Sprite background() const;
+    virtual void update(sf::Time delta) = 0;
+
+    void render();
 
     void draw(const GameObject& object);
+
+    virtual void draw() = 0;
+
+    sf::Sprite background() const;
 
 private:
     sf::RenderWindow window;

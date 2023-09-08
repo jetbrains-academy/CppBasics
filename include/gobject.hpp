@@ -13,7 +13,7 @@
 /**
  * GameObject is a base class for game objects in a game engine.
  * It defines functions for getting and setting object properties,
- * updating object state, and drawing the object on a screen.
+ * updating object status, and drawing the object on a screen.
  */
 class GameObject {
 public:
@@ -29,14 +29,14 @@ public:
     virtual void setPosition(Point2D position) = 0;
 
     /**
-     * Returns the current state of the object.
+     * Returns the current status of the object.
      */
     virtual GameObjectStatus getStatus() const = 0;
 
     /**
-     * Changes the current state of the object.
+     * Changes the current status of the object.
      */
-    virtual void setStatus(GameObjectStatus status) = 0;
+    virtual void setStatus(GameObjectStatus newStatus) = 0;
 
     /**
      * Returns the kind of the object.
@@ -60,7 +60,7 @@ public:
     void move(Point2D vector);
 
     /**
-     * Updates the state of an object based on the elapsed time.
+     * Updates the status of an object based on the elapsed time.
      *
      * @param delta The time elapsed since last update.
      */
@@ -87,7 +87,7 @@ public:
      * Retrieves the texture associated with the object.
      *
      * @param textureManager The texture manager object used to retrieve the texture.
-     * @return A constant pointer to the texture. If the object should not be drawn in the current state,
+     * @return A constant pointer to the texture. If the object should not be drawn in the current status,
      *         the pointer should be null.
      */
     virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;

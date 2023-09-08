@@ -7,16 +7,12 @@ EnemyObject::EnemyObject()
     : CircleGameObject({ { ENEMY_START_X, ENEMY_START_Y }, ENEMY_RADIUS })
 {}
 
-Point2D EnemyObject::getVelocity() const {
-    return velocity;
-}
-
 GameObjectKind EnemyObject::getKind() const {
     return GameObjectKind::ENEMY;
 }
 
-const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const {
-    return textureManager.getTexture(GameTextureID::BLACKHOLE);
+Point2D EnemyObject::getVelocity() const {
+    return velocity;
 }
 
 void EnemyObject::update(sf::Time delta) {
@@ -34,4 +30,8 @@ void EnemyObject::update(sf::Time delta) {
 
 void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
     return;
+}
+
+const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const {
+    return textureManager.getTexture(GameTextureID::BLACKHOLE);
 }

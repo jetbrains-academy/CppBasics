@@ -7,6 +7,10 @@ PlayerObject::PlayerObject()
     : CircleGameObject({ { PLAYER_START_X, PLAYER_START_Y }, RADIUS })
 {}
 
+GameObjectKind PlayerObject::getKind() const {
+    return GameObjectKind::PLAYER;
+}
+
 Point2D PlayerObject::getVelocity() const {
     Point2D velocity = { 0.0f, 0.0f };
     if (CircleGameObject::getStatus() == GameObjectStatus::DESTROYED)
@@ -27,21 +31,6 @@ Point2D PlayerObject::getVelocity() const {
     return velocity;
 }
 
-GameObjectKind PlayerObject::getKind() const {
-    return GameObjectKind::PLAYER;
-}
-
-const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
-    switch (CircleGameObject::getStatus()) {
-        case GameObjectStatus::NORMAL:
-            return textureManager.getTexture(GameTextureID::PLANET);
-        case GameObjectStatus::DESTROYED:
-            return textureManager.getTexture(GameTextureID::PLANET_DEAD);
-        default:
-            return nullptr;
-    }
-}
-
 void PlayerObject::update(sf::Time delta) {
     return;
 }
@@ -51,4 +40,15 @@ void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &co
         CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
     }
     return;
+}
+
+const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
+    switch (getStatus()) {
+        case GameObjectStatus::NORMAL:
+            return textureManager.getTexture(GameTextureID::PLANET);
+        case GameObjectStatus::DESTROYED:
+            return textureManager.getTexture(GameTextureID::PLANET_DEAD);
+        default:
+            return nullptr;
+    }
 }

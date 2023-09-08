@@ -8,25 +8,25 @@
 
 class CircleGameObject : public GameObject {
 public:
-    CircleGameObject(Circle circle);
+    explicit CircleGameObject(Circle circle);
 
     Point2D getPosition() const override;
 
     void setPosition(Point2D position) override;
 
-    Rectangle getBoundingBox() const override;
+    GameObjectStatus getStatus() const override;
+
+    void setStatus(GameObjectStatus newStatus) override;
 
     Circle getCircle() const;
 
-    GameObjectStatus getStatus() const override;
-
-    void setStatus(GameObjectStatus newState) override;
+    Rectangle getBoundingBox() const override;
 
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
 private:
     Circle circle;
-    GameObjectStatus state;
+    GameObjectStatus status;
 };
 
 #endif // CPPBASICS_CGOBJECT_HPP
