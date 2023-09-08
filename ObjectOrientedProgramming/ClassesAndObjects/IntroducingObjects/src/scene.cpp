@@ -72,7 +72,7 @@ void Scene::move(GameObject &object, Point2D vector) {
 }
 
 void Scene::fitInto(GameObject &object) {
-    Rectangle rect = ::fitInto(object.boundingBox(), boundingBox());
+    Rectangle rect = ::fitInto(object.getBoundingBox(), boundingBox());
     object.setPosition(center(rect));
 }
 

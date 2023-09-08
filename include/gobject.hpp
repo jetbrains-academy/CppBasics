@@ -7,47 +7,103 @@
 #include "rectangle.hpp"
 #include "collision.hpp"
 #include "textures.hpp"
+#include "enums.hpp"
 
-// TODO: use enum class (?)
-enum class GameObjectState {
-    NORMAL, CONCERNED, DESTROYED,
-};
 
-enum class GameObjectKind {
-    PLAYER, CONSUMABLE, ENEMY
-};
-
+/**
+ * GameObject is a base class for game objects in a game engine.
+ * It defines functions for getting and setting object properties,
+ * updating object state, and drawing the object on a screen.
+ */
 class GameObject {
 public:
 
-    void move(Point2D vector);
-
+    /**
+     * Returns the current position of the object.
+     */
     virtual Point2D getPosition() const = 0;
 
+    /**
+     * Changes the current position of the object.
+     */
     virtual void setPosition(Point2D position) = 0;
 
-    virtual Point2D getVelocity() const = 0;
-
-    virtual Rectangle boundingBox() const = 0;
-
+    /**
+     * Returns the current state of the object.
+     */
     virtual GameObjectState getState() const = 0;
 
+    /**
+     * Changes the current state of the object.
+     */
     virtual void setState(GameObjectState newState) = 0;
 
+    /**
+     * Returns the kind of the object.
+     */
     virtual GameObjectKind getKind() const = 0;
 
-    virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;
+    /**
+     * Returns the current velocity of the object.
+     */
+    virtual Point2D getVelocity() const = 0;
 
+    /**
+     * Returns the bounding box of the object.
+     * A bounding box is the smallest rectangle that entirely encompasses an object.
+     */
+    virtual Rectangle getBoundingBox() const = 0;
+
+    /**
+     * Moves an object in a direction given by the passed vector.
+     */
+    void move(Point2D vector);
+
+    /**
+     * Updates the object based on the elapsed time.
+     *
+     * @param delta The time elapsed since last update.
+     */
     virtual void update(sf::Time delta) = 0;
 
-    virtual void draw(sf::RenderWindow& window, TextureManager& textureManager) const = 0;
-
+    /**
+     * Handler function called when a collision occurs between this object and another object.
+     * The derived class implementing this function will define the behavior for handling the collision.
+     *
+     * @param object The collided object.
+     * @param collisionData The information about the collision.
+     */
     virtual void onCollision(const GameObject& object, const CollisionInfo& collisionData) = 0;
 
-    virtual ~GameObject() {}
+    /**
+     * This function is used to render the object on a SFML window passed as an argument.
+     *
+     * @param window The window on which the object should be drawn.
+     * @param textureManager The texture manager object used to retrieve the required textures for drawing.
+     */
+    virtual void draw(sf::RenderWindow& window, TextureManager& textureManager) const = 0;
+
+    /**
+     * Retrieves the texture associated with the object.
+     *
+     * @param textureManager The texture manager object used to retrieve the texture.
+     * @return A constant pointer to the texture. If the object should not be drawn in the current state,
+     *         the pointer should be null.
+     */
+    virtual const sf::Texture* getTexture(TextureManager& textureManager) const = 0;
+
+    /**
+     * Destructor of a game object.
+     */
+    virtual ~GameObject() = default;
 
 };
 
+
+/**
+ * This function takes in two game objects as parameters and checks whether they are colliding.
+ * It returns a CollisionInfo structure that contains information about the collision.
+ */
 CollisionInfo collision(const GameObject& object1, const GameObject& object2);
 
 #endif // CPPBASICS_GOBJECT_HPP
