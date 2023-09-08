@@ -10,7 +10,7 @@
 
 // TODO: use enum class (?)
 enum class GameObjectState {
-    NORMAL, CONCERNED, DEAD,
+    NORMAL, CONCERNED, DESTROYED,
 };
 
 enum class GameObjectKind {

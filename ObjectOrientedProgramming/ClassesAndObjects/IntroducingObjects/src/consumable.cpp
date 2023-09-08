@@ -26,17 +26,17 @@ GameObjectKind ConsumableObject::getKind() const {
 }
 
 void ConsumableObject::update(sf::Time delta) {
-    if (CircleGameObject::getState() != GameObjectState::DEAD) {
+    if (CircleGameObject::getState() != GameObjectState::DESTROYED) {
         CircleGameObject::setState(GameObjectState::NORMAL);
     }
 }
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
-    if (CircleGameObject::getState() == GameObjectState::DEAD) {
+    if (CircleGameObject::getState() == GameObjectState::DESTROYED) {
         return;
     }
     if (collisionData.collide) {
-        CircleGameObject::setState(GameObjectState::DEAD);
+        CircleGameObject::setState(GameObjectState::DESTROYED);
         return;
     }
     if (CircleGameObject::getState() == GameObjectState::CONCERNED) {

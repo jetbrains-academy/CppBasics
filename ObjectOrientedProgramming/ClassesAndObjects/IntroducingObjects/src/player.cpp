@@ -9,7 +9,7 @@ PlayerObject::PlayerObject()
 
 Point2D PlayerObject::getVelocity() const {
     Point2D velocity = { 0.0f, 0.0f };
-    if (CircleGameObject::getState() == GameObjectState::DEAD)
+    if (CircleGameObject::getState() == GameObjectState::DESTROYED)
         return velocity;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         velocity = velocity + getDirection(North);
@@ -35,7 +35,7 @@ const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) cons
     switch (CircleGameObject::getState()) {
         case GameObjectState::NORMAL:
             return textureManager.getTexture(GameTextureID::PLANET);
-        case GameObjectState::DEAD:
+        case GameObjectState::DESTROYED:
             return textureManager.getTexture(GameTextureID::PLANET_DEAD);
         default:
             return nullptr;
@@ -48,7 +48,7 @@ void PlayerObject::update(sf::Time delta) {
 
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
     if (collisionData.collide && object.getKind() == GameObjectKind::ENEMY) {
-        CircleGameObject::setState(GameObjectState::DEAD);
+        CircleGameObject::setState(GameObjectState::DESTROYED);
     }
     return;
 }
