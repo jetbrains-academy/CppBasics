@@ -15,7 +15,7 @@ void CircleGameObject::setPosition(Point2D position) {
     circle.center = position;
 }
 
-Rectangle CircleGameObject::boundingBox() const {
+Rectangle CircleGameObject::getBoundingBox() const {
     Point2D offset = { circle.radius, circle.radius };
     Point2D p1 = circle.center - offset;
     Point2D p2 = circle.center + offset;

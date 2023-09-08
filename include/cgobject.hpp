@@ -14,7 +14,7 @@ public:
 
     void setPosition(Point2D position) override;
 
-    Rectangle boundingBox() const override;
+    Rectangle getBoundingBox() const override;
 
     Circle getCircle() const;
 
