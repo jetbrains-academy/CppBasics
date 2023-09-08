@@ -4,7 +4,7 @@
 
 CircleGameObject::CircleGameObject(Circle circle)
     : circle(circle)
-    , state(GameObjectStatus::NORMAL)
+    , status(GameObjectStatus::NORMAL)
 {}
 
 Point2D CircleGameObject::getPosition() const {
@@ -15,23 +15,23 @@ void CircleGameObject::setPosition(Point2D position) {
     circle.center = position;
 }
 
-Rectangle CircleGameObject::getBoundingBox() const {
-    Point2D offset = { circle.radius, circle.radius };
-    Point2D p1 = circle.center - offset;
-    Point2D p2 = circle.center + offset;
-    return createRectangle(p1, p2);
+GameObjectStatus CircleGameObject::getStatus() const {
+    return status;
+}
+
+void CircleGameObject::setStatus(GameObjectStatus newStatus) {
+    status = newStatus;
 }
 
 Circle CircleGameObject::getCircle() const {
     return circle;
 }
 
-GameObjectStatus CircleGameObject::getStatus() const {
-    return state;
-}
-
-void CircleGameObject::setStatus(GameObjectStatus newState) {
-    state = newState;
+Rectangle CircleGameObject::getBoundingBox() const {
+    Point2D offset = { circle.radius, circle.radius };
+    Point2D p1 = circle.center - offset;
+    Point2D p2 = circle.center + offset;
+    return createRectangle(p1, p2);
 }
 
 void CircleGameObject::draw(sf::RenderWindow &window, TextureManager& textureManager) const {

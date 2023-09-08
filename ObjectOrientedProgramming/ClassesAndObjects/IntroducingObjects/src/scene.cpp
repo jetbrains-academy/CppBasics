@@ -57,7 +57,7 @@ Rectangle Scene::boundingBox() const {
     return box;
 }
 
-void Scene::setPosition(GameObject& object, Point2D position) {
+void Scene::setObjectPosition(GameObject& object, Point2D position) {
     object.setPosition(position);
     fitInto(object);
 }
