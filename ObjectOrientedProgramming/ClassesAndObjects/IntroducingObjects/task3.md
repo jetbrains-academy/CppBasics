@@ -1,10 +1,10 @@
 Despite class `CircleGameObject` adds some data fields to the `GameObject` class,
 it still leaves some of `GameObject` virtual methods unimplemented.
-Thus this class is still an _abstract class_ --- it cannot be instantiated.
+Therefore, this class is still an _abstract class_ --- it cannot be instantiated.
 
 Let us introduce two concrete subclasses of the `CircleGameObject` class --- 
 the `PlayerObject` class and the `ConsumableObject` classes, 
-representing object controlled by the player, and consumable objects respectively.
+representing the object controlled by the player, and consumable objects respectively.
 At last, both of these classes implement all the functionality required by the `GameObject` class.
 
 Please find the declaration of these classes in the files `player.hpp` and `consumable.hpp`.
@@ -24,7 +24,7 @@ the status of the objects, implementing the `getTexture` methods first
 will give you a good opportunity to practice and learn the method call syntax.
 
 The `getTexture` methods takes by reference one argument — object of the `TextureManager` class.
-It is another predefined by us class --- it is responsible for loading the textures required by the game.
+It is another predefined by us class — it is responsible for loading the textures required by the game.
 A pointer to a texture can be requested by calling the `getTexture` method of the `TextureManager` class.
 It takes as argument the ID of the textures — these IDs are represented by the `GameTextureID` enum.
 
@@ -38,7 +38,16 @@ with the following logic:
 
 <div class="hint">
 
-If you have troubles implementing the last case, 
-consult the documentation of the `GameObject`'s `getTexture` method. 
+If you have troubles implementing the last case,
+consult the documentation of the `GameObject`'s `getTexture` method.
 
 </div>
+
+In order to implement this method, you will have to call 
+the `getTexture` method of the `TextureManager` class. 
+In order to do that, use the dot syntax `.` — the same syntax as the one used 
+to access fields of a structure:
+
+```c++
+const sf::Texture* texture = textureManaged.getTexture(id);
+```
