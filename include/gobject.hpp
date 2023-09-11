@@ -24,19 +24,9 @@ public:
     virtual Point2D getPosition() const = 0;
 
     /**
-     * Changes the current position of the object.
-     */
-    virtual void setPosition(Point2D position) = 0;
-
-    /**
      * Returns the current status of the object.
      */
     virtual GameObjectStatus getStatus() const = 0;
-
-    /**
-     * Changes the current status of the object.
-     */
-    virtual void setStatus(GameObjectStatus newStatus) = 0;
 
     /**
      * Returns the kind of the object.
@@ -96,6 +86,14 @@ public:
      * Destructor of a game object.
      */
     virtual ~GameObject() = default;
+
+private:
+    friend class Scene;
+
+    /**
+     * Changes the current position of the object.
+     */
+    virtual void setPosition(Point2D position) = 0;
 
 };
 

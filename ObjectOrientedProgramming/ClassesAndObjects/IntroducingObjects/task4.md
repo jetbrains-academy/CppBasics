@@ -21,7 +21,9 @@ the class can govern how its clients interact with the objects of this class:
 * all the fields and methods declared inside `protected` section
   are visible and can be used in the class itself and inside its ancestors;
 * all the fields and methods declared inside `private` section
-  are visible and can be used only in the class itself, and in no other place.
+  are visible and can be used only in the class itself, and in no other place;
+* there is a single exception to the previous rule — 
+  a class marked as a `friend` of a given class can access its protected and private members.
 
 The publicly available fields and methods of the class are also called its _public interface_
 (not to be confused with the term _interface_ denoting classes containing pure virtual functions and having no state).
@@ -69,3 +71,11 @@ corresponding methods of the `GameObject` class,
 as well as another method the `Scene` class — the `fitInto` method.
 This method adjusts the position of an object to fit into the `Scene` borders.
 
+<div class="hint">
+
+Note that `Scene` class is declared as a `friend` of `GameObject` class
+(see the class declaration in the `gobject.hpp` file).
+Thus, the `Scene` class can access `setPosition` method of the `GameObject` class, 
+even though it is declared as a private method.
+
+</div>

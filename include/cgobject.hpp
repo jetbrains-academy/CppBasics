@@ -35,11 +35,6 @@ public:
     GameObjectStatus getStatus() const override;
 
     /**
-     * Changes the current status of the object.
-     */
-    void setStatus(GameObjectStatus newStatus) override;
-
-    /**
      * Returns the current shape of the object.
      */
     Circle getCircle() const;
@@ -53,6 +48,13 @@ public:
      * Render the object on a window.
      */
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
+
+protected:
+
+    /**
+     * Changes the current status of the object.
+     */
+    void setStatus(GameObjectStatus newStatus);
 
 private:
     Circle circle;
