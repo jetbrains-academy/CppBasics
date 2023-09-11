@@ -13,10 +13,10 @@ In other words, a _class_ is just a type of objects.
 
 For example, let us consider the `GameObject` class. 
 The objects of this class represent entities appearing on the game scene, 
-such as the planet objects controlled by the player, 
+such as the planet object controlled by the player, 
 consumable star objects, and others that we will add later.
 Instances of this class will store data related to a game object,
-such as its position on the scene, and some functions to manipulate an object.
+such as its position on the scene, and some methods to manipulate the object.
 
 Let us have a look at the `GameObject` class definition.
 First note that in C++ new class is defined with the help of the `class` keyword.
@@ -30,9 +30,9 @@ by consulting its _documentation_ given as a docstring comment in front of the m
 The `GameObject` class itself does not define any data fields, only the methods.
 It, however, implicitly defines a bunch of _properties_ of an object, for example, its position.
 A value of a property can be requested using its _getter_ method (e.g. `getPosition`),
-and it can be changed using its _setter_ method (e.g. `setObjectPosition`).
+and it can be changed using its _setter_ method (e.g. `setPosition`).
 Note that some properties of an object have both _getter_ and _setter_ methods,
-like aforementioned `getPosition` and `setObjectPosition` methods,
+like aforementioned `getPosition` and `setPosition` methods,
 while others have only _getter_, for example `getVelocity`.
 This is for a reason — some properties are derivatives of the current objects' status, 
 and they cannot be directly changed from the outside. 
@@ -45,7 +45,7 @@ that can be _overridden_ by the inheritors of the class
 (we will delve back to inheritance in the next task).
 The `= 0` syntax at the end of the virtual method indicates that 
 it is a _pure virtual_ method.
-Such method is not implemented for the given class — 
+Such a method is not implemented for the given class — 
 it is just a stub for an actual method implementation.
 
 The classes that do declare any data fields and contain pure virtual methods are also called _interfaces_.
