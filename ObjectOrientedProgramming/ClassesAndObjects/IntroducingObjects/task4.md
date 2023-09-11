@@ -30,6 +30,8 @@ The publicly available fields and methods of the class are also called its _publ
 The public interface of a class defines how the objects of this class are visible from the outside,
 what fields and methods can the clients of the class access.
 
+[//]: # (TODO: add a note about visibility-inheritance modifier)
+
 You might be wondering what is the point of hiding some of 
 the class' field or methods — after all, they can be useful outside.
 However, the ability to hide some of the object's _implementation details_
