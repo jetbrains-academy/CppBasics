@@ -70,10 +70,10 @@ this destructor has default auto-generated implementation.
 As we will see later in the course, constructors and destructor have a pivotal role in C++.
 
 Going back to the `CircleGameObject` class, consider its methods.
-Some of them, like `getPosition` and `setObjectPosition`, are just re-declared methods of the `GameObject` class.
+Some of them, like `getPosition` and `setPosition`, are just re-declared methods of the `GameObject` class.
 The keyword `override` at the end of the methods' declarations indicates this fact.
 
 However, unlike the `GameObject` class, the `CircleGameObject` class actually defines the behavior of these methods.
 To be precise, it is your task to implement some of them,
-namely `getPosition`, `setObjectPosition`, `getStatus`, `setStatus`, and `getCircle`.
+namely `getPosition`, `setOPosition`, `getStatus`, `setStatus`, and `getCircle`.
 Keep in mind that the position of the `CircleGameObject` is a position of its circle's center.

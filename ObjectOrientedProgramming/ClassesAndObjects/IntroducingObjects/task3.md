@@ -10,6 +10,8 @@ At last, both of these classes implement all the functionality required by the `
 Please find the declaration of these classes in the files `player.hpp` and `consumable.hpp`.
 There are no new syntactic constructs here, so you should be able to understand the code in these files.
 
+[//]: # (add here a paragraph about the polymorphism)
+
 The implementations of these classes can be found in the files `player.cpp` and `consumable.cpp`.
 Note that the full implementation of some methods is already provided.
 For example, the `getVelocity` method of the `PlayerObject` computes 
