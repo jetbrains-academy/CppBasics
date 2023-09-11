@@ -50,20 +50,9 @@ void Scene::close() {
     window.close();
 }
 
-Rectangle Scene::boundingBox() const {
-    Rectangle box;
-    box.topLeft = { 0.0f, 0.0f };
-    box.botRight = { width, height };
-    return box;
-}
-
 void Scene::setObjectPosition(GameObject& object, Point2D position) {
     object.setPosition(position);
     fitInto(object);
-}
-
-void Scene::move(GameObject& object, sf::Time delta) {
-    move(object, 0.001f * delta.asMilliseconds() * object.getVelocity());
 }
 
 void Scene::move(GameObject &object, Point2D vector) {
@@ -71,9 +60,20 @@ void Scene::move(GameObject &object, Point2D vector) {
     fitInto(object);
 }
 
+void Scene::move(GameObject& object, sf::Time delta) {
+    move(object, 0.001f * delta.asMilliseconds() * object.getVelocity());
+}
+
 void Scene::fitInto(GameObject &object) {
-    Rectangle rect = ::fitInto(object.getBoundingBox(), boundingBox());
+    Rectangle rect = ::fitInto(object.getBoundingBox(), getBoundingBox());
     object.setPosition(center(rect));
+}
+
+Rectangle Scene::getBoundingBox() const {
+    Rectangle box;
+    box.topLeft = { 0.0f, 0.0f };
+    box.botRight = { width, height };
+    return box;
 }
 
 void Scene::detectCollision(GameObject& object1, GameObject& object2) {

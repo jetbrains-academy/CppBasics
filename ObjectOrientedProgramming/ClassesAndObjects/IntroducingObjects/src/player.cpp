@@ -39,7 +39,6 @@ void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &co
     if (collisionData.collide && object.getKind() == GameObjectKind::ENEMY) {
         CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
     }
-    return;
 }
 
 const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
