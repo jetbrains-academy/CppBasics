@@ -31,13 +31,6 @@ Instead, let us note that `CircleGameObject` declares not only methods, but also
 * `circle` field stores its shape data;
 * `status` field stores its current status.
 
-[//]: # (Note that `CircleGameObject` has two sections: )
-[//]: # (`public` containing its various methods, and `private` containing its data fields.)
-[//]: # (All the fields and methods declared inside `public` section are visible )
-[//]: # (and can be used freely outside the class.)
-[//]: # (However, all the fields and methods declared inside `private` section )
-[//]: # (can only be used from within the class itself --- they are invisible outside.)
-
 The very first method of the `CircleGameObject` is a special method called the _constructor_.
 Constructor methods have the same name as the class itself,
 and it takes single argument `circle`: `CircleGameObject(Circle circle)`.
