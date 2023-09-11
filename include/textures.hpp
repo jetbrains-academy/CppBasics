@@ -22,7 +22,6 @@ public:
     const sf::Texture* getTexture(GameTextureID id) const;
 private:
     static const size_t SIZE = static_cast<size_t>(GameTextureID::SIZE);
-
     sf::Texture textures[SIZE];
 };
 

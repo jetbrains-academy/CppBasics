@@ -12,7 +12,7 @@ public:
 
     Scene();
 
-    virtual ~Scene() {}
+    virtual ~Scene() = default;
 
     void run();
 
@@ -30,13 +30,13 @@ protected:
 
     void setObjectPosition(GameObject& object, Point2D position);
 
-    Rectangle boundingBox() const;
-
-    void fitInto(GameObject& object);
+    void move(GameObject& object, Point2D vector);
 
     void move(GameObject& object, sf::Time delta);
 
-    void move(GameObject& object, Point2D vector);
+    void fitInto(GameObject& object);
+
+    Rectangle getBoundingBox() const;
 
     void detectCollision(GameObject& object1, GameObject& object2);
 

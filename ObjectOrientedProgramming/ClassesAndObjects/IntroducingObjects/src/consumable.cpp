@@ -28,9 +28,6 @@ void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo
         CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
         return;
     }
-    if (CircleGameObject::getStatus() == GameObjectStatus::CONCERNED) {
-        return;
-    }
     if (collisionData.distance < 6 * getCircle().radius) {
         CircleGameObject::setStatus(GameObjectStatus::CONCERNED);
         return;
