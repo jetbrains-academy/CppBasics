@@ -1,0 +1,5 @@
+content:
+  - Object Lifetime
+  - New and delete operators
+  - Placement new
+  - Ownership
