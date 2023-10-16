@@ -8,7 +8,7 @@ However, in general, C is not a strict subset of C++, meaning that
 there are a lot of various [incompatibilities](https://en.wikipedia.org/wiki/Compatibility_of_C_and_C%2B%2B) 
 between these languages.
 Besides that, there are a lot of language features, idioms, and patterns that differ in C and C++.
-These difference give rise to the mentioned C and C++ styles of doing things.
+These differences give rise to the mentioned C and C++ styles of doing things.
 
 It is important to learn to read C-style code, even if you plan to follow purely the C++ style in the future.
 As of today, the C language has become a "cross-platform assembly language",
