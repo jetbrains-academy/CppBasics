@@ -26,12 +26,15 @@ void DynamicScene::processEvent(const sf::Event& event) {
 }
 
 void DynamicScene::update(sf::Time delta) {
+    // update the objects' state
     objects.foreach([delta] (GameObject& object) {
         object.update(delta);
     });
+    // move objects according to their velocity and elapsed time
     objects.foreach([this, delta] (GameObject& object) {
         move(object, delta);
     });
+    // compute collision information for each pair of objects
     objects.foreach([this] (GameObject& object) {
         objects.foreach([this, &object] (GameObject& other) {
             if (&object != &other) {
@@ -39,14 +42,17 @@ void DynamicScene::update(sf::Time delta) {
             }
         });
     });
+    // update the list of objects
     updateObjectsList();
 }
 
 void DynamicScene::updateObjectsList() {
+    // remove destroyed objects from the list
     objects.remove([] (const GameObject& object) {
         return (object.getStatus() == GameObjectStatus::DESTROYED)
             && (object.getKind() != GameObjectKind::PLAYER);
     });
+    // count the number of the different kinds of objects present on the scene
     int consumableCount = 0;
     int enemyCount = 0;
     objects.foreach([&] (const GameObject& object) {
@@ -61,6 +67,7 @@ void DynamicScene::updateObjectsList() {
                 break;
         }
     });
+    // add new objects of randomly chosen kind if there is enough room for them on the scene
     int dynamicObjectsCount = consumableCount + enemyCount;
     if (dynamicObjectsCount < MAX_DYNAMIC_OBJECTS_ON_SCENE) {
         int r = rand() % 100;
@@ -115,6 +122,7 @@ std::shared_ptr<GameObject> DynamicScene::addNewGameObject(GameObjectKind kind) 
 }
 
 void DynamicScene::draw() {
+    // draw all objects on the scene
     objects.foreach([this] (const GameObject& object) {
         Scene::draw(object);
     });

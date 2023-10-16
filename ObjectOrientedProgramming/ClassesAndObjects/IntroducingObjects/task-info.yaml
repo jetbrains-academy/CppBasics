@@ -96,3 +96,5 @@ files:
     visible: true
   - name: task0.md
     visible: true
+  - name: task8.md
+    visible: true

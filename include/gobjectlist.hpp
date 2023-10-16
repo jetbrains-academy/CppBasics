@@ -36,6 +36,8 @@ public:
         return *this;
     }
 
+    ~GameObjectList() = default;
+
     friend void swap(GameObjectList& first, GameObjectList& second) {
         using std::swap;
         swap(first.head, second.head);
