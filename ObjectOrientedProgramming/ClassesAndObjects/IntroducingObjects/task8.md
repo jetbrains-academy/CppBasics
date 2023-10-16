@@ -1,59 +1,65 @@
-Next, we need to restore the dynamic behavior of our game — the ability 
+Next, we need to restore the dynamic behavior of our game — the ability
 to add and remove objects dynamically during the play.
 To do so, we will re-implement the doubly linked list data structure
 in terms of object-oriented programming.
-Before proceeding with this task, please first finish the `Ownership` module, 
+Before proceeding with this task, please first finish the `Ownership` module,
 as we will need some concepts taught there.
 
-First of all, instead of completely rewriting the `StaticScene` class, 
-we will just a new class --- `DynamicScene`, where we will implement the new dynamic functionality.
+First of all, instead of completely rewriting the `StaticScene` class,
+we will just add a new class --- `DynamicScene`, where we will implement the new dynamic functionality.
 
 [//]: # (Then switching between the two `Scene` implementations will be quite easy --- )
 [//]: # (TODO: describe the actual scene-switching logic once it will be settled.)
 
-Please have a look at the declaration of the `DynamicScene` class (file `dynscene.hpp`), 
-and its definition (file `dynscene.cpp`). You can find the brief description of its methods 
-in the documentation comments.
+Please have a look at the declaration of the `DynamicScene` class (file `dynscene.hpp`),
+and its definition (file `dynscene.cpp`).
+You can find the brief description of its methods in the documentation comments.
 
 The `DynamicScene` class has a field `objects` of `GameObjectList` class.
 This is the main class we are going to work with in this task — it will implement the doubly linked list
 (its declaration and definition can be found in the files `gobjectlist.hpp` and `gobjectlist.cpp` respectively).
 
-This time, using the object-oriented programming and ownership model, 
-we will implement a list that will own its nodes. 
+This time, using the object-oriented programming and ownership model,
+we will implement a list that will own its nodes.
 The nodes will be destructed and deallocated automatically upon destruction of the list itself,
 and copying of the list will result in all of its nodes being copied too.
 
-The nodes of the list are represented by the `Node` structure, 
-which implement the ownership semantics --- each node is owning its successor.
+The nodes of the list are represented by the `Node` structure,
+which implement the ownership semantics — each node is owning its successor.
 Let us have a closer look on the fields of the `Node` structure.
 
 - `prev` field is a plain pointer `Node*`, storing the pointer to a previous node.
-   It is a non-owning pointer, because if it was made an owning pointer, then it would 
-   result into ownership relation cycle. 
-   Indeed, giving a node `x`, `x.prev` can point to a node `y`, such that `y.next` points to `x` --- 
-   this is clearly a cycle.
-- `next` field is an owning pointer `std::unique_ptr<Node>`. 
-   Whenever a node is destructed, all its succeeding nodes will also be destructed, 
-   due to the ownership semantics.
+  It is a non-owning pointer, because if it was made an owning pointer, then it would
+  result into ownership cycle.
+  Indeed, giving a node `x`, `x.prev` can point to a node `y`, such that `y.next` points to `x` ---
+  this is clearly a cycle.
+- `next` field is an owning pointer `std::unique_ptr<Node>`.
+  Whenever a node is destructed, all its succeeding nodes will also be destructed,
+  due to its ownership semantics.
 - `object` field is a shared pointer `std::shared_ptr<GameObject>` to a game object stored in the node.
-   It has the shared ownership semantics, so that the shared pointers to game objects 
-   can be safely returned from the methods of the `GameObjectList` class.
+  It has the shared ownership semantics, so that the shared pointers to game objects
+  can be safely returned from the methods of the `GameObjectList` class.
+  Also, the shared ownership of game objects will allow us to implement
+  the copying of a list — a copy would simply store copies of shared pointers.
+
 
 The static methods `link` and `unlink` implement the linking and unlinking of nodes respectively.
-You have already seen them in the `LinkedList` task. Here is a reminder of their semantics:
+You have already seen these functions in the `LinkedList` task.
+Here is a reminder of their semantics:
 
-- Links together the `cursor` and `node` nodes, putting `node` right after `cursor`.
 ```c++
 static void link(Node* cursor, std::unique_ptr<Node>&& node);
 ```
 
-- Unlinks the node from its neighboring nodes.
+- Links together the `cursor` and `node` nodes, putting `node` right after `cursor`.
+
 ```c++
 static void unlink(Node* node);
 ```
 
-Please implement these methods. 
+- Unlinks the node from its neighboring nodes.
+
+Please implement these methods.
 Pay attention to the different ownership semantics of `next`, `prev`, and `object` pointers,
 and use `std::move` to manage the ownership.
 Remember that `std::unique_ptr` transitions into `nullptr` state after ownership transfer,
@@ -63,10 +69,10 @@ Next, consider the fields of the `GameObjectList` class.
 
 - `head` is an owning pointer `std::unique_ptr<Node>` to the first node of the list.
 - `tail` is a non-owning pointer `Node*` to the last node of the list.
-  It is a non-owning pointer because the pointed-to node is actually owned 
-  by its predecessor via its `next` pointer. 
+  It is a non-owning pointer because the pointed-to node is actually owned
+  by its predecessor via its `next` pointer.
 
-Because the `head` pointer of the list is owning one, the whole sequence of nodes 
+Because the `head` pointer of the list is owning one, the whole sequence of nodes
 belonging to the list will be destroyed automatically upon destruction of the list itself.
 This is the reason why we left the default implementation of the class' destructor:
 
@@ -76,25 +82,25 @@ This is the reason why we left the default implementation of the class' destruct
 
 <div class="hint">
 
-Indeed, the destructor of the `GameObjectList` will call 
-the `~std::unique_ptr()` destructor of the `head` field. 
+Indeed, the destructor of the `GameObjectList` will call
+the `~std::unique_ptr()` destructor of the `head` field.
 In turn, it will call the destructor of the `Node`,
-which will call the destructor `~std::unique_ptr()` of its `next` field, 
-and so on, until all nodes will be destructed. 
+which will call the destructor `~std::unique_ptr()` of its `next` field,
+and so on, until all nodes will be destructed.
 
 </div>
 
-Note that in the previous implementation of the list, in the `LinkedList` task,
-we use a single sentinel node to simplify the implementation of some list operating functions.
+Note that in the previous implementation of the list (in the `LinkedList` task),
+we used a single sentinel node to simplify the implementation of some list operating functions.
 Moreover, under the hood the list was organized into a cyclic list:
 the `next` field of the last node was pointing the first (sentinel) node.
 This time we cannot reuse this trick, since a cyclic list would result into ownership cycle.
 Therefore, we would need two sentinel nodes — one as a first node, and second as a last node.
 
-Please take a look at the pre-defined methods `foreach` and `remove` of the list 
+Please take a look at the pre-defined methods `foreach` and `remove` of the list
 that utilize this list representation:
 - `foreach` applies the function given as an argument to every game object stored in the list;
-- `remove` unlinks nodes (effectively removing them), whose game object satisfies predicate given as an argument.  
+- `remove` unlinks nodes (effectively removing them), whose game object satisfies predicate given as an argument.
 
 <div class="hint">
 
@@ -104,7 +110,7 @@ We will have a closer look at this type in the later modules of the course.
 
 </div>
 
-Now, please implement the method inserting a game object into the beginning of the list: 
+Now, please implement the method inserting a game object into the beginning of the list:
 
 ```c++
 void insert(const std::shared_ptr<GameObject>& object);
@@ -114,9 +120,9 @@ Keep in mind that:
 - the first and the last nodes should remain sentinel nodes;
 - only the sentinel nodes can store null pointer `nullptr` inside `object` field.
 
-In order to complete this task, also finish the implementation of the ownership semantics of 
+In order to complete this task, also finish the implementation of the ownership semantics of
 the `GameObjectList` class, following the rule-of-file and copy-and-swap idiom.
-In particular, please implement: 
+In particular, please implement:
 
 - default constructor
 ```c++
@@ -142,3 +148,5 @@ GameObjectList& operator=(GameObjectList other);
 ```c++
 friend void swap(GameObjectList& first, GameObjectList& second);
 ```
+
+Once you do this, you should be able to run the instance of the game with the new dynamic scene!
