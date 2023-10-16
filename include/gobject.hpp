@@ -57,11 +57,10 @@ public:
     virtual void update(sf::Time delta) = 0;
 
     /**
-     * Handler function called when a collision occurs between this object and another object.
-     * The derived class implementing this function will define the behavior for handling the collision.
+     * Handler function called when a potential collision occurs between this object and another object.
      *
      * @param object The collided object.
-     * @param collisionData The information about the collision.
+     * @param collisionData The information about the potential collision.
      */
     virtual void onCollision(const GameObject& object, const CollisionInfo& collisionData) = 0;
 

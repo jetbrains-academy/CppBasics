@@ -32,9 +32,9 @@ public:
     void update(sf::Time delta) override;
 
     /**
-     * Handler the collision of consumable object with another object.
+     * Handles the potential collision of consumable object with another object.
      * Sets the status to `CONCERNED` if some other object is approaching the consumable.
-     * Sets the status to `DESTROYED` in case of a collision.
+     * Sets the status to `DESTROYED` in case of an actual collision.
      */
     void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
 

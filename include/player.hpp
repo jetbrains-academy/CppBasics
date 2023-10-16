@@ -33,7 +33,7 @@ public:
     void update(sf::Time delta) override;
 
     /**
-     * Handler the collision of player object with another object.
+     * Handler a potential collision of player object with another object.
      * In particular, if player collided with an enemy object, sets its status to `DESTROYED`.
      */
     void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
