@@ -10,6 +10,8 @@ A _derived_ class, also called a _subclass_,
 inherits all the method and fields of the _base_ class,
 and can add its own new methods and fields.
 
+[//]: # (TODO: also mention term `subtyping`)
+
 Giving back to our problem, let us define
 a `CircleGameObject` subclass of `GameObject` class.
 Instances of `CircleGameObject` class represent
