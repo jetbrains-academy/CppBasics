@@ -38,7 +38,7 @@ This is for a reason — some properties are derivatives of the current objects'
 and they cannot be directly changed from the outside. 
 
 Another piece of unfamiliar syntax here is the `const` keyword coming after the arguments of a methods. 
-It denotes the _constant methods_ --- these methods cannot change the status of the object.
+It denotes the _constant methods_ --- these methods cannot change the state of the object.
 
 Finally, keyword `virtual` denotes the _virtual_ methods — these are the methods
 that can be _overridden_ by the inheritors of the class 
