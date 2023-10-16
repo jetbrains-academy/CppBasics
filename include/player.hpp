@@ -33,10 +33,10 @@ public:
     void update(sf::Time delta) override;
 
     /**
-     * Handler a potential collision of player object with another object.
+     * Handles a potential collision of player object with another object.
      * In particular, if player collided with an enemy object, sets its status to `DESTROYED`.
      */
-    void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
+    void onCollision(const GameObject &object, const CollisionInfo &info) override;
 
     /**
      * Retrieves the texture associated with the player object based on its current status.

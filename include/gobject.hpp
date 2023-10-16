@@ -60,9 +60,9 @@ public:
      * Handler function called when a potential collision occurs between this object and another object.
      *
      * @param object The collided object.
-     * @param collisionData The information about the potential collision.
+     * @param info The information about the potential collision.
      */
-    virtual void onCollision(const GameObject& object, const CollisionInfo& collisionData) = 0;
+    virtual void onCollision(const GameObject& object, const CollisionInfo& info) = 0;
 
     /**
      * This function is used to render the object on a SFML window passed as an argument.
@@ -101,6 +101,6 @@ private:
  * This function takes in two game objects as parameters and checks whether they are colliding.
  * It returns a CollisionInfo structure that contains information about the collision.
  */
-CollisionInfo collision(const GameObject& object1, const GameObject& object2);
+CollisionInfo collisionInfo(const GameObject& object1, const GameObject& object2);
 
 #endif // CPPBASICS_GOBJECT_HPP

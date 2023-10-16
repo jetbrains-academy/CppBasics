@@ -20,15 +20,15 @@ void ConsumableObject::update(sf::Time delta) {
     }
 }
 
-void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
+void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &info) {
     if (getStatus() == GameObjectStatus::DESTROYED) {
         return;
     }
-    if (collisionData.collide) {
+    if (info.collide) {
         setStatus(GameObjectStatus::DESTROYED);
         return;
     }
-    if (collisionData.distance < CONSUMABLE_CONCERNED_MULTIPLIER * getCircle().radius) {
+    if (info.distance < CONSUMABLE_CONCERNED_MULTIPLIER * getCircle().radius) {
         setStatus(GameObjectStatus::CONCERNED);
         return;
     }

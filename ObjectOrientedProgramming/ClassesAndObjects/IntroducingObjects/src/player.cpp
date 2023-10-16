@@ -35,8 +35,8 @@ void PlayerObject::update(sf::Time delta) {
     return;
 }
 
-void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
-    if (collisionData.collide && object.getKind() == GameObjectKind::ENEMY) {
+void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &info) {
+    if (info.collide && object.getKind() == GameObjectKind::ENEMY) {
         setStatus(GameObjectStatus::DESTROYED);
     }
 }

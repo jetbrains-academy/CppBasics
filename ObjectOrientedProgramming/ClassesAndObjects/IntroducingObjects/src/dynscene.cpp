@@ -103,7 +103,7 @@ std::shared_ptr<GameObject> DynamicScene::addNewGameObject(GameObjectKind kind) 
         // check that object does not collide with existing objects
         bool collide = false;
         objects.foreach([&collide, &object](GameObject& other) {
-            collide |= collision(*object, other).collide;
+            collide |= collisionInfo(*object, other).collide;
         });
         // reset a colliding object
         if (collide) {

@@ -20,7 +20,7 @@ CollisionInfo collisionInfo(const Circle& circle1, const Circle& circle2) {
     return info;
 }
 
-CollisionInfo collision(const GameObject& object1, const GameObject& object2) {
+CollisionInfo collisionInfo(const GameObject& object1, const GameObject& object2) {
     const CircleGameObject* circleObject1 = dynamic_cast<const CircleGameObject*>(&object1);
     const CircleGameObject* circleObject2 = dynamic_cast<const CircleGameObject*>(&object2);
     if (circleObject1 && circleObject2) {

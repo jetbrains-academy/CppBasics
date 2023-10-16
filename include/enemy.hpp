@@ -13,7 +13,7 @@ public:
 
     void update(sf::Time delta) override;
 
-    void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
+    void onCollision(const GameObject &object, const CollisionInfo &info) override;
 
     const sf::Texture* getTexture(TextureManager& textureManager) const override;
 

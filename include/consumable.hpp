@@ -36,7 +36,7 @@ public:
      * Sets the status to `CONCERNED` if some other object is approaching the consumable.
      * Sets the status to `DESTROYED` in case of an actual collision.
      */
-    void onCollision(const GameObject &object, const CollisionInfo &collisionData) override;
+    void onCollision(const GameObject &object, const CollisionInfo &info) override;
 
     /**
      * Retrieves the texture associated with the consumable object based on its current status.

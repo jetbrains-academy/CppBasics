@@ -28,7 +28,7 @@ void EnemyObject::update(sf::Time delta) {
     velocity = SPEED * velocity;
 }
 
-void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
+void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &info) {
     return;
 }
 
