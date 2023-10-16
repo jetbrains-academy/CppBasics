@@ -45,11 +45,6 @@ public:
     virtual Rectangle getBoundingBox() const = 0;
 
     /**
-     * Moves an object in a direction given by the passed vector.
-     */
-    void move(Point2D vector);
-
-    /**
      * Updates the state of an object based on the elapsed time.
      *
      * @param delta The time elapsed since last update.
@@ -93,6 +88,11 @@ private:
      * Changes the current position of the object.
      */
     virtual void setPosition(Point2D position) = 0;
+
+    /**
+     * Moves an object in a direction given by the passed vector.
+     */
+    void move(Point2D vector);
 
 };
 
