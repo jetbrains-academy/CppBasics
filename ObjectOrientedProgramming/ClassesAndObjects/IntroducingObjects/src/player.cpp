@@ -37,7 +37,7 @@ void PlayerObject::update(sf::Time delta) {
 
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
     if (collisionData.collide && object.getKind() == GameObjectKind::ENEMY) {
-        CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
+        setStatus(GameObjectStatus::DESTROYED);
     }
 }
 

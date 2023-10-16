@@ -15,21 +15,21 @@ Point2D ConsumableObject::getVelocity() const {
 }
 
 void ConsumableObject::update(sf::Time delta) {
-    if (CircleGameObject::getStatus() != GameObjectStatus::DESTROYED) {
-        CircleGameObject::setStatus(GameObjectStatus::NORMAL);
+    if (getStatus() != GameObjectStatus::DESTROYED) {
+        setStatus(GameObjectStatus::NORMAL);
     }
 }
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &collisionData) {
-    if (CircleGameObject::getStatus() == GameObjectStatus::DESTROYED) {
+    if (getStatus() == GameObjectStatus::DESTROYED) {
         return;
     }
     if (collisionData.collide) {
-        CircleGameObject::setStatus(GameObjectStatus::DESTROYED);
+        setStatus(GameObjectStatus::DESTROYED);
         return;
     }
     if (collisionData.distance < 6 * getCircle().radius) {
-        CircleGameObject::setStatus(GameObjectStatus::CONCERNED);
+        setStatus(GameObjectStatus::CONCERNED);
         return;
     }
 }
