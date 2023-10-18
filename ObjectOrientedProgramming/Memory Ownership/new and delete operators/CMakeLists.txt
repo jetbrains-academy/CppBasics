@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(ObjectOrientedProgramming-Memory_Ownership-New_and_delete_operators)
+project(ObjectOrientedProgramming-Memory_Ownership-new_and_delete_operators)
 
 set(CMAKE_CXX_STANDARD 14)
 

@@ -1,5 +1,11 @@
 content:
   - Object Lifetime
-  - New and delete operators
+  - new and delete operators
   - Placement new
   - Ownership
+  - unique_ptr
+  - Move semantics1
+  - move semantics
+  - shared_ptr
+  - weak_ptr
+  - Smart pointers summary
