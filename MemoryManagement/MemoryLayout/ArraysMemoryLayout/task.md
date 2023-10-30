@@ -6,7 +6,6 @@ the following expressions have the same meaning:
 | Expression                      | Array Notation   | Pointer Notation    |
 |---------------------------------|------------------|---------------------|
 | Pointer to array initialization | `int* p = &a[0]` | `int* p = a`        |
-|                                 |                  |                     |
 | Element access by index         | `a[n]`           | `*(a + n)`          |
 
 Given that, a function expecting an array argument can be encoded as 

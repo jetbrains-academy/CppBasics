@@ -129,7 +129,6 @@ the following expressions have the same meaning:
 | Operator          | Notation |
 |-------------------|----------|
 | Member of struct  | `(*p).x` |
-|                   |          |
 | Member of pointer | `p->x`   |
 
 
