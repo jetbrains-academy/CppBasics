@@ -3,8 +3,6 @@ custom_name: Arrays Memory Layout
 files:
   - name: CMakeLists.txt
     visible: false
-  - name: test/test.cpp
-    visible: false
   - name: src/task.cpp
     visible: true
     placeholders:
@@ -14,3 +12,5 @@ files:
       - offset: 204
         length: 95
         placeholder_text: return 0;
+  - name: test/test.cpp
+    visible: false

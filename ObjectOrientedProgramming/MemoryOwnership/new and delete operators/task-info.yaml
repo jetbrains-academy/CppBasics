@@ -1,0 +1,15 @@
+type: edu
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 266
+        length: 75
+        placeholder_text: create and delete Book object using new/delete
+      - offset: 378
+        length: 79
+        placeholder_text: Do the same using malloc/free

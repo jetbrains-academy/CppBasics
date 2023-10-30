@@ -1,0 +1,21 @@
+type: edu
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 805
+        length: 134
+        placeholder_text: Create cats in pre-allocated memory
+      - offset: 945
+        length: 118
+        placeholder_text: Call destructors for each Cat object
+      - offset: 1069
+        length: 134
+        placeholder_text: create dogs in the same pre-allocated memory
+      - offset: 1209
+        length: 118
+        placeholder_text: Call destructors for each Dog object

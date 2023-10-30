@@ -1,0 +1,11 @@
+custom_name: Memory Ownership
+content:
+  - Object Lifetime
+  - new and delete operators
+  - Placement new
+  - Ownership
+  - unique_ptr
+  - move semantics
+  - shared_ptr
+  - weak_ptr
+  - Smart pointers summary

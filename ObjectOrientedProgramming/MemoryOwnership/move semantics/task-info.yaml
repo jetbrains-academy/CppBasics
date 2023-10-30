@@ -1,0 +1,15 @@
+type: edu
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 131
+        length: 44
+        placeholder_text: /* TODO */
+      - offset: 261
+        length: 98
+        placeholder_text: /* TODO */
+  - name: test/test.cpp
+    visible: false
