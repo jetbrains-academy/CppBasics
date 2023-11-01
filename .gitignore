@@ -9,3 +9,4 @@ sfml/*
 
 Makefile
 CMakeCache.txt
+.DS_Store
