@@ -1,15 +1,15 @@
 type: edu
 custom_name: C Style String Splitting
 files:
-- name: CMakeLists.txt
-  visible: false
-- name: src/task.cpp
-  visible: true
-  placeholders:
-  - offset: 106
-    length: 913
-    placeholder_text: |-
-      res = nullptr;
-      return 0;
-- name: test/test.cpp
-  visible: false
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 106
+        length: 913
+        placeholder_text: |-
+          res = nullptr;
+          return 0;
+  - name: test/test.cpp
+    visible: false
