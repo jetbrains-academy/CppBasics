@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(ObjectOrientedProgramming-MemoryOwnership-move_semantics)
+project(ObjectOrientedProgramming-MemoryOwnership-SharedPtr)
 
 set(CMAKE_CXX_STANDARD 14)
 

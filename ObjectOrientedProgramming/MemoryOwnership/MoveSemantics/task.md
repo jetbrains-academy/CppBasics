@@ -2,10 +2,10 @@
 
 **lvalue** reference represents an object that has a name or an identifier. It refers to something that exists in memory and typically persists beyond a single expression. It usually stands on the left side of an assignment operator (`=`), hence the name lvalue.
 
-**rvalue** reference represents a temporary or disposable value. It is usually the result of an expression and might not have a named memory location. Rvalues are often short-lived. 
+**rvalue** reference represents a temporary or disposable value. It is usually the result of an expression and might not have a named memory location. Rvalues are often short-lived.
 
 #### Move Semantics Overview
-- Efficient Resource Transfer. Move semantics allows the transfer of ownership from one object to another without the need for deep copying. This is especially beneficial for large or resource-intensive objects. 
+- Efficient Resource Transfer. Move semantics allows the transfer of ownership from one object to another without the need for deep copying. This is especially beneficial for large or resource-intensive objects.
 - [Rvalue References](https://en.cppreference.com/w/cpp/language/rvalue_reference). Move semantics utilize rvalue references (`&&`), which represent temporary objects or objects that are about to be destroyed. Rvalue references to facilitate the efficient transfer of ownership without unnecessary overhead.
 - [`std::move`](https://en.cppreference.com/w/cpp/utility/move) Function. The `std::move` function is used to convert a lvalue (an object with a name) into a rvalue reference. This is a key tool for explicitly indicating that ownership can be moved.
 

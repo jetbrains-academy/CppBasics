@@ -1,8 +1,7 @@
 type: edu
+custom_name: placement new
 files:
   - name: CMakeLists.txt
-    visible: false
-  - name: test/test.cpp
     visible: false
   - name: src/task.cpp
     visible: true
@@ -19,3 +18,5 @@ files:
       - offset: 1209
         length: 118
         placeholder_text: Call destructors for each Dog object
+  - name: test/test.cpp
+    visible: false

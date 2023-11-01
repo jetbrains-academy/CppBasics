@@ -1,8 +1,7 @@
 type: edu
+custom_name: new and delete operators
 files:
   - name: CMakeLists.txt
-    visible: false
-  - name: test/test.cpp
     visible: false
   - name: src/task.cpp
     visible: true
@@ -13,3 +12,5 @@ files:
       - offset: 378
         length: 79
         placeholder_text: Do the same using malloc/free
+  - name: test/test.cpp
+    visible: false

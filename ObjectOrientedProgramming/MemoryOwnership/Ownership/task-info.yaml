@@ -1,4 +1,5 @@
 type: theory
+custom_name: Memory ownership
 files:
   - name: CMakeLists.txt
     visible: false

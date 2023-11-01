@@ -1,4 +1,5 @@
 type: theory
+custom_name: weak_ptr
 files:
   - name: CMakeLists.txt
     visible: false

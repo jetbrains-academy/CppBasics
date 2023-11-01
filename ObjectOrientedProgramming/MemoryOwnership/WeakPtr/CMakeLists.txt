@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(ObjectOrientedProgramming-MemoryOwnership-weak_ptr)
+project(ObjectOrientedProgramming-MemoryOwnership-WeakPtr)
 
 set(CMAKE_CXX_STANDARD 14)
 
