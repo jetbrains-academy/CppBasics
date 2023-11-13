@@ -1,6 +1,19 @@
-type: ide
+type: edu
 custom_name: Hunting Bugs
 files:
+- name: src/approaching.cpp
+  visible: true
+  placeholders:
+  - offset: 113
+    length: 215
+    placeholder_text: |-
+      for (int i = 0; i <= size; ++i) {
+              float dist = distance(player.center, consumable[i].center);
+              float warnDist = 3 * player.radius + consumable[i].radius;
+              if (concerned[i] = false) {
+                  concerned[i] = dist < warnDist;
+              }
+          }
 - name: src/loop.cpp
   visible: true
   placeholders:
@@ -136,7 +149,6 @@ files:
   visible: false
 - name: src/main.cpp
   visible: true
-  editable: true
-- name: src/approaching.cpp
-  visible: true
+- name: test/test.cpp
+  visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Hunting+Bugs

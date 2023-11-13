@@ -3,6 +3,24 @@ custom_name: Play Around
 files:
 - name: src/approaching.cpp
   visible: true
+  placeholders:
+  - offset: 113
+    length: 215
+    placeholder_text: |-
+      for (int i = 0; i <= size; ++i) {
+              float dist = distance(player.center, consumable[i].center);
+              float warnDist = 3 * player.radius + consumable[i].radius;
+              if (concerned[i] = false) {
+                  concerned[i] = dist < warnDist;
+              }
+          }
+    dependency:
+      section: WarmUp
+      lesson: MovingOn
+      task: HuntingBugs
+      file: src/approaching.cpp
+      placeholder: 1
+      is_visible: false
 - name: src/loop.cpp
   visible: true
   placeholders:
