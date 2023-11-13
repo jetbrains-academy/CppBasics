@@ -78,7 +78,7 @@ const float EAST_BORDER  = 800.0f;
 ```
 
 Notice the new `const` keyword. 
-It allows you to define an immutable variable, whose value cannot be reassigned.
+It allows you to define an immutable variable whose value cannot be reassigned.
 
 Also, note that to compare the object's position with the border,
 you also need to take into account the radius of the circle!
@@ -91,7 +91,7 @@ If you struggle to complete the task, please use the hint below!
 
 <div class="hint">
 
-For example, the check and adjustment against the east border should look like this:
+For example, the check and adjustment against the west border should look like this:
 
 ```c++
 if (result.x - RADIUS < WEST_BORDER) {
