@@ -3,20 +3,21 @@ and how to interact with the user of the program through the terminal.
 In this lesson you will continue to study the C++ language
 and will learn the following topics.
 
-* Basic control-flow operators: conditionals, switches and loops.
+* Basic control-flow operators: conditionals, switches, and loops.
 * Arrays and iteration over their elements.  
 * Custom data types: structures and enums.
 * Decomposition of programs using functions.
 
 You will learn these concepts by developing a simple 2D game
 based on the [SFML](https://www.sfml-dev.org/) graphics library (Simple and Fast Multimedia Library).
-But first you will have to install this library on your system.
+But first you have to install this library on your system.
 Please find the installation instructions for your system below.
+After installation of the library, you might need to re-load the project.
+In order to do so, please select __File | Reload CMake Project__.
 
-In order to check that you have installed the library successfully 
+In order to check that you have successfully installed the library, 
 run the program attached to this step. 
-You should see a new application window appear
-displaying a small planet in the large cosmic space! 
+You should see a new application window displaying a small planet in the large cosmic space! 
 
 ### Windows
 
@@ -29,7 +30,7 @@ The script to download the sources and build the library is included in the cour
 
 ### MacOS
 
-On MacOS please use the [brew](https://brew.sh/) package manager 
+On macOS please use the [brew](https://brew.sh/) package manager 
 to install the `sfml` library.
 
 ```shell
