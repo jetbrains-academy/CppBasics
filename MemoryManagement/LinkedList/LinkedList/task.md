@@ -78,7 +78,7 @@ We propose an implementation of the list utilizing the idea of
 [_sentinel node_](https://en.wikipedia.org/wiki/Sentinel_node).
 It is a special node that does not hold any useful information itself 
 but is used as a sentry always present in a list.
-This way, we can avoid handling null pointers in еру cases when,
+This way, we can avoid handling null pointers in the cases when,
 for example, we need to add a first node to the list – in such a 
 case, we can just link the node to the sentry.
 
