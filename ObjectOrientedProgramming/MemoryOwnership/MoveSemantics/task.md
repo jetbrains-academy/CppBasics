@@ -5,8 +5,8 @@
 **rvalue** reference represents a temporary or disposable value. It is usually the result of an expression and might not have a named memory location. Rvalues are often short-lived.
 
 #### Move Semantics Overview
-- Efficient Resource Transfer. Move semantics allows the transfer of ownership from one object to another without the need for deep copying. This is especially beneficial for large or resource-intensive objects.
-- [Rvalue References](https://en.cppreference.com/w/cpp/language/rvalue_reference). Move semantics utilize rvalue references (`&&`), which represent temporary objects or objects that are about to be destroyed. Rvalue references to facilitate the efficient transfer of ownership without unnecessary overhead.
+- Efficient Resource Transfer. Move semantics allows the transfer of ownership from one object to another without copying. This is especially beneficial for large or resource-intensive objects.
+- [Rvalue References](https://en.cppreference.com/w/cpp/language/rvalue_reference). Move semantics utilize rvalue references (`&&`), representing temporary objects or objects about to be destroyed. Rvalue references to facilitate the efficient transfer of ownership without unnecessary overhead.
 - [`std::move`](https://en.cppreference.com/w/cpp/utility/move) Function. The `std::move` function is used to convert a lvalue (an object with a name) into a rvalue reference. This is a key tool for explicitly indicating that ownership can be moved.
 
 #### Move Semantics with `std::unique_ptr`
@@ -46,6 +46,6 @@ int main() {
 }
 ```
 
-Move semantics can be useful for a variety of tasks, such as passing a `std::unique_ptr` object to a function that takes ownership of the object, returning a `std::unique_ptr` object from a function and moving a `std::unique_ptr` object from one container to another.
+Move semantics can be helpful for a variety of tasks, such as passing a `std::unique_ptr` object to a function that takes ownership of the object, returning a `std::unique_ptr` object from a function and moving a `std::unique_ptr` object from one container to another.
 
 Implement functions `transfer_ownership` and `swap_ownership` using `std::move()` function, so that the code in main function compiles and runs successfully.

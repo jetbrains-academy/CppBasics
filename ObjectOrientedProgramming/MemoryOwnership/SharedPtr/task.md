@@ -45,4 +45,4 @@ int main() {
 }
 ```
 
-As an exercise, let's develop a system for controlling the number of users in the chat. The user can create a chat (which he automatically enters after creation), join the chat through an invitation from another user, and also exit the chat. We would like to ask you to complete the implementation of the `user` class, as well as the implementation of the `user_count` function, so that the code in the `main` function is executed correctly.
+As an exercise, let's develop a system for controlling the number of users in the chat. The user can create a chat (which he automatically enters after creation), join the chat through another user's invitation, and exit the chat. Please complete the implementation of the user class, as well as the implementation of the user_count function, so that the code in the `main` function is executed correctly.

@@ -2,12 +2,12 @@ C++ contains a tool that provides exclusive ownership semantics. [std::unique_pt
 
 #### Main features about std::unique_ptr ownership model
 - Exclusive ownership. When a dynamically allocated object comes into the possession of `std::unique_ptr`, no `std::unique_ptr` or other smart pointer (which we will cover further) can share ownership of this object.
-- The transfer of ownership takes place through move semantics (they will be discussed in the next step). When a `std::unique_ptr` is moved, the ownership is transferred, and the source `std::unique_ptr` becomes empty (`nullptr`).
+- The transfer of ownership occurs through move semantics (they will be discussed in the next step). When a `std::unique_ptr` is moved, the ownership is transferred, and the source `std::unique_ptr` becomes empty (`nullptr`).
 - Automatic Deallocation. When a `std::unique_ptr` goes out of scope or is explicitly reset, it automatically releases the memory it owns.
 - Support the correct state. `std::unique_ptr` is movable but not copyable. This aligns well with the ownership model, as copying would violate the exclusive ownership semantics.
-- Nullability. `std::unique_ptr` can be in a null state (pointing to no object) by default or after a move operation. This feature allows for representing the absence of an object in a safe and clear way.
+- Nullability. `std::unique_ptr` can be in a null state (pointing to no object) by default or after a move operation. This feature allows for representing the absence of an object safely and clearly.
 
-`std::unique_ptr` prevent memory leaks and double deletion. These two problems often happens when a programmer deals with allocation of a memory himself. `std::unique_ptr` ensures that an object will be deleted when it is no longer needed, even if an exception is thrown, and prevents an object from being deleted more than once. In addition, it slightly improves code readability: `std::unique_ptr` makes it clear which pointer owns an object and which is responsible for deleting it.
+`std::unique_ptr` prevents memory leaks and double deletion. These two problems often happen when a programmer deals with the allocation of memory himself. `std::unique_ptr` ensures that an object will be deleted when it is no longer needed, even if an exception is thrown, and prevents an object from being deleted more than once. In addition, it slightly improves code readability: `std::unique_ptr` makes it clear which pointer owns an object and which is responsible for deleting it.
 
 #### Example of usage of `std::unique_ptr`
 

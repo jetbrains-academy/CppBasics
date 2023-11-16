@@ -4,7 +4,7 @@ To use placement new, you first need to allocate a memory region of the appropri
 
 When you are done with the object, you must explicitly call the destructor and then free the memory region. When working with arrays, you must call the destructor for each object in the array and then free the memory region.
 
-The same storage duration can cover several different lifetimes of objects when using placement new. For example, when you reuse a memory region to construct a new object, the lifetime of the previous object ends, and the lifetime of the new object begins. However, the storage duration of the memory region remains the same.
+The same storage duration can cover several different object lifetimes when using placement new. For example, when you reuse a memory region to construct a new object, the lifetime of the previous object ends, and the lifetime of the new object begins. However, the storage duration of the memory region remains the same.
 
 Here is an example of how to use placement new to construct an integer object in a pre-allocated memory region:
 
@@ -35,7 +35,7 @@ Complete the function using placement new to create `Cat` and `Dog` objects in t
 
 <div class="hint">
 
-Don't forget to multiply the object's size by the loop counter when calculating the offset.
+Remember to multiply the object's size by the loop counter when calculating the offset.
 
 </div>
 
