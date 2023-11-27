@@ -1,0 +1,15 @@
+type: edu
+custom_name: RAII & Copy-Swap Idiom
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false
+  - name: src/dynamic_array.h
+    visible: true
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 80
+        length: 1848
+        placeholder_text: Use the interface given to you in dynamic_array.h

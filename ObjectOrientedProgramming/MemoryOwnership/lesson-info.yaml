@@ -9,3 +9,4 @@ content:
   - SharedPtr
   - WeakPtr
   - SmartPointersSummary
+  - RAIICopySwapIdiom
