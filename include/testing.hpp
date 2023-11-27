@@ -8,7 +8,7 @@
 
 #include <gtest/gtest.h>
 
-#include "scene.hpp"
+#include "point.hpp"
 
 inline void initGen() {
     // fix seed to generate test data deterministically
