@@ -62,13 +62,13 @@ while the `struct` keyword is used to declare POD types.
 Now, with the help of the new collision detection function, 
 your task is to re-implement the behavior of consumable objects.
 - Upon collision with another object, the consumable should change its status into `DESTROYED`.
-- When another object is approaching the consumable, it should change its status into `CONCERNED`.
+- When another object is approaching the consumable, it should change its status into `WARNED`.
   This should happen whenever the distance between another object and consumable is less than `C * r`, where
   - `r` is the radius of consumable object,
   - `C` is a special multiplier constant
 
 ```c++
-const float CONSUMABLE_CONCERNED_MULTIPLIER = 6.0f;
+const float CONSUMABLE_WARNED_MULTIPLIER = 6.0f;
 ```
 
 To do so, please implement the `onCollision` method of `ConsumableObject` class.
@@ -80,7 +80,7 @@ containing the information about the distance between objects
 and whether they actually collided.
 It is up to the method's implementation to decide what to do with this information.
 
-Note that when the consumable object becomes `CONCERNED`, it should eventually 
+Note that when the consumable object becomes `WARNED`, it should eventually 
 change its status back to `NORMAL` when other objects left its nearby area. 
 One way to achieve this is by also modifying the implementation of `update` method. 
 This method is also periodically called from the `Scene` class to give 

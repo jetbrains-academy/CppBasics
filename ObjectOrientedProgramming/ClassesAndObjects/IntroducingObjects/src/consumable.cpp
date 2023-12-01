@@ -28,8 +28,8 @@ void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo
         setStatus(GameObjectStatus::DESTROYED);
         return;
     }
-    if (info.distance < CONSUMABLE_CONCERNED_MULTIPLIER * getCircle().radius) {
-        setStatus(GameObjectStatus::CONCERNED);
+    if (info.distance < CONSUMABLE_WARNED_MULTIPLIER * getCircle().radius) {
+        setStatus(GameObjectStatus::WARNED);
         return;
     }
 }
@@ -38,7 +38,7 @@ const sf::Texture* ConsumableObject::getTexture(TextureManager& textureManager) 
     switch (getStatus()) {
         case GameObjectStatus::NORMAL:
             return textureManager.getTexture(GameTextureID::STAR);
-        case GameObjectStatus::CONCERNED:
+        case GameObjectStatus::WARNED:
             return textureManager.getTexture(GameTextureID::STAR_CONCERNED);
         case GameObjectStatus::DESTROYED:
             return nullptr;

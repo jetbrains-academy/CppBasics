@@ -35,7 +35,7 @@ with the following logic:
 * under `NORMAL` status, the player object should have `PLANET` texture;
 * under `DESTROYED` status, the player object should have `PLANET_DEAD` texture;
 * under `NORMAL` status, the consumable object should have `STAR` texture;
-* under `CONCERNED` status, the consumable object should have `STAR_CONCERNED` texture;
+* under `WARNED` status, the consumable object should have `STAR_CONCERNED` texture;
 * under `DESTROYED` status, the consumable object should not be displayed.
 
 <div class="hint">

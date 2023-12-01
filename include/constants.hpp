@@ -24,6 +24,6 @@ const float CONSUMABLE_START_Y = 150.0f;
 const float ENEMY_START_X = 100.0f;
 const float ENEMY_START_Y = 450.0f;
 
-const float CONSUMABLE_CONCERNED_MULTIPLIER = 6.0f;
+const float CONSUMABLE_WARNED_MULTIPLIER = 6.0f;
 
 #endif // CPPBASICS_CONSTANTS_HPP

@@ -14,12 +14,12 @@ enum class GameObjectKind {
 /**
  * Represents the status of a game object.
  *   - NORMAL - represents a status of an alive object in its normal state.
- *   - CONCERNED - represents a status of an alive object when it is in some dangerous situation,
+ *   - WARNED - represents a status of an alive object when it is in some dangerous situation,
  *      the exact meaning of which depends on the particular kind of the object.
  *   - DESTROYED - represents a status of a destroyed object.
  */
  enum class GameObjectStatus {
-    NORMAL, CONCERNED, DESTROYED,
+    NORMAL, WARNED, DESTROYED,
 };
 
 #endif // CPPBASICS_ENUMS_HPP

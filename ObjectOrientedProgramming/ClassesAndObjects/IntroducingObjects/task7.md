@@ -7,7 +7,7 @@ this task can be accomplished quite easily.
 The enemy object should behave as follows:
 - it should move on a scene in a random direction, changing it periodically; 
 - it should consume the star objects when colliding with them;
-- star objects should change their status into `CONCERNED` when 
+- star objects should change their status into `WARNED` when 
   the enemy object is approaching them 
   (similarly as they do when the player object is approaching);
 - when the enemy object collides with the player object, the latter 
