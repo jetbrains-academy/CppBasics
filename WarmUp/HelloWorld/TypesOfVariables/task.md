@@ -33,7 +33,7 @@ If the variable is uninitialized, then its value before
 the point of its first assignment is *undefined*.
 Uninitialized variables are unpleasant errors
 (also known as *bugs*) in programs.
-Thus, it is very **important** to **always** initialize variables
+Thus, it is very **important** to **always** activate variables
 (there might be some rare exceptions to this rule, 
 which we are not going to discuss now).
 
@@ -57,7 +57,7 @@ of some types are actually initialized by default to some predefined value.
 An example of such type is `std::string`. 
 Variables of this type are initialized with an empty string `""`
 automatically upon declaration, and thus they do not require 
-manual initialization, except if you want to initialize them 
+manual initialization, except if you want to activate them 
 with some other value.
 
 We will learn more about types in C++ later in this course.  

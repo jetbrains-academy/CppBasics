@@ -11,18 +11,27 @@ const int MAX_ENEMY_OBJECTS_ON_SCENE = 4;
 const int NEW_DYNAMIC_OBJECT_PROB = 1;
 const int NEW_ENEMY_OBJECT_PROB = 10;
 
-void DynamicScene::initialize() {
+void DynamicScene::activate() {
     addNewGameObject(GameObjectKind::PLAYER);
 }
 
+void DynamicScene::deactivate() {
+    // remove all the objects from the list
+    objects.remove([&] (const GameObject& object) {
+        return true;
+    });
+}
+
+SceneID DynamicScene::getID() const {
+    return SceneID::DYNAMIC_GAME_FIELD;
+}
+
+SceneID DynamicScene::getNextSceneID() const {
+    return SceneID::DYNAMIC_GAME_FIELD;
+}
+
 void DynamicScene::processEvent(const sf::Event& event) {
-    switch (event.type) {
-        case sf::Event::Closed:
-            close();
-            break;
-        default:
-            break;
-    }
+    return;
 }
 
 void DynamicScene::update(sf::Time delta) {
@@ -121,10 +130,10 @@ std::shared_ptr<GameObject> DynamicScene::addNewGameObject(GameObjectKind kind) 
     return object;
 }
 
-void DynamicScene::draw() {
+void DynamicScene::draw(sf::RenderWindow &window, TextureManager& textureManager) {
     // draw all objects on the scene
-    objects.foreach([this] (const GameObject& object) {
-        Scene::draw(object);
+    objects.foreach([&] (const GameObject& object) {
+        object.draw(window, textureManager);
     });
 }
 

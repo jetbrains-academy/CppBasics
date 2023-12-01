@@ -1,6 +1,24 @@
 #ifndef CPPBASICS_ENUMS_HPP
 #define CPPBASICS_ENUMS_HPP
 
+enum class SceneID {
+    STATIC_GAME_FIELD,
+    DYNAMIC_GAME_FIELD,
+};
+
+/**
+* The enumeration represents the IDs of textures used in the game.
+* These IDs are used to identify specific textures when loading or rendering game graphics.
+*/
+enum class GameTextureID {
+    SPACE,
+    PLANET,
+    PLANET_DEAD,
+    STAR,
+    STAR_CONCERNED,
+    BLACKHOLE,
+    SIZE
+};
 
 /**
  * This enumeration is used to categorize different kinds of game objects.

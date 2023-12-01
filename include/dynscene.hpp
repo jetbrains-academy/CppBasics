@@ -17,9 +17,24 @@ class DynamicScene : public Scene {
 public:
 
     /**
-     * Initializes the scene.
+     * Activates the scene.
      */
-    void initialize() override;
+    void activate() override;
+
+    /**
+     * Deactivates the scene.
+     */
+    void deactivate() override;
+
+    /**
+     * Returns the ID of the scene.
+     */
+    SceneID getID() const override;
+
+    /**
+     * Returns the ID of the next scene to transition into.
+     */
+    SceneID getNextSceneID() const override;
 
     /**
      * Process the given event.
@@ -34,7 +49,7 @@ public:
     /**
      * Draws the scene with all its game objects.
      */
-    void draw() override;
+    void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
 protected:
 

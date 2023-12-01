@@ -1,19 +1,25 @@
 #include "statscene.hpp"
 
-void StaticScene::initialize() {
+void StaticScene::activate() {
     fitInto(player);
     fitInto(consumable);
     fitInto(enemy);
 }
 
+void StaticScene::deactivate() {
+    return;
+}
+
+SceneID StaticScene::getID() const {
+    return SceneID::STATIC_GAME_FIELD;
+}
+
+SceneID StaticScene::getNextSceneID() const {
+    return SceneID::STATIC_GAME_FIELD;
+}
+
 void StaticScene::processEvent(const sf::Event& event) {
-    switch (event.type) {
-        case sf::Event::Closed:
-            close();
-            break;
-        default:
-            break;
-    }
+    return;
 }
 
 void StaticScene::update(sf::Time delta) {
@@ -28,8 +34,9 @@ void StaticScene::update(sf::Time delta) {
     detectCollision(enemy, consumable);
 }
 
-void StaticScene::draw() {
-    Scene::draw(player);
-    Scene::draw(consumable);
-    Scene::draw(enemy);
+void StaticScene::draw(sf::RenderWindow &window, TextureManager& textureManager) {
+    drawBackground(window, textureManager.getTexture(GameTextureID::SPACE));
+    player.draw(window, textureManager);
+    consumable.draw(window, textureManager);
+    enemy.draw(window, textureManager);
 }

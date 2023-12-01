@@ -8,9 +8,10 @@ set(TASK
 set(SRC
         ${TASK}
         src/main.cpp src/utils.cpp
-        src/scene.cpp src/statscene.cpp src/dynscene.cpp src/textures.cpp
-        src/gobject.cpp src/player.cpp src/consumable.cpp src/enemy.cpp
-        src/gobjectlist.cpp
+        src/engine.cpp src/scenes.cpp src/textures.cpp
+        src/scene.cpp src/statscene.cpp src/dynscene.cpp
+        src/gobject.cpp src/gobjectlist.cpp
+        src/player.cpp src/consumable.cpp src/enemy.cpp
         src/collision.cpp src/direction.cpp src/operators.cpp src/rectangle.cpp src/point.cpp)
 
 set(TEST

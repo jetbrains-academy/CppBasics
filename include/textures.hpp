@@ -5,21 +5,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-
-/**
- * The enumeration represents the IDs of textures used in the game.
- * These IDs are used to identify specific textures when loading or rendering game graphics.
- */
- enum class GameTextureID {
-    SPACE,
-    PLANET,
-    PLANET_DEAD,
-    STAR,
-    STAR_CONCERNED,
-    BLACKHOLE,
-    SIZE
-};
-
+#include "enums.hpp"
 
 /**
  * The TextureManager class manages the loading and retrieval of textures for the game.
@@ -33,7 +19,6 @@ public:
      * @return true if the initialization was successful, false otherwise.
      */
     bool initialize();
-
 
     /**
      * Get the texture associated with the specified game texture ID.
