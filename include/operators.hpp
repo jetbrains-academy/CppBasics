@@ -5,6 +5,7 @@
 
 #include "point.hpp"
 #include "circle.hpp"
+#include "rectangle.hpp"
 #include "direction.hpp"
 
 inline std::ostream& operator<<(std::ostream& os, const Point2D& p) {
@@ -35,11 +36,16 @@ inline std::ostream& operator<<(std::ostream& os, Direction direction) {
 }
 
 Point2D operator+(Point2D a, Point2D b);
-
-Point2D operator-(Point2D a);
-
 Point2D operator-(Point2D a, Point2D b);
-
+Point2D operator-(Point2D a);
 Point2D operator*(float s, Point2D a);
+
+Circle operator+(Circle c, Point2D v);
+Circle operator-(Circle c, Point2D v);
+Circle operator*(float s, Circle c);
+
+Rectangle operator+(Rectangle r, Point2D v);
+Rectangle operator-(Rectangle r, Point2D v);
+Rectangle operator*(float s, Rectangle r);
 
 #endif // CPPBASICS_OPERATORS_HPP
