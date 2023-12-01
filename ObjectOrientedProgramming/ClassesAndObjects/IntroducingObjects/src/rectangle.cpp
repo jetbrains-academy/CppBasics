@@ -31,6 +31,5 @@ Rectangle fitInto(const Rectangle& rect, const Rectangle& intoRect) {
     if (rect.botRight.y > intoRect.botRight.y) {
         vector.y += intoRect.botRight.y - rect.botRight.y;
     }
-    // TODO: implement operators for Rectangle (and Circle) ?
-    return { rect.topLeft + vector, rect.botRight + vector };
+    return rect + vector;
 }

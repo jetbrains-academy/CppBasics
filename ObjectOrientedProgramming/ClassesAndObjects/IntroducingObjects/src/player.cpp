@@ -1,7 +1,8 @@
 #include "player.hpp"
 
-#include "direction.hpp"
 #include "constants.hpp"
+#include "direction.hpp"
+#include "operators.hpp"
 
 PlayerObject::PlayerObject()
     : CircleGameObject({ { PLAYER_START_X, PLAYER_START_Y }, RADIUS })

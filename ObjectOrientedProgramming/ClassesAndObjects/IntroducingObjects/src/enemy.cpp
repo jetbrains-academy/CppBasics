@@ -1,7 +1,8 @@
 #include "enemy.hpp"
 
-#include "utils.hpp"
 #include "constants.hpp"
+#include "operators.hpp"
+#include "utils.hpp"
 
 EnemyObject::EnemyObject()
     : CircleGameObject({ { ENEMY_START_X, ENEMY_START_Y }, ENEMY_RADIUS })

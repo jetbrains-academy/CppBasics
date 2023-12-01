@@ -1,6 +1,7 @@
 #include "utils.hpp"
 
 #include <cstdlib>
+#include <algorithm>
 
 // TODO: move `distance` here
 

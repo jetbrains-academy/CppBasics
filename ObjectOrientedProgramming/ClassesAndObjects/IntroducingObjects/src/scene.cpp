@@ -1,6 +1,7 @@
 #include "scene.hpp"
 
 #include "constants.hpp"
+#include "operators.hpp"
 #include "statscene.hpp"
 #include "dynscene.hpp"
 
