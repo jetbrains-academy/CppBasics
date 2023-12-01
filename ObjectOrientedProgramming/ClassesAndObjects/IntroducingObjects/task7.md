@@ -13,7 +13,7 @@ The enemy object should behave as follows:
 - when the enemy object collides with the player object, the latter 
   should change its status into `DESTROYED`, becoming effectively immovable.
 
-Let us proceed to implementation of this behavior.
+Let us proceed to the implementation of this behavior.
 First, take a look at the declaration of the `EnemyObject` class.
 It again inherits from the `CircleGameObject` class, so it already
 has a corresponding circle shape data and behavior attached to it.

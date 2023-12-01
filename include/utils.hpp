@@ -9,6 +9,8 @@ float distance(Point2D a, Point2D b);
 
 float generateFloat(float min, float max);
 
+int generateInt(int min, int max);
+
 bool generateBool(float prob = 0.5f);
 
 Point2D generatePoint(const Rectangle& boundingBox);

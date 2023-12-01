@@ -8,6 +8,10 @@ float generateFloat(float min, float max) {
     return min + (rand() / (RAND_MAX / (max - min)));
 }
 
+int generateInt(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
 bool generateBool(float prob) {
     return generateFloat(0.0f, 1.0f) < prob;
 }
