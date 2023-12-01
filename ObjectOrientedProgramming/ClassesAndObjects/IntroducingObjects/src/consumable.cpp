@@ -21,7 +21,7 @@ void ConsumableObject::update(sf::Time delta) {
 }
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &info) {
-    if (getStatus() == GameObjectStatus::DESTROYED) {
+    if (getStatus() == GameObjectStatus::DESTROYED || object.getKind() == GameObjectKind::CONSUMABLE) {
         return;
     }
     if (info.collide) {
