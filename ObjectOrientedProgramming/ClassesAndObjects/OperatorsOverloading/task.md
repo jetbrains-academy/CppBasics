@@ -100,4 +100,39 @@ float height(const Rectangle& rect) {
 
 Finally, it would be convenient to overload equality comparison operators for all the data types mentioned above.  
 
-[//]: # (TODO: hint about IO streams overloads)
+<div class="hint">
+
+In the C++ language, it is also possible to overload the input/output operators 
+for reading from or writing to the terminal.
+Here is an example of corresponding overloads for the `Point2D` data type:
+
+```c++
+// output operator overload
+std::ostream& operator<<(std::ostream& os, const Point2D& p) {
+    return os << "(" << p.x << ", " << p.y << ")";
+}
+
+// input operator overload
+std::istream& operator>>(std::istream& is, Point2D& p) {
+    return is >> p.x >> p.y;
+}
+```
+
+Notice the arguments of type `std::ostream` and `std::istream` — those are 
+output and input streams respectively.
+We have not yet covered them in this course, that would be a topic of the next lessons.
+For now, however, it is sufficient to know that `std::cout` and `std::cin`
+(which we have seen in previous lessons!) are particular objects of these classes.
+
+Therefore, with the help of the overloads given above, it becomes possible to write the following code:
+```c++
+Point2D point;
+std::cout << "Please enter coordinates of point (x, y)" << std::endl;
+std::cin >> point;
+std::cout << "Your point is " << point << std::endl;
+```
+
+You might find the overloads of the input/output operators 
+for the other data types used in our game in the file `operators.hpp`.
+
+</div>
