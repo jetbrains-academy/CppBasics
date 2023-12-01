@@ -5,8 +5,7 @@
 
 
 /**
- * The PlayerObject class represents a player in the game.
- * It provides additional behavior and properties specific to players.
+ * A class represents a player in the game.
  */
 class PlayerObject : public CircleGameObject {
 public:

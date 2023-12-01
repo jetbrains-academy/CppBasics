@@ -54,7 +54,7 @@ public:
     /**
      * Handler function called when a potential collision occurs between this object and another object.
      *
-     * @param object The collided object.
+     * @param object The potentially collided object.
      * @param info The information about the potential collision.
      */
     virtual void onCollision(const GameObject& object, const CollisionInfo& info) = 0;
@@ -81,13 +81,15 @@ public:
      */
     virtual ~GameObject() = default;
 
-private:
-    friend class Scene;
+protected:
 
     /**
      * Changes the current position of the object.
      */
     virtual void setPosition(Point2D position) = 0;
+
+private:
+    friend class Scene;
 
     /**
      * Moves an object in a direction given by the passed vector.

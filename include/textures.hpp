@@ -5,7 +5,12 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-enum class GameTextureID {
+
+/**
+ * The enumeration represents the IDs of textures used in the game.
+ * These IDs are used to identify specific textures when loading or rendering game graphics.
+ */
+ enum class GameTextureID {
     SPACE,
     PLANET,
     PLANET_DEAD,
@@ -15,11 +20,32 @@ enum class GameTextureID {
     SIZE
 };
 
+
+/**
+ * The TextureManager class manages the loading and retrieval of textures for the game.
+ */
 class TextureManager {
 public:
+
+    /**
+     * Initializes the texture manager.
+     *
+     * @return true if the initialization was successful, false otherwise.
+     */
     bool initialize();
 
+
+    /**
+     * Get the texture associated with the specified game texture ID.
+     *
+     * @param id The ID of the game texture to retrieve.
+     * @return The texture associated with the specified game texture ID.
+     *
+     * @note this method does not transfer the ownership of the texture object,
+     *  since the texture manager itself is the owner of all the textures.
+     */
     const sf::Texture* getTexture(GameTextureID id) const;
+
 private:
     static const size_t SIZE = static_cast<size_t>(GameTextureID::SIZE);
     sf::Texture textures[SIZE];

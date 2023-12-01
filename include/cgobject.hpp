@@ -22,13 +22,6 @@ public:
      */
     Point2D getPosition() const override;
 
-
-    /**
-     * Changes position of the circle's center.
-     */
-    void setPosition(Point2D position) override;
-
-
     /**
      * Returns the current status of the object.
      */
@@ -50,6 +43,11 @@ public:
     void draw(sf::RenderWindow &window, TextureManager& textureManager) const override;
 
 protected:
+
+    /**
+     * Changes position of the circle's center.
+     */
+    void setPosition(Point2D position) override;
 
     /**
      * Changes the current status of the object.

@@ -9,9 +9,16 @@
 #include "gobjectlist.hpp"
 #include "player.hpp"
 
+/**
+ * DynamicScene is a scene capable of managing and updating the list of game objects in the scene:
+ * objects might be added to or removed from the scene dynamically.
+ */
 class DynamicScene : public Scene {
 public:
 
+    /**
+     * Initializes the scene.
+     */
     void initialize() override;
 
     /**
