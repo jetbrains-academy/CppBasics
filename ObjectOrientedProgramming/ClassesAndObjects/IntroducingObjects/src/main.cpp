@@ -1,6 +1,6 @@
-#include "scene.hpp"
+#include "engine.hpp"
 
 int main() {
-    Scene::create()->run();
+    GameEngine::create()->run();
     return 0;
 }

@@ -17,6 +17,11 @@ class DynamicScene : public Scene {
 public:
 
     /**
+     * Constructs the scene.
+     */
+    DynamicScene();
+
+    /**
      * Activates the scene.
      */
     void activate() override;

@@ -1,5 +1,9 @@
 #include "statscene.hpp"
 
+#include "constants.hpp"
+
+StaticScene::StaticScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {}
+
 void StaticScene::activate() {
     fitInto(player);
     fitInto(consumable);

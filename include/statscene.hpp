@@ -17,6 +17,11 @@ class StaticScene : public Scene {
 public:
 
     /**
+     * Constructs the scene.
+     */
+    StaticScene();
+
+    /**
      * Activates the scene.
      */
     void activate() override;

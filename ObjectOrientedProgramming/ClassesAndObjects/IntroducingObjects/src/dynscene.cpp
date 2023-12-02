@@ -1,5 +1,6 @@
 #include "dynscene.hpp"
 
+#include "constants.hpp"
 #include "player.hpp"
 #include "consumable.hpp"
 #include "enemy.hpp"
@@ -10,6 +11,8 @@ const int MAX_ENEMY_OBJECTS_ON_SCENE = 4;
 
 const int NEW_DYNAMIC_OBJECT_PROB = 1;
 const int NEW_ENEMY_OBJECT_PROB = 10;
+
+DynamicScene::DynamicScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {}
 
 void DynamicScene::activate() {
     addNewGameObject(GameObjectKind::PLAYER);
@@ -131,6 +134,8 @@ std::shared_ptr<GameObject> DynamicScene::addNewGameObject(GameObjectKind kind) 
 }
 
 void DynamicScene::draw(sf::RenderWindow &window, TextureManager& textureManager) {
+    // draw background
+    drawBackground(window, textureManager.getTexture(GameTextureID::SPACE));
     // draw all objects on the scene
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
