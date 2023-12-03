@@ -9,12 +9,17 @@ GameEngine::GameEngine()
     : scene(nullptr)
     , active(true)
 {
+    // initialize random number generator
+    srand(time(nullptr));
+    // initialize resource managers
     active &= sceneManager.initialize();
     active &= textureManager.initialize();
     if (!active) {
         return;
     }
+    // set the current scene
     scene = sceneManager.getCurrentScene();
+    // initialize the application window
     Rectangle sceneBox = scene->getBoundingBox();
     window.create(sf::VideoMode(width(sceneBox), height(sceneBox)), "Space Game");
     window.setFramerateLimit(60);
