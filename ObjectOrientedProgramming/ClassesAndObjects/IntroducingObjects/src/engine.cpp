@@ -1,5 +1,7 @@
 #include "engine.hpp"
 
+#include "constants.hpp"
+
 GameEngine *GameEngine::create() {
     static GameEngine engine;
     return &engine;
@@ -20,8 +22,7 @@ GameEngine::GameEngine()
     // set the current scene
     scene = sceneManager.getCurrentScene();
     // initialize the application window
-    Rectangle sceneBox = scene->getBoundingBox();
-    window.create(sf::VideoMode(width(sceneBox), height(sceneBox)), "Space Game");
+    window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Space Game");
     window.setFramerateLimit(60);
 }
 

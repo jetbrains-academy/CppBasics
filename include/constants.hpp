@@ -7,6 +7,9 @@ const float ENEMY_RADIUS = 60.0f;
 
 const float SPEED = 150.0f;
 
+const float WINDOW_WIDTH  = 800.0f;
+const float WINDOW_HEIGHT = 600.0f;
+
 const float SCENE_WIDTH  = 800.0f;
 const float SCENE_HEIGHT = 600.0f;
 
