@@ -42,6 +42,13 @@ public:
      */
     const sf::Texture* getTexture(TextureManager& textureManager) const override;
 
+protected:
+
+    /**
+     * Updates the velocity of an enemy object.
+     */
+    void updateVelocity();
+
 private:
     Point2D velocity;
     sf::Time updateTimer;

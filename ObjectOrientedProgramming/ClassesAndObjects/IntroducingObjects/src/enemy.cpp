@@ -23,6 +23,10 @@ void EnemyObject::update(sf::Time delta) {
     if (updateTimer < sf::seconds(1.0f))
         return;
     updateTimer = sf::milliseconds(0.0f);
+    updateVelocity();
+}
+
+void EnemyObject::updateVelocity() {
     Direction direction1 = static_cast<Direction>(generateInt(0, 3));
     Direction direction2 = static_cast<Direction>(generateInt(0, 3));
     Point2D directionVector = (direction1 == direction2)
