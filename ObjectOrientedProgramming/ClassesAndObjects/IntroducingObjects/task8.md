@@ -5,17 +5,17 @@ in terms of object-oriented programming.
 Before proceeding with this task, please first finish the `Ownership` module,
 as we will need some concepts taught there.
 
-First of all, instead of completely rewriting the `StaticScene` class,
-we will just add a new class --- `DynamicScene`, where we will implement the new dynamic functionality.
+First of all, instead of completely rewriting the `GameplayStaticScene` class,
+we will just add a new class --- `GameplayDynamicScene`, where we will implement the new dynamic functionality.
 
 [//]: # (Then switching between the two `Scene` implementations will be quite easy --- )
 [//]: # (TODO: describe the actual scene-switching logic once it will be settled.)
 
-Please have a look at the declaration of the `DynamicScene` class (file `dynscene.hpp`),
+Please have a look at the declaration of the `GameplayDynamicScene` class (file `dynscene.hpp`),
 and its definition (file `dynscene.cpp`).
 You can find the brief description of its methods in the documentation comments.
 
-The `DynamicScene` class has a field `objects` of `GameObjectList` class.
+The `GameplayDynamicScene` class has a field `objects` of `GameObjectList` class.
 This is the main class we are going to work with in this task — it will implement the doubly linked list
 (its declaration and definition can be found in the files `gobjectlist.hpp` and `gobjectlist.cpp` respectively).
 

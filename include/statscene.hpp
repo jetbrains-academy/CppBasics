@@ -13,13 +13,13 @@
  * StaticScene is a scene operating a static fixed collection of game objects,
  * namely single player, single consumable, and single enemy objects.
  */
-class StaticScene : public Scene {
+class GameplayStaticScene : public Scene {
 public:
 
     /**
      * Constructs the scene.
      */
-    StaticScene();
+    GameplayStaticScene();
 
     /**
      * Activates the scene.

@@ -2,7 +2,7 @@ The `Scene` class is an _abstract class_ too —
 it has pure virtual methods and thus cannot be instantiated.
 This gives us the flexibility of having different implementations of the `Scene` class.
 
-One such implementation is given by the `StaticScene` subclass
+One such implementation is given by the `GameplayStaticScene` subclass
 (see files `statscene.hpp` and `statscene.cpp`).
 This scene implementation is called static because it contains only
 static predefined number of game objects: single player object and single consumable object.
@@ -32,7 +32,7 @@ Scene* scene = Scene::create();
 Static members provide a convenient way to associate some methods or data fields with the class itself.
 For example, the `create` method shown above provides an ability to instantiate 
 the scene object, without revealing the actual implementation to the user of the method
-(note that it returns `Scene*` instead of `StaticScene*`).
+(note that it returns `Scene*` instead of `GameplayStaticScene*`).
 Moreover, it gives us a way to ensure that only one scene is created per each game run. 
 How we can achieve that — well, with the help of the `static` modifier again.
 
@@ -56,7 +56,7 @@ std::cout << foo() << std::endl;
 ```
 
 With the help of the `static` modifier, it becomes possible to
-declare static `StaticScene` variable inside `Scene::create` method 
+declare static `GameplayStaticScene` variable inside `Scene::create` method 
 and return pointer to this variable.
 
 <div class="hint">

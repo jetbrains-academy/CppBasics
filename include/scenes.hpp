@@ -35,8 +35,7 @@ public:
     void transitionScene(SceneID id);
 
 private:
-    // StaticScene staticScene;
-    DynamicScene dynamicScene;
+    GameplayStaticScene staticScene;
 };
 
 

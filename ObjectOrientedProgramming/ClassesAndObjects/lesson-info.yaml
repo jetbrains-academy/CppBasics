@@ -1,6 +1,7 @@
 type: framework
 custom_name: Classes And Objects
 content:
-  - OperatorsOverloading
-  - IntroducingObjects
+- Introduction
+- OperatorsOverloading
+- IntroducingObjects
 is_template_based: false

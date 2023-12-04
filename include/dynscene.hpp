@@ -13,13 +13,13 @@
  * DynamicScene is a scene capable of managing and updating the list of game objects in the scene:
  * objects might be added to or removed from the scene dynamically.
  */
-class DynamicScene : public Scene {
+class GameplayDynamicScene : public Scene {
 public:
 
     /**
      * Constructs the scene.
      */
-    DynamicScene();
+    GameplayDynamicScene();
 
     /**
      * Activates the scene.
