@@ -1,24 +1,46 @@
 type: edu
 custom_name: Operators Overloading
 files:
+- name: src/main.cpp
+  visible: true
+  editable: false
+- name: src/engine.cpp
+  visible: true
+- name: src/scenes.cpp
+  visible: true
+- name: src/textures.cpp
+  visible: true
+- name: src/scene.cpp
+  visible: true
+- name: src/statscene.cpp
+  visible: true
+- name: src/dynscene.cpp
+  visible: true
+- name: src/gobject.cpp
+  visible: true
+- name: src/gobjectlist.cpp
+  visible: true
+- name: src/cgobject.cpp
+  visible: true
+- name: src/player.cpp
+  visible: true
+- name: src/consumable.cpp
+  visible: true
+- name: src/enemy.cpp
+  visible: true
+- name: src/collision.cpp
+  visible: true
+- name: src/direction.cpp
+  visible: true
+- name: src/rectangle.cpp
+  visible: true
+- name: src/point.cpp
+  visible: true
+- name: src/operators.cpp
+  visible: true
+- name: src/utils.cpp
+  visible: true
 - name: CMakeLists.txt
   visible: false
 - name: test/test.cpp
   visible: false
-- name: src/operators.cpp
-  visible: true
-  placeholders:
-  - offset: 67
-    length: 17
-    placeholder_text: "return { 0.0f, 0.0f };"
-  - offset: 123
-    length: 22
-    placeholder_text: "return { 0.0f, 0.0f, };"
-  - offset: 195
-    length: 18
-    placeholder_text: "return { 0.0f, 0.0f, };"
-  - offset: 261
-    length: 17
-    placeholder_text: "return { 0.0f, 0.0f, };"
-- name: src/point.cpp
-  visible: true
