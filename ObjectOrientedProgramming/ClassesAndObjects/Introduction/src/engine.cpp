@@ -28,13 +28,22 @@ GameEngine::GameEngine()
 
 void GameEngine::run() {
     sf::Clock clock;
-    while (active && window.isOpen()) {
+    while (isActive()) {
         sf::Time delta = clock.restart();
         processInput();
         update(delta);
         render();
         sceneTransition();
     }
+}
+
+bool GameEngine::isActive() const {
+    return active && window.isOpen();
+}
+
+void GameEngine::close() {
+    active = false;
+    window.close();
 }
 
 void GameEngine::processInput() {
@@ -77,9 +86,4 @@ void GameEngine::resizeWindow() {
     Rectangle sceneBox = scene->getBoundingBox();
     sf::Vector2u sceneSize = sf::Vector2u(width(sceneBox), height(sceneBox));
     window.setSize(sceneSize);
-}
-
-void GameEngine::close() {
-    active = false;
-    window.close();
 }

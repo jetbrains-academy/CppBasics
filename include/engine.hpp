@@ -29,6 +29,18 @@ public:
      */
     void run();
 
+    /**
+     * Checks if the game engine is active and the application window is open.
+     *
+     * @return true if engine is active, false otherwise.
+     */
+    bool isActive() const;
+
+    /**
+     * Closes the game engine, forcing it to exit its running loop and close the application window.
+     */
+    void close();
+
 private:
 
     /**
@@ -74,11 +86,6 @@ private:
      * Resizes the game window to fit the current scene into it.
      */
     void resizeWindow();
-
-    /**
-     * Closes the game, forcing it to exit its running loop.
-     */
-    void close();
 
     sf::RenderWindow window;
     SceneManager sceneManager;
