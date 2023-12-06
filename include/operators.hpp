@@ -7,6 +7,7 @@
 #include "circle.hpp"
 #include "rectangle.hpp"
 #include "direction.hpp"
+#include "enums.hpp"
 
 Point2D operator+(Point2D a, Point2D b);
 Point2D operator-(Point2D a, Point2D b);
@@ -62,6 +63,23 @@ inline std::string to_string(Direction direction) {
 
 inline std::ostream& operator<<(std::ostream& os, Direction direction) {
     return os << to_string(direction);
+}
+
+inline std::string to_string(GameObjectStatus status) {
+    switch (status) {
+        case GameObjectStatus::NORMAL:
+            return "GameObjectStatus::NORMAL";
+        case GameObjectStatus::WARNED:
+            return "GameObjectStatus::WARNED";
+        case GameObjectStatus::DESTROYED:
+            return "GameObjectStatus::DESTROYED";
+        default:
+            return "";
+    }
+}
+
+inline std::ostream& operator<<(std::ostream& os, GameObjectStatus status) {
+    return os << to_string(status);
 }
 
 #endif // CPPBASICS_OPERATORS_HPP

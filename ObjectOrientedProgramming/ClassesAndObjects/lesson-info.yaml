@@ -4,4 +4,5 @@ content:
 - Introduction
 - OperatorsOverloading
 - IntroducingObjects
+- Inheritance
 is_template_based: false
