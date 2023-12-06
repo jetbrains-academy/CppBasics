@@ -43,13 +43,13 @@ The harder part is to implement the collision behavior.
 When an enemy object collides with the player object, the player object should become inactive.
 This can be achieved by setting the status of the player object to `DESTROYED`.
 However, an enemy object does not have direct access to the `setStatus` method of the player object.
-So in order to implement the desired behavior, you actually need to 
+To implement the desired behavior, you actually need to 
 modify the `onCollision` method of the `PlayerObject` class, not the `EnemyObject` class!
 
 <div class="hint">
 
 In the implementation of the `PlayerObject::onCollision` method, 
-do not forget to check that the collision occurred with the enemy object,
+remember to check that the collision occurred with the enemy object,
 not an object of some other kind!
 
 </div>

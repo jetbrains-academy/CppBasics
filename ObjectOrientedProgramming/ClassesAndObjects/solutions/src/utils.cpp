@@ -1,14 +1,9 @@
 #include "utils.hpp"
 
 #include <cstdlib>
-#include <cmath>
 #include <algorithm>
 
-float distance(Point2D a, Point2D b) {
-    float dx = a.x - b.x;
-    float dy = a.y - b.y;
-    return sqrt(dx * dx + dy * dy);
-}
+// TODO: move `distance` here
 
 float generateFloat(float min, float max) {
     return min + (rand() / (RAND_MAX / (max - min)));
@@ -34,6 +29,7 @@ Circle generateCircle(float radius, const Rectangle& boundingBox) {
     if (radius > std::min(width(boundingBox), height(boundingBox))) {
         return circle;
     }
+    // TODO: replace with rectangle arithmetics operators?
     circle.center.x = generateFloat(
         boundingBox.topLeft.x + radius,
         boundingBox.botRight.x - radius
@@ -44,8 +40,4 @@ Circle generateCircle(float radius, const Rectangle& boundingBox) {
     );
     circle.radius = radius;
     return circle;
-}
-
-Rectangle generateRectangle(const Rectangle& boundingBox) {
-    return createRectangle(generatePoint(boundingBox), generatePoint(boundingBox));
 }

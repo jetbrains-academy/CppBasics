@@ -30,6 +30,8 @@ It is another predefined by us class — it is responsible for loading the textu
 A pointer to a texture can be requested by calling the `getTexture` method of the `TextureManager` class.
 It takes as argument the ID of the textures — these IDs are represented by the `GameTextureID` enum.
 
+[//]: # (TODO: explain difference between `enum` and `enum class`)
+
 Please implement the `getTexture` methods of the `PlayerObject` and `ConsumableObject` 
 with the following logic:
 * under `NORMAL` status, the player object should have `PLANET` texture;
@@ -45,10 +47,8 @@ consult the documentation of the `GameObject`'s `getTexture` method.
 
 </div>
 
-In order to implement this method, you will have to call 
-the `getTexture` method of the `TextureManager` class. 
-In order to do that, use the dot syntax `.` — the same syntax as the one used 
-to access fields of a structure:
+To implement this method, you will have to call the `getTexture` method of the `TextureManager` class. 
+To do so use the dot syntax `.` — the same syntax as the one used to access fields of a structure:
 
 ```c++
 const sf::Texture* texture = textureManaged.getTexture(id);

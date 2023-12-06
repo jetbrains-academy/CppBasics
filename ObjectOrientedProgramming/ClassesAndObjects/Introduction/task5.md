@@ -57,7 +57,7 @@ std::cout << foo() << std::endl;
 
 With the help of the `static` modifier, it becomes possible to
 declare static `GameplayStaticScene` variable inside `Scene::create` method 
-and return pointer to this variable.
+and return a pointer to this variable.
 
 <div class="hint">
 

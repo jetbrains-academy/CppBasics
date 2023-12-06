@@ -15,32 +15,13 @@ Point2D ConsumableObject::getVelocity() const {
 }
 
 void ConsumableObject::update(sf::Time delta) {
-    if (getStatus() != GameObjectStatus::DESTROYED) {
-        setStatus(GameObjectStatus::NORMAL);
-    }
+    // TODO: write your solution here
 }
 
 void ConsumableObject::onCollision(const GameObject &object, const CollisionInfo &info) {
-    if (getStatus() == GameObjectStatus::DESTROYED || object.getKind() == GameObjectKind::CONSUMABLE) {
-        return;
-    }
-    if (info.collide) {
-        setStatus(GameObjectStatus::DESTROYED);
-        return;
-    }
-    if (info.distance < CONSUMABLE_WARNED_MULTIPLIER * getCircle().radius) {
-        setStatus(GameObjectStatus::WARNED);
-        return;
-    }
+    // TODO: write your solution here
 }
 
 const sf::Texture* ConsumableObject::getTexture(TextureManager& textureManager) const {
-    switch (getStatus()) {
-        case GameObjectStatus::NORMAL:
-            return textureManager.getTexture(GameTextureID::STAR);
-        case GameObjectStatus::WARNED:
-            return textureManager.getTexture(GameTextureID::STAR_CONCERNED);
-        case GameObjectStatus::DESTROYED:
-            return nullptr;
-    }
+    // TODO: write your solution here
 }

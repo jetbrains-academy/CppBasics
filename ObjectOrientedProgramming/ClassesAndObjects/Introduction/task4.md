@@ -7,10 +7,9 @@ In essence, it is a working horse of our simple game engine.
 Let us have a look at the declaration of the `Scene` class.
 This class is pretty packed — it includes both regular and virtual methods
 as well as some data fields.
-For the details on the meaning of these class' methods, we refer to their documentation.
+For the details on the meaning of these methods, we refer to their documentation.
 
-What is more interesting — the `Scene` class groups its members into three sections:
-`public`, `protected`, and `private`.
+The `Scene` class groups its members into three sections: `public`, `protected`, and `private`.
 Let us finally decipher their meaning!
 
 With the help of these _visibility modifiers_,
@@ -32,8 +31,8 @@ what fields and methods can the clients of the class access.
 
 [//]: # (TODO: add a note about visibility-inheritance modifier)
 
-You might be wondering what is the point of hiding some of 
-the class' field or methods — after all, they can be useful outside.
+You might be wondering what is the point of hiding some fields or methods of the class — 
+after all, they can be useful outside.
 However, the ability to hide some of the object's _implementation details_
 gains the objects an ultimate control over their internal state.
 
@@ -42,7 +41,7 @@ Encapsulation allows the developer of a class to maintain the _invariants_ on ob
 ensuring that objects of this class always remain in some valid state.
 
 Let us explain this on the example of the `Scene` class.
-Among other things, this class is responsible for keeping on the game objects appearing on the scene.
+Among other things, this class is responsible for storing the game objects appearing on the scene.
 One useful invariant that `Scene` class may enforce is that all of its game objects are lay within the scene's borders.
 But if the `GameObject` class provides a `public` method to change object's position (i.e. `setPosition`),
 then the `Scene` object has no means to guarantee this property.
@@ -55,7 +54,7 @@ the developer of a class may enforce various useful invariants on the state of a
 
 Mastering the invariants of classes and controlling the visibility of their members is 
 a skill that comes with the experience. The more complex applications you will architect and develop, 
-the better you will become at designing classes, their invariants.  
+the better you will become at designing classes and their invariants.  
 
 To consolidate the material of this step, please 
 implement the following two methods of the `Scene` class.
@@ -68,7 +67,7 @@ void move(GameObject& object, Point2D vector);
 You need to guarantee the invariant of the `Scene` class we discussed above —
 the objects of the scene should remain within its borders.
 
-In order to implement these methods, you have to use 
+To implement these methods, you have to use 
 corresponding methods of the `GameObject` class, 
 as well as another method the `Scene` class — the `fitInto` method.
 This method adjusts the position of an object to fit into the `Scene` borders.

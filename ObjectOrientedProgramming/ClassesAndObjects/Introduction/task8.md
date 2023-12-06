@@ -8,9 +8,6 @@ as we will need some concepts taught there.
 First of all, instead of completely rewriting the `GameplayStaticScene` class,
 we will just add a new class --- `GameplayDynamicScene`, where we will implement the new dynamic functionality.
 
-[//]: # (Then switching between the two `Scene` implementations will be quite easy --- )
-[//]: # (TODO: describe the actual scene-switching logic once it will be settled.)
-
 Please have a look at the declaration of the `GameplayDynamicScene` class (file `dynscene.hpp`),
 and its definition (file `dynscene.cpp`).
 You can find the brief description of its methods in the documentation comments.
@@ -95,7 +92,7 @@ we used a single sentinel node to simplify the implementation of some list opera
 Moreover, under the hood the list was organized into a cyclic list:
 the `next` field of the last node was pointing the first (sentinel) node.
 This time we cannot reuse this trick, since a cyclic list would result into ownership cycle.
-Therefore, we would need two sentinel nodes — one as a first node, and second as a last node.
+Therefore, we would need two sentinel nodes — one as the first node, and the second as a last node.
 
 Please take a look at the pre-defined methods `foreach` and `remove` of the list
 that utilize this list representation:
@@ -110,7 +107,7 @@ We will have a closer look at this type in the later modules of the course.
 
 </div>
 
-Now, please implement the method inserting a game object into the beginning of the list:
+Now, please implement the method for inserting a game object into the beginning of the list:
 
 ```c++
 void insert(const std::shared_ptr<GameObject>& object);

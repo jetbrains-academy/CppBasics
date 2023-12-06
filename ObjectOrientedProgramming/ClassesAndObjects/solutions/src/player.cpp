@@ -36,11 +36,19 @@ void PlayerObject::update(sf::Time delta) {
     return;
 }
 
-const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
-    // TODO: write your solution here
-    return nullptr;
+void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &info) {
+    if (info.collide && object.getKind() == GameObjectKind::ENEMY) {
+        setStatus(GameObjectStatus::DESTROYED);
+    }
 }
 
-void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &info) {
-    // TODO: write your solution here
+const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) const {
+    switch (getStatus()) {
+        case GameObjectStatus::NORMAL:
+            return textureManager.getTexture(GameTextureID::PLANET);
+        case GameObjectStatus::DESTROYED:
+            return textureManager.getTexture(GameTextureID::PLANET_DEAD);
+        default:
+            return nullptr;
+    }
 }

@@ -1,15 +1,24 @@
 #include "gobjectlist.hpp"
 
 void GameObjectList::link(GameObjectList::Node *cursor, std::unique_ptr<Node> &&node) {
-    // TODO: write your solution here
+    cursor->next->prev = node.get();
+    node->next = std::move(cursor->next);
+    node->prev = cursor;
+    cursor->next = std::move(node);
 }
 
 void GameObjectList::unlink(GameObjectList::Node *node) {
-    // TODO: write your solution here
+    node->next->prev = node->prev;
+    node->prev->next = std::move(node->next);
 }
 
 void GameObjectList::insert(const std::shared_ptr<GameObject> &object) {
-    // TODO: write your solution here
+    if (!object) {
+        return;
+    }
+    std::unique_ptr<Node> node = std::make_unique<Node>();
+    node->object = object;
+    link(head.get(), std::move(node));
 }
 
 void GameObjectList::remove(const std::function<bool(const GameObject &)> &pred) {
@@ -32,23 +41,34 @@ void GameObjectList::foreach(const std::function<void (GameObject&)>& apply) {
 }
 
 GameObjectList::GameObjectList() {
-    // TODO: write your solution here
+    head = std::make_unique<Node>();
+    head->next = std::make_unique<Node>();
+    tail = head->next.get();
+    tail->prev = head.get();
 }
 
 GameObjectList::GameObjectList(const GameObjectList &other) : GameObjectList() {
-    // TODO: write your solution here
+    Node* cursor = head.get();
+    Node* curr = other.head->next.get();
+    while (curr != other.tail) {
+        link(cursor, std::make_unique<Node>());
+        cursor = cursor->next.get();
+        cursor->object = curr->object;
+        curr = curr->next.get();
+    }
 }
 
 GameObjectList::GameObjectList(GameObjectList &&other) noexcept : GameObjectList() {
-    // TODO: write your solution here
+    swap(*this, other);
 }
 
 GameObjectList &GameObjectList::operator=(GameObjectList other) {
-    // TODO: write your solution here
+    swap(*this, other);
     return *this;
 }
 
 void swap(GameObjectList& first, GameObjectList& second) {
     using std::swap;
-    // TODO: write your solution here
+    swap(first.head, second.head);
+    swap(first.tail, second.tail);
 }

@@ -82,20 +82,17 @@ public:
     virtual ~GameObject() = default;
 
 protected:
+    friend class Scene;
 
     /**
      * Changes the current position of the object.
      */
     virtual void setPosition(Point2D position) = 0;
 
-private:
-    friend class Scene;
-
     /**
      * Moves an object in a direction given by the passed vector.
      */
     void move(Point2D vector);
-
 };
 
 

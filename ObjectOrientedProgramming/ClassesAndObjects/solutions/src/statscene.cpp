@@ -31,8 +31,8 @@ void GameplayStaticScene::update(sf::Time delta) {
     consumable.update(delta);
     enemy.update(delta);
     move(player, delta);
-    move(consumable, delta);
     move(enemy, delta);
+    move(consumable, delta);
     detectCollision(player, consumable);
     detectCollision(enemy, player);
     detectCollision(enemy, consumable);

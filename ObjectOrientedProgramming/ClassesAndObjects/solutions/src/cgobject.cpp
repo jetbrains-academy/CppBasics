@@ -8,23 +8,23 @@ CircleGameObject::CircleGameObject(Circle circle)
 {}
 
 Point2D CircleGameObject::getPosition() const {
-    // TODO: write your solution here
+    return circle.center;
 }
 
 void CircleGameObject::setPosition(Point2D position) {
-    // TODO: write your solution here
+    circle.center = position;
 }
 
 GameObjectStatus CircleGameObject::getStatus() const {
-    // TODO: write your solution here
+    return status;
 }
 
 void CircleGameObject::setStatus(GameObjectStatus newStatus) {
-    // TODO: write your solution here
+    status = newStatus;
 }
 
 Circle CircleGameObject::getCircle() const {
-    // TODO: write your solution here
+    return circle;
 }
 
 Rectangle CircleGameObject::getBoundingBox() const {
