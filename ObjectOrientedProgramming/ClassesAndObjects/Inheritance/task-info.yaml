@@ -1,5 +1,7 @@
 type: edu
 files:
+- name: src/cgobject.cpp
+  visible: true
 - name: src/main.cpp
   visible: true
   editable: false
@@ -13,11 +15,19 @@ files:
   visible: true
 - name: src/statscene.cpp
   visible: true
+- name: src/dynscene.cpp
+  visible: true
+- name: src/gobject.cpp
+  visible: true
+- name: src/gobjectlist.cpp
+  visible: true
 - name: src/player.cpp
   visible: true
 - name: src/consumable.cpp
   visible: true
 - name: src/enemy.cpp
+  visible: true
+- name: src/collision.cpp
   visible: true
 - name: src/direction.cpp
   visible: true
@@ -31,15 +41,5 @@ files:
   visible: true
 - name: CMakeLists.txt
   visible: false
-- name: src/gobject.cpp
-  visible: true
 - name: test/test.cpp
   visible: false
-- name: src/cgobject.cpp
-  visible: true
-- name: src/dynscene.cpp
-  visible: true
-- name: src/collision.cpp
-  visible: true
-- name: src/gobjectlist.cpp
-  visible: true
