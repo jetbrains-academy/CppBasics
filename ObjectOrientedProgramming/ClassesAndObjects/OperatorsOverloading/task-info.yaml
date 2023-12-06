@@ -1,6 +1,8 @@
 type: edu
 custom_name: Operators Overloading
 files:
+- name: src/operators.cpp
+  visible: true
 - name: src/main.cpp
   visible: true
   editable: false
@@ -35,8 +37,6 @@ files:
 - name: src/rectangle.cpp
   visible: true
 - name: src/point.cpp
-  visible: true
-- name: src/operators.cpp
   visible: true
 - name: src/utils.cpp
   visible: true

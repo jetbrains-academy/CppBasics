@@ -8,11 +8,13 @@
 #include "testscene.hpp"
 #include "testing.hpp"
 
+testing::Environment* const env =
+    testing::AddGlobalTestEnvironment(new TestEnvironment);
+
 const float MIN = -10e3;
 const float MAX = 10e3;
 
 const Rectangle generateArea = { { MIN, MIN }, { MAX, MAX } };
-
 
 std::string move_error_msg(GameObject* object, Point2D vector, Point2D expected, Point2D actual) {
     std::ostringstream stream;
@@ -45,7 +47,7 @@ TEST(MoveTest, MoveTest0) {
             TestGameObject expected = object;
             TestGameObject actual = object;
             Point2D vector0 = Point2D { 0.0f, 0.0f };
-            object.performMove(vector0);
+            actual.performMove(vector0);
             ASSERT_FLOAT_EQ(expected.getPosition().x, actual.getPosition().x)
                                 << move_error_msg(&object, vector0, expected.getPosition(), actual.getPosition());
             ASSERT_FLOAT_EQ(expected.getPosition().y, actual.getPosition().y)
@@ -73,7 +75,7 @@ TEST(MoveTest, MoveTestRandom) {
             TestGameObject expected = object;
             expected.setPosition(expected.getPosition() + vector);
             TestGameObject actual = object;
-            object.performMove(vector);
+            actual.performMove(vector);
             ASSERT_FLOAT_EQ(expected.getPosition().x, actual.getPosition().x)
                 << move_error_msg(&object, vector, expected.getPosition(), actual.getPosition());
             ASSERT_FLOAT_EQ(expected.getPosition().y, actual.getPosition().y)

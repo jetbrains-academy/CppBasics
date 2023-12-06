@@ -1,6 +1,8 @@
 type: edu
 custom_name: Introducing Objects
 files:
+- name: src/gobject.cpp
+  visible: true
 - name: src/main.cpp
   visible: true
   editable: false
@@ -15,8 +17,6 @@ files:
 - name: src/statscene.cpp
   visible: true
 - name: src/dynscene.cpp
-  visible: true
-- name: src/gobject.cpp
   visible: true
 - name: src/gobjectlist.cpp
   visible: true
