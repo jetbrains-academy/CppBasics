@@ -21,5 +21,5 @@ add_executable(${PROJECT_NAME}-run ${SRC})
 prepare_sfml_framework_lesson_task(
         "${CMAKE_CURRENT_SOURCE_DIR}/.."
         ${PROJECT_NAME}-run
-        ${PROJECT_NAME}-test
+        ""
 )
