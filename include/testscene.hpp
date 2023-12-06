@@ -3,6 +3,8 @@
 
 #include "gobject.hpp"
 #include "cgobject.hpp"
+#include "player.hpp"
+#include "consumable.hpp"
 #include "scene.hpp"
 
 class TestGameObject : public GameObject {
@@ -125,6 +127,40 @@ public:
 private:
     Point2D velocity;
     GameObjectKind kind;
+};
+
+class TestPlayerObject : public PlayerObject {
+public:
+
+    inline TestPlayerObject() : PlayerObject() {}
+
+    TestPlayerObject(const TestPlayerObject& other) = default;
+    TestPlayerObject& operator=(const TestPlayerObject& other) = default;
+
+    void performSetPosition(Point2D position) {
+        setPosition(position);
+    }
+
+    void performSetStatus(GameObjectStatus status) {
+        setStatus(status);
+    }
+};
+
+class TestConsumableObject : public ConsumableObject {
+public:
+
+    inline TestConsumableObject() : ConsumableObject() {}
+
+    TestConsumableObject(const TestConsumableObject& other) = default;
+    TestConsumableObject& operator=(const TestConsumableObject& other) = default;
+
+    void performSetPosition(Point2D position) {
+        setPosition(position);
+    }
+
+    void performSetStatus(GameObjectStatus status) {
+        setStatus(status);
+    }
 };
 
 #endif //CPPBASICS_TESTSCENE_HPP

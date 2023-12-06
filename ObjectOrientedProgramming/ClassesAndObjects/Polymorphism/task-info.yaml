@@ -1,6 +1,8 @@
 type: edu
 files:
-- name: src/cgobject.cpp
+- name: src/player.cpp
+  visible: true
+- name: src/consumable.cpp
   visible: true
 - name: src/main.cpp
   visible: true
@@ -21,9 +23,7 @@ files:
   visible: true
 - name: src/gobjectlist.cpp
   visible: true
-- name: src/player.cpp
-  visible: true
-- name: src/consumable.cpp
+- name: src/cgobject.cpp
   visible: true
 - name: src/enemy.cpp
   visible: true
