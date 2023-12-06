@@ -17,4 +17,6 @@ Point2D generatePoint(const Rectangle& boundingBox);
 
 Circle generateCircle(float radius, const Rectangle& boundingBox);
 
+Rectangle generateRectangle(const Rectangle& boundingBox);
+
 #endif // CPPBASICS_UTILS_HPP

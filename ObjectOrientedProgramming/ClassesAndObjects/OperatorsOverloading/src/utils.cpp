@@ -34,7 +34,6 @@ Circle generateCircle(float radius, const Rectangle& boundingBox) {
     if (radius > std::min(width(boundingBox), height(boundingBox))) {
         return circle;
     }
-    // TODO: replace with rectangle arithmetics operators?
     circle.center.x = generateFloat(
         boundingBox.topLeft.x + radius,
         boundingBox.botRight.x - radius
@@ -45,4 +44,8 @@ Circle generateCircle(float radius, const Rectangle& boundingBox) {
     );
     circle.radius = radius;
     return circle;
+}
+
+Rectangle generateRectangle(const Rectangle& boundingBox) {
+    return createRectangle(generatePoint(boundingBox), generatePoint(boundingBox));
 }
