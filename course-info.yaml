@@ -59,6 +59,7 @@ If you have already used your trial license before, please contact us at
 programming_language: C/C++
 environment: GoogleTest
 content:
-- WarmUp
-- MemoryManagement
-- ObjectOrientedProgramming
+  - WarmUp
+  - MemoryManagement
+  - ObjectOrientedProgramming
+  - StandardLibraryEssentials
