@@ -4,7 +4,6 @@
 
 #include "gobject.hpp"
 #include "textures.hpp"
-#include "operators.hpp"
 
 #include "testscene.hpp"
 #include "testing.hpp"

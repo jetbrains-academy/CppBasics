@@ -20,6 +20,11 @@ inline float height(const Rectangle& rect) {
     return rect.botRight.y - rect.topLeft.y;
 }
 
+inline bool isInRectangle(Point2D p, const Rectangle& rect) {
+    return (rect.topLeft.x <= p.x)  && (rect.topLeft.y <= p.y)  &&
+           (p.x <= rect.botRight.x) && (p.y <= rect.botRight.y);
+}
+
 Point2D center(const Rectangle& rect);
 
 Rectangle createRectangle(Point2D p1, Point2D p2);

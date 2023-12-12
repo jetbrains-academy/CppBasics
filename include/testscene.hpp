@@ -137,11 +137,11 @@ public:
     TestPlayerObject(const TestPlayerObject& other) = default;
     TestPlayerObject& operator=(const TestPlayerObject& other) = default;
 
-    void performSetPosition(Point2D position) {
+    inline void performSetPosition(Point2D position) {
         setPosition(position);
     }
 
-    void performSetStatus(GameObjectStatus status) {
+    inline void performSetStatus(GameObjectStatus status) {
         setStatus(status);
     }
 };
@@ -154,12 +154,43 @@ public:
     TestConsumableObject(const TestConsumableObject& other) = default;
     TestConsumableObject& operator=(const TestConsumableObject& other) = default;
 
-    void performSetPosition(Point2D position) {
+    inline void performSetPosition(Point2D position) {
         setPosition(position);
     }
 
-    void performSetStatus(GameObjectStatus status) {
+    inline void performSetStatus(GameObjectStatus status) {
         setStatus(status);
+    }
+};
+
+class TestScene : public Scene {
+public:
+
+    inline TestScene(float width, float height) : Scene(width, height) {}
+
+    inline void activate() override {}
+    inline void deactivate() override {}
+
+    inline SceneID getID() const override {
+        return SceneID::DYNAMIC_GAME_FIELD;
+    }
+
+    inline SceneID getNextSceneID() const override {
+        return SceneID::DYNAMIC_GAME_FIELD;
+    }
+
+    inline void processEvent(const sf::Event& event) override {}
+
+    inline void update(sf::Time delta) override {}
+
+    inline void draw(sf::RenderWindow &window, TextureManager& textureManager) override {}
+
+    inline void performSetObjectPosition(GameObject& object, Point2D position) {
+        setObjectPosition(object, position);
+    }
+
+    inline void performMove(GameObject& object, Point2D vector) {
+        move(object, vector);
     }
 };
 
