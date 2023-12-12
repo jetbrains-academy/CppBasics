@@ -1,4 +1,5 @@
 type: edu
+custom_name: Inheritance
 files:
 - name: src/cgobject.cpp
   visible: true

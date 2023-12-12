@@ -1,6 +1,7 @@
 type: edu
+custom_name: Encapsulation
 files:
-- name: src/consumable.cpp
+- name: src/scene.cpp
   visible: true
 - name: src/main.cpp
   visible: true
@@ -11,21 +12,27 @@ files:
   visible: true
 - name: src/textures.cpp
   visible: true
-- name: src/scene.cpp
-  visible: true
 - name: src/statscene.cpp
   visible: true
 - name: src/dynscene.cpp
   visible: true
 - name: src/gobject.cpp
   visible: true
+- name: src/gobjectlist.cpp
+  visible: true
 - name: src/cgobject.cpp
+  visible: true
+- name: src/player.cpp
+  visible: true
+- name: src/consumable.cpp
   visible: true
 - name: src/enemy.cpp
   visible: true
 - name: src/collision.cpp
   visible: true
 - name: src/direction.cpp
+  visible: true
+- name: src/rectangle.cpp
   visible: true
 - name: src/point.cpp
   visible: true
@@ -35,11 +42,5 @@ files:
   visible: true
 - name: CMakeLists.txt
   visible: false
-- name: src/player.cpp
-  visible: true
 - name: test/test.cpp
   visible: false
-- name: src/gobjectlist.cpp
-  visible: true
-- name: src/rectangle.cpp
-  visible: true
