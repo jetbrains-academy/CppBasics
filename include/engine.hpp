@@ -64,7 +64,6 @@ private:
      */
     void processEvent(const sf::Event& event);
 
-
     /**
      * Updates the state of the current scene.
      *
