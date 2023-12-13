@@ -11,5 +11,5 @@ files:
     visible: true
     placeholders:
       - offset: 50
-        length: 1105
+        length: 1101
         placeholder_text: Use the interface given to you in dynamic_array.h

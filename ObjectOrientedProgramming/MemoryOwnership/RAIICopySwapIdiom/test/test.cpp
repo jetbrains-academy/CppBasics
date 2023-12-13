@@ -69,7 +69,7 @@ TEST(DynarrayTest, MoveAssignmentOperator) {
 }
 
 TEST(DynarrayTest, Destructor) {
-    dynarray* arr = new dynarray(5);
+    dynarray *arr = new dynarray(5);
     delete arr; // Destructor should be called without memory leaks
 }
 

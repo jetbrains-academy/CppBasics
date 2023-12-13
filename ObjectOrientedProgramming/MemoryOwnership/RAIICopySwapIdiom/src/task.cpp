@@ -19,7 +19,7 @@ void dynarray::swap(dynarray &other) {
     std::swap(m_size, other.m_size);
 }
 
-dynarray & dynarray::operator=(dynarray other) {
+dynarray &dynarray::operator=(dynarray other) {
     swap(other);
     return *this;
 }
@@ -32,15 +32,15 @@ std::size_t dynarray::size() const {
     return m_size;
 }
 
-int & dynarray::operator[](const std::size_t i) {
+int &dynarray::operator[](const std::size_t i) {
     return m_data[i];
 }
 
-const int & dynarray::operator[](const std::size_t i) const {
+const int &dynarray::operator[](const std::size_t i) const {
     return m_data[i];
 }
 
-std::ostream & operator<<(std::ostream &os, const dynarray &array) {
+std::ostream &operator<<(std::ostream &os, const dynarray &array) {
     for (std::size_t i = 0; i < array.size(); ++i) {
         os << array[i] << " ";
     }

@@ -77,7 +77,7 @@ private:
 };
 ```
 
-To consolidate all the knowledge gained in this module, let's write our implementation of an array with a dynamic size. As a reference, you can look at `std::vector`, which we mentioned earlier, unless your implementation should be simpler.
+To consolidate all the knowledge gained in this module, let's write our implementation of an array with a dynamic size. You don't need support size changing after the creation of the array.
 Take a look at the `dynarray.h` file. You need to implement all the methods that are declared there. To write an implementation, use `dynarray::` as a prefix for all methods. Please use **RAII**, **Rule of five** and **Copy-and-Swap idiom** in your implementation. Besides two constructors and all methods that should be by Rule of five, you need to implement the following methods:
 1. `std::size_t size() const` – returns the number of elements in the array.
 2. `int &operator[](std::size_t i)` – returns a reference to the element at position `i` in the array.

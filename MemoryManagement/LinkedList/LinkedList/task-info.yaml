@@ -1,8 +1,6 @@
 type: edu
 custom_name: Linked List
 files:
-  - name: src/approaching.cpp
-    visible: true
   - name: src/loop.cpp
     visible: true
   - name: src/generate.cpp
@@ -47,3 +45,5 @@ files:
     visible: true
   - name: test/test.cpp
     visible: false
+  - name: src/approaching.cpp
+    visible: true
