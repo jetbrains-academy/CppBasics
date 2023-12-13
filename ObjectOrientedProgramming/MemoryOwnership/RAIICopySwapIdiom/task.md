@@ -35,7 +35,7 @@ int main() {
 
 It expands the RAII idiom and allows you to work correctly with resources in C++. It was previously called **Rule of three** because before the introduction of move semantics in C++11, there was no need to write move constructor and move assignment operator.
 
-And now, as we covered the first two, let's talk about the **Copy-and-Swap idiom**. It is a technique that utilizes the `std::swap` function to make the copy assignment operator safe. This usually boils down to swapping contents of both operands, then returning an instance of *this. It is used to implement the copy assignment operator in the Rule of five.
+And now, as we covered the first two, let's talk about the **Copy-and-Swap idiom**. It is a technique that utilizes the `std::swap` function to make the copy assignment operator safe. This usually boils down to swapping contents of both operands, then returning an instance of `*this`. It is used to implement the copy assignment operator in the Rule of five.
 
 The simple implementation of RAII with Copy-and-Swap idiom looks like this:
 ```cpp
@@ -78,11 +78,9 @@ private:
 ```
 
 To consolidate all the knowledge gained in this module, let's write our implementation of an array with a dynamic size. As a reference, you can look at `std::vector`, which we mentioned earlier, unless your implementation should be simpler.
-Take a look at the `dynamic_array.h` file. You need to implement all the methods that are declared there. To write an implementation, use `dynamic_array::` as a prefix for all methods. Please use **RAII**, **Rule of five** and **Copy-and-Swap idiom** in your implementation. Besides two constructors and all methods that should be by Rule of five, you need to implement the following methods:
+Take a look at the `dynarray.h` file. You need to implement all the methods that are declared there. To write an implementation, use `dynarray::` as a prefix for all methods. Please use **RAII**, **Rule of five** and **Copy-and-Swap idiom** in your implementation. Besides two constructors and all methods that should be by Rule of five, you need to implement the following methods:
 1. `std::size_t size() const` – returns the number of elements in the array.
 2. `int &operator[](std::size_t i)` – returns a reference to the element at position `i` in the array.
 3. `const int &operator[](std::size_t i) const` – returns a const reference to the element at position `i` in the array.
-4. `void swap(dynamic_array &other)` – swaps the contents of the array with the contents of `other`. You'll need to implement it for the Copy-and-Swap idiom.
-5. `void print()` – prints all elements of the array to the standard output stream.
-6. `void push_back(const int &r)` – adds `value` to the end of the array.
-7. `void pop_back()` – removes the last element of the array.
+4. `void swap(dynarray &other)` – swaps the contents of the array with the contents of `other`. You'll need to implement it for the Copy-and-Swap idiom.
+5. `friend std::ostream &operator<<(std::ostream &os, const dynarray &arr)` – prints the contents of the array to the output stream `os`. Let's print the array without any brackets and commas, like this: `1 2 3 4 5`. And don't forget to print a newline character at the end of the output.

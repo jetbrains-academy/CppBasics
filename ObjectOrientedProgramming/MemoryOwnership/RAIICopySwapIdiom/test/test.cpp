@@ -1,78 +1,108 @@
 #include <gtest/gtest.h>
-#include "../src/dynamic_array.h"
+#include "../src/dynarray.h"
 
-TEST(DynamicArrayTest, DefaultConstructor) {
-    dynamic_array array;
-    EXPECT_EQ(array.size(), 0);
+TEST(DynarrayTest, DefaultConstructor) {
+    dynarray arr;
+    EXPECT_EQ(arr.size(), 0);
 }
 
-TEST(DynamicArrayTest, ConstructorWithSizeAndInit) {
-    dynamic_array array(5, 3);
-    EXPECT_EQ(array.size(), 5);
-    for (int i = 0; i < 5; ++i) {
-        EXPECT_EQ(array[i], 3);
-    }
+TEST(DynarrayTest, ConstructorWithSize) {
+    const std::size_t size = 5;
+    dynarray arr(size);
+    EXPECT_EQ(arr.size(), size);
 }
 
-TEST(DynamicArrayTest, CopyConstructor) {
-    dynamic_array array(5, 3);
-    dynamic_array copy_array(array);
-    EXPECT_EQ(copy_array.size(), 5);
-    for (int i = 0; i < 5; ++i) {
-        EXPECT_EQ(copy_array[i], 3);
-    }
+TEST(DynarrayTest, CopyConstructor) {
+    dynarray arr1(3);
+    arr1[0] = 1;
+    arr1[1] = 2;
+    arr1[2] = 3;
+
+    dynarray arr2(arr1);
+    EXPECT_EQ(arr2.size(), 3);
+    EXPECT_EQ(arr2[0], 1);
+    EXPECT_EQ(arr2[1], 2);
+    EXPECT_EQ(arr2[2], 3);
 }
 
-TEST(DynamicArrayTest, MoveConstructor) {
-    dynamic_array array(5, 3);
-    dynamic_array moved_array = std::move(array);
-    EXPECT_EQ(moved_array.size(), 5);
-    for (int i = 0; i < 5; ++i) {
-        EXPECT_EQ(moved_array[i], 3);
-    }
-    EXPECT_EQ(array.size(), 0);
+TEST(DynarrayTest, MoveConstructor) {
+    dynarray arr1(3);
+    arr1[0] = 1;
+    arr1[1] = 2;
+    arr1[2] = 3;
+
+    dynarray arr2(std::move(arr1));
+    EXPECT_EQ(arr1.size(), 0); // arr1 is moved from, so it should be empty
+    EXPECT_EQ(arr2.size(), 3);
+    EXPECT_EQ(arr2[0], 1);
+    EXPECT_EQ(arr2[1], 2);
+    EXPECT_EQ(arr2[2], 3);
 }
 
-TEST(DynamicArrayTest, CopyAssignmentOperator) {
-    dynamic_array array(5, 3);
-    dynamic_array copy_array;
-    copy_array = array;
-    EXPECT_EQ(copy_array.size(), 5);
-    for (int i = 0; i < 5; ++i) {
-        EXPECT_EQ(copy_array[i], 3);
-    }
+TEST(DynarrayTest, CopyAssignmentOperator) {
+    dynarray arr1(3);
+    arr1[0] = 1;
+    arr1[1] = 2;
+    arr1[2] = 3;
+
+    dynarray arr2;
+    arr2 = arr1;
+    EXPECT_EQ(arr2.size(), 3);
+    EXPECT_EQ(arr2[0], 1);
+    EXPECT_EQ(arr2[1], 2);
+    EXPECT_EQ(arr2[2], 3);
 }
 
-TEST(DynamicArrayTest, MoveAssignmentOperator) {
-    dynamic_array array(5, 3);
-    dynamic_array moved_array;
-    moved_array = std::move(array);
-    EXPECT_EQ(moved_array.size(), 5);
-    for (int i = 0; i < 5; ++i) {
-        EXPECT_EQ(moved_array[i], 3);
-    }
-    EXPECT_EQ(array.size(), 0);
+TEST(DynarrayTest, MoveAssignmentOperator) {
+    dynarray arr1(3);
+    arr1[0] = 1;
+    arr1[1] = 2;
+    arr1[2] = 3;
+
+    dynarray arr2;
+    arr2 = std::move(arr1);
+    EXPECT_EQ(arr1.size(), 0); // arr1 is moved from, so it should be empty
+    EXPECT_EQ(arr2.size(), 3);
+    EXPECT_EQ(arr2[0], 1);
+    EXPECT_EQ(arr2[1], 2);
+    EXPECT_EQ(arr2[2], 3);
 }
 
-TEST(DynamicArrayTest, Destructor) {
-    {
-        dynamic_array array(5, 3);
-    }
+TEST(DynarrayTest, Destructor) {
+    dynarray* arr = new dynarray(5);
+    delete arr; // Destructor should be called without memory leaks
 }
 
-TEST(DynamicArrayTest, SizeMethod) {
-    dynamic_array array(5, 3);
-    EXPECT_EQ(array.size(), 5);
+TEST(DynarrayTest, Size) {
+    dynarray arr(4);
+    EXPECT_EQ(arr.size(), 4);
 }
 
-TEST(DynamicArrayTest, AccessOperator) {
-    dynamic_array array(5, 3);
-    EXPECT_EQ(array[0], 3);
-    EXPECT_EQ(array[3], 3);
+TEST(DynarrayTest, SubscriptOperatorNonConst) {
+    dynarray arr(3);
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+
+    EXPECT_EQ(arr[0], 10);
+    EXPECT_EQ(arr[1], 20);
+    EXPECT_EQ(arr[2], 30);
 }
 
-TEST(DynamicArrayTest, ConstAccessOperator) {
-    const dynamic_array array(5, 3);
-    EXPECT_EQ(array[0], 3);
-    EXPECT_EQ(array[3], 3);
+TEST(DynarrayTest, OutputOperator) {
+    dynarray arr(3);
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[2] = 3;
+
+    testing::internal::CaptureStdout(); // Redirect std::cout for testing
+    std::cout << arr;
+    std::string output = testing::internal::GetCapturedStdout();
+
+    EXPECT_EQ(output, "1 2 3 \n");
+}
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
