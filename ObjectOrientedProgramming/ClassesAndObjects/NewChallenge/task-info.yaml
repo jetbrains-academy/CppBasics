@@ -26,6 +26,8 @@ files:
   visible: true
 - name: src/player.cpp
   visible: true
+- name: src/consumable.cpp
+  visible: true
 - name: src/collision.cpp
   visible: true
 - name: src/direction.cpp
@@ -42,5 +44,3 @@ files:
   visible: false
 - name: test/test.cpp
   visible: false
-- name: src/consumable.cpp
-  visible: true
