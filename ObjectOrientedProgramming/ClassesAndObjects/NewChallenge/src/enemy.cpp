@@ -31,7 +31,12 @@ void EnemyObject::setVelocity(Point2D velocity) {
 }
 
 void EnemyObject::updateVelocity() {
-    // TODO: write your solution here
+    Direction direction1 = static_cast<Direction>(generateInt(0, 3));
+    Direction direction2 = static_cast<Direction>(generateInt(0, 3));
+    Point2D directionVector = (direction1 == direction2)
+        ? getDirection(direction1)
+        : (getDirection(direction1) + getDirection(direction2));
+    velocity = SPEED * directionVector;
 }
 
 void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &info) {
@@ -39,6 +44,5 @@ void EnemyObject::onCollision(const GameObject &object, const CollisionInfo &inf
 }
 
 const sf::Texture* EnemyObject::getTexture(TextureManager& textureManager) const {
-    // TODO: write your solution here
-    return nullptr;
+    return textureManager.getTexture(GameTextureID::BLACKHOLE);
 }

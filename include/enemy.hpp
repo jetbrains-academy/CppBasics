@@ -45,6 +45,11 @@ public:
 protected:
 
     /**
+     * Sets the velocity of the enemy object.
+     */
+    void setVelocity(Point2D velocity);
+
+    /**
      * Updates the velocity of an enemy object.
      */
     void updateVelocity();

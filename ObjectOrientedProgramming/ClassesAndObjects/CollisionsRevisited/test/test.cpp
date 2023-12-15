@@ -14,7 +14,25 @@ const float MAX = 10e3;
 
 const Rectangle generateArea = { { MIN, MIN }, { MAX, MAX } };
 
-TEST(ConsumableOjectTest, OnCollisionDestroyTest) {
+std::string onCollision_error_msg(GameObject* object, GameObject* other, const CollisionInfo& info,
+                                  GameObjectStatus expected, GameObjectStatus actual) {
+    std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  object.onCollision(other, info)" << "\n";
+    stream << "Test data:" << "\n"
+           << "  object.getKind() = " << object->getKind() << "\n"
+           << "  object.getStatus() = " << object->getStatus() << "\n"
+           << "  other.getKind() = " << other->getKind() << "\n"
+           << "  other.getStatus() = " << other->getStatus() << "\n"
+           << "  info = " << info << "\n";
+    stream << "Expected result:\n"
+           << "  object.getStatus() = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  object.getStatus() = " << actual << "\n";
+    return stream.str();
+}
+
+TEST(ConsumableObjectTest, OnCollisionDestroyTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::NORMAL);
 
@@ -23,25 +41,15 @@ TEST(ConsumableOjectTest, OnCollisionDestroyTest) {
     other.setStatus(GameObjectStatus::NORMAL);
 
     CollisionInfo info = CollisionInfo { true, 0.0f };
-    object.onCollision(other, info);
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of consumable object after a collision with another non-consumable object should become GameObjectStatus::DESTROYED";
 }
 
-TEST(ConsumableOjectTest, OnCollisionDestroyWarnedTest) {
+TEST(ConsumableObjectTest, OnCollisionDestroyWarnedTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::WARNED);
 
@@ -50,25 +58,15 @@ TEST(ConsumableOjectTest, OnCollisionDestroyWarnedTest) {
     other.setStatus(GameObjectStatus::NORMAL);
 
     CollisionInfo info = CollisionInfo { true, 0.0f };
-    object.onCollision(other, info);
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::WARNED << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of consumable object after a collision with another non-consumable object should become GameObjectStatus::DESTROYED";
 }
 
-TEST(ConsumableOjectTest, OnCollisionWarnTest) {
+TEST(ConsumableObjectTest, OnCollisionWarnTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::NORMAL);
 
@@ -76,26 +74,16 @@ TEST(ConsumableOjectTest, OnCollisionWarnTest) {
     other.setKind(GameObjectKind::PLAYER);
     other.setStatus(GameObjectStatus::NORMAL);
 
-    CollisionInfo info = CollisionInfo { false, object.getCircle().radius };
-    object.onCollision(other, info);
+    CollisionInfo info = CollisionInfo { false, object.getCircle().radius + 10.0f };
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::WARNED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::WARNED << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::WARNED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::WARNED, actual.getStatus())
         << "The status of consumable object after another non-consumable object approached it should become GameObjectStatus::WARNED";
 }
 
-TEST(ConsumableOjectTest, OnCollisionConsumableTest) {
+TEST(ConsumableObjectTest, OnCollisionConsumableTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::NORMAL);
 
@@ -104,25 +92,15 @@ TEST(ConsumableOjectTest, OnCollisionConsumableTest) {
     other.setStatus(GameObjectStatus::NORMAL);
 
     CollisionInfo info = CollisionInfo { true, 0.0f };
-    object.onCollision(other, info);
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::NORMAL, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::NORMAL, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::NORMAL, actual.getStatus())
         << "The status of consumable object after a collision with another consumable object should not change";
 }
 
-TEST(ConsumableOjectTest, OnCollisionConsumableWarningTest) {
+TEST(ConsumableObjectTest, OnCollisionConsumableWarningTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::NORMAL);
 
@@ -130,26 +108,16 @@ TEST(ConsumableOjectTest, OnCollisionConsumableWarningTest) {
     other.setKind(GameObjectKind::CONSUMABLE);
     other.setStatus(GameObjectStatus::NORMAL);
 
-    CollisionInfo info = CollisionInfo { false, object.getCircle().radius };
-    object.onCollision(other, info);
+    CollisionInfo info = CollisionInfo { false, object.getCircle().radius + 10.0f };
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::NORMAL, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::NORMAL, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::NORMAL, actual.getStatus())
         << "The status of consumable object after another consumable object approached it should not change";
 }
 
-TEST(ConsumableOjectTest, OnCollisionDestroyedTest) {
+TEST(ConsumableObjectTest, OnCollisionDestroyedTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::DESTROYED);
 
@@ -158,25 +126,15 @@ TEST(ConsumableOjectTest, OnCollisionDestroyedTest) {
     other.setStatus(GameObjectStatus::NORMAL);
 
     CollisionInfo info = CollisionInfo { true, 0.0f };
-    object.onCollision(other, info);
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of destroyed consumable object after a collision should remain GameObjectStatus::DESTROYED";
 }
 
-TEST(ConsumableOjectTest, OnCollisionDestroyedWarningTest) {
+TEST(ConsumableObjectTest, OnCollisionDestroyedWarningTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::DESTROYED);
 
@@ -184,26 +142,16 @@ TEST(ConsumableOjectTest, OnCollisionDestroyedWarningTest) {
     other.setKind(GameObjectKind::PLAYER);
     other.setStatus(GameObjectStatus::NORMAL);
 
-    CollisionInfo info = CollisionInfo { false, object.getCircle().radius };
-    object.onCollision(other, info);
+    CollisionInfo info = CollisionInfo { false, object.getCircle().radius + 10.0f };
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of destroyed consumable object after a another object approached it should remain GameObjectStatus::DESTROYED";
 }
 
-TEST(ConsumableOjectTest, OnCollisionDestroyedNoCollisionTest) {
+TEST(ConsumableObjectTest, OnCollisionDestroyedNoCollisionTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::DESTROYED);
 
@@ -212,77 +160,60 @@ TEST(ConsumableOjectTest, OnCollisionDestroyedNoCollisionTest) {
     other.setStatus(GameObjectStatus::NORMAL);
 
     CollisionInfo info = CollisionInfo { false, 2 * CONSUMABLE_WARNED_MULTIPLIER * object.getCircle().radius };
-    object.onCollision(other, info);
+    TestConsumableObject actual = object;
+    actual.onCollision(other, info);
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.onCollision(other, info)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "  other.getKind() = " << other.getKind() << "\n"
-        << "  other.getStatus() = " << other.getStatus() << "\n"
-        << "  info = " << info << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << onCollision_error_msg(&object, &other, info, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of destroyed consumable object should remain GameObjectStatus::DESTROYED";
 }
 
-TEST(ConsumableOjectTest, UpdateNormalTest) {
+std::string update_error_msg(GameObject* object, GameObjectStatus expected, GameObjectStatus actual) {
+    std::ostringstream stream;
+    stream << "Testing expression:\n"
+           << "  object.update(delta)" << "\n";
+    stream << "Test data:" << "\n"
+           << "  object.getKind() = " << object->getKind() << "\n"
+           << "  object.getStatus() = " << object->getStatus() << "\n";
+    stream << "Expected result:\n"
+           << "  object.getStatus() = " << expected << "\n";
+    stream << "Actual result:\n"
+           << "  object.getStatus() = " << actual << "\n";
+    return stream.str();
+}
+
+TEST(ConsumableObjectTest, UpdateNormalTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::NORMAL);
 
-    object.update(sf::milliseconds(10));
+    TestConsumableObject actual = object;
+    actual.update(sf::milliseconds(10));
 
-    ASSERT_EQ(GameObjectStatus::NORMAL, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.update(delta)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::NORMAL, actual.getStatus())
+        << update_error_msg(&object, GameObjectStatus::NORMAL, actual.getStatus())
         << "The status of consumable object after an update should remain GameObjectStatus::NORMAL";
 }
 
-TEST(ConsumableOjectTest, UpdateWarnedTest) {
+TEST(ConsumableObjectTest, UpdateWarnedTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::WARNED);
 
-    object.update(sf::milliseconds(10));
+    TestConsumableObject actual = object;
+    actual.update(sf::milliseconds(10));
 
-    ASSERT_EQ(GameObjectStatus::NORMAL, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.update(delta)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::WARNED << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::NORMAL << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::NORMAL, actual.getStatus())
+        << update_error_msg(&object, GameObjectStatus::NORMAL, actual.getStatus())
         << "The status of warned consumable object after an update should become GameObjectStatus::NORMAL";
 }
 
-TEST(ConsumableOjectTest, UpdateDestroyedTest) {
+TEST(ConsumableObjectTest, UpdateDestroyedTest) {
     TestConsumableObject object = TestConsumableObject();
     object.performSetStatus(GameObjectStatus::DESTROYED);
 
-    object.update(sf::milliseconds(10));
+    TestConsumableObject actual = object;
+    actual.update(sf::milliseconds(10));
 
-    ASSERT_EQ(GameObjectStatus::DESTROYED, object.getStatus())
-        << "Testing expression:\n"
-        << "  object.update(delta)" << "\n"
-        << "Test data:" << "\n"
-        << "  object.getKind() = " << object.getKind() << "\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "Expected result:\n"
-        << "  object.getStatus() = " << GameObjectStatus::DESTROYED << "\n"
-        << "Actual result:\n"
-        << "  object.getStatus() = " << object.getStatus() << "\n"
+    ASSERT_EQ(GameObjectStatus::DESTROYED, actual.getStatus())
+        << update_error_msg(&object, GameObjectStatus::DESTROYED, actual.getStatus())
         << "The status of destroyed consumable object after an update should remain GameObjectStatus::DESTROYED";
 }

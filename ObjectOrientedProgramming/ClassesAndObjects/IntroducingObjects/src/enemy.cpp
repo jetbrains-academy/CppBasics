@@ -26,6 +26,10 @@ void EnemyObject::update(sf::Time delta) {
     updateVelocity();
 }
 
+void EnemyObject::setVelocity(Point2D velocity) {
+    this->velocity = velocity;
+}
+
 void EnemyObject::updateVelocity() {
     // TODO: write your solution here
 }

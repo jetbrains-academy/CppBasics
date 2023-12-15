@@ -6,6 +6,7 @@
 #include "cgobject.hpp"
 #include "player.hpp"
 #include "consumable.hpp"
+#include "enemy.hpp"
 #include "constants.hpp"
 
 class TestGameObject : public GameObject {
@@ -125,12 +126,12 @@ public:
         return nullptr;
     }
 
-    void performSetPosition(Point2D position) {
-        setPosition(position);
-    }
-
     void performSetStatus(GameObjectStatus status) {
         setStatus(status);
+    }
+
+    void performSetPosition(Point2D position) {
+        setPosition(position);
     }
 
 private:
@@ -146,12 +147,12 @@ public:
     TestPlayerObject(const TestPlayerObject& other) = default;
     TestPlayerObject& operator=(const TestPlayerObject& other) = default;
 
-    inline void performSetPosition(Point2D position) {
-        setPosition(position);
-    }
-
     inline void performSetStatus(GameObjectStatus status) {
         setStatus(status);
+    }
+
+    inline void performSetPosition(Point2D position) {
+        setPosition(position);
     }
 };
 
@@ -163,12 +164,37 @@ public:
     TestConsumableObject(const TestConsumableObject& other) = default;
     TestConsumableObject& operator=(const TestConsumableObject& other) = default;
 
+    inline void performSetStatus(GameObjectStatus status) {
+        setStatus(status);
+    }
+
+    inline void performSetPosition(Point2D position) {
+        setPosition(position);
+    }
+};
+
+class TestEnemyObject : public EnemyObject {
+public:
+
+    inline TestEnemyObject() : EnemyObject() {}
+
+    TestEnemyObject(const TestEnemyObject& other) = default;
+    TestEnemyObject& operator=(const TestEnemyObject& other) = default;
+
+    inline void performSetStatus(GameObjectStatus status) {
+        setStatus(status);
+    }
+
     inline void performSetPosition(Point2D position) {
         setPosition(position);
     }
 
-    inline void performSetStatus(GameObjectStatus status) {
-        setStatus(status);
+    inline void performSetVelocity(Point2D velocity) {
+        setVelocity(velocity);
+    }
+
+    inline void performUpdateVelocity() {
+        updateVelocity();
     }
 };
 
