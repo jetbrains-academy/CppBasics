@@ -10,4 +10,5 @@ content:
 - StaticMembers
 - CollisionsRevisited
 - NewChallenge
+- NewDynamics
 is_template_based: false

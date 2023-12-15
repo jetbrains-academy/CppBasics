@@ -12,6 +12,13 @@ void GameObjectList::unlink(GameObjectList::Node *node) {
     node->prev->next = std::move(node->next);
 }
 
+GameObjectList::GameObjectList() {
+    head = std::make_unique<Node>();
+    head->next = std::make_unique<Node>();
+    tail = head->next.get();
+    tail->prev = head.get();
+}
+
 void GameObjectList::insert(const std::shared_ptr<GameObject> &object) {
     if (!object) {
         return;
@@ -38,13 +45,6 @@ void GameObjectList::foreach(const std::function<void (GameObject&)>& apply) {
         apply(*curr->object);
         curr = curr->next.get();
     }
-}
-
-GameObjectList::GameObjectList() {
-    head = std::make_unique<Node>();
-    head->next = std::make_unique<Node>();
-    tail = head->next.get();
-    tail->prev = head.get();
 }
 
 GameObjectList::GameObjectList(const GameObjectList &other) : GameObjectList() {

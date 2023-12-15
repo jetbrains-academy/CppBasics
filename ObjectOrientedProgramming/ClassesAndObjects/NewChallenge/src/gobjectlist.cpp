@@ -8,6 +8,10 @@ void GameObjectList::unlink(GameObjectList::Node *node) {
     // TODO: write your solution here
 }
 
+GameObjectList::GameObjectList() {
+    // TODO: write your solution here
+}
+
 void GameObjectList::insert(const std::shared_ptr<GameObject> &object) {
     // TODO: write your solution here
 }
@@ -29,10 +33,6 @@ void GameObjectList::foreach(const std::function<void (GameObject&)>& apply) {
         apply(*curr->object);
         curr = curr->next.get();
     }
-}
-
-GameObjectList::GameObjectList() {
-    // TODO: write your solution here
 }
 
 GameObjectList::GameObjectList(const GameObjectList &other) : GameObjectList() {
