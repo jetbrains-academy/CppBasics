@@ -6,6 +6,7 @@
 #include "point.hpp"
 #include "circle.hpp"
 #include "rectangle.hpp"
+#include "collision.hpp"
 #include "direction.hpp"
 #include "enums.hpp"
 
@@ -65,6 +66,23 @@ inline std::ostream& operator<<(std::ostream& os, Direction direction) {
     return os << to_string(direction);
 }
 
+inline std::string to_string(GameObjectKind kind) {
+    switch (kind) {
+        case GameObjectKind::PLAYER:
+            return "GameObjectKind::PLAYER";
+        case GameObjectKind::CONSUMABLE:
+            return "GameObjectKind::CONSUMABLE";
+        case GameObjectKind::ENEMY:
+            return "GameObjectKind::ENEMY";
+        default:
+            return "";
+    }
+}
+
+inline std::ostream& operator<<(std::ostream& os, GameObjectKind kind) {
+    return os << to_string(kind);
+}
+
 inline std::string to_string(GameObjectStatus status) {
     switch (status) {
         case GameObjectStatus::NORMAL:
@@ -80,6 +98,10 @@ inline std::string to_string(GameObjectStatus status) {
 
 inline std::ostream& operator<<(std::ostream& os, GameObjectStatus status) {
     return os << to_string(status);
+}
+
+inline std::ostream& operator<<(std::ostream& os, const CollisionInfo& info) {
+    return os << "CollisionInfo = { " << "collide: " << info.collide << "; distance: " << info.distance << " }";
 }
 
 #endif // CPPBASICS_OPERATORS_HPP

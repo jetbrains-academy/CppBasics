@@ -7,4 +7,6 @@ content:
 - Inheritance
 - Polymorphism
 - Encapsulation
+- StaticMembers
+- CollisionsRevisited
 is_template_based: false

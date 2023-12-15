@@ -1,11 +1,12 @@
 #ifndef CPPBASICS_TESTSCENE_HPP
 #define CPPBASICS_TESTSCENE_HPP
 
+#include "scene.hpp"
 #include "gobject.hpp"
 #include "cgobject.hpp"
 #include "player.hpp"
 #include "consumable.hpp"
-#include "scene.hpp"
+#include "constants.hpp"
 
 class TestGameObject : public GameObject {
 public:
@@ -39,8 +40,16 @@ public:
         return status;
     }
 
+    inline void setStatus(GameObjectStatus status) {
+        this->status = status;
+    }
+
     inline GameObjectKind getKind() const override {
         return kind;
+    }
+
+    inline void setKind(GameObjectKind kind) {
+        this->kind = kind;
     }
 
     inline Point2D getVelocity() const override {
