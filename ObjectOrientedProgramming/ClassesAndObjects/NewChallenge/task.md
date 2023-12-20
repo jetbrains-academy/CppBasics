@@ -21,7 +21,7 @@ Moreover, the `getKind()` method of the `EnemyObject` class
 distinguish the enemy objects from other kind of objects (player and consumable)
 by returning the `GameObjectKind::ENEMY` value.
 
-We have also already implemented for you the movement behavior of the `EnemyObject`.
+We already partly implemented for you the movement behavior of the `EnemyObject`.
 To do so, we have added two new fields to the objects of this class:
 - `velocity` field is vector storing the direction and speed of the current velocity of the object;
 - `updateTimer` field stores the time elapsed since the last update of the object's velocity.
@@ -31,12 +31,42 @@ The method `update(sf::Time delta)` is responsible for periodically updating the
 It takes as an argument the amount of time elapsed since the last update.
 The implementation simply checks if the overall amount of elapsed time
 is greater than the predefined time period (1 second),
-and if so, it resets the velocity to a new randomly generated one.
+and if so, it resets the velocity to a new randomly generated one
+by calling the method `updateVelocity()`.
+Your task is to implement this method. 
 
-Now your task is to implement the rest of enemy objects functionality.
+The method should generate a random direction vector, multiply it to the speed scalar constant, 
+and assign it to the `velocity` field. 
+That is, the following formula should be used
+```
+v` = S * d
+```
+where:
+* `` v` `` is the new velocity vector,
+* `S` is the speed constant `SPEED`,
+* `d` is a direction vector.
 
-The easy part is to implement the `getTexture` method,
-that should return a new special texture for the enemy objects.
+You have the freedom to define a direction vector as you like,
+but it should satisfy the following constraints:
+* the `x` and `y` coordinates should either be equal `1`, `0`, or `-1`, and
+* the vector should be randomly generated: several consecutive invocations of a method
+  with a high probability should not result in the same direction generated.
+
+To generate the random direction vector, you might find useful the following functions:
+
+```c++
+bool    generateBool(float prob = 0.5f);
+int     generateInt(int min, int max);
+float   generateFloat(float min, float max);
+Point2D generatePoint(const Rectangle& boundingBox);
+```
+
+A detailed description of these functions can be found in the documentation 
+put alongside their definition in the `utils.hpp` file.
+
+Moving forward with the `Enemy` class, 
+the easy part is to implement the `getTexture` method.
+It should return a new special texture for the enemy objects.
 This texture has a corresponding id --- `GameTextureID::BLACKHOLE`.
 
 The harder part is to implement the collision behavior.
