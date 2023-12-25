@@ -6,11 +6,9 @@ Fortunately, object-oriented programming has a suitable concept for this job —
 it is called class _inheritance_.
 Inheritance mechanism allows extending an existing class
 and providing concrete implementations for its virtual functions.
-A _derived_ class, also called a _subclass_,
-inherits all the method and fields of the _base_ class,
+A _derived_ class, also called a _subclass_ (_subtype_),
+inherits all the method and fields of the _base class_ (_base type_),
 and can add its own new methods and fields.
-
-[//]: # (TODO: also mention term `subtyping`)
 
 Giving back to our problem, let us define
 a `CircleGameObject` subclass of `GameObject` class.
@@ -37,7 +35,47 @@ The very first method of the `CircleGameObject` is a special method called the _
 Constructor methods have the same name as the class itself,
 and it takes single argument `circle`: `CircleGameObject(Circle circle)`.
 The constructor is called to create an instance of an object and initialize its state.
-For now, you can omit the `explicit` keyword put at the constructor --- we will get back to it later.
+
+<div class="hint">
+
+The `explicit` [specifier](https://en.cppreference.com/w/cpp/language/explicit) 
+before a constructor prevents implicit type casts.
+In C++, if a class has a constructor with a single argument, 
+which is not marked with the `explicit` keyword, 
+then the compiler can automatically convert the argument type to the class type
+when necessary. 
+
+For example, if the constructor `CircleGameObject(Circle circle)` has not been 
+marked as `explicit`, the following code would be able to compile:
+
+```c++
+void foo(CircleGameObject object) { /* ... */ }
+
+int main() {
+    Circle circle = { { 0.0f, 0.0f, }, 10.0f };
+    // `Circle` will be implicitly converted into `CircleGameObject`
+    // by calling `CircleGameObject` constructor.
+    foo(circle);
+}
+```
+
+However, with the constructor marked as `explicit` the code fragment above would not compile,
+and should be rewritten as follows:
+
+```c++
+void foo(CircleGameObject object) { /* ... */ }
+
+int main() {
+    Circle circle = { { 0.0f, 0.0f, }, 10.0f };
+    CircleGameObject object(circle);
+    foo(object);
+}
+```
+
+In the C++ language, the usage of the `explicit` constructors is generally encouraged, 
+as it results in more predictable behavior. 
+
+</div>
 
 [//]: # (TODO: explain explicit constructors)
 

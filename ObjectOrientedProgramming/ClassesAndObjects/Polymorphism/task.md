@@ -30,7 +30,52 @@ It is another predefined by us class — it is responsible for loading the textu
 A pointer to a texture can be requested by calling the `getTexture` method of the `TextureManager` class.
 It takes as argument the ID of the textures — these IDs are represented by the `GameTextureID` enum.
 
-[//]: # (TODO: explain difference between `enum` and `enum class`)
+<div class="hint">
+
+Note that previously we used keyword `enum`, 
+but the `GameTextureID` type is defined with the two keywords: `enum class`.
+So what is the difference between the `enum` and `enum class` declarations?
+
+In fact, the `enum class` (also known as a _scoped enumeration_)
+is a restricted form of the regular `enum`, 
+that was introduced in the C++ language to overcome 
+some of its issues.
+
+Firstly, in case of `enum class`, the names of enumeration values are kept 
+withing the scope of enumeration name.
+This way the enumeration values do not pollute the global scope, 
+so there is no risk of accidental name clashes.
+
+Let us see the examples. 
+In case of regular `enum` the following syntax is used:  
+```c++
+enum Color { RED, GREEN, BLUE };
+// RED, GREEN, and BLUE are globally accessible names
+Color green = GREEN;
+``` 
+while in case of `enum class` the enumeration value can be accessed 
+only though the enumeration name:
+```c++
+enum class Color { RED, GREEN, BLUE };
+// RED, GREEN, and BLUE do not pollute global scope
+Color green = Color::GREEN;
+``` 
+
+Secondly, the `enum class` does not permit implicit conversion to `int`.
+For example, the following code compiles just fine:
+```c++
+enum Color { RED, GREEN, BLUE };
+// no compilation error, variable green equals to 1.
+int green = GREEN;
+``` 
+However, if `enum class` is used, the code will not compile:
+```c++
+enum class Color { RED, GREEN, BLUE };
+// compilation error: no implicit conversion from Color to int.
+int green = Color::GREEN;
+```
+
+</div>
 
 Please implement the `getTexture` methods of the `PlayerObject` and `ConsumableObject`
 with the following logic:

@@ -25,7 +25,22 @@ After that come the methods of the class.
 There are plenty of them, you can get the meaning of each method
 by consulting its _documentation_ given as a docstring comment in front of the method declaration.
 
-[//]: # (TODO: add links to docstring format)
+<div class="hint">
+
+A docstring is a comment in a special format that is used to document a specific segment of code.
+This format is widely used in C/C++ libraries and frameworks to document their API.  
+Dedicated tools, like the [Doxygen](https://www.doxygen.nl/index.html), 
+can scan the source code of your program and extract these docstring comments 
+to produce documentation in various formats, such as HTML or PDF.
+
+The docstring format supports various annotations used to document 
+specific aspects of a given code block. 
+For example, `@param` annotation can be used to document arguments of a function, 
+`@return` annotation can be used to document the return value of a function, etc.
+You can learn more about the docstring format by consulting 
+the dedicated [page](https://www.doxygen.nl/manual/docblocks.html).
+
+</div>
 
 The `GameObject` class itself does not define any data fields, only the methods.
 It, however, implicitly defines a bunch of _properties_ of an object, for example, its position.
