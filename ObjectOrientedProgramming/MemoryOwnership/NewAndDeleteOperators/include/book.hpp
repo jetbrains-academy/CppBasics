@@ -24,6 +24,4 @@ private:
     static size_t counter;
 };
 
-size_t Book::counter = 0;
-
 #endif // CPPBASICS_BOOK_HPP

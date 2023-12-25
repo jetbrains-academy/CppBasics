@@ -40,7 +40,6 @@ The `malloc` and `free` function do not call constructors or destructors,
 they are used merely to allocate raw memory blocks.
 
 To witness the difference between the two, we ask you to complete the following task.
-Given the `Book` class, create an object of this class 
-using `new`/`delete` syntax in `newAndDeleteBook` function, 
-and then try to create an object 
-using `malloc`/`free` syntax in `mallocAndFreeBook` function.
+Given the `Book` class defined in `book.hpp` file, 
+create an object of this class using `new`/`delete` syntax in `newAndDeleteBook` function, 
+and then try to create an object using `malloc`/`free` syntax in `mallocAndFreeBook` function.

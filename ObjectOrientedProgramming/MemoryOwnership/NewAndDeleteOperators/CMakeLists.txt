@@ -10,7 +10,6 @@ set(SRC src/task.cpp)
 # Files from `./test` directory
 set(TEST test/test.cpp)
 
-
 # Running learner side code
 # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
 add_executable(${PROJECT_NAME}-run ${SRC})
