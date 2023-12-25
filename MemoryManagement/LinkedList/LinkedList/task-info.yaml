@@ -1,49 +1,49 @@
 type: edu
 custom_name: Linked List
 files:
-  - name: src/loop.cpp
-    visible: true
-  - name: src/generate.cpp
-    visible: true
-  - name: src/collision.cpp
-    visible: true
-  - name: src/borders.cpp
-    visible: true
-  - name: src/direction.cpp
-    visible: true
-  - name: src/point.cpp
-    visible: true
-  - name: src/move.cpp
-    visible: true
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/dllist.cpp
-    visible: true
-    placeholders:
-      - offset: 58
-        length: 82
-        placeholder_text: return nullptr;
-      - offset: 176
-        length: 33
-        placeholder_text: return;
-      - offset: 255
-        length: 107
-        placeholder_text: return;
-      - offset: 396
-        length: 65
-        placeholder_text: return;
-      - offset: 497
-        length: 101
-        placeholder_text: return;
-      - offset: 644
-        length: 60
-        placeholder_text: return;
-      - offset: 759
-        length: 221
-        placeholder_text: return;
-  - name: src/main.cpp
-    visible: true
-  - name: test/test.cpp
-    visible: false
-  - name: src/approaching.cpp
-    visible: true
+- name: src/approaching.cpp
+  visible: true
+- name: src/loop.cpp
+  visible: true
+- name: src/generate.cpp
+  visible: true
+- name: src/collision.cpp
+  visible: true
+- name: src/borders.cpp
+  visible: true
+- name: src/direction.cpp
+  visible: true
+- name: src/point.cpp
+  visible: true
+- name: src/move.cpp
+  visible: true
+- name: CMakeLists.txt
+  visible: false
+- name: src/dllist.cpp
+  visible: true
+  placeholders:
+  - offset: 58
+    length: 82
+    placeholder_text: return nullptr;
+  - offset: 176
+    length: 33
+    placeholder_text: return;
+  - offset: 255
+    length: 107
+    placeholder_text: return;
+  - offset: 396
+    length: 65
+    placeholder_text: return;
+  - offset: 497
+    length: 101
+    placeholder_text: return;
+  - offset: 644
+    length: 60
+    placeholder_text: return;
+  - offset: 759
+    length: 221
+    placeholder_text: return;
+- name: src/main.cpp
+  visible: true
+- name: test/test.cpp
+  visible: false

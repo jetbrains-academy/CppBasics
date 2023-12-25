@@ -11,7 +11,7 @@ that can be successfully compiled without errors:
 
 ```c++
 // (1)
-double x = static_cast<double>(a);
+double x = static_const<double>(a);
 
 // (2)
 int b = e;
