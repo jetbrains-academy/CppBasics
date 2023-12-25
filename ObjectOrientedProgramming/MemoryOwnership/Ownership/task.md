@@ -1,48 +1,94 @@
-In C++, memory ownership refers to the responsibility of managing the allocation and deallocation of memory for objects. Understanding memory ownership is crucial to preventing memory leaks, avoiding double-deletions, and ensuring proper resource management. The ownership model in C++ can be broadly categorized into two types: ownership of sub-objects stored in object fields and ownership of dynamically allocated objects using pointers.
+In C++, ownership refers to the responsibility of managing 
+the lifecycle of certain resources, 
+such as memory, files, network connections, objects, _etc_. 
+The ownership model in C++ can be broadly categorized into two kinds: 
+ownership of sub-objects stored in object fields 
+and ownership of dynamically created objects using pointers.
 
-### Ownership of Sub-objects Stored in Object Fields
+In C++, classes often contain member fields that represent sub-objects. 
+These sub-objects are typically owned by the parent object.
+The parent object is responsible for calling their constructors and destructors,
+and the memory they occupy is automatically managed by the parent object's lifecycle. 
 
-In C++, classes often contain member variables that represent sub-objects. These sub-objects are typically owned by the parent object, and their memory is automatically managed by the parent's lifecycle. When a class instance is created, its member variables are initialized, and when the instance is destroyed, the destructors of its member variables are automatically called. Note that constructors and destructors are called in the reverse order of initialization, so for the sub-object, the destructor is called before the destructor of the parent object.
+<div class="hint">
 
-For example, consider the following class:
+Note that constructors and destructors are called in specific order,
+and, moreover, the order of destruction is the reverse order of initialization.
+For example, consider the following class hierarchy:
+
 ```c++
-class Processor {
-    // Processor implementation
-};
+class Motherboard { /* ... */ };
+class Processor { /* ... */ };
+class RandomAccessMemory { /* ... */ };
 
-class Laptop {
+class Device { /* ... */ };
+
+class Laptop : public Device {
 private:
-    Processor laptopProcessor;  // Ownership is automatically managed by Laptop
-
+    // Ownership of objects stored in the fields 
+    // is managed automatically
+    Motherboard motherboard;
+    Processor processor;  
+    RandomAccessMemory ram;
 public:
-    // Other methods
+    /* ... */
 };
 ```
 
-In the example above, the Laptop class owns the Processor object as a sub-object. The Processor object's memory is automatically allocated and deallocated along with the Laptop object.
+The order of construction of a `Laptop` object would be as follows:
+1. the base class `Device` constructor would be called first;
+2. then the sub-objects' constructors would be called:
+   * the `Motherboard` constructor for the field `motherboard`;
+   * the `Processor` constructor for the field `processor`;
+   * the `RandomAccessMemory` constructor for the field `ram`;
+3. finally, the `Laptop` constructor would be called.
 
-### Ownership of dynamically allocated objects using pointers
+The order of destruction is the opposite:
+1. first the derived class destructor `Laptop` would be called;
+2. then the sub-objects destructors would be called:
+   * the `RandomAccessMemory` destructor;
+   * the `Processor` destructor;
+   * the `Motherboard` destructor;
+3. finally, the base class `Device` destructor is called.
 
-Objects stored in pointer-typed fields are, by default, considered non-owned. When a class contains a pointer to an object, the responsibility for memory management lies outside the class. This is crucial to prevent memory leaks and undefined behaviour, as ownership is not automatically transferred with the assignment of pointers.
+</div>
+
+Objects stored in pointer-typed fields are, by default, considered to be non-owned. 
+When a class contains a pointer to an object, 
+the responsibility for lifetime and storage duration management lies outside the class. 
+It is crucial to understand this fact in order to prevent memory leaks and undefined behavior, 
+as ownership is not automatically transferred with the assignment of pointers.
 
 ```c++
 class Student {
 private:
-    std::string* name;  // Non-owned by default
-
+    // Non-owned by default
+    Laptop* laptop;
 public:
-    Student(std::string n) : name(new std::string(std::move(n))) {}
-    ~Student() {
-        delete name;  // Responsibility for cleanup is within the class
-    }
+    explicit Student(Laptop* laptop) 
+        : laptop(laptop) {}
+        
+    // the destructor does not destroy the object 
+    // pointed-by laptop field by default        
+    ~Student() = default;
 };
-
 ```
 
-In the example above, the Student class contains a pointer to a dynamically allocated `std::string`. The ownership responsibility for the memory allocated for the name lies with the Student class, and it needs to explicitly manage the memory by deleting the name in the destructor.
+In the example above, the Student class contains 
+a pointer to a dynamically allocated `Laptop` object. 
+The ownership responsibility for the `Laptop` object
+may or may not be assigned to the `Student` class depending on the desired semantics.
+If the desired semantics is that the `Student` takes 
+the ownership of the `laptop` object passed to it in the constructor,
+then the developer of this class must ensure that
+the object is destroyed manually in the destructor
+(for example, by using the `delete` operator).
 
-### Why objects in pointer-typed fields are non-owned by default
-
-C++ follows a philosophy of "you only pay for what you use", which means that C++ provides flexibility and efficiency, and ownership is not automatically assumed to be transferred with a pointer assignment. Objects in pointer-typed fields are considered non-owned by default to allow for more explicit control over memory management. This approach encourages developers to know their responsibilities regarding memory allocation and deallocation, promoting a safer and more predictable memory management model.
-
-In scenarios where ownership needs to be transferred, smart pointers such as `std::unique_ptr` and `std::shared_ptr` can be used to express ownership semantics more explicitly, providing automated memory management with reduced risks of memory-related issues. We will discuss smart pointers in more detail in the next lesson.
+Objects in pointer-typed fields are considered non-owned by default 
+to allow for more explicit control over memory management,
+providing more flexibility and efficiency. 
+In the scenarios where ownership needs to be transferred, 
+smart pointers such as `std::unique_ptr` and `std::shared_ptr` 
+can be used to express ownership semantics explicitly, 
+providing automated memory management with reduced risks of memory-related issues. 
+We will discuss smart pointers in more detail in the next few lessons.
