@@ -1,16 +1,23 @@
 Despite class `CircleGameObject` adds some data fields to the `GameObject` class,
 it still leaves some of `GameObject` virtual methods unimplemented.
-Therefore, this class is still an _abstract class_ --- it cannot be instantiated.
+Therefore, this class is still an _abstract class_ — it cannot be instantiated.
 
-Let us introduce two concrete subclasses of the `CircleGameObject` class ---
+We need to introduce concrete subclasses implementing the behavior of base class.  
+The instances of these subclasses can then be used in all places
+where an instance of a base class is expected.
+By substituting the concrete subclass of an object, 
+we can change the behavior of the program without changing the code
+of the functions which use this object!
+This ability to treat objects of different classes implementing different behaviors
+as objects of a common base class is known as _subtype polymorphism_.
+
+Let us introduce two concrete subclasses of the `CircleGameObject` class —
 the `PlayerObject` class and the `ConsumableObject` classes,
 representing the object controlled by the player, and consumable objects respectively.
 At last, both of these classes implement all the functionality required by the `GameObject` class.
 
 Please find the declaration of these classes in the files `player.hpp` and `consumable.hpp`.
 There are no new syntactic constructs here, so you should be able to understand the code in these files.
-
-[//]: # (TODO: add here a paragraph about the polymorphism)
 
 The implementations of these classes can be found in the files `player.cpp` and `consumable.cpp`.
 Note that the full implementation of some methods is already provided.

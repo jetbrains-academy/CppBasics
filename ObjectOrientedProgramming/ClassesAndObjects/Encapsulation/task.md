@@ -24,12 +24,32 @@ the class can govern how its clients interact with the objects of this class:
 * there is a single exception to the previous rule —
   a class marked as a `friend` of a given class can access its protected and private members.
 
+<div class="hint">
+
+When applied in the context of inheritance,
+as, for example, in the declaration of the `CircleGameObject`:
+```
+class CircleGameObject : public GameObject
+```
+the visibility modifiers have the following meaning:
+
+* if a class is inherited in `public` mode, 
+  the public members of the base class become public in the derived class, 
+  and the protected members of the base class become protected in the derived class,
+  private members from the base class are not accessible directly from the derived class;
+* if a class is inherited in `protected` mode, 
+  both the public and protected members of the base class become protected in the derived class, 
+  private members from the base class are not accessible directly from the derived class;
+* if a class is inherited in `private` mode, 
+  all public and protected members of the base class become private in the derived class, 
+  private members from the base class are not accessible directly from the derived class.
+
+</div>
+
 The publicly available fields and methods of the class are also called its _public interface_
 (not to be confused with the term _interface_ denoting classes containing pure virtual functions and having no state).
 The public interface of a class defines how the objects of this class are visible from the outside,
 what fields and methods can the clients of the class access.
-
-[//]: # (TODO: add a note about visibility-inheritance modifier)
 
 You might be wondering what is the point of hiding some fields or methods of the class —
 after all, they can be useful outside.
