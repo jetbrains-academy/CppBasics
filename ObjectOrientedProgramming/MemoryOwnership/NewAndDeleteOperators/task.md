@@ -1,43 +1,46 @@
-New and delete operators are used for dynamic memory allocation in C++. The new operator allocates memory on the heap for an object or an array of objects. The delete operator releases the memory back to the heap.
+Recall that in `Memory Management` module of this course,
+we studied the `malloc` and `free` functions which are used 
+to allocate and deallocate memory.
+As we mentioned, these functions implement the C-style memory management,
+and C++ has its own tools to manage memory.
+It is finally time to meet these tools.
 
-### new/delete syntax
-The syntax for the new operator is
+The `new` operator allocates memory on the heap for an object or an array of objects:
 
 ```cpp
-int *ptr = new int;
+// allocates memory for one `int` 
+int* ptr = new int;
 ```
 
-After creating a new object, the pointer `ptr` points to the address of the newly created object. 
-The syntax for the delete operator is
+The `delete` operator releases the memory back to the heap:
 
 ```cpp
 delete ptr;
 ```
 
-The delete operator releases the memory allocated for the object pointed to by `ptr`.
-
-### new[]/delete[] syntax
-The syntax for the new[] operator is
+To allocate an array of a certain type, operator `new[]` is used:
 
 ```cpp
-int *ptr = new int[10];
+int* array = new int[10];
 ```
 
-The new[] operator allocates memory for an array of 10 integers and returns a pointer to the first element of the array.
+As always, this operator returns a pointer to the first element of the array.
 
-The syntax for the delete[] operator is
+To deallocate an array, the `delete[]` operator should be used:
 
 ```cpp
-delete[] ptr;
+delete[] array;
 ```
 
-The delete[] operator releases the memory allocated for the array of objects.
+What is the difference between `malloc/free` and `new/delete`?
 
-### Difference between new/delete and malloc/free
+The most important one is that the `new` and `delete` operators 
+call the constructor and destructor correspondingly.
+The `malloc` and `free` function do not call constructors or destructors,
+they are used merely to allocate raw memory blocks.
 
-The new and delete operators are similar to the malloc() and free() functions in C, but there are some key differences:
-
-- The `new` and `delete` operators are overloaded, so they can be used to allocate and deallocate memory for different types of objects, including user-defined types. The `malloc()` and `free()` functions can only be used to allocate and deallocate memory for raw memory blocks.
-- The `new` operator calls the constructor of the object it allocates. The `malloc()` function does not call any constructors. The same applies to the `delete` operator and the `free()` function.
-
-Your task is to create a `Book` object using `new`/`delete` syntax in `createAndDeleteBook` function, and then create a `Book` object using `malloc`/`free` syntax in `allocateAndFreeBook` function. The `Book` class is already defined in `main.cpp`.
+To witness the difference between the two, we ask you to complete the following task.
+Given the `Book` class, create an object of this class 
+using `new`/`delete` syntax in `newAndDeleteBook` function, 
+and then try to create an object 
+using `malloc`/`free` syntax in `mallocAndFreeBook` function.

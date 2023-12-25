@@ -1,5 +1,5 @@
 type: theory
-custom_name: Object lifetime
+custom_name: Object Lifetime
 files:
   - name: CMakeLists.txt
     visible: false

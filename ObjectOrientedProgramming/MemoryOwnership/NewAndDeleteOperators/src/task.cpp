@@ -1,32 +1,19 @@
 #include <iostream>
 
-struct Book {
-    std::string name;
+#include "../include/book.hpp"
 
-    explicit Book(std::string name) : name(std::move(name)) {
-        std::cout << "Book is open!\n";
-    }
-
-    ~Book() {
-        std::cout << "Book is closed!\n";
-    }
-};
-
-void createAndDeleteBook() {
+void newAndDeleteBook() {
     Book *favourite_book = new Book("Harry Potter");
     delete favourite_book;
 }
 
-void allocateAndFreeBook() {
+void mallocAndFreeBook() {
     Book *favourite_book = (Book *) malloc(sizeof(Book));
     free(favourite_book);
 }
 
 int main() {
-    createAndDeleteBook();
-    std::cout << "-------------------\n";
-    allocateAndFreeBook();
-    std::cout << "Did something come out in the console?\n"
-                 "Nothing came out... :(" << std::endl;
+    newAndDeleteBook();
+    mallocAndFreeBook();
     return 0;
 }

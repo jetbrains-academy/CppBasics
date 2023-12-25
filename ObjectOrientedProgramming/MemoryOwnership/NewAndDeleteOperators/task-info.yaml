@@ -1,16 +1,18 @@
 type: edu
-custom_name: new and delete operators
+custom_name: New and Delete Operators
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 266
-        length: 75
-        placeholder_text: create and delete Book object using new/delete
-      - offset: 378
-        length: 79
-        placeholder_text: Do the same using malloc/free
-  - name: test/test.cpp
-    visible: false
+- name: CMakeLists.txt
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 83
+    length: 75
+    placeholder_text: create and delete Book object using new/delete
+  - offset: 193
+    length: 79
+    placeholder_text: Do the same using malloc/free
+- name: test/test.cpp
+  visible: false
+- name: include/book.hpp
+  visible: true

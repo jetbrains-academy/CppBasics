@@ -1,9 +1,13 @@
 #include <gtest/gtest.h>
 
-void createAndDeleteBook();
-void allocateAndFreeBook();
+#include "../include/book.hpp"
 
-TEST(CreateAndDeleteBookTest, SimpleBookTest) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
-    createAndDeleteBook();
-    allocateAndFreeBook();
+void newAndDeleteBook();
+void mallocAndFreeBook();
+
+TEST(CreateAndDeleteBookTest, SimpleBookTest) {
+    newAndDeleteBook();
+    mallocAndFreeBook();
+    ASSERT_EQ(1, Book::getBooksCounter())
+        << "Expected constructor of Book() to be called inside `newAndDeleteBook` function.";
 }
