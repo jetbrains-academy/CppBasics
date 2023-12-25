@@ -84,4 +84,7 @@ with each module covering specific topics and aspects of the C++ language.
   * C style strings
 
 * __TBA__ ... 
+
+* __Memory ownership__
+  * smart pointers: `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`
  
