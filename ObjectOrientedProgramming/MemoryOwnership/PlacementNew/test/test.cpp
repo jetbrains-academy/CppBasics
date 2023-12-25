@@ -1,41 +1,37 @@
 #include <gtest/gtest.h>
 
+#include <cstddef>
 #include <new>
-#include <string>
-#include <iostream>
 
-class Cat {
-private:
-    int age;
-    std::string name;
+#include "../include/animal.hpp"
 
-public:
-    Cat(int age, std::string name) : age(age), name(std::move(name)) {
-        std::cout << "Cat " << this->name << " jumped into the box!\n";
-    }
+Cat* createCat(char* memory);
+void destroyCat(char* memory);
 
-    ~Cat() {
-        std::cout << "Cat " << this->name << " jumped out of the box!\n";
-    }
-};
+Mouse* createMouse(char* memory);
+void destroyMouse(char* memory);
 
-class Dog {
-private:
-    int age;
-    std::string name;
+TEST(PlacementNew, PlacementNewTest) {
+    size_t size = std::max(sizeof(Cat), sizeof(Mouse));
+    char* memory = (char*) malloc(size);
 
-public:
-    Dog(int age, std::string name) : age(age), name(std::move(name)) {
-        std::cout << "Dog " << this->name << " jumped into the box!\n";
-    }
+    Cat* cat = createCat(memory);
+    ASSERT_EQ("Tom", cat->getName());
+    ASSERT_EQ("Tom", reinterpret_cast<Cat*>(memory)->getName());
+    ASSERT_EQ(cat, reinterpret_cast<Cat*>(memory));
+    ASSERT_EQ(1, Cat::getCounter());
 
-    ~Dog() {
-        std::cout << "Dog " << this->name << " jumped out of the box!\n";
-    }
-};
+    destroyCat(memory);
+    ASSERT_EQ(0, Cat::getCounter());
 
-void placeAnimals();
+    Mouse* mouse = createMouse(memory);
+    ASSERT_EQ("Jerry", mouse->getName());
+    ASSERT_EQ("Jerry", reinterpret_cast<Mouse*>(memory)->getName());
+    ASSERT_EQ(mouse, reinterpret_cast<Mouse*>(memory));
+    ASSERT_EQ(1, Mouse::getCounter());
 
-TEST(PlacementNew, MovingAnimals) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
-    placeAnimals();
+    destroyMouse(memory);
+    ASSERT_EQ(0, Mouse::getCounter());
+
+    free(memory);
 }

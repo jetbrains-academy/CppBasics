@@ -1,46 +1,76 @@
-Placement new is a special version of the new operator that allows you to construct an object in a pre-allocated memory region. This can be useful for various reasons, such as reducing memory fragmentation and improving performance.
+Placement `new` operator is a special version of the `new` operator 
+that allows to construct an object in a pre-allocated memory region. 
+This can be useful for various reasons, 
+such as reducing memory fragmentation and improving performance.
 
-To use placement new, you first need to allocate a memory region of the appropriate size. Then, you can pass the memory region to placement new as the second argument. Placement new will then construct an object of the specified type in the memory region.
+To use the placement `new` operator, 
+one first has to allocate a memory region of the appropriate size. 
+Then, this memory region needs to be passed into placement `new` operator. 
+The operator will then construct an object of the specified type in the given memory region.
 
-When you are done with the object, you must explicitly call the destructor and then free the memory region. When working with arrays, you must call the destructor for each object in the array and then free the memory region.
+When an object created with the help of the placement `new` operator is no longer needed, 
+it must be destroyed by explicitly calling the destructor. 
+When working with arrays, the destructor for each object in the array should be called.
 
-The same storage duration can cover several different object lifetimes when using placement new. For example, when you reuse a memory region to construct a new object, the lifetime of the previous object ends, and the lifetime of the new object begins. However, the storage duration of the memory region remains the same.
-
-Here is an example of how to use placement new to construct an integer object in a pre-allocated memory region:
+Here is an example of how to use the placement `new` operator to construct 
+an integer object in a pre-allocated memory region:
 
 ```cpp
 #include <new>
 
+class Cat {
+public:
+    explicit Cat(const std::string& name) { /* ... */ }
+    ~Cat() { ... }
+    std::string getName() { /* ... */ } 
+    /* ... */
+};
+
 int main() {
   // Allocate a memory region of the appropriate size.
-  char buffer[sizeof(int)];
+  char buffer[sizeof(Cat)];
 
-  // Construct an integer object in the memory region using placement new.
-  int* p = new (buffer) int();
+  // Construct a Cat object in the given memory region.
+  Cat* cat = new (buffer) Cat("Garfield");
 
-  // Assign a value to the object.
-  *p = 42;
+  // Access the object.
+  std::cout << cat->getName(); << std::endl;
 
-  // Print the value of the object.
-  std::cout << *p << std::endl;
-
-  // Delete the object.
-  delete p;
+  // Destruct the object.
+  cat->~Cat();
 
   return 0;
 }
 ```
 
-Complete the function using placement new to create `Cat` and `Dog` objects in the same pre-allocated memory regions. Notice that when you are done with the objects, you must explicitly call the destructors for each object and then free the memory region.
+With the help of the placement `new` operator it is possible to  
+fit into the same storage duration lifetimes of several objects. 
+For example, when you reuse a memory region to construct a new object, 
+the lifetime of the previous object ends, and the lifetime of the new object begins. 
+However, the storage duration of the memory region remains the same.
 
-<div class="hint">
+In order to finish this task, please implement the following functions.
 
-Remember to multiply the object's size by the loop counter when calculating the offset.
+The `createCat` function should create the `Cat` object with the name `"Tom"` in the given memory block:
 
-</div>
+```c++
+Cat* createCat(char* memory);
+```
 
-<div class="hint">
+The `destroyCat` function should destroy the `Cat` object residing in the given memory block:
 
-To refer to the destructor of a class, use the following syntax: `reinterpret_cast<Cat*>(/*offset*/)->~Cat();`.
+```c++
+void destroyCat(char* memory);
+```
 
-</div>
+The `createMouse` function should create the `Mouse` object with the name `"Jerry"` in the given memory block:
+
+```c++
+Mouse* createMouse(char* memory);
+```
+
+The `destroyMouse` function should destroy the `Cat` object residing in the given memory block:
+
+```c++
+void destroyMouse(char* memory);
+```

@@ -2,11 +2,11 @@ type: edu
 files:
 - name: CMakeLists.txt
   visible: false
+- name: test/test.cpp
+  visible: false
 - name: src/task.cpp
   visible: true
   placeholders:
   - offset: 32
     length: 36
     placeholder_text: /* TODO */
-- name: test/test.cpp
-  visible: false
