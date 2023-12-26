@@ -1,23 +1,26 @@
 #include <memory>
 #include <iostream>
 
-std::unique_ptr<int> *create_unique_ptr_array(int size) {
-    std::unique_ptr<int> *array = new std::unique_ptr<int>[size];
-    for (int i = 0; i < size; i++) {
-        array[i] = std::make_unique<int>();
+std::unique_ptr<int[]> copy(const int* array, size_t size) {
+    if (size == 0) {
+        return nullptr;
     }
-    return array;
+    std::unique_ptr<int[]> ptr = std::make_unique<int[]>(size);
+    for (size_t i = 0; i < size; ++i) {
+        ptr[i] = array[i];
+    }
+    return ptr;
 }
 
 int main() {
-    std::unique_ptr<int> *array = create_unique_ptr_array(10);
-    for (int i = 0; i < 10; i++) {
-        *array[i] = i;
+    const size_t size = 10;
+    int array[size];
+    for (int i = 0; i < size; i++) {
+        array[i] = i + 1;
     }
-    for (int i = 0; i < 10; i++) {
-        std::cout << *array[i] << std::endl;
+    std::unique_ptr<int[]> ptr = copy(array, size);
+    for (int i = 0; i < size; i++) {
+        std::cout << ptr[i] << std::endl;
     }
-    delete[] array;
-
     return 0;
 }

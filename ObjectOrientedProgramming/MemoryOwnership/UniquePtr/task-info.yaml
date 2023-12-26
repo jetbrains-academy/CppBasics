@@ -1,13 +1,13 @@
 type: edu
-custom_name: unique_ptr
+custom_name: Unique Pointer
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 549
-        length: 166
-        placeholder_text: Create an array of unique_ptr pointers
-  - name: test/test.cpp
-    visible: false
+- name: CMakeLists.txt
+  visible: false
+- name: test/test.cpp
+  visible: false
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 104
+    length: 199
+    placeholder_text: return nullptr;

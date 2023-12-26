@@ -87,8 +87,13 @@ the object is destroyed manually in the destructor
 Objects in pointer-typed fields are considered non-owned by default 
 to allow for more explicit control over memory management,
 providing more flexibility and efficiency. 
+
 In the scenarios where ownership needs to be transferred, 
-smart pointers such as `std::unique_ptr` and `std::shared_ptr` 
-can be used to express ownership semantics explicitly, 
-providing automated memory management with reduced risks of memory-related issues. 
+[_smart pointers_](https://en.wikipedia.org/wiki/Smart_pointer) 
+such as `std::unique_ptr` and `std::shared_ptr` can be used, 
+providing automated memory management with reduced risks of memory-related issues.
+These smart pointers are specialized classes defined in the standard library of the C++.
+They behave like plain pointers, in a sense that they support the 
+same set of operations, like the dereferencing,
+but in addition they provide specific ownership semantics.
 We will discuss smart pointers in more detail in the next few lessons.
