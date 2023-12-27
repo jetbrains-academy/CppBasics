@@ -1,0 +1,9 @@
+type: edu
+custom_name: Sequential Containers
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/task.cpp
+    visible: true
+  - name: test/test.cpp
+    visible: false

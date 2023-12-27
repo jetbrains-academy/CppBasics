@@ -1,0 +1,9 @@
+type: edu
+custom_name: Efficient std::string Usage
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false
+  - name: src/task.cpp
+    visible: true

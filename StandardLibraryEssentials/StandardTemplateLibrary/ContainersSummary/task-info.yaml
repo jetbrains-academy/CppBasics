@@ -1,5 +1,5 @@
 type: theory
-custom_name: Execution Time Measurement
+custom_name: Containers Summary
 files:
   - name: CMakeLists.txt
     visible: false
