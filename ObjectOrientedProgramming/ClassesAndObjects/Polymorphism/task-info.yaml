@@ -5,9 +5,6 @@ files:
   visible: true
 - name: src/consumable.cpp
   visible: true
-- name: src/main.cpp
-  visible: true
-  editable: false
 - name: src/engine.cpp
   visible: true
 - name: src/scenes.cpp
@@ -44,3 +41,6 @@ files:
   visible: false
 - name: test/test.cpp
   visible: false
+- name: src/main.cpp
+  visible: true
+  editable: false

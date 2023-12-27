@@ -1,9 +1,6 @@
 type: theory
 custom_name: Introduction
 files:
-- name: src/main.cpp
-  visible: true
-  editable: false
 - name: src/engine.cpp
   visible: true
 - name: src/scenes.cpp
@@ -42,3 +39,6 @@ files:
   visible: true
 - name: CMakeLists.txt
   visible: false
+- name: src/main.cpp
+  visible: true
+  editable: false

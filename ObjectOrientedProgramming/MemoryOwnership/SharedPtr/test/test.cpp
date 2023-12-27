@@ -1,7 +1,5 @@
 #include <gtest/gtest.h>
 #include <memory>
-#include <utility>
-#include <iostream>
 
 #include "../include/chat.hpp"
 

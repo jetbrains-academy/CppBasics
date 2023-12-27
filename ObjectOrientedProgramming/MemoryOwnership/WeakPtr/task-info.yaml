@@ -1,7 +1,31 @@
-type: theory
-custom_name: weak_ptr
+type: edu
+custom_name: Weak Pointer
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/main.cpp
-    visible: true
+- name: CMakeLists.txt
+  visible: false
+- name: src/user.cpp
+  visible: true
+  editable: false
+- name: include/user.hpp
+  visible: false
+  editable: false
+- name: include/chat.hpp
+  visible: true
+  placeholders:
+  - offset: 273
+    length: 13
+    placeholder_text: ", host(owner)"
+  - offset: 481
+    length: 19
+    placeholder_text: return host;
+  - offset: 554
+    length: 25
+    placeholder_text: std::shared_ptr<User> host;
+- name: src/task.cpp
+  visible: true
+  placeholders:
+  - offset: 197
+    length: 102
+    placeholder_text: return nullptr;
+- name: test/test.cpp
+  visible: false

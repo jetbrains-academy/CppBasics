@@ -1,9 +1,74 @@
-In C++ memory ownership, [std::weak_ptr](https://en.cppreference.com/w/cpp/memory/weak_ptr) stands out as a tool for managing transient ownership without affecting the object's lifetime. While `std::shared_ptr` enables shared ownership, `std::weak_ptr` complements it by providing a non-intrusive observer-like role; this pointer does not contribute to the object's reference count, allowing for the detection of object state without extending its lifetime.
+In C++ memory ownership, 
+[std::weak_ptr](https://en.cppreference.com/w/cpp/memory/weak_ptr) stands out as a tool 
+for managing transient ownership without affecting the object's lifetime. 
+While `std::shared_ptr` enables shared ownership, 
+`std::weak_ptr` complements it by providing a non-intrusive observer-like role. 
+This pointer does not contribute to the object's reference count, 
+allowing for the detection of object state without extending its lifetime.
 
-#### Distinctive Features of std::weak_ptr and common usage:
-- Non-Intrusive Observation. `std::weak_ptr` allows for the observation of an object without actively participating in its ownership. Unlike `std::shared_ptr`, it doesn't contribute to the reference count, and its existence doesn't affect the lifetime of the shared object.
-- Breaking Circular References. In scenarios where circular dependencies among objects lead to reference cycles, using std::weak_ptr can help break the cycle. This ensures that objects are properly deallocated when they are no longer in use, even in the presence of circular references. As an example, consider a scenario where two objects, `A` and `B`, hold `std::shared_ptr` instances to each other. In this case, the reference count of each object will never reach zero, and they will never be deallocated. However, if one of the objects holds a `std::weak_ptr` to the other, the reference count will reach zero when the other object is destroyed, and the object will be deallocated.
-- Locking for Access. To access the shared object, a `std::weak_ptr` must be converted to a `std::shared_ptr` using the `lock()` member function. If the shared object still exists, this operation succeeds, allowing safe access. Otherwise, it returns an empty `std::shared_ptr`.
-- Observer Pattern. `std::weak_ptr` is often used in conjunction with `std::shared_ptr` to implement the observer pattern. Objects can register observers using `std::weak_ptr`, and these observers can check the object's state before attempting to access it.
+The main use case of `std::weak_ptr` is to break the circular reference cycles,
+which can lead to memory leaks otherwise.
 
-Code in `main.cpp` demonstrates the use of `std::weak_ptr` to avoid circular references when managing ownership of a `Laptop` by a `Student`. A laptop is created with one student owner and shared with another student. When the original owner is released, the laptop's weak pointer to the owner becomes invalid.
+Going back the chat example from the previous lesson,
+suppose we want to extend the `Chat` class
+and add a possibility to assign a host to the chat. 
+
+For this purpose, we might rework the `Chat` class as follows
+(also see `include/chat.hpp` file):
+
+```c++
+class Chat {
+public:
+    Chat(int id, std::string name, const std::shared_ptr<User>& owner)
+        : id(id)
+        , name(std::move(name))
+        , host(owner)
+    {};
+
+    /* ... */
+private:
+    int id;
+    std::string name;
+    std::shared_ptr<User> host;
+};
+```
+
+Also, now, instead of `User` method `createNewChat`, 
+we would declare a function with the same name:
+
+```c++
+std::shared_ptr<Chat> createNewChat(std::string name, const std::shared_ptr<User>& host);
+```
+
+This function should take the name of the chat to be created, 
+as long as the shared pointer to the user who would become its host.
+
+Now, suppose this function creates shared pointer `chat`, 
+pointing to a new `Chat` object, then assigns pointer `chat->host` to `host`,
+and `host->chat` to `chat`.
+This would result in a reference cycle.
+As long as `chat` and `host` store the shared pointers to each other,
+both their reference counters cannot drop below `1`.
+It means that the object will never be deallocated — 
+in other words, we got the memory leak!  
+
+In order to avoid this, we need to use `std::weak_ptr` to break the reference cycle.
+In particular, the `host` field of the `Chat` object should be declared as a weak pointer.
+
+Note that the method `getHost` of the `Chat` class should still return 
+the shared pointer:
+
+```c++
+inline std::shared_ptr<User> getHost() const;
+```
+
+To achieve this, you need to use the `lock()` method of the `std::weak_ptr`.
+This method creates new `std::shared_ptr` pointing to the same object 
+as the given `std::weak_ptr`, if it still exists;
+otherwise, it returns an empty `std::shared_ptr`.
+
+To finish this lesson, please fix the implementation of 
+the `Chat` class (see file `include/chat.hpp`)
+by using `std::weak_ptr` instead of the `std::shared_ptr` for the `host` field.
+Also, provide an implementation of the `createNewChat` function 
+(see file `task.cpp` ).
