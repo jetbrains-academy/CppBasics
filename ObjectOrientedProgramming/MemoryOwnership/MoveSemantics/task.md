@@ -171,7 +171,9 @@ assert(p1 == nullptr);
 assert(p2 != nullptr);
 ```
 
-[//]: # (TODO)
+As a conclusion of this lesson, please implement the `transfer` function, 
+which should transfer an ownership from one unique pointer into another:
 
-[//]: # (Implement functions `transfer_ownership` and `swap_ownership` using `std::move&#40;&#41;` function, )
-[//]: # (so that the code in main function compiles and runs successfully.)
+```c++
+void transfer(std::unique_ptr<int[]>& from, std::unique_ptr<int[]>& to);
+```

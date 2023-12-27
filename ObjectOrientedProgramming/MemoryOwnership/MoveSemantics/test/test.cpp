@@ -1,21 +1,13 @@
 #include <gtest/gtest.h>
 #include <memory>
 
-std::unique_ptr<int> transfer_ownership(std::unique_ptr<int> &ptr);
+void transfer(std::unique_ptr<int[]>& from, std::unique_ptr<int[]>& to);
 
-void swap_ownership(std::unique_ptr<int>& ptr1, std::unique_ptr<int>& ptr2);
-
-TEST(MoveUniquePtrTest, MoveTest) {
-    std::unique_ptr<int> ptr = std::make_unique<int>(42);
-    std::unique_ptr<int> new_ptr = transfer_ownership(ptr);
-    EXPECT_EQ(ptr.get(), nullptr);
-    EXPECT_EQ(*new_ptr, 42);
-}
-
-TEST(SwapUniquePtrTest, SwapTest) {
-    std::unique_ptr<int> ptr1 = std::make_unique<int>(10);
-    std::unique_ptr<int> ptr2 = std::make_unique<int>(20);
-    swap_ownership(ptr1, ptr2);
-    EXPECT_EQ(*ptr1, 20);
-    EXPECT_EQ(*ptr2, 10);
+TEST(TransferTest, TransferTest) {
+    std::unique_ptr<int[]> p = std::make_unique<int[]>(8);
+    std::unique_ptr<int[]> q = std::make_unique<int[]>(8);
+    int* expected = p.get();
+    transfer(p, q);
+    EXPECT_EQ(nullptr, p.get());
+    EXPECT_EQ(expected, q.get());
 }
