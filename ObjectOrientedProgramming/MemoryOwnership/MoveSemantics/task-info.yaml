@@ -1,5 +1,5 @@
 type: edu
-custom_name: move semantics
+custom_name: Move Semantics
 files:
   - name: CMakeLists.txt
     visible: false

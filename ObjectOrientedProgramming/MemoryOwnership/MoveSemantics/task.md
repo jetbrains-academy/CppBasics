@@ -1,51 +1,177 @@
-[Move semantics](https://en.cppreference.com/w/cpp/language/move_constructor) is a feature of C++ that allows you to efficiently transfer ownership of an object from one variable to another without copying the object. This can be useful for improving performance and avoiding unnecessary memory allocations. Before diving into move semantics, let's briefly understand [value categories](https://en.cppreference.com/w/cpp/language/value_category) concept.
+[Move semantics](https://en.cppreference.com/w/cpp/language/move_constructor) 
+is a feature of C++ that allows to efficiently 
+transfer ownership of an object without copying. 
+This can be useful for improving performance 
+and avoiding unnecessary memory allocations. 
+Before diving into the move semantics details, let us briefly understand the concept of 
+[value categories](https://en.cppreference.com/w/cpp/language/value_category).
 
-**lvalue** reference represents an object that has a name or an identifier. It refers to something that exists in memory and typically persists beyond a single expression. It usually stands on the left side of an assignment operator (`=`), hence the name lvalue.
+* __lvalue__ expression represents an object that has a name or an identifier. 
+  It refers to something that exists in memory and typically persists beyond a single expression. 
+  It usually stands on the left-hand side of an assignment operator (`=`), hence the name __lvalue__.
 
-**rvalue** reference represents a temporary or disposable value. It is usually the result of an expression and might not have a named memory location. Rvalues are often short-lived.
+* __rvalue__ expression represents a temporary or disposable value. 
+  It is usually the intermediate result of some computation that might not have a named memory location.
+  It usually stands on the right-hand side of an assignment operator (`=`), hence the name __rvalue__.
 
-#### Move Semantics Overview
-- Efficient Resource Transfer. Move semantics allows the transfer of ownership from one object to another without copying. This is especially beneficial for large or resource-intensive objects.
-- [Rvalue References](https://en.cppreference.com/w/cpp/language/rvalue_reference). Move semantics utilize rvalue references (`&&`), representing temporary objects or objects about to be destroyed. Rvalue references to facilitate the efficient transfer of ownership without unnecessary overhead.
-- [`std::move`](https://en.cppreference.com/w/cpp/utility/move) Function. The `std::move` function is used to convert a lvalue (an object with a name) into a rvalue reference. This is a key tool for explicitly indicating that ownership can be moved.
+For example, below variables `a`, `b`, and `c` are lvalues, 
+while expression `a + b` is an rvalue.
 
-#### Move Semantics with `std::unique_ptr`
-`std::unique_ptr` supports move semantics through its `std::move()` member function. The `std::move()` function transfers ownership of the object from the source `std::unique_ptr` to the destination unique_ptr. The source `std::unique_ptr` is then left in a null state.
+```c++
+int a = 2;
+int b = 3;
+int c = a + b;
+```
 
-Here is an example of how to use the `std::move()` function to transfer ownership of a `std::unique_ptr` object:
+Move semantics utilize rvalues,
+representing temporary objects or objects about to be destroyed.
+When another object wants to copy a soon-to-be disposed rvalue object,
+instead of actual copying, the contents of the rvalue object can be moved.
 
-```cpp
-#include <memory>
+For example, recall the `int_array` class, which has a custom copy constructor:
 
-class MyClass {
+```c++
+class int_array {
 public:
-    MyClass() {
-        std::cout << "MyClass Constructor\n";
-    }
-
-    ~MyClass() {
-        std::cout << "MyClass Destructor\n";
-    }
+    /* ... */
+    int_array(const dynarray& other) 
+        : data(new int[other.size])
+        , size(other.size) 
+    {
+        for (size_t i = 0; i < size; ++i) {
+            data[i] = other.data[i];
+        }
+    };
+    /* ... */
+private:
+    int *data;
+    std::size_t size;
 };
+```
 
-int main() {
-    // Create two unique_ptr objects.
-    std::unique_ptr<MyClass> p1 = std::make_unique<MyClass>();
-    std::unique_ptr<MyClass> p2;
+Suppose there is a function that creates an array filled with the given value:
 
-    // Transfer ownership of p1 to p2.
-    p2 = std::move(p1);
-
-    // p1 is now in a null state.
-    assert(p1 == nullptr);
-
-    // p2 now owns the MyClass object.
-    assert(p2 != nullptr);
-
-    return 0;
+```c++
+int_array create_array(int value, size_t size) {
+    if (size == 0) {
+        return int_array();
+    }
+    int_array array = int_array(size);
+    for (size_t i = 0; i < size; ++i) {
+        array[i] = value;
+    }
+    return array;
 }
 ```
 
-Move semantics can be helpful for a variety of tasks, such as passing a `std::unique_ptr` object to a function that takes ownership of the object, returning a `std::unique_ptr` object from a function and moving a `std::unique_ptr` object from one container to another.
+And then this function is called as follows:
 
-Implement functions `transfer_ownership` and `swap_ownership` using `std::move()` function, so that the code in main function compiles and runs successfully.
+```c++
+// the copy constructor is called here (!)
+int_array array = create_array(1, 24);
+```
+
+In the code above, unnecessary copying is performed,
+which copies an array from an object returned from the function 
+into the newly created object.
+
+However, because the returned object is actually a temporary rvalue
+which is going to be disposed anyway, 
+we can take advantage of that and instead of copying the array, 
+just _move_ the pointer.
+
+To do that, in addition to the copy constructor, 
+one can define the _move constructor_, 
+which takes as an argument rvalue reference denoted with `&&`:
+
+```c++
+class int_array {
+public:
+    /* ... */
+    int_array(int_array&& other) 
+        : data(other.data)
+        , size(other.size) 
+    {
+        other.data = nullptr;
+        other.size = 0;
+    };
+    /* ... */
+private:
+    int *data;
+    std::size_t size;
+};
+```
+
+Note that in addition to copying the pointer,
+the move constructor of `int_array` class also nullifies 
+the pointer in the original object passed by rvalue reference. 
+It is necessary because otherwise, once the destructor 
+of the original object is called, it would deallocate the memory
+pointed-to by `data` field.
+This way, the given move constructor implementation reflects 
+the occurring ownership transfer.
+
+Similarly to copy assignment operator, 
+one can also define move assignment operator for a class:
+
+```c++
+class int_array {
+public:
+    /* ... */
+    int_array& operator=(int_array&& other) {
+        // ...
+    }
+    /* ... */
+private:
+    int *data;
+    std::size_t size;
+};
+```
+
+With the help of the move assignment operator and 
+the special standard function `std::move`, 
+one can manually transfer the ownership from one object to another:
+
+```c++
+int_array a = int_array();
+int_array b = int_array(10);
+// ownership transfer
+a = std::move(b);
+```
+
+<div class="hint">
+
+Technically, the `std::move` function converts an lvalue into an rvalue reference.
+
+</div>
+
+A custom implementation of the move assignment operator
+should ensure that after being moved, 
+the object remains in a valid state, 
+usually some kind of null state.
+This means that it should be possible to still safely destruct the object, 
+but other operations such as method calls or operator 
+uses might lead to undefined behavior.
+In general, avoid using an object after it has been moved, 
+except for assigning it a new value or destroying it.
+
+The smart pointer `std::unique_ptr` also supports move semantics.
+The move semantics of this class transfers ownership of the object
+from the source `std::unique_ptr` to the destination pointer.
+The source `std::unique_ptr` is then left in a null state.
+
+```c++
+std::unique_ptr<Dog> p1 = std::make_unique<Dog>("Snoopy");
+std::unique_ptr<Dog> p2;
+// transfer ownership from p1 to p2.
+p2 = std::move(p1);
+// p1 is now in a null state.
+assert(p1 == nullptr);
+// p2 now owns the Dog object.
+assert(p2 != nullptr);
+```
+
+[//]: # (TODO)
+
+[//]: # (Implement functions `transfer_ownership` and `swap_ownership` using `std::move&#40;&#41;` function, )
+[//]: # (so that the code in main function compiles and runs successfully.)
