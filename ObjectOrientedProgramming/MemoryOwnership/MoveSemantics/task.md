@@ -161,7 +161,7 @@ from the source `std::unique_ptr` to the destination pointer.
 The source `std::unique_ptr` is then left in a null state.
 
 ```c++
-std::unique_ptr<Dog> p1 = std::make_unique<Dog>("Snoopy");
+std::unique_ptr<Dog> p1 = std::make_unique<Dog>("Beethoven");
 std::unique_ptr<Dog> p2;
 // transfer ownership from p1 to p2.
 p2 = std::move(p1);

@@ -1,55 +1,30 @@
-#include <memory>
 #include <iostream>
-#include <utility>
 
-struct chat{
-private:
-    std::string name;
+#include "../include/chat.hpp"
 
-public:
-    explicit chat(std::string  name) : name(std::move(name)) {};
+int User::nextId = 0;
+int User::nextChatId = 0;
 
-    ~chat() {
-        std::cout << "Chat deleted!\n";
-    }
-};
+void User::createNewChat(std::string name) {
+    chat = std::make_shared<Chat>(nextChatId++, std::move(name));
+}
 
-struct user {
-private:
-    std::string name;
-    int id;
+void User::joinChatByInvite(const User& user) {
+    chat = user.chat;
+}
 
-public:
-    std::shared_ptr<chat> current_chat;
-
-    user(std::string  name, int id) : name(std::move(name)), id(id) {};
-
-    void create_chat(std::string chat_name) {
-        current_chat = std::make_shared<chat>(std::move(chat_name));
-    }
-
-    void join_chat_by_invite(user & other_user) {
-        current_chat = other_user.current_chat;
-    }
-
-    void leave_chat() {
-        current_chat = nullptr;
-    }
-};
-
-int user_count(std::shared_ptr<chat> & sharedPtr) {
-    return sharedPtr.use_count();
+void User::leaveChat() {
+    chat.reset();
 }
 
 int main() {
-    user user1("Tom", 1);
-    user user2("Bob", 2);
-    user user3("Alice", 3);
-    user1.create_chat("Friends");
-    user2.join_chat_by_invite(user1);
-    user3.join_chat_by_invite(user1);
-    std::cout << user_count(user1.current_chat) << std::endl;
-    user1.leave_chat();
-    user2.leave_chat();
-    user3.leave_chat();
+    User bob("Bob");
+    User alice("Alice");
+    bob.createNewChat("C++ discussion");
+    alice.joinChatByInvite(bob);
+
+    std::cout << "Bob is currently in the chat " << bob.getChat()->getName() << "\n";
+    std::cout << "Alice is currently in the chat " << alice.getChat()->getName() << "\n";
+
+    return 0;
 }
