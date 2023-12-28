@@ -65,11 +65,6 @@ As such, the destructor has to deallocate this memory:
 }
 ```
 
-<div class=hint">
-    Note that we do not check for the null pointer,
-    as deleting `nullptr` is a safe operation that has no effect.
-</div>
-
 Now, the rule of five dictates that the class should also define
 custom copy constructor, move constructor, as well as copy and move assignment operators.
 We have already seen both of these in the previous lessons:
@@ -99,7 +94,7 @@ Validly so, as the ownership of the resource has been transferred to the new obj
 
 Next, we need to define the assignment operators.
 To avoid code duplication between copy constructor and copy assignment operator
-(and similarly between move constructor and move assignment operator)
+(and similarly between move constructor and move assignment operator), 
 it is possible to use another clever trick called 
 the [__Copy-and-Swap idiom__](https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Copy-and-swap). 
 
@@ -134,21 +129,3 @@ void swap(int_array& other) {
 
 This way, the `int_array` class implements the _RAII_ principle,
 following the _rule of five_ and the _copy-and-swap_ idiom.
-
-In conclusion, you might have a look at the implementation of other methods of 
-the `int_array` class in the `include/int_array.hpp` file.
-In particular, you might find interesting:
-
-```c++
-int& operator[](std::size_t i);
-const int& operator[](std::size_t i) const;
-```
-
-* the two versions of custom array subscript operator `operator[]` 
-  for a mutable and constant `int_array` object;
-
-```c++
-std::ostream& operator<<(std::ostream &os, const int_array& array)
-```
-
-* the printing operator `operator<<`.

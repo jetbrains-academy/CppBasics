@@ -21,7 +21,7 @@ int main() {
     std::cout << "\n";
 
     std::cout << "modify `c`, check that the original 'b' is left unchanged:\n";
-    for (size_t i = 0; i < b.size(); ++i) {
+    for (size_t i = 0; i < c.size(); ++i) {
         c[i] = -c[i];
     }
     std::cout << "b = " << b << "\n";

@@ -4,6 +4,7 @@ content:
 - ObjectLifetime
 - NewAndDeleteOperators
 - PlacementNew
+- CopyConstructor
 - Ownership
 - UniquePtr
 - MoveSemantics
