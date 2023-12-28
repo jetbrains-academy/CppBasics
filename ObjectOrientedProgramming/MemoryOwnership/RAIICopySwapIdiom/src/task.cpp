@@ -1,4 +1,4 @@
-#include "dynarray.h"
+#include "int_array.hpp"
 
 // implement dynarray here
 dynarray::dynarray() : m_data(nullptr), m_size(0) {}

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/dynarray.h"
+#include "../src/int_array.hpp"
 
 TEST(DynarrayTest, DefaultConstructor) {
     dynarray arr;

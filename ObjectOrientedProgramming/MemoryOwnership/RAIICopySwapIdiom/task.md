@@ -1,86 +1,154 @@
-The last thing we need to discuss is a few small but fundamental concepts in C++ that will help you work correctly with the objects you create.
+Concluding the presentation of the ownership model in the C++ language,
+we need to discuss several related essential concepts and idioms.
 
-**RAII** stands for *Resource Acquisition Is Initialization* and is pronounced as '*ray*'. It is one of the most essential idioms in modern C++ and is the best way to manage resources safely. It consists of two parts:
+[_Resource Acquisition Is Initialization_](https://en.cppreference.com/w/cpp/language/raii), 
+__RAII__ for short, is a programming technique which involves linking a resource 
+(such as dynamically allocated memory block, open file, network connection, _etc._)
+to the lifetime of an object.
+According to this idiom: 
 
-1. The constructor of the class should allocate all the resources that the object will use during its lifetime. If errors occur during the execution of the constructor, the destructor will automatically be called, releasing all the resources allocated at the time of the error. For example, creating a container that contains `1'000'000` elements of the `int` type is possible when creating the same container for `100'000'000'000` elements will always fill all memory, which will throw an exception (for example, [`std::bad_alloc`](https://en.cppreference.com/w/cpp/memory/new/bad_alloc)). Otherwise, it can be formulated as "The constructor is completed if and only if it was possible to ensure the invariant of the object and capture all the necessary resources".
-2. The destructor of the class should release all the resources that the object used during its lifetime. For example, if the constructor manually allocates memory, the destructor should free it. It is considered a main part of the idiom and is usually the only part assumed when talking about RAII.
+1. the constructor of the class should allocate and initialize 
+   all the resources that the object will own during its lifetime;
+2. the copy constructor (and copy assignment operator) of the class 
+   should copy the resource,
+   if the resource is not copyable, then this constructor should be deleted; 
+3. the move constructor (and move assignment operator) of the class 
+   should transfer the ownership of the resource;
+4. the destructor of the class should release all the resources that the object owns.
 
-In this example we will use a [`std::vector`](https://en.cppreference.com/w/cpp/container/vector), which is a dynamic array. We will cover it in the next module, but for now, we will use it as an example of RAII. Let's look at the following code:
-```cpp
-#include <vector>
+[//]: # (TODO: mention `= default` and `= delete` syntax)
 
-int main() {
-    {
-        std::vector<int> v(1'000'000);
-        // Invariant: size of vector is 1'000'000, memory allocation succeeded.
-        v[999'999] = 123; // OK
-    }
+[**Rule of five**](https://en.cppreference.com/w/cpp/language/rule_of_three)
+is a related concept, which states that if a class requires a custom
+1. destructor
+2. copy constructor
+3. copy assignment operator
+4. move constructor
+5. move assignment operator
+then it actually requires all five.
 
-    try {
-        std::vector<int> v(100'000'000'000);
-        // Memory allocation failed, invariant is broken. 
-        v[99'999'999'999] = 123; // won't be executed, because of exception
-    } catch (std::bad_alloc &) {
-        std::cout << "caught bad_alloc\n";
-    }
+[//]: # (TODO: mention rule of 3)
+
+Let us revisit the `int_array` class to see how it fits into RAII and the rule of five 
+(see complete definition of the class in the file `include/int_array.hpp`).
+This class manages a resource — a dynamically allocated array of integers.
+The lifecycle of this array is bound to the lifetime of the `int_array` object.
+
+The default constructor creates an empty array:
+
+```c++
+int_array()
+    : data_(nullptr)
+    , size_(0)
+{};
+```
+
+Another way to look at the default constructor 
+is as if it creates an array in special "empty" state — 
+this point of view will become handy later.
+
+Another constructor of the class creates an array of the given size
+by actually allocating the memory for it:
+
+```c++
+explicit int_array(std::size_t size)
+    : data_(new int[size])
+    , size_(size)
+{};
+```
+
+As such, the destructor has to deallocate this memory:
+
+```c++
+~int_array() {
+    delete[] data_;
 }
 ```
 
-**Rule of five** is a rule created for proper work with resources in C++. If you need to write one of the following methods, then you should write all five: 
-1. Destructor
-2. Copy constructor
-3. Copy assignment operator
-4. Move constructor
-5. Move assignment operator
+<div class=hint">
+    Note that we do not check for the null pointer,
+    as deleting `nullptr` is a safe operation that has no effect.
+</div>
 
-It expands the RAII idiom and allows you to work correctly with resources in C++. It was previously called **Rule of three** because before the introduction of move semantics in C++11, there was no need to write move constructor and move assignment operator.
+Now, the rule of five dictates that the class should also define
+custom copy constructor, move constructor, as well as copy and move assignment operators.
+We have already seen both of these in the previous lessons:
 
-And now, as we covered the first two, let's talk about the **Copy-and-Swap idiom**. It is a technique that utilizes the `std::swap` function to make the copy assignment operator safe. This usually boils down to swapping contents of both operands, then returning an instance of `*this`. It is used to implement the copy assignment operator in the Rule of five.
+```c++
+int_array(const int_array& other)
+        : data_(new int[other.size_])
+        , size_(other.size_)
+    {
+        for (size_t i = 0; i < size_; ++i) {
+            data_[i] = other.data_[i];
+        }
+    };
 
-The simple implementation of RAII with Copy-and-Swap idiom looks like this:
-```cpp
-class RAIIexample {
-public:
-    RAIIexample(std::size_t size) : m_size(size) {
-        m_data = new int[size];
-    }
-
-    // Copy constructor
-    RAIIexample(const RAIIexample & other) : RAIIexample(other.m_size) {
-        std::copy(other.m_data, other.m_data + m_size, m_data);
-    }
-
-    // Move constructor
-    RAIIexample(RAIIexample && other) {
-        m_data = other.m_data;
-        other.m_data = nullptr;
-    }
-
-    // Copy assignment operator
-    RAIIexample& operator=(const RAIIexample & other) {
-        return *this = RAIIexample(other);
-    }
-
-    // Move assignment operator
-    RAIIexample& operator=(RAIIexample && other)  noexcept {
-        std::swap(m_data, other.m_data);
-        return *this;
-    }
-
-    // Destructor
-    ~RAIIexample() {
-        delete[] m_data;
-    }
-private:
-    int* m_data;
-    std::size_t m_size;
+int_array(int_array&& other)
+    : data_(other.data_)
+    , size_(other.size_)
+{
+    other.data_ = nullptr;
+    other.size_ = 0;
 };
 ```
 
-To consolidate all the knowledge gained in this module, let's write our implementation of an array with a dynamic size. You don't need support size changing after the creation of the array.
-Take a look at the `dynarray.h` file. You need to implement all the methods that are declared there. To write an implementation, use `dynarray::` as a prefix for all methods. Please use **RAII**, **Rule of five** and **Copy-and-Swap idiom** in your implementation. Besides two constructors and all methods that should be by Rule of five, you need to implement the following methods:
-1. `std::size_t size() const` – returns the number of elements in the array.
-2. `int &operator[](std::size_t i)` – returns a reference to the element at position `i` in the array.
-3. `const int &operator[](std::size_t i) const` – returns a const reference to the element at position `i` in the array.
-4. `void swap(dynarray &other)` – swaps the contents of the array with the contents of `other`. You'll need to implement it for the Copy-and-Swap idiom.
-5. `friend std::ostream &operator<<(std::ostream &os, const dynarray &arr)` – prints the contents of the array to the output stream `os`. Let's print the array without any brackets and commas, like this: `1 2 3 4 5`. And don't forget to print a newline character at the end of the output.
+Notice how the move constructor resets the argument object into an "empty" state.
+Calling the destructor on this "empty" object later will effectively have no effect.
+Validly so, as the ownership of the resource has been transferred to the new object.
+
+Next, we need to define the assignment operators.
+To avoid code duplication between copy constructor and copy assignment operator
+(and similarly between move constructor and move assignment operator)
+it is possible to use another clever trick called 
+the [__Copy-and-Swap idiom__](https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Copy-and-swap). 
+
+With the help of this idiom, it is sufficient to define
+just a single version of assignment operator, 
+which should take the argument by value:
+
+```c++
+int_array& operator=(int_array other) {
+    swap(other);
+    return *this;
+}
+```
+
+Depending on whether the operator is called with 
+an lvalue (taken as `const int_array&`) or rvalue (taken as `int_array&&`)
+as an argument, the copy constructor or move constructor 
+will create a local copy (`int_array`) of the data in the `other` variable.
+Then, with the help of the swap function (see definition below), 
+the assignment operator swaps the data of the current object with the data of the local copy.
+The temporary local copy then destructs, releasing the old data along the way.
+
+The `swap` function performs an exchange of the data between two objects,
+with the help of the standard function `std::swap` capable of swapping the variables of primitive types:
+
+```c++
+void swap(int_array& other) {
+    std::swap(data_, other.data_);
+    std::swap(size_, other.size_);
+}
+```
+
+This way, the `int_array` class implements the _RAII_ principle,
+following the _rule of five_ and the _copy-and-swap_ idiom.
+
+In conclusion, you might have a look at the implementation of other methods of 
+the `int_array` class in the `include/int_array.hpp` file.
+In particular, you might find interesting:
+
+```c++
+int& operator[](std::size_t i);
+const int& operator[](std::size_t i) const;
+```
+
+* the two versions of custom array subscript operator `operator[]` 
+  for a mutable and constant `int_array` object;
+
+```c++
+std::ostream& operator<<(std::ostream &os, const int_array& array)
+```
+
+* the printing operator `operator<<`.
