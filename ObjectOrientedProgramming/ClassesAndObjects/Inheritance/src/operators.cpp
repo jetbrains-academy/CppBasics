@@ -38,5 +38,5 @@ Circle operator*(float s, Circle c) {
 
 Rectangle operator*(float s, Rectangle r) {
     Point2D v = { width(r), height(r) };
-    return r + s * v;
+    return { r.topLeft, r.topLeft + s * v };
 }
