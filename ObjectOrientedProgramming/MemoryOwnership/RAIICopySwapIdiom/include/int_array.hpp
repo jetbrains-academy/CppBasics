@@ -60,6 +60,10 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream &os, const int_array& array) {
+        if (array.size() == 0) {
+            os << "[]";
+            return os;
+        }
         os << "[ ";
         for (std::size_t i = 0; i < array.size(); ++i) {
             os << array[i];
