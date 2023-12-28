@@ -1,5 +1,5 @@
 Concluding the presentation of the ownership model in the C++ language,
-we need to discuss several related essential concepts and idioms.
+we need to discuss several essential concepts and idioms.
 
 [_Resource Acquisition Is Initialization_](https://en.cppreference.com/w/cpp/language/raii), 
 __RAII__ for short, is a programming technique which involves linking a resource 
@@ -9,25 +9,83 @@ According to this idiom:
 
 1. the constructor of the class should allocate and initialize 
    all the resources that the object will own during its lifetime;
-2. the copy constructor (and copy assignment operator) of the class 
+2. the copy constructor and copy assignment operator of the class 
    should copy the resource,
    if the resource is not copyable, then this constructor should be deleted; 
-3. the move constructor (and move assignment operator) of the class 
+3. the move constructor and move assignment operator of the class 
    should transfer the ownership of the resource;
 4. the destructor of the class should release all the resources that the object owns.
 
-[//]: # (TODO: mention `= default` and `= delete` syntax)
-
 [**Rule of five**](https://en.cppreference.com/w/cpp/language/rule_of_three)
 is a related concept, which states that if a class requires a custom
+
 1. destructor
 2. copy constructor
 3. copy assignment operator
 4. move constructor
 5. move assignment operator
+
 then it actually requires all five.
 
-[//]: # (TODO: mention rule of 3)
+Note that if your class does not define none of these methods,
+the compiler will generate default implementations for them:
+
+* default copy constructor/assignment performs a shallow copy of the object,
+  invoking copy constructor/assignment of its member fields;
+* default move constructor/assignment performs elementwise move of the class' members,
+  invoking move constructor/assignment of its member fields;
+* additionally, if there is no custom constructor, the default constructor
+  is automatically generated — it initializes all member fields to their default values.
+
+One can enforce the generation of default implementations using 
+the `= default` syntax:
+
+```c++
+class X {
+public:
+    X() = default;
+    X(const X&) = default;
+    X(X&&) = default;
+    
+    X& operator=(const X&) = default;
+    X& operator=(X&&) = default;
+    /* ... */
+};
+```
+
+This might be useful when you have defined a custom implementation 
+for one of the "five" methods, but still want to use the default 
+implementation for others.
+
+On the opposite, you might explicitly forbid auto-generating 
+any of these methods using the `= delete` syntax:
+
+```c++
+class X {
+public:
+    X() = delete;
+    X(const X&) = delete;
+    X(X&&) = delete;
+    
+    X& operator=(const X&) = delete;
+    X& operator=(X&&) = delete;    
+    /* ... */
+};
+```
+
+For example, this can be useful in cases when the class should not be copyable.
+In such a scenario, you can define move constructor and assignment operator,
+but delete the copy constructor and copy assignment operator.
+
+
+<div class="hint">
+
+Before the [C++11 edition](https://en.cppreference.com/w/cpp/11) 
+of the language, the rule of five was known as the _rule of three_.
+This is because before the C++11 the language did not have the feature of move semantics, 
+so it was not possible to define the move constructor and move assignment operator.
+
+</div>
 
 Let us revisit the `int_array` class to see how it fits into RAII and the rule of five 
 (see complete definition of the class in the file `include/int_array.hpp`).
@@ -67,7 +125,7 @@ As such, the destructor has to deallocate this memory:
 
 Now, the rule of five dictates that the class should also define
 custom copy constructor, move constructor, as well as copy and move assignment operators.
-We have already seen both of these in the previous lessons:
+We have already seen these constructors in the previous lessons:
 
 ```c++
 int_array(const int_array& other)
