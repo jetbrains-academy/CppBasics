@@ -3,8 +3,8 @@ custom_name: RAII & Copy-and-Swap Idiom
 files:
 - name: CMakeLists.txt
   visible: false
+- name: src/main.cpp
+  visible: true
 - name: include/int_array.hpp
   visible: true
   editable: false
-- name: src/main.cpp
-  visible: true

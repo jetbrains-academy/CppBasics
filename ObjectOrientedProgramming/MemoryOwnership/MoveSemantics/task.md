@@ -28,7 +28,9 @@ representing temporary objects or objects about to be destroyed.
 When another object wants to copy a soon-to-be disposed rvalue object,
 instead of actual copying, the contents of the rvalue object can be moved.
 
-For example, recall the `int_array` class, which has a custom copy constructor:
+For example, recall the `int_array` class, 
+which has a custom copy constructor
+(see file `include/int_array.hpp`):
 
 ```c++
 class int_array {
@@ -68,7 +70,7 @@ And then this function is called as follows:
 
 ```c++
 // the copy constructor is called here (!)
-int_array array = create_array(1, 24);
+int_array a = create_array(0, 4);
 ```
 
 In the code above, unnecessary copying is performed,
@@ -133,10 +135,10 @@ the special standard function `std::move`,
 one can manually transfer the ownership from one object to another:
 
 ```c++
-int_array a = int_array();
-int_array b = int_array(10);
+int_array b = create_array(1, 4);
+int_array c = create_array(2, 4);
 // ownership transfer
-a = std::move(b);
+b = std::move(c);
 ```
 
 <div class="hint">
@@ -169,11 +171,4 @@ p2 = std::move(p1);
 assert(p1 == nullptr);
 // p2 now owns the Dog object.
 assert(p2 != nullptr);
-```
-
-As a conclusion of this lesson, please implement the `transfer` function, 
-which should transfer an ownership from one unique pointer into another:
-
-```c++
-void transfer(std::unique_ptr<int[]>& from, std::unique_ptr<int[]>& to);
 ```

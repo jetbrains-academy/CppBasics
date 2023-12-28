@@ -1,13 +1,10 @@
-type: edu
+type: theory
 custom_name: Move Semantics
 files:
 - name: CMakeLists.txt
   visible: false
-- name: src/task.cpp
+- name: src/main.cpp
   visible: true
-  placeholders:
-  - offset: 136
-    length: 21
-    placeholder_text: /* TODO */
-- name: test/test.cpp
-  visible: false
+- name: include/int_array.hpp
+  visible: true
+  editable: false
