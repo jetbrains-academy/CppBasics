@@ -34,18 +34,18 @@ For example, recall the `int_array` class, which has a custom copy constructor:
 class int_array {
 public:
     /* ... */
-    int_array(const dynarray& other) 
-        : data(new int[other.size])
-        , size(other.size) 
+    int_array(const int_array& other) 
+        : data_(new int[other.size_])
+        , size_(other.size_) 
     {
-        for (size_t i = 0; i < size; ++i) {
-            data[i] = other.data[i];
+        for (size_t i = 0; i < size_; ++i) {
+            data_[i] = other.data_[i];
         }
     };
     /* ... */
 private:
-    int *data;
-    std::size_t size;
+    int* data_;
+    size_t size_;
 };
 ```
 
@@ -89,16 +89,16 @@ class int_array {
 public:
     /* ... */
     int_array(int_array&& other) 
-        : data(other.data)
-        , size(other.size) 
+        : data_(other.data_)
+        , size_(other.size_) 
     {
-        other.data = nullptr;
-        other.size = 0;
+        other.data_ = nullptr;
+        other.size_ = 0;
     };
     /* ... */
 private:
-    int *data;
-    std::size_t size;
+    int* data_;
+    size_t size_;
 };
 ```
 
