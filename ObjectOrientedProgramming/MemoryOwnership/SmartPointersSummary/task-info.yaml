@@ -1,5 +1,5 @@
 type: theory
-custom_name: Smart pointers summary
+custom_name: Smart Pointers Summary
 files:
   - name: CMakeLists.txt
     visible: false
