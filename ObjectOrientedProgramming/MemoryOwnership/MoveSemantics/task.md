@@ -6,16 +6,16 @@ and avoiding unnecessary memory allocations.
 Before diving into the move semantics details, let us briefly understand the concept of 
 [value categories](https://en.cppreference.com/w/cpp/language/value_category).
 
-* __lvalue__ expression represents an object that has a name or an identifier. 
+* An __lvalue__ expression represents an object that has a name or an identifier. 
   It refers to something that exists in memory and typically persists beyond a single expression. 
   It usually stands on the left-hand side of an assignment operator (`=`), hence the name __lvalue__.
 
-* __rvalue__ expression represents a temporary or disposable value. 
+* An __rvalue__ expression represents a temporary or disposable value. 
   It is usually the intermediate result of some computation that might not have a named memory location.
   It usually stands on the right-hand side of an assignment operator (`=`), hence the name __rvalue__.
 
-For example, below variables `a`, `b`, and `c` are lvalues, 
-while expression `a + b` is an rvalue.
+For example, below, variables `a`, `b`, and `c` are lvalues, 
+while the expression `a + b` is an rvalue.
 
 ```c++
 int a = 2;
@@ -25,7 +25,7 @@ int c = a + b;
 
 Move semantics utilize rvalues,
 representing temporary objects or objects about to be destroyed.
-When another object wants to copy a soon-to-be disposed rvalue object,
+When another object wants to copy a soon-to-be-disposed rvalue object,
 instead of actual copying, the contents of the rvalue object can be moved.
 
 For example, recall the `int_array` class, 
@@ -51,7 +51,7 @@ private:
 };
 ```
 
-Suppose there is a function that creates an array filled with the given value:
+Suppose there is a function that creates an array filled with a given value:
 
 ```c++
 int_array create_array(int value, size_t size) {
@@ -77,14 +77,14 @@ In the code above, unnecessary copying is performed,
 which copies an array from an object returned from the function 
 into the newly created object.
 
-However, because the returned object is actually a temporary rvalue
-which is going to be disposed anyway, 
+However, since the returned object is actually a temporary rvalue
+that is going to be disposed of anyway, 
 we can take advantage of that and instead of copying the array, 
 just _move_ the pointer.
 
 To do that, in addition to the copy constructor, 
-one can define the _move constructor_, 
-which takes as an argument rvalue reference denoted with `&&`:
+one can define a _move constructor_, 
+which takes an rvalue reference, denoted with `&&`, as an argument:
 
 ```c++
 class int_array {
@@ -105,16 +105,16 @@ private:
 ```
 
 Note that in addition to copying the pointer,
-the move constructor of `int_array` class also nullifies 
+the move constructor of the `int_array` class also nullifies 
 the pointer in the original object passed by rvalue reference. 
-It is necessary because otherwise, once the destructor 
+It is necessary because, otherwise, once the destructor 
 of the original object is called, it would deallocate the memory
-pointed-to by `data` field.
+pointed-to by the `data` field.
 This way, the given move constructor implementation reflects 
 the occurring ownership transfer.
 
-Similarly to copy assignment operator, 
-one can also define move assignment operator for a class:
+In a similar way to the copy assignment operator, 
+one can also define a move assignment operator for a class:
 
 ```c++
 class int_array {
@@ -132,7 +132,7 @@ private:
 
 With the help of the move assignment operator and 
 the special standard function `std::move`, 
-one can manually transfer the ownership from one object to another:
+one can manually transfer ownership from one object to another:
 
 ```c++
 int_array b = create_array(1, 4);
