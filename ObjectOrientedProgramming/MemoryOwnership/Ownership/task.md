@@ -12,7 +12,7 @@ and the memory they occupy is automatically managed by the parent object's lifec
 
 <div class="hint">
 
-Note that constructors and destructors are called in specific order,
+Note that constructors and destructors are called in a specific order,
 and, moreover, the order of destruction is the reverse order of initialization.
 For example, consider the following class hierarchy:
 
@@ -44,8 +44,8 @@ The order of construction of a `Laptop` object would be as follows:
 3. finally, the `Laptop` constructor would be called.
 
 The order of destruction is the opposite:
-1. first the derived class destructor `Laptop` would be called;
-2. then the sub-objects destructors would be called:
+1. first, the derived class destructor `Laptop` would be called;
+2. then the sub-objects' destructors would be called:
    * the `RandomAccessMemory` destructor;
    * the `Processor` destructor;
    * the `Motherboard` destructor;
@@ -55,7 +55,7 @@ The order of destruction is the opposite:
 
 Objects stored in pointer-typed fields are, by default, considered to be non-owned. 
 When a class contains a pointer to an object, 
-the responsibility for lifetime and storage duration management lies outside the class. 
+the responsibility for its lifetime and storage duration management lies outside the class. 
 It is crucial to understand this fact in order to prevent memory leaks and undefined behavior, 
 as ownership is not automatically transferred with the assignment of pointers.
 
@@ -69,7 +69,7 @@ public:
         : laptop(laptop) {}
         
     // the destructor does not destroy the object 
-    // pointed-by laptop field by default        
+    // pointed to by the laptop field by default        
     ~Student() = default;
 };
 ```
@@ -79,7 +79,7 @@ a pointer to a dynamically allocated `Laptop` object.
 The ownership responsibility for the `Laptop` object
 may or may not be assigned to the `Student` class depending on the desired semantics.
 If the desired semantics is that the `Student` takes 
-the ownership of the `laptop` object passed to it in the constructor,
+ownership of the `laptop` object passed to it in the constructor,
 then the developer of this class must ensure that
 the object is destroyed manually in the destructor
 (for example, by using the `delete` operator).
@@ -92,8 +92,8 @@ In the scenarios where ownership needs to be transferred,
 [_smart pointers_](https://en.wikipedia.org/wiki/Smart_pointer) 
 such as `std::unique_ptr` and `std::shared_ptr` can be used, 
 providing automated memory management with reduced risks of memory-related issues.
-These smart pointers are specialized classes defined in the standard library of the C++.
+These smart pointers are specialized classes defined in the standard library of C++.
 They behave like plain pointers, in a sense that they support the 
 same set of operations, like the dereferencing,
-but in addition they provide specific ownership semantics.
+but in addition, they provide specific ownership semantics.
 We will discuss smart pointers in more detail in the next few lessons.
