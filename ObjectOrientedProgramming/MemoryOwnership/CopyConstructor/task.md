@@ -1,9 +1,9 @@
- In C++, the class can define a special kind of a constructor,
+ In C++, a class can define a special kind of constructor,
  called the _copy constructor_.
  
-For example, consider the class `int_array` which represents 
+For example, consider the `int_array` class, which represents 
 a dynamically allocated array of integers
-(see complete definition of the class in the file `include/int_array.hpp`):
+(see the complete definition of the class in the file `include/int_array.hpp`):
 
 This class has two fields: a pointer to the allocated array and its size.
 It also defines the default constructor creating an empty array, 
@@ -12,18 +12,18 @@ The destructor of the class deallocates the array.
 
 <div class="hint">
     Note that we do not check for the null pointer in the destructor,
-    as deleting `nullptr` is a safe operation that has no effect.
+    as deleting a `nullptr` is a safe operation that has no effect.
 </div>
 
 To effectively work with an array, the class also 
-defines `size()` method to query for the size of the array,
-overloads the array subscript operators to provide the access to the underlying array,
+defines a `size()` method to query for the size of the array,
+overloads the array subscript operators to provide access to the underlying array,
 and overloads the printing operator to display the contents of the array. 
 
 <div class="hint">
 
 Note that there are two overloads of array subscript operator:
-one for a mutable array, and one for an immutable array. 
+one for a mutable array and one for an immutable array. 
 
 </div>
 
@@ -36,12 +36,12 @@ for (size_t i = 0; i < a.size(); ++i) {
 }
 ```
 
-It now might want to create a copy of this array.
-Of course, one can do that manually by creating an array of suitable size
-and assigning elements in the loop.
+They might want to create a copy of this array.
+Of course, one can do that manually by creating an array of a suitable size
+and assigning elements in a loop.
 
-However, C++ provides a more convenient way to do so.
-It is possible to define a special _copy constructor_:
+However, C++ provides a more convenient way to do this,
+by defining a special _copy constructor_:
 
 ```c++
 int_array(const int_array& other)
@@ -61,9 +61,9 @@ int_array b(a);
 ```
 
 Another possible use-case scenario: given two existing arrays, 
-a user might want to re-assign one of them, copying the elements of the other.
+a user might want to reassign one of them, copying the elements of the other.
 The C++ language has a tool for that too!
-It is called the _copy assignment operator_, and can be declared as follows:
+It is called the _copy assignment operator_, which can be declared as follows:
 
 ```c++
 int_array& operator=(const int_array& other) {
@@ -83,13 +83,13 @@ int_array& operator=(const int_array& other) {
 <div class="hint">
 
 The first `if` statement in the implementation of the operator
-handles the case of self-assignment — in this case the method simply returns.
+handles the case of self-assignment — in this case, the method simply returns.
 
 </div>
 
 <div class="hint">
 
-Note that the assignment operator returns reference `int_array&` 
+Note that the assignment operator returns a reference `int_array&` 
 to the object itself as a result.
 It is required to support multiple assignments syntax, 
 _e.g._: 
