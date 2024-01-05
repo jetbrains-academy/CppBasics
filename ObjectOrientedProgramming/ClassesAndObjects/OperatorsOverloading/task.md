@@ -1,13 +1,13 @@
 Before we dive into object-oriented programming, 
 we will learn about another useful feature of the C++ language  
-that can help to make your code easier to read and understand.
-This feature is __operator overloading,__ and it allows you to define various operators, 
+that can help make your code easier to read and understand.
+This feature is __operator overloading__; it allows you to define various operators, 
 like arithmetic operators `+`, `-`, `*`,
-for your custom data type.
+for your custom data types.
 
-Recall the function `move` you implemented before. 
-At first, your task was to implement it to move an object along `x` axis.
-Your code, probably, looked like this:
+Recall the `move` function you implemented before. 
+At first, your task was to implement it to move an object along the `x` axis.
+Your code likely looked like this:
 
 ```c++
 float move(float position, float velocity, float delta) {
@@ -15,8 +15,8 @@ float move(float position, float velocity, float delta) {
 }
 ```
 
-At the next stage, your task was to re-implement `move`, 
-this time to move an object along both `x` and `y` axis, 
+At the next stage, your task was to reimplement `move`, 
+this time to move an object along both `x` and `y` axes, 
 using our custom data type `Point2D` and two functions 
 `add` and `mul` defined for it:
 
@@ -38,7 +38,7 @@ Point2D move(Point2D position, Point2D velocity, float delta) {
 ```
 
 To enable this syntax, it is sufficient to define 
-a special function with `operator` prefix in its name:
+a special function with the `operator` prefix in its name:
 
 ```c++
 Point2D operator+(Point2D a, Point2D b) {
@@ -46,26 +46,26 @@ Point2D operator+(Point2D a, Point2D b) {
 }
 ```
 
-The C++ language allows overloading a [large number of operators](https://en.cppreference.com/w/cpp/language/operators).
-Please remember, just like any other feature, it is possible to abuse the operator overloading feature.
-It is recommended to overload the operators only if the corresponding notation
+The C++ language allows for the overloading of a [large number of operators](https://en.cppreference.com/w/cpp/language/operators).
+Please remember, just like any other feature, the operator overloading feature can be potentially abused.
+It is recommended to overload operators only if the corresponding notation
 has a natural interpretation for your custom data type!
 
 Your next task is to implement several overloaded operators for the data types used in our game. 
 
-Let us start with the familiar operations on `Point2D` data type.
+Let us start with the familiar operations on the `Point2D` data type.
 Please overload the arithmetic operators `+`, `-`, `*` for this data type 
 (their signatures are already given in the task template).
-It is allowed to use `add` and `mul` functions implemented on previous steps. 
-Note the difference between subtraction operator and unary minus operator — 
+It is allowed to use the `add` and `mul` functions implemented in previous steps. 
+Note the difference between the subtraction operator and the unary minus operator — 
 the former subtracts the coordinates of one point from another, 
 while the latter just changes the sign of both coordinates of a single point.
 
-Arithmetic operators also do have natural interpretation for shape data types, such as `Circle` and `Rectangle`.
+Arithmetic operators also have natural interpretations for shape data types, such as `Circle` and `Rectangle`.
 
 <div class="hint">
 
-Please note that the rectangle is defined by two points — its top-left and bottom-right corners:
+Please note that a rectangle is defined by two points — its top-left and bottom-right corners:
 
 ```c++
 struct Rectangle {
@@ -76,16 +76,16 @@ struct Rectangle {
 
 </div>
 
-If we are adding a point to a shape, then the point is interpreted as a vector and 
-the shape should be moved in the direction of this vector.
-* For `Circle` shape it is sufficient to add the point to the center of the circle.
+When adding a point to a shape, the point is interpreted as a vector and 
+the shape should move in the direction of this vector.
+* For the `Circle` shape, it is sufficient to add the point to the center of the circle.
 * For `Rectangle`, it is required to add the point to both corners of the rectangle. 
 
-Multiplying a shape by a scalar should perform the scaling operation.
-* For `Circle`, it is sufficient to multiply the radius to the scalar.
-* For `Rectangle` the implementation is a bit trickier. 
+Multiplying a shape by a scalar should result in a scaling operation.
+* For `Circle`, it is sufficient to multiply the radius by the scalar.
+* For `Rectangle`, the implementation is a bit trickier. 
   It is required to scale the width and height of the rectangle and then recompute its bottom-right corner.
-  You might use the pre-defined functions `width` and `height` to get 
+  You might use the predefined functions `width` and `height` to get 
   the corresponding properties of the rectangle (defined in the file `rectangle.hpp`).
 
 ```c++
@@ -98,7 +98,7 @@ float height(const Rectangle& rect) {
 }
 ```
 
-Finally, it would be convenient to overload equality comparison operators for all the data types mentioned above.  
+Finally, it would be convenient to overload the equality comparison operators for all the data types mentioned above.  
 
 <div class="hint">
 
@@ -119,8 +119,8 @@ std::istream& operator>>(std::istream& is, Point2D& p) {
 ```
 
 Notice the arguments of type `std::ostream` and `std::istream` — those are 
-output and input streams respectively.
-We have not yet covered them in this course, that would be a topic of the next lessons.
+output and input streams, respectively.
+While we have not covered them in this course yet, they will be topics in upcoming lessons.
 For now, however, it is sufficient to know that `std::cout` and `std::cin`
 (which we have seen in previous lessons!) are particular objects of these classes.
 
@@ -132,7 +132,7 @@ std::cin >> point;
 std::cout << "Your point is " << point << std::endl;
 ```
 
-You might find the overloads of the input/output operators 
-for the other data types used in our game in the file `operators.hpp`.
+You can find the overloads of the input/output operators 
+for the other data types used in our game in the `operators.hpp` file.
 
 </div>
