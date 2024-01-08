@@ -14,7 +14,7 @@ It increments the reference counter.
 The underlying object is only deallocated when 
 the last shared pointer releases its ownership.
 
-Let us have a look at the example of `std::shared_ptr` usage: 
+Let us have a look at an example of `std::shared_ptr` usage: 
 
 ```c++
 void test() {
@@ -27,39 +27,39 @@ void test() {
     // both dog and copy share ownership of the same object
     std::cout << *dog << " " << *copy << "\n";
     // one can query the count of shared pointers
-    // pointing-to the given object 
+    // pointing to the given object 
     std::cout << "dog.use_count() = " << dog.use_count() << "\n";
-    // similarly to std::unique_ptr, it is possible to obtain a plain pointer
+    // similar to std::unique_ptr, it is possible to obtain a plain pointer
     std::cout << dog.get() << "\n";
     // when the function exits,
-    // destructors of both shared pointers is called,
+    // destructors of both shared pointers are called,
     // dropping the reference count to 0 and thus
     // triggering the deallocation of the pointed-to Dog object
 }
 ```
 
-As an exercise, let iss develop a simple chat system.
+As an exercise, let us develop a simple chat system.
 It consists of two classes: `Chat` and `User` (see file `include/chat.hpp`).
-Each user has a shared pointer to the chat object it is currently logged in.
-Your task is to write implementation of the following methods of the `User` class.
+Each user has a shared pointer to the chat object in which they are currently logged in.
+Your task is to write the implementation of the following methods for the `User` class.
 
 ```c++
 void createNewChat(std::string name);
 ```
 
 * The `createNewChat` method should create a new chat with the given name 
-  and log in the user inside.
+  and log the user into it.
 
 <div class="hint">
 
-To create a new object pointed-by a shared pointer
+To create a new object pointed to by a shared pointer,
 use the function `std::make_shared`
 
 </div>  
 
 <div class="hint">
 
-To assign a unique identifier to the newly create `Chat` object,
+To assign a unique identifier to the newly created `Chat` object,
 use the static field `nextChatId`. 
 
 </div>
@@ -68,11 +68,11 @@ use the static field `nextChatId`.
 void joinChatByInvite(const User& user);
 ```
 
-* The `joinChatByInvite` method should log in the user into the chat of another user
-  (by re-assigning its chat pointer).
+* The `joinChatByInvite` method should log the user into another user's chat
+  (by reassigning its chat pointer).
 
 ```c++
 void leaveChat();
 ```
 
-* The `leaveChat` method should log out the user from the chat.
+* The `leaveChat` method should log the user out of the chat.
