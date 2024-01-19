@@ -39,8 +39,8 @@ files:
   visible: true
 - name: CMakeLists.txt
   visible: false
-- name: test/test.cpp
-  visible: false
 - name: src/main.cpp
   visible: true
   editable: false
+- name: test/test.cpp
+  visible: false
