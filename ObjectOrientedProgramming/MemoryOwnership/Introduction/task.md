@@ -8,7 +8,7 @@ Here, we are going to cover the following topics related to ownership:
 
 * Lifetime of objects.
 * `new` and `delete` operators.
-* Placement `new`.
+* Placement `new` operator.
 * Ownership and move semantics.
 * Smart pointers: `unique_ptr`, `shared_ptr`, and `weak_ptr`.
 * Resource Acquisition Is Initialization (RAII) idiom.

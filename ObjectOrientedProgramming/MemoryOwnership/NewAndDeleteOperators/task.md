@@ -42,4 +42,4 @@ they are used merely to allocate raw memory blocks.
 To highlight the difference between the two, we ask you to complete the following task.
 Given the `Book` class defined in the `book.hpp` file, 
 create an object of this class using `new`/`delete` syntax in the `newAndDeleteBook` function, 
-and then try to create an object using `malloc`/`free` syntax in the `mallocAndFreeBook` function.
+and then try to allocate memory for an object using `malloc`/`free` syntax in the `mallocAndFreeBook` function.
