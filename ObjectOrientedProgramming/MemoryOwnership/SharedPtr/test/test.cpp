@@ -7,7 +7,7 @@ TEST(UserTest, CreateNewChatTest) {
     User bob("Bob");
     bob.createNewChat("Chat");
     ASSERT_NE(nullptr, bob.getChat());
-    ASSERT_EQ("Test", bob.getChat()->getName());
+    ASSERT_EQ("Chat", bob.getChat()->getName());
     ASSERT_EQ(1, bob.getChat().use_count());
 
     std::shared_ptr<Chat> chat = bob.getChat();
