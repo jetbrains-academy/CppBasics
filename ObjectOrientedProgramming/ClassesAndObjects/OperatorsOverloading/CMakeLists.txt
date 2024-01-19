@@ -19,6 +19,12 @@ set(TASK
 set(TEST
         test/test.cpp)
 
-include_directories(${CMAKE_SOURCE_DIR}/include/)
+add_executable(${PROJECT_NAME}-run ${SRC})
 
 configure_test_target(${PROJECT_NAME}-test "${SRC}" ${TEST})
+
+prepare_sfml_framework_lesson_task(
+        "${CMAKE_CURRENT_SOURCE_DIR}/.."
+        ${PROJECT_NAME}-run
+        ${PROJECT_NAME}-test
+)

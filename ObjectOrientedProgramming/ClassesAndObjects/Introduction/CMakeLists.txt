@@ -13,9 +13,6 @@ set(SRC
         src/operators.cpp src/utils.cpp
 )
 
-set(TEST
-        test/test.cpp)
-
 add_executable(${PROJECT_NAME}-run ${SRC})
 
 prepare_sfml_framework_lesson_task(
