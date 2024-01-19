@@ -29,14 +29,18 @@ std::string updateVelocity_error_msg(GameObject* object, Point2D velocity) {
 
 TEST(EnemyObjectTest, UpdateVelocityChangedTest) {
     TestEnemyObject object = TestEnemyObject();
+    // set some initial velocity, which does not satisfy
+    // the constraints specified in the task description;
+    // thus the call to `updateVelocity` should change it to some other value
+    Point2D initialVelocity = { -5.0f, -5.0f };
     object.performSetStatus(GameObjectStatus::NORMAL);
-    object.performSetVelocity(Point2D { 0.0f, 0.0f });
+    object.performSetVelocity(initialVelocity);
 
     TestEnemyObject actual = object;
     actual.performUpdateVelocity();
 
     Point2D velocity = actual.getVelocity();
-    ASSERT_FALSE(velocity.x == 0.0f && velocity.y == 0.0f)
+    ASSERT_FALSE(velocity.x == initialVelocity.x && velocity.y == initialVelocity.y)
         << updateVelocity_error_msg(&object, actual.getVelocity())
         << "The velocity has not changed!";
 }
