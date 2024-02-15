@@ -55,7 +55,7 @@ void link(Node* cursor, Node* node);
 It should link together the `cursor` and `node` nodes, putting `node` right after `cursor`.
 Make sure to properly update the `next` and `prev` fields of all relevant nodes, 
 that is, the nodes pointed by the `cursor`, `cursor->next`, and `node` pointers. 
-You might assume that all nodes reachable from `cursor` through `next` and `prev`
+You might assume that all nodes which are reachable from `cursor` through `next` and `prev`
 are valid nodes and none of their `next` or `prev` pointers are null
 (we will see why this is true for our intended list implementation later).
 
@@ -91,7 +91,7 @@ struct List {
 For this scheme to work properly, we also have to initialize the 
 `next` and `prev` fields of the `sentry` node.
 We can make them both point to the `sentry` node. 
-Therefore, in our encoding, an empty list is modelled as 
+Therefore, in our encoding, an empty list is modeled as 
 a list consisting of a single sentinel node whose `next` and `prev` pointers form a cycle.
 Write code for the function `initList` implementing this idea
 (set the `data` field of the `sentry` node to `nullptr`):

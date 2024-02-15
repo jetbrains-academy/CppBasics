@@ -24,7 +24,7 @@ files:
 - name: src/loop.cpp
   visible: true
   placeholders:
-  - offset: 110
+  - offset: 109
     length: 136
     placeholder_text: return;
     dependency:
@@ -37,7 +37,7 @@ files:
 - name: src/generate.cpp
   visible: true
   placeholders:
-  - offset: 121
+  - offset: 120
     length: 197
     placeholder_text: /* TODO */
     dependency:
@@ -47,7 +47,7 @@ files:
       file: src/generate.cpp
       placeholder: 1
       is_visible: false
-  - offset: 394
+  - offset: 393
     length: 49
     placeholder_text: return min;
     dependency:
@@ -60,43 +60,43 @@ files:
 - name: src/collision.cpp
   visible: true
   placeholders:
-  - offset: 83
-    length: 83
-    placeholder_text: return 0.0f;
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/collision.cpp
-      placeholder: 1
-      is_visible: false
-  - offset: 223
-    length: 82
-    placeholder_text: return false;
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/collision.cpp
-      placeholder: 2
-      is_visible: false
+    - offset: 82
+      length: 83
+      placeholder_text: return 0.0f;
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/collision.cpp
+        placeholder: 1
+        is_visible: false
+    - offset: 222
+      length: 82
+      placeholder_text: return false;
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/collision.cpp
+        placeholder: 2
+        is_visible: false
 - name: src/borders.cpp
   visible: true
   placeholders:
-  - offset: 101
-    length: 359
-    placeholder_text: /* TODO */
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/borders.cpp
-      placeholder: 1
-      is_visible: false
+    - offset: 100
+      length: 359
+      placeholder_text: /* TODO */
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/borders.cpp
+        placeholder: 1
+        is_visible: false
 - name: src/direction.cpp
   visible: true
   placeholders:
-  - offset: 70
+  - offset: 69
     length: 304
     placeholder_text: "return { 0.0f, 0.0f };"
     dependency:
@@ -109,49 +109,49 @@ files:
 - name: src/point.cpp
   visible: true
   placeholders:
-  - offset: 88
-    length: 37
-    placeholder_text: /* TODO */
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/point.cpp
-      placeholder: 1
-      is_visible: false
-  - offset: 207
-    length: 33
-    placeholder_text: /* TODO */
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/point.cpp
-      placeholder: 2
-      is_visible: false
-  - offset: 333
-    length: 35
-    placeholder_text: position
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/point.cpp
-      placeholder: 3
-      is_visible: false
+    - offset: 87
+      length: 37
+      placeholder_text: /* TODO */
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/point.cpp
+        placeholder: 1
+        is_visible: false
+    - offset: 206
+      length: 33
+      placeholder_text: /* TODO */
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/point.cpp
+        placeholder: 2
+        is_visible: false
+    - offset: 332
+      length: 35
+      placeholder_text: position
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/point.cpp
+        placeholder: 3
+        is_visible: false
 - name: src/move.cpp
   visible: true
   placeholders:
-  - offset: 69
-    length: 27
-    placeholder_text: position
-    dependency:
-      section: WarmUp
-      lesson: MovingOn
-      task: HuntingBugs
-      file: src/move.cpp
-      placeholder: 1
-      is_visible: false
+    - offset: 69
+      length: 27
+      placeholder_text: position
+      dependency:
+        section: WarmUp
+        lesson: MovingOn
+        task: HuntingBugs
+        file: src/move.cpp
+        placeholder: 1
+        is_visible: false
 - name: src/main.cpp
   visible: true
 - name: CMakeLists.txt

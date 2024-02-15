@@ -83,5 +83,27 @@ with each module covering specific topics and aspects of the C++ language.
   * type cast operators: C style casts, `static_cast`, `reinterpret_cast`
   * C style strings
 
-* __TBA__ ... 
+* __Object-Oriented Programming and Ownership Semantics__
+  * operators overloading
+  * classes and objects
+  * class fields and methods, `virtual` methods
+  * abstract classes and interfaces 
+  * inheritance, polymorphism, and encapsulation
+  * visibility modifiers: `public`, `protected`, and `private`
+  * class invariants
+  * `static` members
+  * `class` vs `struct`, plain old data types (POD)
+  * constructors and destructors
+  * `explicit` constructor
+  * object's lifetime, storage duration vs lifetime
+  * `new` and `delete` operators
+  * placement `new` operator
+  * copy and move constructors
+  * copy and move assignment operators
+  * copy-and-swap idiom
+  * ownership and move semantics
+  * resource acquisition is initialization idiom (RAII)
+  * smart pointers: `std::unique_ptr`, `std::shared_ptr`, and `std::weak_ptr`
+
+* __TBA__ ...
  

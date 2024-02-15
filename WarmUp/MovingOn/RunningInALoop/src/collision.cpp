@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include "scene.hpp"
+#include "game.hpp"
 
 float distance(Point2D a, Point2D b) {
     float dx = a.x - b.x;

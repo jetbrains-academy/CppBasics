@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-#include "scene.hpp"
+#include "game.hpp"
 #include "operators.hpp"
 #include "testing.hpp"
 

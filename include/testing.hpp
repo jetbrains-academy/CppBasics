@@ -9,6 +9,7 @@
 #include <gtest/gtest.h>
 
 #include "point.hpp"
+#include "utils.hpp"
 
 inline void initGen() {
     // fix seed to generate test data deterministically

@@ -1,162 +1,150 @@
 #ifndef CPPBASICS_SCENE_HPP
 #define CPPBASICS_SCENE_HPP
 
-#include <string>
-
 #include <SFML/Graphics.hpp>
 
 #include "point.hpp"
+#include "gobject.hpp"
+#include "textures.hpp"
 
-const float RADIUS = 40.0f;
-const float CONSUMABLE_RADIUS = 20.0f;
+/**
+ * The Scene class provides functionalities for rendering game scenes.
+ */
+class Scene {
+public:
 
-float move(float position, float velocity, float delta);
+    /**
+     * Constructs the scene.
+     */
+    Scene(float width, float height);
 
-enum Direction {
-    North,
-    East,
-    South,
-    West,
+    /**
+     * Destructs the scene.
+     */
+    virtual ~Scene() = default;
+
+    /**
+     * Activates the scene.
+     *
+     * Scene is activated by the game engine when it sets it as a the current scene.
+     * Activation should initialize the state of the scene, including all the game objects belonging to it.
+     *
+     * @note This method must be implemented in any derived scene class.
+     */
+    virtual void activate() = 0;
+
+    /**
+     * Deactivates the scene.
+     *
+     * Scene is deactivated by the game engine when it performs a transition to another scene.
+     * Deactivation should reset the state of the scene.
+     *
+     * @note This method must be implemented in any derived scene class.
+     */
+    virtual void deactivate() = 0;
+
+    /**
+     * Returns the ID of the scene.
+     */
+    virtual SceneID getID() const = 0;
+
+    /**
+     * Returns the ID of the next scene to transition into.
+     */
+    virtual SceneID getNextSceneID() const = 0;
+
+    /**
+     * Processes scene-related input event, such as player pressing some button, etc.
+     *
+     * @param event the processing event.
+     *
+     * @note This method must be implemented in any derived scene class.
+     */
+    virtual void processEvent(const sf::Event& event) = 0;
+
+    /**
+     * Updates the scene state based on time elapsed since the last update.
+     *
+     * @param delta The time elapsed since the last update.
+     *
+     * @note This method must be implemented in any derived scene class.
+     */
+    virtual void update(sf::Time delta) = 0;
+
+    /**
+     * Draws all the game objects belonging to the scene on the window.
+     *
+     * @param window the window to draw on.
+     * @param textureManager the texture manager.
+     *
+     * @note This method must be implemented in any derived scene class.
+     */
+    virtual void draw(sf::RenderWindow &window, TextureManager& textureManager) = 0;
+
+    /**
+     * Returns the bounding box of the scene.
+     * The bounding box defines the smallest rectangle that completely encloses the scene.
+     *
+     * @return The bounding box of the scene as a rectangle.
+     */
+    Rectangle getBoundingBox() const;
+
+protected:
+
+    /**
+     * Set the position of a game object.
+     * Ensures that the object fits within the bounds of the scene.
+     *
+     * @param object the game object which position to be set.
+     * @param position the new position of the object.
+     */
+    void setObjectPosition(GameObject& object, Point2D position);
+
+    /**
+     * Moves a game object on the scene by the given vector.
+     * Ensures that the object fits within the bounds of the scene.
+     *
+     * @param object The game object to be moved.
+     * @param vector The vector specifying the movement.
+     */
+    void move(GameObject& object, Point2D vector);
+
+    /**
+     * Moves a game object on the scene based on a given time delta and object's velocity.
+     *
+     * @param object The game object to be moved.
+     * @param delta The time delta.
+     */
+    void move(GameObject& object, sf::Time delta);
+
+    /**
+     * @brief Fits the game object into the bound of the scene.
+     * The fitting operation may involve adjusting object's position.
+     *
+     * @param object the object to be fit into the scene.
+     */
+    void fitInto(GameObject& object);
+
+    /**
+     * Checks for potential collision between two game objects and notifies the objects about the result of the check
+     * by calling their GameObject::onCollision methods and provided with the CollisionInfo structure.
+     *
+     * @param object1 The first game object to check for collision.
+     * @param object2 The second game object to check for collision.
+     */
+    void detectCollision(GameObject& object1, GameObject& object2);
+
+    /**
+     * Draws the background, filling it with the provided texture.
+     *
+     * @param window the window to draw on.
+     * @param texture the background texture.
+     */
+    void drawBackground(sf::RenderWindow &window, const sf::Texture* texture) const;
+
+private:
+    float width;
+    float height;
 };
-
-Point2D getDirection(Direction direction);
-
-const float SPEED = 150.0f;
-
-const float SCENE_WIDTH  = 800.0f;
-const float SCENE_HEIGHT = 600.0f;
-
-const float NORTH_BORDER = 0.0f;
-const float WEST_BORDER  = 0.0f;
-const float EAST_BORDER  = WEST_BORDER + SCENE_WIDTH;
-const float SOUTH_BORDER = NORTH_BORDER + SCENE_HEIGHT;
-
-Point2D adjustToBorders(Point2D position);
-
-struct Circle {
-    Point2D center;
-    float radius;
-};
-
-float distance(Point2D a, Point2D b);
-
-bool collision(Circle circle1, Circle circle2);
-void collisionLoop(Circle player, Circle consumable[], bool consumed[], int size);
-void approachingLoop(Circle player, Circle consumable[], bool warned[], int size);
-
-float generateCoordinate(float min, float max);
-Circle generateCircle(float radius);
-
-struct Consumable {
-    Circle circle;
-    bool concerned;
-    bool destroyed;
-};
-
-/******************************************************************************/
-
-inline int initWindow(sf::RenderWindow& window) {
-    window.create(sf::VideoMode(SCENE_WIDTH, SCENE_HEIGHT), "Space Game");
-    window.setFramerateLimit(60);
-    return 0;
-}
-
-inline int initBackrground(sf::Sprite& sprite, sf::Texture& texture) {
-    if (!texture.loadFromFile("resources/space.png")) {
-        return 1;
-    }
-    texture.setRepeated(true);
-    sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, SCENE_WIDTH, SCENE_HEIGHT));
-    return 0;
-}
-
-const float PLAYER_START_X = 400.0f;
-const float PLAYER_START_Y = 300.0f;
-
-inline int initPlayer(sf::CircleShape& shape, sf::Texture& texture) {
-    shape.setRadius(RADIUS);
-    shape.setOrigin(RADIUS, RADIUS);
-    shape.setPosition(PLAYER_START_X, PLAYER_START_Y);
-    if (!texture.loadFromFile("resources/planet.png")) {
-        return 1;
-    }
-    shape.setTexture(&texture);
-    return 0;
-}
-
-const float CONSUMABLE_START_X = 600.0f;
-const float CONSUMABLE_START_Y = 150.0f;
-
-inline int initConsumableTexture(sf::Texture& texture) {
-    std::string filename = "resources/star.png";
-    if (!texture.loadFromFile(filename)) {
-        return 1;
-    }
-    texture.setSmooth(true);
-    return 0;
-}
-
-inline int initConsumable(sf::CircleShape& shape, const Circle& circle, const sf::Texture& texture) {
-    shape.setRadius(circle.radius);
-    shape.setOrigin(circle.radius, circle.radius);
-    shape.setPosition(circle.center.x, circle.center.y);
-    shape.setTexture(&texture);
-    return 0;
-}
-
-inline int initConsumable(sf::CircleShape& shape, const sf::Texture& texture) {
-    Circle circle = { { CONSUMABLE_START_X, CONSUMABLE_START_Y }, CONSUMABLE_RADIUS };
-    return initConsumable(shape, circle, texture);
-}
-
-inline int initConsumableRandom(sf::CircleShape& shape, const sf::Texture& texture, Circle playerCircle) {
-    Circle consumableCircle;
-    while (true) {
-        consumableCircle = generateCircle(CONSUMABLE_RADIUS);
-        if (collision(consumableCircle, playerCircle))
-            continue;
-        break;
-    }
-    return initConsumable(shape, consumableCircle, texture);
-}
-
-inline int initConsumablesRandom(sf::CircleShape* shapes, int count, const sf::Texture& texture, Circle playerCircle) {
-    std::vector<Circle> circles(count);
-    for (int i = 0; i < count; ++i) {
-        while (true) {
-            circles[i] = generateCircle(CONSUMABLE_RADIUS);
-            bool collides = collision(circles[i], playerCircle);
-            for (int j = 0; (j < i) && !collides; ++j) {
-                collides = collision(circles[i], circles[j]);
-            }
-            if (collides) continue;
-            break;
-        }
-        int status = initConsumable(shapes[i], circles[i], texture);
-        if (status != 0) {
-            return status;
-        }
-    }
-    return 0;
-}
-
-inline Point2D calculateVelocity() {
-    Point2D velocity = { 0.0f, 0.0f };
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        velocity = add(velocity, getDirection(North));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        velocity = add(velocity, getDirection(East));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        velocity = add(velocity, getDirection(South));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        velocity = add(velocity, getDirection(West));
-    }
-    velocity = mul(SPEED, velocity);
-    return velocity;
-}
 
 #endif // CPPBASICS_SCENE_HPP

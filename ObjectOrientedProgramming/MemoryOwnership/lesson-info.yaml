@@ -1,0 +1,14 @@
+custom_name: Memory Ownership
+content:
+- Introduction
+- ObjectLifetime
+- NewAndDeleteOperators
+- PlacementNew
+- CopyConstructor
+- Ownership
+- UniquePtr
+- MoveSemantics
+- SharedPtr
+- WeakPtr
+- SmartPointersSummary
+- RAIICopySwapIdiom
