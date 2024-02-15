@@ -77,8 +77,6 @@ as it results in more predictable behavior.
 
 </div>
 
-[//]: # (TODO: explain explicit constructors)
-
 The definition of the `CircleGameObject` constructor body contains some new interesting syntax:
 
 ```c++

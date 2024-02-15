@@ -41,7 +41,7 @@ and often instances of both can be found within the same codebase.
   They have a predictable memory layout and predictable behavior —
   there are no associated virtual methods dispatched at runtime.
 
-In C++, structures are also sometimes referred to as [_POD types_]((https://en.wikipedia.org/wiki/Passive_data_structure)),
+In C++, structures are also sometimes referred to as [_POD types_](https://en.wikipedia.org/wiki/Passive_data_structure),
 where POD stands for _plain old data_.
 
 <div class="hint">
