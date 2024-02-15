@@ -3,7 +3,6 @@ custom_name: Hunting Bugs
 files:
 - name: src/approaching.cpp
   visible: true
-<<<<<<< HEAD
   placeholders:
   - offset: 113
     length: 215
@@ -15,8 +14,6 @@ files:
                   concerned[i] = dist < warnDist;
               }
           }
-=======
->>>>>>> ffb8328 (rename `scene.hpp` into `game.hpp`, split it into several files)
 - name: src/loop.cpp
   visible: true
   placeholders:
@@ -150,10 +147,8 @@ files:
         is_visible: false
 - name: src/main.cpp
   visible: true
-<<<<<<< HEAD
 - name: test/test.cpp
-=======
+  visible: false
 - name: CMakeLists.txt
->>>>>>> ffb8328 (rename `scene.hpp` into `game.hpp`, split it into several files)
   visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Hunting+Bugs
