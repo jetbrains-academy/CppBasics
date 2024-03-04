@@ -1,9 +1,13 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> create_and_fill_vector() {
+std::vector<int> create_and_reserve() {
     std::vector<int> vec;
     vec.reserve(10);
+    return vec;
+}
+
+std::vector<int> fill(std::vector<int>& vec) {
     for (int i = 1; i <= 10; ++i) {
         vec.push_back(i);
     }
@@ -30,21 +34,24 @@ void print_size_and_capacity(const std::vector<int>& vec) {
 
 void clear_vector(std::vector<int>& vec) {
     vec.clear();
-    std::cout << "Vector cleared.\n";
+    std::cout << "Vector cleared";
 }
 
-int main() {
-    std::vector<int> vec = create_and_fill_vector();
+void play_with_vector() {
+    std::vector<int> vec = create_and_reserve();
+    print_size_and_capacity(vec);
+    vec = fill(vec);
     print_vector(vec);
     print_size_and_capacity(vec);
-
     vec = modify_vector(vec);
     print_vector(vec);
     print_size_and_capacity(vec);
-
     clear_vector(vec);
     print_vector(vec);
     print_size_and_capacity(vec);
+}
 
+int main() {
+    play_with_vector();
     return 0;
 }

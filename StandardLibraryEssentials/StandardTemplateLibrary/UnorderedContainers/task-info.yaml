@@ -5,5 +5,23 @@ files:
     visible: false
   - name: src/task.cpp
     visible: true
+    placeholders:
+      - offset: 103
+        length: 19
+        placeholder_text: /* TODO */
+      - offset: 185
+        length: 105
+        placeholder_text: /* TODO */
+      - offset: 343
+        length: 17
+        placeholder_text: /* TODO */
+      - offset: 426
+        length: 175
+        placeholder_text: /* TODO */
+      - offset: 643
+        length: 102
+        placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false
+  - name: include/Cache.h
+    visible: true

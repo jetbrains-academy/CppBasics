@@ -1,12 +1,12 @@
-Besides `std::vector`, there are other sequential containers in the STL. The `std::list`, `std::forward_list`, and `std::deque` are sequential containers that allow dynamic resizing. They are part of the Standard Template Library and provide different trade-offs in terms of performance and functionality.
+Besides `std::vector`, there are other sequential containers in the STL. The `std::forward_list`, `std::list`, and `std::deque` are sequential containers that allow dynamic resizing and provide different trade-offs in terms of performance and functionality.
 
-[`std::list`](https://en.cppreference.com/w/cpp/container/list) is a [doubly linked list](https://en.wikipedia.org/wiki/Doubly_linked_list). It allows constant time insert and erase operations anywhere within the sequence, and iteration in both directions. However, it does not provide fast random access, it is not cache-friendly due to non-contiguous memory allocation, and it uses extra memory to keep the linking information associated with each element. 
+[`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list) is a [singly linked list](https://en.wikipedia.org/wiki/Linked_list) introduced in C++11. It consumes less memory than `std::list` because it only keeps a link to the next element, but it only supports forward iteration.
 
-[`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list) is a [singly linked list](https://en.wikipedia.org/wiki/Linked_list) introduced in C++11. It consumes less memory than `std::list` because it only keeps a link to the next element, but it only supports unidirectional iteration.
+[`std::list`](https://en.cppreference.com/w/cpp/container/list) is a [doubly linked list](https://en.wikipedia.org/wiki/Doubly_linked_list). It allows constant time insert and erase operations anywhere within the sequence, and iteration in both directions. However, it does not provide fast random access, it is not [cache-friendly](https://stackoverflow.com/questions/16699247/what-is-a-cache-friendly-code) due to non-contiguous memory allocation, and it uses extra memory to keep the linking information associated with each element.
 
 [`std::deque`](https://en.cppreference.com/w/cpp/container/deque) aka [double-ended queue](https://en.wikipedia.org/wiki/Double-ended_queue) is similar to `std::vector`, but it allows fast insert and erase operations at both its beginning and end. Unlike `std::vector`, it does not guarantee that all its elements are contiguous in memory, but it does provide fast random access. It is a good general-purpose data structure when both ends of the sequence need to be modified frequently.
 
-Here is an example of usage for each of these containers. Variables that are declared using `auto` have an iterator type, and will be explained in the following sections.
+Here is an example of usage for each of these containers.
 
 ```cpp
 #include <iostream>
@@ -15,16 +15,6 @@ Here is an example of usage for each of these containers. Variables that are dec
 #include <deque>
 
 int main() {
-    // List creation and manipulation
-    std::list<int> l = {1, 2, 3};
-    l.push_front(0); // l = {0, 1, 2, 3}
-    l.push_back(4);  // l = {0, 1, 2, 3, 4}
-    l.pop_front();   // l = {1, 2, 3, 4}
-    l.pop_back();    // l = {1, 2, 3}
-//    l[1] = 5;        Error: operator[] is not supported
-    auto second_l = std::next(l.begin());
-    l.insert(second_l, 5); // l = {1, 5, 2, 3}, O(1) complexity
-
     // Forward list creation and manipulation
     std::forward_list<int> fl = {1, 2, 3};
     fl.push_front(0); // fl = {0, 1, 2, 3}
@@ -32,8 +22,18 @@ int main() {
     fl.pop_front();   // fl = {1, 2, 3}
 //   fl.pop_back();    Error: pop_back is not supported
 //   fl[1] = 5;        Error: operator[] is not supported
-    auto second_fl = fl.begin();
+    std::_Fwd_list_iterator second_fl = fl.begin();
     fl.insert_after(second_fl, 5); // fl = {1, 5, 2, 3}, O(1) complexity
+
+    // List creation and manipulation
+    std::list<int> l = {1, 2, 3};
+    l.push_front(0); // l = {0, 1, 2, 3}
+    l.push_back(4);  // l = {0, 1, 2, 3, 4}
+    l.pop_front();   // l = {1, 2, 3, 4}
+    l.pop_back();    // l = {1, 2, 3}
+//    l[1] = 5;        Error: operator[] is not supported
+    std::_List_iterator second_l = std::next(l.begin());
+    l.insert(second_l, 5); // l = {1, 5, 2, 3}, O(1) complexity
     
     // Deque creation and manipulation
     std::deque<int> d = {1, 2, 3};
@@ -42,7 +42,7 @@ int main() {
     d.pop_front();   // d = {1, 2, 3, 4}
     d.pop_back();    // d = {1, 2, 3}
     d[1] = 5;        // d = {1, 5, 3}
-    auto second_d = std::next(d.begin());
+    std::_Deque_iterator second_d = std::next(d.begin());
     d.insert(second_d, 0); // d = {1, 0, 5, 3}, O(n) complexity
 
     return 0;
@@ -78,3 +78,10 @@ int main() {
     return 0;
 }
 ```
+
+Your task will be to write a function called `sum_adjacent_elements` that takes a collection of integers `nums` of size `n` as input and returns a new collection of the same type of size `n/2` with pairwise sums of the elements of `nums`. If element does not have a pair, it should not be copied to the new collection.
+You are required to implement the function using both `std::list` and `std::deque`.
+
+<div class="hint">
+  Remember the difference between the two containers. Since `std::deque` is capable of random access, you can use the `[]` operator to access elements. On the other hand, `std::list` does not support random access, so you will need to use iterators to access elements.
+</div>

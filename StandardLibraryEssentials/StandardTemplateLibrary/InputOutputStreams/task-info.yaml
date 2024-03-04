@@ -5,5 +5,15 @@ files:
     visible: false
   - name: src/task.cpp
     visible: true
+    placeholders:
+      - offset: 0
+        length: 57
+        placeholder_text: /* TODO */
+      - offset: 105
+        length: 513
+        placeholder_text: /* TODO */
+      - offset: 648
+        length: 393
+        placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false

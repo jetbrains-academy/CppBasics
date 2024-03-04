@@ -1,4 +1,4 @@
-During container exploration, we have encountered iterators many times, and it is not surprising since they are strongly tied with each other. 
+During container exploration you will encounter iterators many times, and it is not surprising since they are strongly tied with each other. 
 
 In C++, [iterators](https://en.cppreference.com/w/cpp/iterator) are objects that allow us to traverse the container and access its elements. Basically, it is a view on an element of a container. They provide unified interface to the elements of various containers.
 
@@ -12,14 +12,14 @@ Comparison of two iterators is made by the `==` and `!=` operators, which might 
 
 You can access the element an iterator points to using the `*` operator. Dereferencing of `end()` iterator is undefined behavior.
 
-Usually, type of an iterator is a long and complicated expression. To simplify the code, you can use the `auto` keyword to declare an iterator. The compiler will automatically deduce the right type of the iterator from the type of the container.
+Usually, type of iterator is a long and complicated expression. To simplify the code, you can use the `auto` keyword to declare an iterator. The compiler will automatically deduce the right type of the variable declared with `auto` based on the type of the expression used to initialize it.
 
 ```cpp
 #include <iostream>
-#include <list>
+#include <vector>
 
 int main() {
-    std::list<char> characters = {'i', 'a', 'm', 's', 'h', 'o', 'u', 't', 'i', 'n', 'g'};
+    std::vector<char> characters = {'i', 'a', 'm', 's', 'h', 'o', 'u', 't', 'i', 'n', 'g'};
 
     // Using iterators to modify elements
     for (auto it = characters.begin(); it != characters.end(); ++it) {
@@ -35,3 +35,8 @@ int main() {
     return 0;
 }
 ```
+
+Given a vector of integers, you need to implement function `find_maximum` that returns the message about maximum element in the vector. The function should use iterators to traverse the vector and find the maximum element.
+
+Format of the message: `"Maximum element is <max_element>"`.
+If the vector is empty, return `"Vector is empty"`.

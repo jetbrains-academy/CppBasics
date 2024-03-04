@@ -9,7 +9,6 @@ In C++, iterators are classified into several categories based on their capabili
 
 More information about the iterator categories, as well as comprehensive table, can be found in the [C++ reference](https://en.cppreference.com/w/cpp/iterator).
 
-#### Iterator invalidation
 Iterators can be invalidated by certain operations performed on the container it is tied to. Understanding iterator invalidation is crucial to avoid undefined behavior. Common scenarios leading to iterator invalidation are:
  - **Insertion and Deletion**: Inserting or deleting elements in the container may invalidate iterators pointing to the modified elements.
  - **Resizing the Container**: Resizing operations may cause reallocation, leading to the invalidation of all iterators.
@@ -17,12 +16,10 @@ Iterators can be invalidated by certain operations performed on the container it
 
 For more cases, please refer to this [article](http://kera.name/articles/2011/06/iterator-invalidation-rules-c0x/).
 
-#### Iterator traits
 [Iterator traits](https://en.cppreference.com/w/cpp/iterator/iterator_traits) are used to obtain information about the iterator type. For example, the iterator traits can be used to determine the iterator category, the value type, and the difference type of an iterator.
 
 `std::iterator_traits` provide uniform interface to the properties of `LegacyIterator` types, which makes it possible to implement algorithms only in terms of iterators.
 
-#### Range-based for loop
 The range-based for loop is a new feature introduced in C++11. It provides a concise way to iterate over a container using iterators. The range-based for loop is supported by all standard containers, as well as arrays and initializer lists. The syntax of the range-based for loop is as follows:
 ```cpp
 for (range_declaration : range_expression) loop_statement
@@ -54,3 +51,10 @@ will print the same line both times:
 ```
 
 Consider using range-based for loops whenever possible, as they are more concise and less error-prone.
+
+Your task is to create a custom bidirectional iterator for vector of integers that supports the following operations:
+- Dereferencing
+- Increment and decrement operations
+- Comparison
+
+Class declaration can be found in `/include/iterator.h` and you need to implement all methods listed there.

@@ -7,3 +7,13 @@ files:
     visible: false
   - name: src/task.cpp
     visible: true
+    placeholders:
+      - offset: 0
+        length: 78
+        placeholder_text: /* TODO */
+      - offset: 131
+        length: 132
+        placeholder_text: /* TODO */
+      - offset: 314
+        length: 175
+        placeholder_text: /* TODO */

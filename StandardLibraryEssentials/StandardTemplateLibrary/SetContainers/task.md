@@ -20,7 +20,7 @@ private:
 };
 
 bool operator<(const person& lhs, const person& rhs) {
-    return lhs.age() < rhs.age();
+    return lhs.name() < rhs.name();
 }
 
 int main() {

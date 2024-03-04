@@ -1,8 +1,8 @@
 Sequential container adaptors in C++ provide a different interface for sequential containers. The `std::stack`, `std::queue`, and `std::priority_queue` are container adaptors that provide specific behaviors.
 
-[`std::queue`](https://en.cppreference.com/w/cpp/container/queue) is a container adaptor that provides a [First-In-First-Out (FIFO)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) data structure. The elements are inserted at the end and are removed from the front.
+[`std::queue`](https://en.cppreference.com/w/cpp/container/queue) is a container adaptor that provides a [First-In-First-Out (FIFO)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) data structure. The elements are pushed at the end and are popped from the front.
 
-[`std::stack`](https://en.cppreference.com/w/cpp/container/stack) is a container adaptor that provides a [Last-In-First-Out (LIFO)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) data structure. The elements are inserted and removed only from the end of the sequence.
+[`std::stack`](https://en.cppreference.com/w/cpp/container/stack) is a container adaptor that provides a [Last-In-First-Out (LIFO)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) data structure. The elements are pushed and popped only from the end of the sequence.
 
 Here is a code example illustrating the usage of `std::stack` and `std::queue`:
 
@@ -44,8 +44,23 @@ int main() {
     pq.push(1); // pq = {2, 1}
     pq.push(3); // pq = {3, 2, 1}
     pq.pop();   // pq = {2, 1}
-    std::cout << "Top of the priority queue: " << pq.top() << "\n";
+    std::cout << "Top of the priority queue: " << pq.top() << "\n"; // Output: 2
+    
+    std::priority_queue<int, std::vector<int>, std::greater<int>> pq; // comparator is std::greater<int>
+    pq.push(2); // pq = {2}
+    pq.push(1); // pq = {1, 2}
+    pq.push(3); // pq = {1, 2, 3}
+    pq.pop();   // pq = {2, 3}
+    std::cout << "Top of the priority queue: " << pq.top() << "\n"; // Output: 2
 
     return 0;
 }
 ```
+
+As practice, you will implement a simple text editor that supports the following operations: 
+- `append(w)` - append string `w` to the end of the text
+- `delete(k)` - delete the last k characters from the text
+- `undo()` - undo the last operation (either `append` or `delete`)
+- `redo()` - redo the last operation that was undone
+
+Class `TextEditor` is defined in `/include/textEditor.h`. 

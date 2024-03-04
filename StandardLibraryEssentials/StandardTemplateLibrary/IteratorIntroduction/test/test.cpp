@@ -1,11 +1,27 @@
 #include <gtest/gtest.h>
 
-// Headers of objects that student should implement:
-int sum(int a, int b);
+std::string find_maximum(const std::vector<int>& container);
 
+TEST(FindMaximumTest, EmptyVector) {
+    std::vector<int> vec = {};
+    std::string result = find_maximum(vec);
+    EXPECT_EQ(result, "Vector is empty");
+}
 
-// Tests:
-// todo: replace this with an actual test
-TEST(SumTest, Simple) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
-    ASSERT_EQ(sum(1, 2), 3);
+TEST(FindMaximumTest, NonEmptyVector) {
+    std::vector<int> vec = {1, 2, 3, 4, 5, 6};
+    std::string result = find_maximum(vec);
+    EXPECT_EQ(result, "Maximum element is 6");
+}
+
+TEST(FindMaximumTest, SingleElementVector) {
+    std::vector<int> vec = {42};
+    std::string result = find_maximum(vec);
+    EXPECT_EQ(result, "Maximum element is 42");
+}
+
+TEST(FindMaximumTest, NegativeElementVector) {
+    std::vector<int> vec = {-1, -2, -3, -4, -5, -6};
+    std::string result = find_maximum(vec);
+    EXPECT_EQ(result, "Maximum element is -1");
 }

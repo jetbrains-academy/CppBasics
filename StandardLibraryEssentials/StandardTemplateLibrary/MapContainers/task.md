@@ -1,7 +1,7 @@
 Another form of associative containers is [`std::map`](http://en.cppreference.com/w/cpp/container/map). It is similar to `std::set`, but stores key-value pairs. You can think of it as a dictionary. 
 
 The keys are unique and by default sorted in ascending order. They are immutable, so you cannot change them. 
-The values are not sorted and can be duplicates. 
+The values are not sorted and could be duplicated. 
 
 You can always define your own sorting criteria by providing a custom comparator.
 

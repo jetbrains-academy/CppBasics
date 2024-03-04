@@ -149,3 +149,31 @@ int main() {
     std::cout << "LCM: " << std::lcm(a, b) << std::endl;
 }
 ```
+
+Finally, let's get some practice with these algorithms. Your task is to implement the following functions:
+ - `create_and_fill` - create a vector of size `n` and fill it with the values from `1` to `n` in ascending order.
+ - `shuffle_vector` - shuffle the elements of the vector.
+ - `sort_descending` - sort the elements of the vector in descending order.
+ - `reverse_vector` - reverse the elements of the vector.
+ - `find_value` - find the first occurrence of the value `x` in the vector.
+ - `find_sum` - calculate the sum of the elements in the vector.
+ - `find_gcd` - calculate the GCD of sum of the elements in the given vector and the value `x`.
+
+<div class="hint">
+You will probably need to use the following functions: 
+
+std::iota - to fill the vector with the values from 1 to n
+
+std::shuffle - to shuffle the elements of the vector (most likely, using std::random_device as a random number generator)
+
+std::sort - to sort the elements of the vector in descending order 
+
+std::reverse - to reverse the elements of the vector
+
+std::find - to find the first occurrence of the value `x` in the vector 
+
+std::accumulate - to calculate the sum of the elements in the vector
+
+std::gcd - to calculate the GCD of two integers
+
+</div>

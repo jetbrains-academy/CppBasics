@@ -1,11 +1,60 @@
 #include <gtest/gtest.h>
+#include <sstream>
 
-// Headers of objects that student should implement:
-int sum(int a, int b);
+bool isNumber(const std::string& token);
+void streamReader();
 
+TEST(streamReaderTester, SimpleTest) {
+    std::string testInput = "Hello\n123\nend\n";
 
-// Tests:
-// todo: replace this with an actual test
-TEST(SumTest, Simple) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
-    ASSERT_EQ(sum(1, 2), 3);
+    std::istringstream in(testInput);
+    std::streambuf* cinbuf = std::cin.rdbuf();
+    std::cin.rdbuf(in.rdbuf());
+
+    std::stringstream out;
+    std::streambuf* coutbuf = std::cout.rdbuf();
+    std::cout.rdbuf(out.rdbuf());
+
+    streamReader();
+
+    std::cin.rdbuf(cinbuf);
+    std::cout.rdbuf(coutbuf);
+
+    std::string expectedOutput = "Got string: Hello\nGot number: 123.000\n";
+    ASSERT_EQ(out.str(), expectedOutput);
+}
+
+TEST(streamReaderTester, IsNumberTest) {
+    ASSERT_TRUE(isNumber("123"));
+    ASSERT_TRUE(isNumber("123.456"));
+    ASSERT_TRUE(isNumber("-123"));
+    ASSERT_TRUE(isNumber("-123.456"));
+}
+
+TEST(streamReaderTester, BiggerInput) {
+    std::string testInput = "Hello\n"
+                            "-123.8956\n"
+                            "1aa5\n"
+                            "BeepBoop\n"
+                            "0\n"
+                            "end\n";
+    std::istringstream in(testInput);
+    std::streambuf* cinbuf = std::cin.rdbuf();
+    std::cin.rdbuf(in.rdbuf());
+
+    std::stringstream out;
+    std::streambuf* coutbuf = std::cout.rdbuf();
+    std::cout.rdbuf(out.rdbuf());
+
+    streamReader();
+
+    std::cin.rdbuf(cinbuf);
+    std::cout.rdbuf(coutbuf);
+
+    std::string expectedOutput = "Got string: Hello\n"
+                                "Got number: -123.896\n"
+                                "Got string: 1aa5\n"
+                                "Got string: BeepBoop\n"
+                                "Got number: 0.000\n";
+    ASSERT_EQ(out.str(), expectedOutput);
 }

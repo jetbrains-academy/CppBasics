@@ -5,5 +5,35 @@ files:
     visible: false
   - name: src/task.cpp
     visible: true
+    placeholders:
+      - offset: 143
+        length: 11
+        placeholder_text: /* TODO */
+      - offset: 224
+        length: 13
+        placeholder_text: /* TODO */
+      - offset: 300
+        length: 12
+        placeholder_text: /* TODO */
+      - offset: 367
+        length: 25
+        placeholder_text: /* TODO */
+      - offset: 449
+        length: 58
+        placeholder_text: /* TODO */
+      - offset: 562
+        length: 25
+        placeholder_text: /* TODO */
+      - offset: 644
+        length: 58
+        placeholder_text: /* TODO */
+      - offset: 778
+        length: 24
+        placeholder_text: /* TODO */
+      - offset: 879
+        length: 24
+        placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false
+  - name: include/iterator.h
+    visible: true

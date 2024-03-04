@@ -57,14 +57,10 @@ Common methods of `std::vector` are:
  - `swap(a, b)` swaps the contents of two vectors
  - `front()` and `back()` are returning the first and the last elements of the vector
 
-Your task would be to follow these steps:
- - Create a vector of integers
- - Reserve memory for 10 elements
- - Add 10 elements to the vector
- - Remove the last element from the vector
- - Use operator[] to change the value of the first element
- - Use `at()` to change the value of the last element
- - Print the whole vector to the console
- - Print the size and the capacity of the vector
- - Clear the vector
- - Print the size and the capacity of the vector again
+Your task would be to implement a few functions, which should contain vector member functions:
+ - `create_and_reserve()` should create a vector of integers and reserve a 10 elements capacity
+ - `fill()` should fill the vector with 10 elements, from 1 to 10
+ - `modify_vector()` should remove last element, and after that, make both first and new last elements equal to 200
+ - `print_vector()` should print all elements of the vector, separated by a space, and then add a new line at the end
+ - `print_size_and_capacity()` should print symbols "Size: " and the size of the vector, then "Capacity: " and the capacity of the vector, separated by a comma and a space, and then add a new line at the end
+ - `clear_vector()` should clear the vector and write message `"Vector cleared"` to the standard output

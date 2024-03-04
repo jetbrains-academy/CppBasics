@@ -5,5 +5,23 @@ files:
     visible: false
   - name: src/task.cpp
     visible: true
+    placeholders:
+      - offset: 108
+        length: 36
+        placeholder_text: /* TODO */
+      - offset: 189
+        length: 54
+        placeholder_text: /* TODO */
+      - offset: 277
+        length: 118
+        placeholder_text: /* TODO */
+      - offset: 429
+        length: 118
+        placeholder_text: /* TODO */
+      - offset: 597
+        length: 12
+        placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false
+  - name: include/textEditor.h
+    visible: true
