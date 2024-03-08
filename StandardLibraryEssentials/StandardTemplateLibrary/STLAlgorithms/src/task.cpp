@@ -40,31 +40,26 @@ int main() {
     int n = 10;
     int x = 5;
 
-    // Create and fill the vector
     std::vector<int> vec = create_and_fill(n);
     std::cout << "After create_and_fill: ";
     for (int i : vec) std::cout << i << ' ';
     std::cout << '\n';
 
-    // Shuffle the vector
     shuffle_vector(vec);
     std::cout << "After shuffle_vector: ";
     for (int i : vec) std::cout << i << ' ';
     std::cout << '\n';
 
-    // Sort the vector in descending order
     sort_descending(vec);
     std::cout << "After sort_descending: ";
     for (int i : vec) std::cout << i << ' ';
     std::cout << '\n';
 
-    // Reverse the vector
     reverse_vector(vec);
     std::cout << "After reverse_vector: ";
     for (int i : vec) std::cout << i << ' ';
     std::cout << '\n';
 
-    // Find the value x in the vector
     auto it = find_value(vec, x);
     if (it != vec.end()) {
         std::cout << "After find_value: Found " << x << " at position " << std::distance(vec.begin(), it) << '\n';

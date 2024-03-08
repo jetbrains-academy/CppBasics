@@ -6,31 +6,31 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 143
+      - offset: 84
         length: 11
         placeholder_text: /* TODO */
-      - offset: 224
+      - offset: 165
         length: 13
         placeholder_text: /* TODO */
-      - offset: 300
+      - offset: 241
         length: 12
         placeholder_text: /* TODO */
-      - offset: 367
+      - offset: 308
         length: 25
         placeholder_text: /* TODO */
-      - offset: 449
+      - offset: 390
         length: 58
         placeholder_text: /* TODO */
-      - offset: 562
+      - offset: 503
         length: 25
         placeholder_text: /* TODO */
-      - offset: 644
+      - offset: 585
         length: 58
         placeholder_text: /* TODO */
-      - offset: 778
+      - offset: 719
         length: 24
         placeholder_text: /* TODO */
-      - offset: 879
+      - offset: 820
         length: 24
         placeholder_text: /* TODO */
   - name: test/test.cpp

@@ -29,6 +29,20 @@ TEST(streamReaderTester, IsNumberTest) {
     ASSERT_TRUE(isNumber("123.456"));
     ASSERT_TRUE(isNumber("-123"));
     ASSERT_TRUE(isNumber("-123.456"));
+    ASSERT_FALSE(isNumber("123."));
+    ASSERT_FALSE(isNumber(".123"));
+    ASSERT_FALSE(isNumber("123.456.789"));
+    ASSERT_FALSE(isNumber("123-456"));
+    ASSERT_FALSE(isNumber("123-"));
+    ASSERT_FALSE(isNumber("-123-"));
+    ASSERT_FALSE(isNumber("-123-456"));
+    ASSERT_FALSE(isNumber("-.123"));
+    ASSERT_FALSE(isNumber("-"));
+    ASSERT_FALSE(isNumber("."));
+    ASSERT_FALSE(isNumber(""));
+    ASSERT_FALSE(isNumber("-."));
+    ASSERT_FALSE(isNumber("a"));
+    ASSERT_FALSE(isNumber("a123"));
 }
 
 TEST(streamReaderTester, BiggerInput) {

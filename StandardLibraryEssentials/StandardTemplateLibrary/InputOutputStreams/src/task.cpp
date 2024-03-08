@@ -3,20 +3,21 @@
 #include <iomanip>
 
 bool isNumber(const std::string& token) {
-    if (token.empty()) {
+    if (token.empty() || (token.size() == 1 && token[0] == '-')) {
         return false;
     }
     int dotCount = 0;
     int minusCount = 0;
-    for (char c : token) {
+    for (size_t i = 0; i < token.size(); ++i) {
+        char c = token[i];
         if (c == '.') {
-            if (dotCount > 0) {
+            if (dotCount > 0 || i == 0 || (i == 1 && token[0] == '-') || i == token.size() - 1) {
                 return false;
             }
             dotCount++;
         }
         else if (c == '-') {
-            if (minusCount > 0 || token[0] != '-') {
+            if (minusCount > 0 || i != 0) {
                 return false;
             }
             minusCount++;

@@ -1,6 +1,9 @@
 #ifndef CPPBASICS_ITERATOR_H
 #define CPPBASICS_ITERATOR_H
 
+#include <iostream>
+#include <vector>
+
 class VectorIterator {
 public:
     using pointer = int *;

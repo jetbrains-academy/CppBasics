@@ -10,9 +10,9 @@ files:
         length: 57
         placeholder_text: /* TODO */
       - offset: 105
-        length: 513
+        length: 660
         placeholder_text: /* TODO */
-      - offset: 648
+      - offset: 795
         length: 393
         placeholder_text: /* TODO */
   - name: test/test.cpp

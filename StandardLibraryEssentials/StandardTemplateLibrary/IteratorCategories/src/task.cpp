@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
 #include "../include/iterator.h"
 
 VectorIterator::VectorIterator(pointer ptr) {
