@@ -1,33 +1,48 @@
 #include <gtest/gtest.h>
 #include "../include/textEditor.h"
 
-TEST(TextEditor, AppendAndDelete) {
+TEST(TextEditor, Insert) {
     TextEditor editor;
 
-    editor.append("Hello, World!");
-    ASSERT_EQ(editor.getText(), "Hello, World!");
-
-    editor.deleteLast(7);
-    ASSERT_EQ(editor.getText(), "Hello,");
+    editor.insert("Hello", 0);
+    ASSERT_EQ(editor.getText(), "Hello");
 }
 
-TEST(TextEditor, UndoAndRedo) {
+TEST(TextEditor, Erase) {
     TextEditor editor;
 
-    editor.append("Hello, World!");
-    editor.deleteLast(7);
+    editor.insert("Hello, World!", 0);
+    editor.erase(5, 8);
+
+    ASSERT_EQ(editor.getText(), "Hello");
+}
+
+TEST(TextEditor, Undo) {
+    TextEditor editor;
+
+    editor.insert("Hello, World!", 0);
+    editor.erase(5, 8);
+    editor.undo();
+    ASSERT_EQ(editor.getText(), "Hello, World!");
+}
+
+TEST(TextEditor, Redo) {
+    TextEditor editor;
+
+    editor.insert("Hello, World!", 0);
+    editor.erase(5, 8);
     editor.undo();
     ASSERT_EQ(editor.getText(), "Hello, World!");
 
     editor.redo();
-    ASSERT_EQ(editor.getText(), "Hello,");
+    ASSERT_EQ(editor.getText(), "Hello");
 }
 
 TEST(TextEditor, UndoAndRedoMultiple) {
     TextEditor editor;
 
-    editor.append("Hello, World!");
-    editor.deleteLast(7);
+    editor.insert("Hello, World!", 0);
+    editor.erase(5, 8);
     editor.undo();
     editor.redo();
     editor.undo();
@@ -36,11 +51,15 @@ TEST(TextEditor, UndoAndRedoMultiple) {
     ASSERT_EQ(editor.getText(), "Hello, World!");
 }
 
-TEST(TextEditor, UndoAndRedoEmpty) {
+TEST(TextEditor, UndoEmpty) {
     TextEditor editor;
 
     editor.undo();
     ASSERT_EQ(editor.getText(), "");
+}
+
+TEST(TextEditor, RedoEmpty) {
+    TextEditor editor;
 
     editor.redo();
     ASSERT_EQ(editor.getText(), "");
@@ -49,13 +68,13 @@ TEST(TextEditor, UndoAndRedoEmpty) {
 TEST(TextEditor, BigText) {
     TextEditor editor;
 
-    editor.append("I am a big text");
-    editor.append(" and I am getting bigger");
-    editor.append(" and bigger...");
+    editor.insert("I am a big text", 0);
+    editor.insert(" and I am getting bigger", 15);
+    editor.insert(" and bigger...", 39);
     ASSERT_EQ(editor.getText(), "I am a big text and I am getting bigger and bigger...");
-    editor.deleteLast(1);
-    editor.deleteLast(1);
-    editor.deleteLast(1);
+    editor.erase(52, 1);
+    editor.erase(51, 1);
+    editor.erase(50, 1);
     editor.undo();
     editor.redo();
     editor.undo();

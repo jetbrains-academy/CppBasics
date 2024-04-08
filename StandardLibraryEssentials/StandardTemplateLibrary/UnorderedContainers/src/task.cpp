@@ -1,49 +1,39 @@
 #include "../include/Cache.h"
 
-void Cache::put(const std::string& key, const std::string& value) {
-    cache[key] = value;
-}
+LRUCache::LRUCache(std::size_t capacity) : capacity(capacity) {}
 
-std::string Cache::get(const std::string& key) const {
-    if (cache.find(key) != cache.end()) {
-        return cache.at(key);
-    } else {
-        return "";
+std::string LRUCache::get(const std::string& key) {
+    auto found = mapper.find(key);
+    if (found == mapper.end()) {
+        return "Key: <" + key + "> not found!\n";
     }
+    lru.splice(lru.begin(), lru, found->second);
+    return found->second->second;
 }
 
-void Cache::remove(const std::string& key) {
-    cache.erase(key);
-}
-
-void Cache::print_element(const std::string& key) const {
-    if (cache.find(key) != cache.end()) {
-        std::cout << key << ": " << cache.at(key) << std::endl;
-    } else {
-        std::cout << key << " not found" << std::endl;
+void LRUCache::put(const std::string& key, const std::string& value) {
+    auto found = mapper.find(key);
+    if (found != mapper.end()) {
+        found->second->second = value;
+        lru.splice(lru.begin(), lru, found->second);
+        return;
     }
-}
-
-void Cache::print_cache() const {
-    for (const auto& [key, value] : cache) {
-        std::cout << key << ": " << value << std::endl;
+    if (lru.size() == capacity) {
+        mapper.erase(lru.back().first);
+        lru.pop_back();
     }
+    lru.emplace_front(key, value);
+    mapper[key] = lru.begin();
 }
 
 int main() {
-    Cache cache;
-
-    cache.put("Alice", "123-456-7890");
-    cache.put("Bob", "234-567-8901");
-    cache.put("Charlie", "345-678-9012");
-
-    cache.print_cache(); // Order of elements most likely will differ to the one in the input
-
-    cache.print_element("Alice");
-
-    cache.remove("Alice");
-
-    cache.print_element("Alice");
-
+    LRUCache cache(4);
+    cache.put("1", "one");
+    cache.put("2", "two");
+    cache.put("3", "three");
+    cache.put("4", "four");
+    std::cout << cache.get("1") << '\n'; // one
+    cache.put("5", "five");
+    std::cout << cache.get("2") << '\n'; // Key: <2> not found!
     return 0;
 }

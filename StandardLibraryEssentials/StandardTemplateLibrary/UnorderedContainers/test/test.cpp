@@ -1,51 +1,41 @@
 #include <gtest/gtest.h>
 #include "../include/Cache.h"
 
-
-TEST(CacheTest, PutAndGet) {
-    Cache cache;
-    cache.put("Alice", "123-456-7890");
-    ASSERT_EQ(cache.get("Alice"), "123-456-7890");
+TEST(LRUCacheTest, OneElementTest) {
+    LRUCache cache(1);
+    cache.put("1", "one");
+    ASSERT_STREQ("one", cache.get("1").c_str());
 }
 
-TEST(CacheTest, Remove) {
-    Cache cache;
-    cache.put("Alice", "123-456-7890");
-    cache.remove("Alice");
-    ASSERT_EQ(cache.get("Alice"), "");
+TEST(LRUCacheTest, BasicCacheTest) {
+    LRUCache cache(4);
+    cache.put("1", "one");
+    cache.put("2", "two");
+    cache.put("3", "three");
+    cache.put("4", "four");
+    ASSERT_STREQ("one", cache.get("1").c_str());
+    cache.put("5", "five");
+    ASSERT_STREQ("Key: <2> not found!\n", cache.get("2").c_str());
 }
 
-TEST(CacheTest, GetNonExistentKey) {
-    Cache cache;
-    ASSERT_EQ(cache.get("NonExistentKey"), "");
-}
-
-TEST(CacheTest, PrintElement) {
-    Cache cache;
-    cache.put("Alice", "123-456-7890");
-    testing::internal::CaptureStdout();
-    cache.print_element("Alice");
-    std::string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "Alice: 123-456-7890\n");
-}
-
-TEST(CacheTest, PrintElementNonExistentKey) {
-    Cache cache;
-    testing::internal::CaptureStdout();
-    cache.print_element("NonExistentKey");
-    std::string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "NonExistentKey not found\n");
-}
-
-TEST(CacheTest, PrintCache) {
-    Cache cache;
-    cache.put("Alice", "123-456-7890");
-    cache.put("Bob", "234-567-8901");
-    cache.put("Charlie", "345-678-9012");
-    testing::internal::CaptureStdout();
-    cache.print_cache();
-    std::string output = testing::internal::GetCapturedStdout();
-    ASSERT_TRUE(output == "Alice: 123-456-7890\nBob: 234-567-8901\nCharlie: 345-678-9012\n" ||
-                output == "Bob: 234-567-8901\nAlice: 123-456-7890\nCharlie: 345-678-9012\n" ||
-                output == "Charlie: 345-678-9012\nBob: 234-567-8901\nAlice: 123-456-7890\n");
+TEST(LRUCacheTest, RandomCacheTest) {
+    LRUCache cache(5);
+    cache.put("1", "one");
+    cache.put("2", "two");
+    cache.put("3", "three");
+    cache.put("4", "four");
+    cache.put("5", "five");
+    cache.put("6", "six");
+    cache.put("7", "seven");
+    cache.put("8", "eight");
+    cache.put("9", "nine");
+    cache.put("10", "ten");
+    ASSERT_STREQ("Key: <3> not found!\n", cache.get("3").c_str());
+    ASSERT_STREQ("Key: <4> not found!\n", cache.get("4").c_str());
+    ASSERT_STREQ("Key: <5> not found!\n", cache.get("5").c_str());
+    ASSERT_STREQ("six", cache.get("6").c_str());
+    ASSERT_STREQ("seven", cache.get("7").c_str());
+    ASSERT_STREQ("eight", cache.get("8").c_str());
+    ASSERT_STREQ("nine", cache.get("9").c_str());
+    ASSERT_STREQ("ten", cache.get("10").c_str());
 }

@@ -10,14 +10,13 @@ It's a useful container, but there are a few things that can cause performance d
 
 At first, the same as with `std::vector`, you can use `reserve()` method to reserve a certain number of characters, if the required capacity is known.
 
-Also, there is a feature called **Small String Optimization**. It means that if your string is small enough, it will be stored in the stack instead of the heap. For more details, you can read [this article](https://giodicanio.com/2023/04/26/cpp-small-string-optimization/).
+<div class="hint">
+  Also, there is a feature called **Small String Optimization**. It means that if your string is small enough, it will be stored in the stack instead of the heap. For more details, you can read this article: https://giodicanio.com/2023/04/26/cpp-small-string-optimization/
+</div>
 
 When you need to pass string to a function, in many cases it would be great to pass it by const reference. If you don't pass it this way, the string will be copied. For example, if you want to print a string, you can pass it by const reference:
 
 ```cpp
-#include <iostream>
-#include <string>
-
 void print(const std::string& str) {
     std::cout << str << '\n';
 }
@@ -27,14 +26,10 @@ int main() {
     print(str);
 }
 ```
-Note that it is not the case in all situations. If you're going to modify the string, you can either pass it by value (this way the caller won't see the change) or by non-const reference (so that change would be made in an initial string). For more details, see [this article](https://belaycpp.com/2022/02/15/constant-references-are-not-always-your-friends/) 
 
 As you remember from the previous module, move semantics are a great way to manage your resources in a more efficient way. When you want to pass a string, and you won't need an initial object anymore, consider using `std::move()`.
 
 ```cpp
-#include <iostream>
-#include <string>
-
 class person {
 private:
     std::string person_name;
@@ -45,7 +40,7 @@ public:
     : person_name(std::move(name)), person_surname(std::move(surname)) {}
 };
 
-int main() {
+void createPerson() {
     std::string name = "Alex";
     std::string surname = "Johns";
     person great_guy(name, surname);
@@ -55,27 +50,19 @@ int main() {
 In C++, there is a special type called [`std::string_view`](https://en.cppreference.com/w/cpp/string/basic_string_view). It's a non-owning view of a string. It means that it doesn't store the string itself, but only a pointer to the string. It's convenient when you want to pass a string to a function or a container, but you are not going to change it and don't want to copy the string. It's also useful when you want to get a substring.
 
 ```cpp
-#include <iostream>
-#include <string>
-#include <string_view>
-#include <vector>
+std::string input1 = {"mindyourlegs"};
+std::string input2 = {"whenusingcpp"};
+std::vector<std::string_view> inputs {input1, input2};
 
-int main() {
-    std::string input1 = {"mindyourlegs"};
-    std::string input2 = {"whenusingcpp"};
-    std::vector<std::string_view> inputs {input1, input2};
-
-    std::vector<std::string_view> substrings;
-    for (std::size_t i = 0; i < inputs.size(); ++i) {
-        const auto & string = inputs[i];
-        for (std::size_t j = 0; j < string.size() - 2; ++j) {
-            substrings.emplace_back(string.data() + j, 3);
-        }
+std::vector<std::string_view> substrings;
+for (std::size_t i = 0; i < inputs.size(); ++i) {
+    const auto & string = inputs[i];
+    for (std::size_t j = 0; j < string.size() - 2; ++j) {
+        substrings.emplace_back(string.data() + j, 3);
     }
-    for (std::size_t i = 0; i < substrings.size(); ++i) {
-        std::cout << substrings[i] << '\n';
-    }
-    return 0;
+}
+for (std::size_t i = 0; i < substrings.size(); ++i) {
+    std::cout << substrings[i] << '\n';
 }
 ```
 
@@ -98,11 +85,13 @@ The main methods of `std::string` are:
 * `clear()` - clears the string
 * `push_back()` - adds a character to the end of the string
 * `pop_back()` - removes the last character from the string
-* `insert()` - inserts a character at a given position. It can also insert a substring at a given position.
-* `erase()` - erases a character at a given position. The same as `insert()`, this operation is quite slow.
 * `replace()` - replaces a character at a given position
 * `substr()` - returns a substring of the string
 * `find()` - finds a substring in the string
+
+As well as `std::vector`, `std::string` has methods to insert and erase characters at a given position, that are inefficient. They have linear complexity, so you should avoid using them if it is possible.
+* `insert()` - inserts a character at a given position. It can also insert a substring at a given position.
+* `erase()` - erases a character or a substring at a given position.
 
 Your task would be to implement a program to check if an input string is a palindrome. A palindrome is a word, number, phrase, or other sequence of characters that reads the same forward and backward, ignoring spaces, punctuation, and capitalization.
 

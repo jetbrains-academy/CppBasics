@@ -8,9 +8,6 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 0
-        length: 70
-        placeholder_text: Don't forget to include everything you need!
-      - offset: 141
+      - offset: 139
         length: 344
         placeholder_text: Your implementation here

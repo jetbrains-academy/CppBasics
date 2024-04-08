@@ -6,9 +6,6 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 0
-        length: 57
-        placeholder_text: /* TODO */
       - offset: 105
         length: 660
         placeholder_text: /* TODO */

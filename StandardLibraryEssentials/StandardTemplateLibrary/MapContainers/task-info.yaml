@@ -6,10 +6,7 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 0
-        length: 70
-        placeholder_text: Don't forget to include everything you need!
-      - offset: 136
+      - offset: 135
         length: 214
         placeholder_text: Your implementation here
   - name: test/test.cpp

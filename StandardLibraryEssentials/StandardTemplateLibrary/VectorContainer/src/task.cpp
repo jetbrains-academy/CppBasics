@@ -1,57 +1,32 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> create_and_reserve() {
+std::vector<int> create(std::size_t capacity) {
     std::vector<int> vec;
-    vec.reserve(10);
+    vec.reserve(capacity);
     return vec;
 }
 
-std::vector<int> fill(std::vector<int>& vec) {
-    for (int i = 1; i <= 10; ++i) {
-        vec.push_back(i);
-    }
+std::vector<int> fill(std::vector<int>& vec, std::size_t size, int value) {
+    vec.resize(size, value);
     return vec;
 }
 
-std::vector<int> modify_vector(std::vector<int>& vec) {
-    vec.pop_back();
-    vec[0] = 100;
-    vec.at(vec.size() - 1) = 200;
-    return vec;
-}
-
-void print_vector(const std::vector<int>& vec) {
+void debugPrint(const std::vector<int>& vec) {
+    std::cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << '\n';
+    std::cout << "Vector: ";
     for (int i = 0; i < vec.size(); ++i) {
         std::cout << vec[i] << ' ';
     }
     std::cout << '\n';
 }
 
-void print_size_and_capacity(const std::vector<int>& vec) {
-    std::cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << '\n';
-}
-
-void clear_vector(std::vector<int>& vec) {
-    vec.clear();
-    std::cout << "Vector cleared";
-}
-
-void play_with_vector() {
-    std::vector<int> vec = create_and_reserve();
-    print_size_and_capacity(vec);
-    vec = fill(vec);
-    print_vector(vec);
-    print_size_and_capacity(vec);
-    vec = modify_vector(vec);
-    print_vector(vec);
-    print_size_and_capacity(vec);
-    clear_vector(vec);
-    print_vector(vec);
-    print_size_and_capacity(vec);
-}
-
 int main() {
-    play_with_vector();
+    std::vector<int> vec = create(10);
+    debugPrint(vec);
+    vec = fill(vec, 10, 1);
+    debugPrint(vec);
+    vec.clear();
+    debugPrint(vec);
     return 0;
 }

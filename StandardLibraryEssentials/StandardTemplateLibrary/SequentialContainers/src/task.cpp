@@ -2,7 +2,7 @@
 #include <list>
 #include <deque>
 
-std::list<int> sum_adjacent_elements(const std::list<int>& nums) {
+std::list<int> sumAdjacentElements(const std::list<int>& nums) {
     std::list<int> result;
     auto it = nums.begin();
     while (it != nums.end()) {
@@ -18,7 +18,7 @@ std::list<int> sum_adjacent_elements(const std::list<int>& nums) {
     return result;
 }
 
-std::deque<int> sum_adjacent_elements(const std::deque<int>& nums) {
+std::deque<int> sumAdjacentElements(const std::deque<int>& nums) {
     std::deque<int> result;
     for (size_t i = 0; i < nums.size(); i += 2) {
         int sum = nums[i];
@@ -32,14 +32,14 @@ std::deque<int> sum_adjacent_elements(const std::deque<int>& nums) {
 
 int main() {
     std::list<int> nums1 = {1, 2, 3, 4, 5, 6};
-    std::list<int> result1 = sum_adjacent_elements(nums1);
+    std::list<int> result1 = sumAdjacentElements(nums1);
     for (auto it = result1.begin(); it != result1.end(); ++it) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
 
     std::deque<int> nums2 = {1, 2, 3, 4, 5, 6};
-    std::deque<int> result2 = sum_adjacent_elements(nums2);
+    std::deque<int> result2 = sumAdjacentElements(nums2);
     for (auto it = result2.begin(); it != result2.end(); ++it) {
         std::cout << *it << " ";
     }

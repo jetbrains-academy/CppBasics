@@ -1,13 +1,9 @@
-In addition to all previously covered sequential containers, C++ provides a number of associative containers. These containers are designed to store elements in sorted order. Under the hood, these containers are built on top of a [Red-black tree](https://en.wikipedia.org/wiki/Red–black_tree), which is a balanced binary search tree data structure. This allows achieving logarithmic complexity for insertion and search operations. The sorting is done using a comparison function.
+In addition to all previously covered sequential containers, C++ provides a number of associative containers. These containers are designed to store elements in sorted order.
 
 [`std::set`](http://en.cppreference.com/w/cpp/container/set) is a container that stores unique elements in sorted order. To store your own classes in `std::set`, you need to define a comparison operator. By default, the comparison function is `std::less`, which is equivalent to the `<` operator. 
 The function should take two arguments of the same type as the elements of the set and return `true` if the first argument is less than the second argument (or simply should be on the left, if your objects cannot be compared numerically), `false` otherwise. The comparison function is usually defined as a `friend` of the class. The following example shows how to define a comparison function for a class `person` that stores a person's name and age.
 
 ```cpp
-#include <iostream>
-#include <set>
-#include <utility>
-
 class person {
 public:
     person(std::string name, int age) : person_name(std::move(name)), person_age(age) {}

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-std::map<char, int> count_letters(const std::string& str);
+std::map<char, int> countLetters(const std::string& str);
 
 TEST(MapTest, BasicTest) {
     std::string str = "The distribution of letters in any text is uneven. Letter frequency is the number of times letters of the alphabet appear on average in written language. The data may vary from source to source, but almost everywhere it is indicated that the letter ‘e’ is the most common in the English text. The rarest letter is ‘z’";
@@ -10,25 +10,25 @@ TEST(MapTest, BasicTest) {
             {'o', 13}, {'p', 3}, {'q', 1}, {'r', 19}, {'s', 15}, {'t', 38}, {'u', 8},
             {'v', 4}, {'w', 2}, {'x', 2}, {'y', 5}, {'z', 1}
     };
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
-TEST(MapTest, mptyString) {
+TEST(MapTest, EmptyString) {
     std::string str = "";
     std::map<char, int> expected = {};
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
 TEST(MapTest, SingleLetter) {
     std::string str = "A";
     std::map<char, int> expected = {{'a', 1}};
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
 TEST(MapTest, SeparatorCharacters) {
     std::string str = ",.!?:;";
     std::map<char, int> expected = {};
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
 TEST(MapTest, NoDuplicateLetters) {
@@ -39,13 +39,13 @@ TEST(MapTest, NoDuplicateLetters) {
             {'q', 1}, {'r', 1}, {'s', 1}, {'t', 1}, {'u', 1}, {'v', 1}, {'w', 1}, {'x', 1},
             {'y', 1}, {'z', 1}
     };
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
 TEST(MapTest, OnlyDuplicateLetters) {
     std::string str = "AAAAAaaaaa";
     std::map<char, int> expected = {{'a', 10}};
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }
 
 TEST(MapTest, FullUpperCaseWords) {
@@ -54,5 +54,5 @@ TEST(MapTest, FullUpperCaseWords) {
             {'a', 1}, {'d', 1}, {'e', 2}, {'h', 2}, {'i', 2}, {'l', 3}, {'o', 2}, {'r', 1},
             {'s', 3}, {'t', 3}, {'w', 1}
     };
-    ASSERT_EQ(count_letters(str), expected);
+    ASSERT_EQ(countLetters(str), expected);
 }

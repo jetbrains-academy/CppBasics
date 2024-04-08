@@ -3,7 +3,7 @@
 #include <string>
 #include <cctype>
 
-std::set<std::string> split_into_words(const std::string& str) {
+std::set<std::string> splitIntoWords(const std::string& str) {
     std::set<std::string> words;
     std::string buffer;
     for (char c : str) {
@@ -22,7 +22,7 @@ std::set<std::string> split_into_words(const std::string& str) {
 
 int main() {
     std::string str = "Hello, world! This is a test. Test again, hello.";
-    std::set<std::string> words = split_into_words(str);
+    std::set<std::string> words = splitIntoWords(str);
     for (const std::string& word : words) {
         std::cout << word << std::endl;
     }

@@ -1,48 +1,59 @@
 #include <gtest/gtest.h>
 
-std::vector<int> create_and_fill(int n);
-void shuffle_vector(std::vector<int>& vec);
-void sort_descending(std::vector<int>& vec);
-void reverse_vector(std::vector<int>& vec);
-std::vector<int>::iterator find_value(std::vector<int>& vec, int x);
-int find_sum(const std::vector<int>& vec);
-int find_gcd(const std::vector<int>& vec, int x);
+int sumInRange(std::vector<int>& vec, int lowerBound, int upperBound);
 
-TEST(VectorAlgorithmsTest, CreateAndFill) {
-    int n = 12;
-    std::vector<int> vec = create_and_fill(n);
-    std::vector<int> expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    EXPECT_EQ(vec, expected);
+TEST(SumInRangeTest, Empty) {
+    std::vector<int> v;
+    int lowerBound = 3;
+    int upperBound = 7;
+    ASSERT_EQ(0, sumInRange(v, lowerBound, upperBound));
 }
 
-TEST(VectorAlgorithmsTest, SortDescending) {
-    std::vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    sort_descending(vec);
-    std::vector<int> expected = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    EXPECT_EQ(vec, expected);
+TEST(SumInRangeTest, SingleNumber) {
+    std::vector<int> v = {3};
+    int lowerBound = 3;
+    int upperBound = 7;
+    ASSERT_EQ(3, sumInRange(v, lowerBound, upperBound));
 }
 
-TEST(VectorAlgorithmsTest, ReverseVector) {
-    std::vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    reverse_vector(vec);
-    std::vector<int> expected = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    EXPECT_EQ(vec, expected);
+TEST(SumInRangeTest, SingleNumberNotInRange) {
+    std::vector<int> v = {3};
+    int lowerBound = 4;
+    int upperBound = 7;
+    ASSERT_EQ(0, sumInRange(v, lowerBound, upperBound));
 }
 
-TEST(VectorAlgorithmsTest, FindValue) {
-    std::vector<int> vec = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    auto it = find_value(vec, 11);
-    EXPECT_EQ(*it, 11);
+TEST(SumInRangeTest, Shuffled) {
+    std::vector<int> v = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+    int lowerBound = 3;
+    int upperBound = 7;
+    ASSERT_EQ(31, sumInRange(v, lowerBound, upperBound));
 }
 
-TEST(VectorAlgorithmsTest, FindSum) {
-    std::vector<int> vec = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int sum = find_sum(vec);
-    EXPECT_EQ(sum, 78);
+TEST(SumInRangeTest, NoInRange) {
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int lowerBound = 10;
+    int upperBound = 20;
+    ASSERT_EQ(0, sumInRange(v, lowerBound, upperBound));
 }
 
-TEST(VectorAlgorithmsTest, FindGcd) {
-    std::vector<int> vec = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int gcd = find_gcd(vec, 4);
-    EXPECT_EQ(gcd, 2);
+TEST(SumInRangeTest, AllInRange) {
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int lowerBound = 1;
+    int upperBound = 9;
+    ASSERT_EQ(45, sumInRange(v, lowerBound, upperBound));
+}
+
+TEST(SumInRangeTest, SameBounds) {
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int lowerBound = 5;
+    int upperBound = 5;
+    ASSERT_EQ(5, sumInRange(v, lowerBound, upperBound));
+}
+
+TEST(SumInRangeTest, Range) {
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int lowerBound = 3;
+    int upperBound = 7;
+    ASSERT_EQ(25, sumInRange(v, lowerBound, upperBound));
 }

@@ -5,8 +5,8 @@
 
 class TextEditor {
 public:
-    void append(const std::string& w);
-    void deleteLast(int k);
+    void insert(const std::string& w, std::size_t pos);
+    void erase(std::size_t pos, std::size_t len);
     void undo();
     void redo();
     std::string getText() const;

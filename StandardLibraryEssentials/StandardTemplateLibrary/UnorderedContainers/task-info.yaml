@@ -6,22 +6,17 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 103
-        length: 19
+      - offset: 153
+        length: 202
         placeholder_text: /* TODO */
-      - offset: 185
-        length: 105
-        placeholder_text: /* TODO */
-      - offset: 343
-        length: 17
-        placeholder_text: /* TODO */
-      - offset: 426
-        length: 175
-        placeholder_text: /* TODO */
-      - offset: 643
-        length: 102
+      - offset: 434
+        length: 347
         placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false
   - name: include/Cache.h
     visible: true
+    placeholders:
+      - offset: 342
+        length: 153
+        placeholder_text: /* TODO */

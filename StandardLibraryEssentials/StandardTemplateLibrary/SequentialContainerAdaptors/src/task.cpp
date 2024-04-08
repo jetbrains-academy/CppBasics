@@ -1,14 +1,14 @@
 #include <iostream>
 #include "../include/textEditor.h"
 
-void TextEditor::append(const std::string& w) {
+void TextEditor::insert(const std::string& w, std::size_t pos) {
     undoStack.push(text);
-    text += w;
+    text.insert(pos, w);
 }
 
-void TextEditor::deleteLast(int k) {
+void TextEditor::erase(std::size_t pos, std::size_t len) {
     undoStack.push(text);
-    text.erase(text.size() - k);
+    text.erase(pos, len);
 }
 
 void TextEditor::undo() {
@@ -34,11 +34,11 @@ std::string TextEditor::getText() const {
 int main() {
     TextEditor editor;
 
-    editor.append("Hello");
-    editor.append(", World!");
+    editor.insert("Hello", 0);
+    editor.insert(", World!", 5);
     std::cout << editor.getText() << std::endl; // Should print: Hello, World!
 
-    editor.deleteLast(8);
+    editor.erase(5, 8);
     std::cout << editor.getText() << std::endl; // Should print: Hello
 
     editor.undo();

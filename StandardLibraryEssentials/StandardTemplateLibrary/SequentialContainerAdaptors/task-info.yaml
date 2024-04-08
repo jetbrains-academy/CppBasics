@@ -6,22 +6,24 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 108
-        length: 36
+      - offset: 125
+        length: 46
         placeholder_text: /* TODO */
-      - offset: 189
-        length: 54
+      - offset: 238
+        length: 47
         placeholder_text: /* TODO */
-      - offset: 277
+      - offset: 319
         length: 118
         placeholder_text: /* TODO */
-      - offset: 429
+      - offset: 471
         length: 118
         placeholder_text: /* TODO */
-      - offset: 597
+      - offset: 639
         length: 12
         placeholder_text: /* TODO */
   - name: test/test.cpp
     visible: false
   - name: include/textEditor.h
+    visible: true
+  - name: cmake-build-debug/CMakeCache.txt
     visible: true

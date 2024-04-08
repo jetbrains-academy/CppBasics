@@ -8,21 +8,12 @@ files:
   - name: src/task.cpp
     visible: true
     placeholders:
-      - offset: 83
-        length: 58
+      - offset: 91
+        length: 64
         placeholder_text: /* TODO */
-      - offset: 196
-        length: 79
+      - offset: 239
+        length: 40
         placeholder_text: /* TODO */
-      - offset: 339
-        length: 83
-        placeholder_text: /* TODO */
-      - offset: 479
-        length: 103
-        placeholder_text: /* TODO */
-      - offset: 650
-        length: 80
-        placeholder_text: /* TODO */
-      - offset: 781
-        length: 47
+      - offset: 334
+        length: 217
         placeholder_text: /* TODO */

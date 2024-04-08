@@ -2,18 +2,19 @@
 #define CPPBASICS_CACHE_H
 #include <iostream>
 #include <string>
+#include <list>
 #include <unordered_map>
 
-class Cache {
+class LRUCache {
 public:
+    LRUCache(std::size_t capacity);
+    std::string get(const std::string& key);
     void put(const std::string& key, const std::string& value);
-    std::string get(const std::string& key) const;
-    void remove(const std::string& key);
-    void print_element(const std::string& key) const;
-    void print_cache() const;
 
 private:
-    std::unordered_map<std::string, std::string> cache;
+    std::size_t capacity;
+    std::list<std::pair<std::string, std::string>> lru;
+    std::unordered_map<std::string, std::list<std::pair<std::string, std::string>>::iterator> mapper;
 };
 
 #endif //CPPBASICS_CACHE_H

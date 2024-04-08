@@ -6,31 +6,24 @@ The [`std::sort()`](https://en.cppreference.com/w/cpp/algorithm/sort) algorithm 
 ```cpp
 std::sort(start_iterator, end_iterator, comparator);
 ```
-The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer, a lambda expression (small in-place function), or a functor.
+The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer or a functor. As you understand, this function requires Random Access Iterator, so that sorting can be done in any order.
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
+// Sort a vector of integers in ascending order
+std::vector<int> v1 = {5, 2, 4, 3, 1};
+std::sort(v1.begin(), v1.end());
+// v = {1, 2, 3, 4, 5}
 
-int main() {
-    // Sort a vector of integers in ascending order
-    std::vector<int> v1 = {5, 2, 4, 3, 1};
-    std::sort(v1.begin(), v1.end());
-    // v = {1, 2, 3, 4, 5}
+// Sort a vector of integers in descending order
+std::vector<int> v2 = {5, 2, 4, 3, 1};
+std::sort(v2.begin(), v2.end(), std::greater<>());
+// v = {5, 4, 3, 2, 1}
 
-    // Sort a vector of integers in descending order
-    std::vector<int> v2 = {5, 2, 4, 3, 1};
-    std::sort(v2.begin(), v2.end(), std::greater<>());
-    // v = {5, 4, 3, 2, 1}
-
-    // Sort a vector of strings in ascending order by length
-    std::vector<std::string> v3 = {"abc", "a", "ab"};
-    std::sort(v3.begin(), v3.end(), [](const std::string &a, const std::string &b) {
-        return a.size() < b.size();
-    });
-    // v = {"a", "ab", "abc"}
-}
+// Sort a vector of strings in ascending order by length
+std::vector<std::string> v3 = {"abc", "a", "ab"};
+std::sort(v3.begin(), v3.end(), [](const std::string &a, const std::string &b) {
+    return a.size() < b.size();
+});
+// v = {"a", "ab", "abc"}
 ```
 
 #### 2. `std::reverse()`
@@ -38,17 +31,11 @@ int main() {
 ```cpp
 std::reverse(start_iterator, end_iterator);
 ```
-Two arguments are iterators that define the range of elements to be reversed.
+Two arguments are iterators that define the range of elements to be reversed. This function would expect a Bidirectional Iterator.
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    std::reverse(v.begin(), v.end());
-    // v = {5, 4, 3, 2, 1}
-}
+std::vector<int> v = {1, 2, 3, 4, 5};
+std::reverse(v.begin(), v.end());
+// v = {5, 4, 3, 2, 1}
 ```
 
 #### 3. `std::find()`
@@ -56,20 +43,14 @@ int main() {
 ```cpp
 std::find(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be searched in. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned.
+The first two arguments are iterators that define the range of elements to be searched in. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned. When function don't require an execution policy, Input Iterator will be used, otherwise, it will be Forward Iterator. 
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    auto it = std::find(v.begin(), v.end(), 3);
-    if (it != v.end()) {
-        std::cout << "Found " << *it << std::endl;
-    } else {
-        std::cout << "Not found" << std::endl;
-    }
+std::vector<int> v = {1, 2, 3, 4, 5};
+auto it = std::find(v.begin(), v.end(), 3);
+if (it != v.end()) {
+    std::cout << "Found " << *it << std::endl;
+} else {
+    std::cout << "Not found" << std::endl;
 }
 ```
 
@@ -79,19 +60,13 @@ int main() {
 std::max_element(start_iterator, end_iterator, comparator);
 std::min_element(start_iterator, end_iterator, comparator);
 ```
-The first two arguments are iterators that define the range of elements to be searched in. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are compared using the `<` operator by default.
+The first two arguments are iterators that define the range of elements to be searched in. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are compared using the `<` operator by default. As you may have guessed, these functions require Forward Iterator.
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    auto max_it = std::max_element(v.begin(), v.end());
-    auto min_it = std::min_element(v.begin(), v.end());
-    std::cout << "Max: " << *max_it << std::endl;
-    std::cout << "Min: " << *min_it << std::endl;
-}
+std::vector<int> v = {1, 2, 3, 4, 5};
+auto max_it = std::max_element(v.begin(), v.end());
+auto min_it = std::min_element(v.begin(), v.end());
+std::cout << "Max: " << *max_it << std::endl;
+std::cout << "Min: " << *min_it << std::endl;
 ```
 
 #### 5. `std::fill()`
@@ -99,81 +74,24 @@ int main() {
 ```cpp
 std::fill(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be filled.
+The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be filled. Forward Iterator is required for this function.
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    std::fill(v.begin(), v.end(), 0);
-    // v = {0, 0, 0, 0, 0}
-}
+std::vector<int> v = {1, 2, 3, 4, 5};
+std::fill(v.begin(), v.end(), 0);
+// v = {0, 0, 0, 0, 0}
 ```
 
 Also, there is a header called [`<numeric>`](https://en.cppreference.com/w/cpp/header/numeric) that contains a number of useful algorithms for numeric operations.
 
-#### 1. `std::accumulate()`
-[`std::accumulate()`](https://en.cppreference.com/w/cpp/algorithm/accumulate) is used to calculate the sum of a range of elements. It is implemented as a simple linear `O(n)` traversal, with this syntax:
+For example, [`std::accumulate()`](https://en.cppreference.com/w/cpp/algorithm/accumulate) is used to calculate the sum of a range of elements. It is implemented as a simple linear `O(n)` traversal, with this syntax:
 ```cpp
 std::accumulate(start_iterator, end_iterator, initial_value);
 ```
-The first two arguments are iterators that define the range to be summed. The third argument is the initial value of the sum. Be aware of the accumulator type, as it may overflow if the sum is too large. For example, if you want to sum a range of integers, you can use `0LL` as the initial value to avoid overflow.
+Input Iterators need to be used for this function, and the first two arguments are iterators that define the range to be summed. The third argument is the initial value of the sum. Be aware of the accumulator type, as it may overflow if the sum is too large. For example, if you want to sum a range of integers, you can use `0LL` as the initial value to avoid overflow.
 ```cpp
-#include <iostream>
-#include <vector>
-#include <numeric>
-
-int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    long long sum = std::accumulate(v.begin(), v.end(), 0LL);
-    std::cout << "Sum: " << sum << std::endl;
-}
+std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+long long sum = std::accumulate(v.begin(), v.end(), 0LL);
+std::cout << "Sum: " << sum << std::endl;
 ```
 
-#### 2. `std::gcd()` and `std::lcm()`
-[`std::gcd()`](https://en.cppreference.com/w/cpp/numeric/gcd) and [`std::lcm()`](https://en.cppreference.com/w/cpp/numeric/lcm) are used to calculate the Greatest Common Divisor and the Least Common Multiple of two integers. They are implemented as `O(log n)` algorithms, looking like that:
-```cpp
-std::gcd(a, b);
-std::lcm(a, b);
-```
-The two arguments are the two integers, with which the GCD or LCM is calculated.
-```cpp
-#include <iostream>
-#include <numeric>
-
-int main() {
-    int a = 12, b = 18;
-    std::cout << "GCD: " << std::gcd(a, b) << std::endl;
-    std::cout << "LCM: " << std::lcm(a, b) << std::endl;
-}
-```
-
-Finally, let's get some practice with these algorithms. Your task is to implement the following functions:
- - `create_and_fill` - create a vector of size `n` and fill it with the values from `1` to `n` in ascending order.
- - `shuffle_vector` - shuffle the elements of the vector.
- - `sort_descending` - sort the elements of the vector in descending order.
- - `reverse_vector` - reverse the elements of the vector.
- - `find_value` - find the first occurrence of the value `x` in the vector.
- - `find_sum` - calculate the sum of the elements in the vector.
- - `find_gcd` - calculate the GCD of sum of the elements in the given vector and the value `x`.
-
-<div class="hint">
-You will probably need to use the following functions: 
-
-std::iota - to fill the vector with the values from 1 to n
-
-std::shuffle - to shuffle the elements of the vector (most likely, using std::random_device as a random number generator)
-
-std::sort - to sort the elements of the vector in descending order 
-
-std::reverse - to reverse the elements of the vector
-
-std::find - to find the first occurrence of the value `x` in the vector 
-
-std::accumulate - to calculate the sum of the elements in the vector
-
-std::gcd - to calculate the GCD of two integers
-
-</div>
+Finally, let's get some practice with these algorithms. Your task is to implement the function that takes a vector of integers and returns the sum of elements with values between two provided values: `lowerBound` and `upperBound`.
