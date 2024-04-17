@@ -1,0 +1,7 @@
+type: theory
+custom_name: Type Inference
+files:
+  - name: src/main.cpp
+    visible: true
+  - name: CMakeLists.txt
+    visible: false
