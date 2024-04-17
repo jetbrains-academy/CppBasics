@@ -25,5 +25,3 @@ files:
     visible: false
   - name: include/textEditor.h
     visible: true
-  - name: cmake-build-debug/CMakeCache.txt
-    visible: true
