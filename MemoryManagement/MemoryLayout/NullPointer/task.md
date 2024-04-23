@@ -1,6 +1,6 @@
 In C++, there is a special **null pointer** value: `nullptr`.
-A null pointer does not point to any real memory location. 
-Null pointer dereference leads to *undefined behavior* 
+A null pointer does not point to any actual memory location. 
+Dereferencing a null pointer leads to *undefined behavior* 
 and will most likely cause a runtime error and crash your program.
 
 <div class="hint">
@@ -21,21 +21,21 @@ std::cout << *p << "\n";
 Despite the fact that a null pointer cannot be dereferenced, 
 it is not completely useless. 
 For example, it can be used to initialize a pointer 
-that should be reassigned to a real address later.
-It is important, however, to never try 
-to dereference such a pointer before it is 
+that will be reassigned to an actual address later.
+However, it is important never to attempt 
+to dereference such a pointer before it has been 
 reassigned to a real address. 
 
 <div class="hint">
 
-`nullptr` is a C++ specific keyword.
-In the C language, there is an equivalent constant `NULL`.
+`nullptr` is a keyword specific to C++.
+In the C language, there is an equivalent constant: `NULL`.
 
 </div>
 
 If you have a function that receives a pointer 
 and there is no guarantee that this pointer is not null,
-you can first check it before trying 
+you can validate it before attempting 
 to dereference the pointer.
 
 ```c++
@@ -48,7 +48,7 @@ void f(int* p) {
 ```
 
 Note that C++ guarantees that `nullptr` evaluates to the integer value `0`
-when put in the context where the integer is expected. 
+when put in a context where an integer is expected. 
 Thus, the above code snippet is equivalent to the following:
 
 ```c++
