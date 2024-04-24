@@ -1,8 +1,8 @@
 Local variables declared inside functions 
 are kept in the __stack__ memory region.
 This memory region is partitioned into chunks called _stack frames_.
-Each time some function is called, a 
-stack frame containing all the local variables of this function is 
+Each time a function is called, a 
+stack frame containing all the local variables of that function is 
 pushed onto the top of the stack. 
 Once the execution of the function finishes, 
 the corresponding stack frame is popped from the stack.  
