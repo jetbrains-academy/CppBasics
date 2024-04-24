@@ -1,13 +1,13 @@
 In C++, addresses are first-class citizens,
-meaning that programmers can manipulate them as any other types of data:
-store addresses to variables, pass them as function arguments, print to the terminal, etc.
+meaning that programmers can manipulate them like any other types of data:
+store addresses in variables, pass them as function arguments, print them to the terminal, etc.
 
 A variable that stores the address of a memory cell is called a **pointer**.
 In C++, there is no single *pointer* data type; instead, pointers are
-additionally typed by the type of the memory region they point to.
-For example, type `int*` denotes a type of pointers pointing to
+additionally typed based on the type of the memory region they point to.
+For example, the type `int*` denotes a type of pointers pointing to
 a memory region containing a value of type `int`.
-As you can see, in order to create a pointer data type,
+As you can see, to create a pointer data type,
 you need to add the `*` keyword *after* the pointed-to data type.
 Note that you can create pointer types of arbitrary complexity:
 for example, `int**` denotes a type of pointers to a pointer to `int`.
@@ -21,9 +21,9 @@ int* p = &a;
 // we also say that p points to a
 ```
 
-The process of obtaining the value which a pointer points to
-is also called **dereferencing** of the pointer.
-It is done with the help of the dereferencing operator `*`.
+The process of obtaining the value to which a pointer points
+is also called **dereferencing** the pointer.
+This is done with the help of the dereferencing operator `*`.
 
 ```c++
 int b = *p;
@@ -47,8 +47,8 @@ std::cout << p << "\n";
 std::cout << *p << "\n";
 ```
 
-Using dereferencing operator it is possible both 
-to read pointed-to data, as well as to rewrite it.
+Using the dereferencing operator, it is possible to both 
+read the data pointed-to and rewrite it.
 
 ```c++
 *p = 23;
@@ -67,7 +67,7 @@ int* q = p;
 // both p and q point to a
 ```
 
-or reassign a pointer:
+You can also reassign a pointer:
 
 ```c++
 int c = 23;
