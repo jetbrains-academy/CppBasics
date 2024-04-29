@@ -6,7 +6,7 @@ The [`std::sort()`](https://en.cppreference.com/w/cpp/algorithm/sort) algorithm 
 ```cpp
 std::sort(start_iterator, end_iterator, comparator);
 ```
-The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer or a functor. As you understand, this function requires Random Access Iterator, so that sorting can be done in any order.
+The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer or a functor. As you might understand, this function requires a Random Access Iterator to enable sorting in any order.
 ```cpp
 // Sort a vector of integers in ascending order
 std::vector<int> v1 = {5, 2, 4, 3, 1};
@@ -31,7 +31,7 @@ std::sort(v3.begin(), v3.end(), [](const std::string &a, const std::string &b) {
 ```cpp
 std::reverse(start_iterator, end_iterator);
 ```
-Two arguments are iterators that define the range of elements to be reversed. This function would expect a Bidirectional Iterator.
+The two arguments are iterators that define the range of elements to be reversed. This function would expect a Bidirectional Iterator.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 std::reverse(v.begin(), v.end());
@@ -43,7 +43,7 @@ std::reverse(v.begin(), v.end());
 ```cpp
 std::find(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be searched in. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned. When function don't require an execution policy, Input Iterator will be used, otherwise, it will be Forward Iterator. 
+The first two arguments are iterators that define the range of elements to be searched within. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned. When the function doesn't require an execution policy, an Input Iterator will be used; otherwise, it will be a Forward Iterator. 
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 auto it = std::find(v.begin(), v.end(), 3);
@@ -55,12 +55,12 @@ if (it != v.end()) {
 ```
 
 #### 4. `std::max_element()` and `std::min_element()`
-[`std::max_element()`](https://en.cppreference.com/w/cpp/algorithm/max_element) and [`std::min_element()`](https://en.cppreference.com/w/cpp/algorithm/min_element) are used to find the maximum and minimum elements in a range of elements. They both share `O(n)` complexity, giving the following interface:
+[`std::max_element()`](https://en.cppreference.com/w/cpp/algorithm/max_element) and [`std::min_element()`](https://en.cppreference.com/w/cpp/algorithm/min_element) are used to find the maximum and minimum elements in a range of elements, respectively. They both share `O(n)` complexity, with the following interface:
 ```cpp
 std::max_element(start_iterator, end_iterator, comparator);
 std::min_element(start_iterator, end_iterator, comparator);
 ```
-The first two arguments are iterators that define the range of elements to be searched in. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are compared using the `<` operator by default. As you may have guessed, these functions require Forward Iterator.
+The first two arguments are iterators that define the range of elements to be searched within. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are compared using the `<` operator by default. As you may have guessed, these functions require a Forward Iterator.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 auto max_it = std::max_element(v.begin(), v.end());
@@ -70,28 +70,28 @@ std::cout << "Min: " << *min_it << std::endl;
 ```
 
 #### 5. `std::fill()`
-[`std::fill()`](https://en.cppreference.com/w/cpp/algorithm/fill) is used to fill a range of elements with a value. it is iterated in the time it takes to traverse the entire array to change the elements `O(n)`. The syntax is quite simple:
+[`std::fill()`](https://en.cppreference.com/w/cpp/algorithm/fill) is used to fill a range of elements with a specific value. It runs in `O(n)` time complexity, equivalent to the time it takes to traverse the entire array and change the elements . The syntax is quite simple:
 ```cpp
 std::fill(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be filled. Forward Iterator is required for this function.
+The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be filled. A Forward Iterator is required for this function.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 std::fill(v.begin(), v.end(), 0);
 // v = {0, 0, 0, 0, 0}
 ```
 
-Also, there is a header called [`<numeric>`](https://en.cppreference.com/w/cpp/header/numeric) that contains a number of useful algorithms for numeric operations.
+There is also a header called [`<numeric>`](https://en.cppreference.com/w/cpp/header/numeric) that contains a number of useful algorithms for numeric operations.
 
 For example, [`std::accumulate()`](https://en.cppreference.com/w/cpp/algorithm/accumulate) is used to calculate the sum of a range of elements. It is implemented as a simple linear `O(n)` traversal, with this syntax:
 ```cpp
 std::accumulate(start_iterator, end_iterator, initial_value);
 ```
-Input Iterators need to be used for this function, and the first two arguments are iterators that define the range to be summed. The third argument is the initial value of the sum. Be aware of the accumulator type, as it may overflow if the sum is too large. For example, if you want to sum a range of integers, you can use `0LL` as the initial value to avoid overflow.
+This function requires Input Iterators, and the first two arguments are iterators that define the range to be summed. The third argument is the initial value of the sum. Be aware of the accumulator type, as it may overflow if the sum is too large. For example, to sum a range of integers, you can use `0LL` as the initial value to avoid overflow.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 long long sum = std::accumulate(v.begin(), v.end(), 0LL);
 std::cout << "Sum: " << sum << std::endl;
 ```
 
-Finally, let's get some practice with these algorithms. Your task is to implement the function that takes a vector of integers and returns the sum of elements with values between two provided values: `lowerBound` and `upperBound`.
+Finally, let's get some practice with these algorithms. Your task is to implement a function that takes a vector of integers and returns the sum of elements with values between two provided values: `lowerBound` and `upperBound`.
