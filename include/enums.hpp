@@ -17,7 +17,8 @@ enum class GameTextureID {
     STAR,
     STAR_CONCERNED,
     BLACKHOLE,
-    SIZE
+    LEADERBOARD,
+    SIZE // dummy value to represent the number of texture IDs
 };
 
 /**

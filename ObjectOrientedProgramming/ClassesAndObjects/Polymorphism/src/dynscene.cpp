@@ -142,3 +142,10 @@ void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textur
     });
 }
 
+void GameplayDynamicScene::updateScore() {
+    // Will be implemented in future lessons
+}
+
+void GameplayDynamicScene::updatePlayerStatus() {
+    // Will be implemented in future lessons
+}

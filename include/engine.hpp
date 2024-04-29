@@ -5,6 +5,8 @@
 
 #include "scenes.hpp"
 #include "textures.hpp"
+#include "leaderboard.hpp"
+#include <unistd.h>
 
 class GameEngine {
 public:
@@ -90,6 +92,7 @@ private:
     SceneManager sceneManager;
     TextureManager textureManager;
     Scene* scene;
+    Leaderboard leaderboard;
     bool active;
 };
 

@@ -36,6 +36,7 @@ public:
 
 private:
     GameplayStaticScene staticScene;
+    GameplayDynamicScene dynamicScene;
 };
 
 
