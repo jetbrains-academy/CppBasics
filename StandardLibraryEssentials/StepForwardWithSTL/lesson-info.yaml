@@ -1,0 +1,8 @@
+type: framework
+custom_name: Step Forward with STL
+content:
+  - Introduction
+  - AddingScore
+  - DataRetrieval
+  - LeaderboardCreation
+is_template_based: false

@@ -227,6 +227,14 @@ public:
     inline void performMove(GameObject& object, Point2D vector) {
         move(object, vector);
     }
+
+    inline void updateScore() override {
+        Scene::updateScore(0);
+    }
+
+    inline void updatePlayerStatus() override {
+        Scene::updatePlayerStatus(true);
+    }
 };
 
 #endif //CPPBASICS_TESTSCENE_HPP

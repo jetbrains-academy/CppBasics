@@ -56,6 +56,17 @@ public:
      */
     void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
+protected:
+    /**
+     * Updates the player's score.
+     */
+    void updateScore() override;
+
+    /**
+     * Updates the player's status.
+     */
+    void updatePlayerStatus() override;
+
 private:
     PlayerObject player;
     ConsumableObject consumable;

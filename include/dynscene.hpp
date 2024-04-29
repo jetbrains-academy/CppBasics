@@ -70,6 +70,16 @@ protected:
      */
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
+    /**
+     * Updates the player's score.
+     */
+    void updateScore() override;
+
+    /**
+     * Updates the player's status.
+     */
+    void updatePlayerStatus() override;
+
 private:
     GameObjectList objects;
 };
