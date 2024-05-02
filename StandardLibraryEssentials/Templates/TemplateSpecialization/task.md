@@ -1,6 +1,6 @@
-Sometimes you will need to handle different types of template parameters differently. 
+At times, you will need to handle various types of template parameters differently. 
 
-For example, you may want to create a function that works with any type, but if the type is a pointer, you want to follow an alternative way. Fortunately, you can use template specialization to create a special version of the function for pointers, as well as for any other type. To do so, you need to write a function implementation with a defined type, like this:
+For example, you may want to create a function that works with any type. However, if the type is a pointer, you would prefer to follow an alternative way. Fortunately, with template specialization, you can create a special version of the function for pointers, as well as for any other type. To do so, you need to write a function implementation with a defined type, like this:
 ```cpp
 template <typename T>
 void print(T value) {
@@ -21,11 +21,11 @@ int main() {
 }
 ```
 
-When the compiler sees any call of a template function, it will first check if there is a specialized version of the function for the type of the argument. If there is, it will use the specialized version, otherwise it will use the general version.
+When the compiler encounters any call to a template function, it first checks for a specialized version of the function for the argument's type. If such a version exists, it will employ it; otherwise, it will use the general version.
 
-There is a technique called metaprogramming that allows you to write code that generates code. This is done by using templates and template specialization. Since it is a complex topic, we will not cover it in this course, but you can find more information about it in the [C++ documentation](https://en.cppreference.com/w/cpp/meta). But there is a feature called type traits that can be useful in some cases. Type traits are a set of classes that provide information about types at compile time. You can use them to check if a type has a specific property, like being a pointer or a reference. You can find more information about type traits in the [C++ documentation](https://en.cppreference.com/w/cpp/header/type_traits).
+There is a technique called metaprogramming, which allows you to write code that generates other code using templates and template specialization. Since it is a complex topic, we will not cover it in this course, but you can find more information about it in the [C++ documentation](https://en.cppreference.com/w/cpp/meta). However, there is a feature called "type traits" that can be helpful in some cases. Type traits are a set of classes that provide information about types at compile time. You can use them to check if a type has a specific property, like being a pointer or reference. You can find more information about type traits in the [C++ documentation](https://en.cppreference.com/w/cpp/header/type_traits).
 
-Since each specialization requires a separate implementation, it is not always the best solution. In many cases, you can try to find any common type property and use it's checker, like the `std::is_pointer` function to check if the type is a pointer and handle it in the general function. This way, you can avoid code duplication and make the code more readable.
+Since each specialization requires a separate implementation, it may not always be the best solution. In many cases, you can try to find any common type property and use it's checker, like the `std::is_pointer` function to check if the type is a pointer and handle it within the general function. This way, you can avoid code duplication and make the code more readable.
 ```cpp
 #include <type_traits>
 template <typename T>
@@ -50,12 +50,12 @@ T sum(T first, Args... args) {
     return first + sum(args...);
 }
 ```
-In this case, the function takes the first argument and then calls itself recursively with the rest of the arguments. The recursion stops when there are no more arguments left. Note that there should be a base case for the recursion, which is the first function in this example; otherwise, the compiler will generate an error.
+In this case, the function takes the first argument and then calls itself recursively with the rest of the arguments. The recursion stops when there are no more arguments left. Note that there should be a base case for the recursion — the first function in our example — otherwise, the compiler will generate an error.
 
-Your task would be to create a template function for printing information about `DataPair` objects, that you've implemented in the previous task. The function should take a `DataPair` object and print the values of its fields. If the type of the field is a pointer, it should print the value of the pointer, otherwise it should print the value itself. 
+Your task would be to create a template function to display information about `DataPair` objects that you've implemented in the previous task. The function should take a `DataPair` object and print the values of its fields. If the type of the field is a pointer, it should print the value of the pointer, otherwise simply print the value. 
 
-Moreover, if two fields are of the same type, the function should print the `<Typename> DataPair:  <first>, <second>` string, where `<Typename>` is the name of the common type. Since the class name is not a part of the standard C++ library, let's specify it only for `int`, `double` and `std::string` types.
+Moreover, if two fields are of the same type, the function should print the string `<Typename> DataPair:  <first>, <second>`, where `<Typename>` is the common type name. Since the class name is not a part of the standard C++ library, let's specify it only for `int`, `double` and `std::string` types.
 
-For different types, it should print `DataPair:  <first>, <second>`. The function should be implemented in the `/include/DataPair.hpp` file.
+For different types, the function should print `DataPair:  <first>, <second>`. The function should be implemented in the `/include/DataPair.hpp` file.
 
 
