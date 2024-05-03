@@ -33,4 +33,4 @@ Line 2
 ```
 
 In order to successfully finish this task, make sure to 
-also end the line after `"Hello World!"` string. 
+also end the line after the `"Hello World!"` string. 
