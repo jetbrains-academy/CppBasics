@@ -28,7 +28,7 @@ We have added yet another function:
 void approachingLoop(Circle player, Circle consumable[], bool concerned[], int size);
 ```
 
-It is similar to `collisionLoop` function, but instead of detecting 
+It is similar to the `collisionLoop` function, but instead of detecting 
 collisions, it detects a situation when a player object approaches consumable objects.
 When this happens, it sets the corresponding flag in the `concerned` boolean array.
 The flags in the array are later used in the `render` function (see `main.cpp`)
