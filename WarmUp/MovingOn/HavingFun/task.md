@@ -52,6 +52,6 @@ printInt(c); // prints 3
 Upon the call, arguments in the body of the function
 will be substituted with the actual values passed, 
 control will be transferred to the body of the function, 
-and when the function will terminate its 
+and when the function terminates, its 
 return value will be sent back to the calling side. 
  

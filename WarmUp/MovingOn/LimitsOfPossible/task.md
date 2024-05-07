@@ -1,4 +1,4 @@
-In the previous tasks we have added to the scene 
+In the previous tasks, we have added to the scene 
 a fixed pre-defined number of consumable objects. 
 But what if we want to create a random number of consumable objects between 1 and 10?
 Can we do that in the same vein as we have generated random positions of consumable objects?
@@ -36,13 +36,13 @@ error: variable length array ‘consumable’ is used
 As you can guess, the problem is due to the definition of an array with the size equal to `count`. 
 
 `COUNT` is a constant, its value is **static**, and it is known
-before the program is run, that is, at **compile-time**.
+before the program is run, that is, at **compile time**.
 It means that when we define an array of size equal to `COUNT`,
 the size of this array can already be calculated and the 
 required amount of memory can be allocated. 
 
 Contrary to the above, `count` is a variable and its value is **dynamic** – 
-it is not known before the program is run, that is, it is known only at **run-time**.
+it is not known before the program is run, that is, it is known only at **run time**.
 Thus, the amount of memory needed to be allocated cannot be 
 calculated apriori, and the program build fails.
 

@@ -8,8 +8,8 @@ As a first step, you will only need to move the object horizontally.
 
 To move an object, you need to implement the function `move`.
 Given the previous position of the object, 
-the velocity of the object and the time elapsed since 
-the last update of the scene this function should
+the velocity of the object, and the time elapsed since 
+the last update of the scene, this function should
 calculate and return the new position of the object.
 
 To calculate the trajectory of an object, you can use a simple formula:

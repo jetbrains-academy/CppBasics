@@ -44,10 +44,10 @@ statement on a separate line.
 <div class="hint">
 
 In order to successfully complete this task,
-make sure to end the line with newline `'\n'` character.
-In general, in C++ programming it is a good practice 
-to always put `'\n'` character at the end of the line, 
-even if the printing statement is the last statement 
+make sure to end the line with the newline `'\n'` character.
+In general, in C++ programming, it is a good practice 
+to always put a `'\n'` character at the end of the line, 
+even if the print statement is the last one 
 and the program terminates immediately after executing it.
 
 </div>

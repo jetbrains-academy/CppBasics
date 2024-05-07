@@ -1,4 +1,4 @@
-Let us add to the scene another consumable object in the form of the small star.
+Let us add to the scene another consumable object in the form of a small star.
 When the playable object touches this consumable object, the latter should disappear. 
 
 To do that, you will need to implement 
