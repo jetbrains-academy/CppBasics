@@ -1,8 +1,8 @@
-Imagine that you have a function that calculates the sum of two numbers. If you want to calculate the sum of two integers, you can write a function that takes two `int` numbers as arguments and returns their sum. But if you also want to have such a function for `double`, `long long`, `float`, and your custom type `Fraction`, you will have to write a separate function for each type. This is not very convenient to write a lot of functions that would do the same thing but with different types.
+Imagine that you have a function for calculating the sum of two numbers. If you want to calculate the sum of two integers, you can write a function that takes two `int` numbers as arguments and returns their sum. However, suppose you also want to have such a function for `double`, `long long`, `float`, and a custom type such as `Fraction`. You will have to write a separate function for each type. This becomes inconvenient, as you end up writing multiple functions that essentially do the same thing but with different data types.
 
-Templates are created to address this exact issue. They allow you to write a single function that can work with different types. In this case, you can write a template function that takes two arguments of any type and returns their sum as a variable of the same type.
+Templates are designed to address this exact issue. They allow you to write a single function that can work with different types. For instance, you can write a template function that takes two arguments of any type and returns their sum as a variable of the same type.
 
-The syntax for creating a template function is simple: you need to write the `template` keyword followed by the `typename` keyword and the type name you want to use as a template parameter. Then you can use this type name in the function as if it were a regular type:
+The syntax for creating a template function is simple: you start with the `template` keyword, followed by the `typename` keyword, and then include the type name you want to use as a template parameter. Then, you can use this type name in the function as if it were a regular type:
 
 ```cpp
 template <typename T>
@@ -11,14 +11,14 @@ T sum(T a, T b) {
 }
 ```
 
-The number of template parameters is not limited to one. When you need to have more different types for the function arguments, you can use many template parameters. This is an example function with two:
+The number of template parameters is not limited to one. If you need to use multiple types for the function arguments, you can apply several template parameters. This is an example function featuring two:
 ```cpp
 template <typename T1, typename T2>
 T1 sum(T1 a, T2 b) {
     return a + b;
 }
 ```
-This function will work with types such that the second type can be cast to the first type, and it supports the `+` operator. Note, that return type of the function is `T1`, so the result of the sum will be of the type of the first argument.
+This function will work with types such that the second type can be cast to the first type, and it supports the `+` operator. Note that the return type of the function is `T1`, so the result of the sum will be of the same type as the first argument.
 
 <div class="hint">
     You can use `std::is_same` to check if two types are the same. This can be useful when you want to restrict the types that can be used with the template function.
@@ -42,7 +42,7 @@ int main() {
 }
 ```
 
-Template instantiation is the process by which the compiler creates a "concrete" function or class from a template, when it's used with a specific type. When you use a template with a specific type, the compiler generates an instance of the template for that type. This is known as an "instantiated" function or class. For example, let's get back to the sum function template:
+Template instantiation is the process through which the compiler creates a "concrete" function or class from a template, using a specific type. When you use a template with a particular type, the compiler generates an instance of the template for that type. This is known as an "instantiated" function or class. For example, let's get back to the sum function template:
 ```cpp
 template <typename T>
 T sum(T a, T b) {
@@ -61,15 +61,15 @@ int sum(int a, int b) {
 ```
 and uses it to calculate the sum of two integers.
 
-The same process applies to class templates. The key point is that a separate function or class is generated for each type with which a template is used. This is why templates are a compile-time feature.
+The same process applies to class templates. The key point is that a separate function or class is generated for each type with which a template is used, which is why templates are a compile-time feature.
 
-Sometimes, you may face template declaration using the `class` keyword instead of `typename`. Both keywords are interchangeable in template declarations, and in most of the cases you can use any of them. However, there are a few exceptions, for more information, refer to [this article](https://mariusbancila.ro/blog/2021/03/15/typename-or-class/).
+Sometimes, you may face a template declaration using the `class` keyword instead of `typename`. Both keywords are interchangeable in template declarations, and in most cases, you can use either. However, there are a few exceptions. For more information, refer to [this article](https://mariusbancila.ro/blog/2021/03/15/typename-or-class/).
 
-In this task, you need to implement an analog of the [`std::pair`](https://en.cppreference.com/w/cpp/utility/pair) class. In essence, it should be a class with two template parameters, `T1` and `T2`, and two fields of these types, for storing two values together.
-Usually, when you implement templates in C++, you need to write the implementation in the header file. Go to the `/include/DataPair.hpp` file and implement the `DataPair` class template there. The class should have the following methods:
-- A constructor without arguments that initializes the fields with default values (we assume that the types `T1` and `T2` have a default constructor).
-- A constructor that initializes the fields with the passed values.
+In this task, you need to implement an analog of the [`std::pair`](https://en.cppreference.com/w/cpp/utility/pair) class. In essence, it should be a class with two template parameters, `T1` and `T2`, and two fields of these types, to store two values simultaneously.
+Usually, when implementing templates in C++, you need to include the implementation in the header file. Go to the `/include/DataPair.hpp` file and create the `DataPair` class template there. The class should have the following methods:
+- A no-argument constructor that initializes the fields with default values (assuming the types `T1` and `T2` have their own default constructor).
+- A constructor that initializes the fields with the given argument values.
 - `getFirst` and `getSecond` methods that return the values of the corresponding fields.
 - `setFirst` and `setSecond` methods that set the values of the corresponding fields.
 
-Outside the class, you need to implement function `makePair` that creates an instance of the `DataPair` class with the passed values.
+Outside the class, implement a `makePair` function that creates an instance of the `DataPair` class with the given argument values.

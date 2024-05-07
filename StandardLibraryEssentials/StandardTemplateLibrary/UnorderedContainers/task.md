@@ -1,20 +1,20 @@
-Is there any way to make such a container that will have `O(1)` complexity for insertion, deletion and search? Sounds like magic, right?
+Is there a way to create a container that has an `O(1)` complexity for insertion, deletion, and search? Sounds like magic, right?
 Well, it is not. STL provides `std::unordered_set` and `std::unordered_map` containers that are implemented using [hash tables](https://en.wikipedia.org/wiki/Hash_table).
 
-What distinguishes regular `std::set` and `std::map` from their unordered versions? Due to the implementation details (which will be explained further), their main difference is the lack of a stable order of elements. There are iterators on such containers, but when passing through the container using them, you will most likely notice that the elements will not be sorted in ascending order.
-This, however, is a small price to pay for the `O(1)` complexity of the search, insertion and deletion operations. 
+What distinguishes regular `std::set` and `std::map` from their unordered counterparts? Due to the implementation details (which will be explained further), their main difference is the lack of a stable order of elements. There are iterators for such containers, but as you traverse the container using these iterators, you will most likely notice that the elements are not be sorted in ascending order.
+This, however, is a small price to pay for the `O(1)` complexity of the search, insertion, and deletion operations. 
 
-Main methods of `std::unordered_set` and `std::unordered_map`:
+The main methods of `std::unordered_set` and `std::unordered_map` include:
 * `insert(value)` - inserts the element `value` into the container
 * `emplace(args...)` - constructs the element in-place
 * `erase(value)` - removes the element `value` from the container
-* `find(value)` - returns an iterator to the element `value` if it is found, otherwise returns `end()`
+* `find(value)` - returns an iterator to the element `value` if it is found, otherwise, it returns `end()`
 
-To be fair, all these methods have **amortized** `O(1)` complexity, since sometimes hashes of different keys can be the same. This is called [collision](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution). In this situation, the whole table needs to be rehashed. This is why unordered container's methods can perform in `O(n)` time in the worst case. 
+To be fair, all these methods have **amortized** `O(1)` complexity, since sometimes hashes of different keys can be the same. This is called a [collision](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution). In such situations, the whole table needs to be rehashed, which is the reason why the methods of an unordered container can perform in `O(n)` time in the worst-case scenario. 
 
-Hash table is a data structure that uses [hash function](https://en.wikipedia.org/wiki/Hash_function) to map keys to buckets. Whenever you want to insert or search for an element, you apply hash function to the key and get the bucket number. Then you insert or search for the element in the bucket. 
+A hash table is a data structure that uses a [hash function](https://en.wikipedia.org/wiki/Hash_function) to map keys to buckets. Whenever you want to insert or search for an element, you apply hash function to the key and get the bucket number. Then you insert or search for the element in the bucket. 
 
-Standard library provides `std::hash` function for basic types, and you can define your own hash function for your custom types.
+The standard library provides the `std::hash` function for basic types, and you can define your own hash function for any custom types.
 
 There are a few functions for buckets manipulation:
 * `bucket_count()` - returns the number of buckets
@@ -84,7 +84,7 @@ int main() {
 }
 ```
 
-You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. It's member functions are defined in `/include/Cache.h` file. Since cache is very fast type of storage, you will need to use hashing to implement it. Author's solution uses `std::unordered_map` and `std::list`, but you can choose any container from the STL in your implementation. The cache should have the following methods:
-* `LRUCache(size_t capacity)` - constructor that sets the maximum number of elements in the cache
-* `void put(const std::string& key, const std::string& value)` - inserts the key-value pair into the cache. If the cache is full, it should remove the least recently used element
-* `std::string get(const std::string& key)` - returns the value associated with the key. If the key is not found, returns `std::nullopt`
+You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. Its member functions are defined in the `/include/Cache.h` file. Since cache is a very fast type of storage, you will need to use hashing to implement it. The provided solution uses `std::unordered_map` and `std::list`, but you can choose any container from the STL for your own implementation. The cache should have the following methods:
+* `LRUCache(size_t capacity)` - a constructor that sets the maximum number of elements in the cache.
+* `void put(const std::string& key, const std::string& value)` - inserts the key-value pair into the cache. If the cache is full, it should remove the least recently used element.
+* `std::string get(const std::string& key)` - returns the value associated with the key. If the key is not found, it returns `std::nullopt`.

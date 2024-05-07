@@ -1,14 +1,14 @@
-During container exploration you will encounter iterators many times, and it is not surprising since they are strongly tied with each other. 
+During container exploration, you will encounter iterators many times, which is not surprising since they are closely linked with each other. 
 
-In C++, [iterators](https://en.cppreference.com/w/cpp/iterator) are objects that allow us to traverse the container and access its elements. Basically, it is a view on an element of a container. They provide unified interface to the elements of various containers.
+In C++, [iterators](https://en.cppreference.com/w/cpp/iterator) are objects that allow us to traverse the container and access its elements. Basically, they provide a view of a container element. They offer a unified interface to the elements of various containers.
 
-Iterators behave much like pointers, and in the case of certain container types, they are indeed pointers. Iterator is a way to access the elements of an array or any other container in a sequential manner without exposing the underlying representation.
+Iterators behave much like pointers, and in the case of certain container types, they are indeed pointers. An iterator is a means to access the elements of an array or any other container sequentially without exposing the underlying representation.
 
-An iterator must be initialized before use. You can initialize an iterator to the beginning of a container using the `begin()` function, or to one past the end of the container using the `end()` function.
+An iterator must be initialized before use. You can initialize an iterator to the beginning of a container using the `begin()` function or to one position past the end of the container using the `end()` function.
 
-You can move an iterator to the next element in the container using the `++` operator or `std::next` function. To move an iterator to the previous element, use the `--` operator or `std::prev` function. You can also move an iterator by a specified number of elements using the `+=` and `-=` operators, or by using the `std::advance` function.
+You can move an iterator to the next element in the container using the `++` operator or the `std::next` function. To move an iterator to the previous element, use the `--` operator or the `std::prev` function. You can also move an iterator by a specified number of elements using the `+=` and `-=` operators, or by using the `std::advance` function.
 
-Usually, type of iterator is a long and complicated expression. The common practise is to use `auto` keyword when declaring an iterator.
+Usually, the type of an iterator is a long and complicated expression. The common practise is to use the `auto` keyword when declaring an iterator.
 
 ```cpp
 std::vector<int> numbers = {1, 2, 3, 4, 5};
@@ -16,9 +16,9 @@ std::vector<int>::iterator it = numbers.begin(); // long and complicated type
 auto it = numbers.begin(); // using auto
 ```
 
-Comparison of two iterators is made by the `==` and `!=` operators, which might be useful when checking whether you've reached the end of a container.
+The comparison of two iterators is made by the `==` and `!=` operators, which might be useful when checking whether you've reached the end of a container.
 
-You can access the element an iterator points to using the `*` operator. Dereferencing of `end()` iterator leads to undefined behavior.
+You can access the element an iterator points to using the `*` operator. However, dereferencing the `end()` iterator leads to undefined behavior.
 
 ```cpp
 std::vector<char> characters = {'i', 'a', 'm', 's', 'h', 'o', 'u', 't', 'i', 'n', 'g'};
@@ -62,7 +62,7 @@ will print the same line both times:
 
 Consider using range-based for loops whenever possible, as they are more concise and less error-prone.
 
-Given a vector of integers, you need to implement function `find_maximum` that returns the message about maximum element in the vector. The function should use iterators to traverse the vector and find the maximum element.
+Given a vector of integers, you need to implement the `find_maximum` function, which returns the message about the maximum element in the vector. The function should use iterators to traverse the vector and find the maximum element.
 
-Format of the message: `"Maximum element is <max_element>"`.
+The format of the message should be: `"Maximum element is <max_element>"`.
 If the vector is empty, return `"Vector is empty"`.

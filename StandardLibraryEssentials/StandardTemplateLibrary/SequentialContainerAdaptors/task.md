@@ -1,8 +1,8 @@
-Sequential container adaptors in C++ provide a different interface for sequential containers. The `std::stack`, `std::queue`, and `std::priority_queue` are container adaptors that provide specific behaviors.
+Sequential container adaptors in C++ provide a distinct interface for sequential containers. The `std::stack`, `std::queue`, and `std::priority_queue` are container adaptors that provide specific behaviors.
 
-[`std::queue`](https://en.cppreference.com/w/cpp/container/queue) is a container adaptor that provides a queue data structure with [First-In-First-Out (FIFO)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) semantics. The elements are pushed at the end and are popped from the front.
+[`std::queue`](https://en.cppreference.com/w/cpp/container/queue) is a container adaptor that offers a queue data structure with [First-In-First-Out (FIFO)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) semantics. The elements are pushed to the end and are popped from the front.
 
-[`std::stack`](https://en.cppreference.com/w/cpp/container/stack) is a container adaptor that provides a stack data structure with [Last-In-First-Out (LIFO)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) semantics. The elements are pushed and popped only from the end of the sequence.
+[`std::stack`](https://en.cppreference.com/w/cpp/container/stack) is a container adaptor that offers a stack data structure with [Last-In-First-Out (LIFO)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) semantics. The elements are pushed and popped only from the end of the sequence.
 
 Here is a code example illustrating the usage of `std::stack` and `std::queue`:
 
@@ -22,7 +22,7 @@ q.pop();   // q = {2}
 std::cout << "Front of the queue: " << q.front() << "\n";
 ```
 
-[`std::priority_queue`](https://en.cppreference.com/w/cpp/container/priority_queue) is a container adaptor that provides a [priority queue](https://en.wikipedia.org/wiki/Priority_queue) data structure. The elements are inserted in arbitrary order and are removed according to the priority. The priority is defined by the `Compare` template parameter. The default value of `Compare` is `std::less<T>`, which sorts the elements in ascending order.
+[`std::priority_queue`](https://en.cppreference.com/w/cpp/container/priority_queue) is a container adaptor that provides a [priority queue](https://en.wikipedia.org/wiki/Priority_queue) data structure. The elements are inserted in an arbitrary order and are removed according to their priority. The priority is defined by the `Compare` template parameter. The default value of `Compare` is `std::less<T>`, which sorts the elements in ascending order.
 
 Here is a code example illustrating the usage of `std::priority_queue`:
 
@@ -43,9 +43,9 @@ std::cout << "Top of the priority queue: " << pq.top() << "\n"; // Output: 2
 ```
 
 As practice, you will implement a simple text editor that supports the following operations: 
-- `insert(w, pos)` - append string `w` to the text at position `pos` 
+- `insert(w, pos)` - append the string `w` to the text at position `pos` 
 - `erase(pos, len)` - delete `len` characters from the text starting at position `pos`
 - `undo()` - undo the last operation (either `append` or `delete`)
 - `redo()` - redo the last operation that was undone
 
-Class `TextEditor` is defined in `/include/textEditor.h`. 
+The `TextEditor` сlass is defined in `/include/textEditor.h`. 

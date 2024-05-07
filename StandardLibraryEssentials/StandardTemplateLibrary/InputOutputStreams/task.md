@@ -1,6 +1,6 @@
 In C++, input/output (I/O) operations are performed using streams. A stream is a sequence of bytes that flow from a source (like a keyboard, a file, or a network connection) to a destination (like a screen, a file, or a network connection). The C++ Standard Library provides several classes for performing I/O operations. Their hierarchy is shown [here](https://en.cppreference.com/w/cpp/io#Hierarchy). 
 
-The most basic stream types are the input stream type `istream` and the output stream type `ostream` with corresponding `std::cin` and `std::cout` functions. The `istream` type provides overloaded `>>` operator for input and the `ostream` type provides overloaded `<<` operator for output.
+The most basic stream types are the input stream type `istream` and the output stream type `ostream`, with corresponding `std::cin` and `std::cout` functions. The `istream` type provides an overloaded `>>` operator for input, and the `ostream` type provides an overloaded `<<` operator for output.
 
 ```cpp
 // Standard output (console)
@@ -13,7 +13,7 @@ std::cin >> inputNumber;
 std::cout << "You entered: " << inputNumber << std::endl;
 ```
 
-In addition to console I/O, C++ provides the fstream library to handle file I/O. Input and output from/to a file is achieved through ifstream (input file stream) and ofstream (output file stream). These classes are derived from istream and ostream, respectively.
+In addition to console I/O, C++ provides the `fstream` library to handle file I/O. Input and output from/to a file are achieved through `ifstream` (input file stream) and `ofstream` (output file stream). These classes are derived from `istream` and `ostream`, respectively.
 Here's a simple example of writing to and reading from a file:
 
 ```cpp
@@ -38,9 +38,9 @@ if (inFile.is_open()) {
 }
 ```
 
-Note, that in order to access the file, the file must be in the same directory as the program or the full path to the file must be specified.
+Note that in order to access the file, it must be in the same directory as the program or the full path to the file must be specified.
 
-Another important stream type is stringstream. It allows you to perform input and output operations on memory-based strings, which can be useful for parsing and formatting text.  Here's an example of how to use stringstream:
+Another important stream type is `stringstream`. It allows you to perform input and output operations on memory-based strings, which can be useful for parsing and formatting text.  Here's an example of how to use `stringstream`:
 
 ```cpp
     std::string inputString = "Hello, World!";
@@ -57,7 +57,7 @@ Another important stream type is stringstream. It allows you to perform input an
     std::cout << outputStream.str();
 ```
 
-Moreover, standard library provides several methods for checking and handling I/O errors. For example, `fail()`, `bad()`, `eof()`, `good()`, etc. These methods can be used to check the state of the stream and to clear the error flags.
+Moreover, standard library provides several methods for checking and handling I/O errors: for example, `fail()`, `bad()`, `eof()`, `good()`, etc. These methods can be used to check the state of the stream and to clear error flags.
 
 For instance, every stream has an associated *failbit*, *badbit*, *eofbit* and *goodbit* that can be checked to determine the state of the stream. The *failbit* is set when a non-fatal I/O error occurs, such as when an attempted input operation fails to convert a character sequence to a valid value. The *badbit* is set when a fatal I/O error occurs, such as when an attempt to write to a file fails because the disk is full. The *eofbit* is set when an input operation reaches the end of an input sequence. The *goodbit* indicates that none of the other bits is set.
 Here is how to check the state of the stream:
@@ -77,11 +77,11 @@ if (file.good()) {
 }
 ```
 
-In addition to checking the state of a stream, you can also clear the error state flags using the `clear()` function, and set them using the `setstate()` function.
+In addition to checking the state of a stream, you can also clear the error state flags using the `clear()` function and set them using the `setstate()` function.
 
-__Stream manipulators__ are special functions that modify the behavior of streams. For example, `std::endl` is a manipulator that inserts a newline character and flushes the output buffer. We can also use manipulators like `std::setw` to set the width of the output, `std::setprecision` to set the precision of floating-point numbers, and `std::fixed` to display floating-point numbers in fixed notation. Full list of manipulators can be found [here](https://en.cppreference.com/w/cpp/io/manip).
+__Stream manipulators__ are special functions that modify the behavior of streams. For example, `std::endl` is a manipulator that inserts a newline character and flushes the output buffer. We can also use manipulators like `std::setw` to set the width of the output, `std::setprecision` to set the precision of floating-point numbers, and `std::fixed` to display floating-point numbers in a fixed notation. The full list of manipulators can be found [here](https://en.cppreference.com/w/cpp/io/manip).
 
-There are examples of a few:
+Here are examples of a few:
 ```cpp
 std::cout << std::setw(10) << std::left << "Top left" << std::setw(26) << std::right << "Top right" << std::endl;
 std::cout << std::setw(10) << std::left << "Bottom left" << std::setw(25) << std::right << "Bottom right" << std::endl;
@@ -105,12 +105,12 @@ Bottom left             Bottom right
 123456
 ```
 
-You need to create a program that reads all input string by string, until the string "end" is read. After that, the program should output responses on each token in the following format:
+You need to create a program that reads all input string by string, until the string "end" is read. After that, the program should output responses for each token in the following format:
 
- - If the number is read, the program should output "Got number: <number>" with precision of 3 decimal places.
- - If token is not a number, the program should output "Got string: <string>".
+ - If a number is read, the program should output "Got number: <number>" with a precision of 3 decimal places.
+ - If a token is not a number, the program should output "Got string: <string>".
 <div class="hint">
-  We encourage you to use stringstream for parsing the input and collecting tokens, since it is the most efficient way to change string dynamically.
+  We encourage you to use `stringstream` for parsing the input and collecting tokens, since it is the most efficient way to dynamically change a string.
 
-  A number is a sequence of digits, optionally containing one decimal point and minus sign at the beginning.
+  A number is a sequence of digits, optionally containing one decimal point and a minus sign at the beginning.
 </div>
