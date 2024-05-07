@@ -1,9 +1,9 @@
 In this course, we have already encountered the `const` keyword.
-Recall that it allows defining an immutable variable (or simply a _constant_): 
-a value can be assigned to such a variable only once when it is defined,
-and it cannot be reassigned later. 
+Remember, it allows defining an immutable variable (or simply a _constant_): 
+a value can only be assigned to such a variable once during its definition,
+and cannot be reassigned later. 
 
-As with ordinary mutable variables, it is possible to take the address of 
+Similar to ordinary mutable variables, it is possible to take the address of 
 a constant variable and store it in a pointer variable.
 However, the constantness of the pointed-to memory should be reflected 
 in the type of the pointer:
@@ -39,8 +39,8 @@ p = &y;
 ```
 
 On the contrary, it is possible to create a constant pointer to a mutable variable.
-Such a pointer itself is constant and cannot be reassigned; 
-however, the variable it points to can be reassigned through such a pointer:
+While the pointer itself is constant and cannot be reassigned, 
+the variable it points to can still be reassigned through such a pointer:
 
 ```c++
 int z = 17;
@@ -53,7 +53,7 @@ int w = 32;
 r = &w;
 ```
 
-Therefore, the semantics of the pointer type depends on the  
+Therefore, the semantics of the pointer type depends on the
 position of the `const` keyword relative to `*`:
 - if `const` is put before `*`, then it signifies the constantness of the pointed-to memory;
 - if it is put after `*`, then it signifies the constantness of the pointer itself. 

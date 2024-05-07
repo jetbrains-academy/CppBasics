@@ -1,12 +1,12 @@
 Recall that memory is just a sequence of addressable memory cells.
-Does it mean that given the address of a memory cell, 
-we can make a "step further" in this sequence and look into the "next" memory cell?
+Does this mean that given the address of a memory cell, 
+we can "step further" in this sequence and look into the "next" memory cell?
 Can we make a jump and look into a memory cell located at a distance of, say, 5 steps?
-Or, given two memory addresses, can we compute how far they are from each other?
+Or, given two memory addresses, can we compute how far apart they are?
 
 The answer is YES, but there are some nuances.
 
-Let us have an array of type `char`.
+Let us consider an array of type `char`.
 
 ```c++
 const int SIZE = 8;
@@ -15,10 +15,10 @@ char a[SIZE] = "abcdefgh";
 
 <div class="hint">
 
-Recall that `char` is a type used to encode ASCII character letters.
-It is guaranteed that this type has the size of 1 byte, that 
+Recall that `char` is a type used to encode ASCII characters.
+It is guaranteed that this type has a size of 1 byte, that 
 is, the size of the minimal addressable memory cell. 
-Thus, it is often convenient to use type `char*` to store the addresses of memory cells.
+Thus, it is often convenient to use the type `char*` to store the addresses of memory cells.
 
 </div>
 
@@ -49,7 +49,7 @@ std::cout << *p1 << "\n";
 // prints b
 ```
 
-It is not necessary to save the derived pointer into a variable, 
+It is not necessary to save the derived pointer into a variable; 
 we can also dereference it directly. 
 
 ```c++
@@ -57,7 +57,7 @@ std::cout << *(p0 + 1) << "\n";
 // also prints b
 ```
 
-You can also use increments and decrements on pointers.
+You can also appply increments and decrements to pointers.
 
 ```c++
 char* p = p0;
@@ -73,7 +73,7 @@ std::cout << *(p0 + 5) << "\n";
 // prints f
 ```
 
-BUT we can jump only within the memory chunk occupied by the array `a`!
+BUT we can only jump within the memory chunk occupied by the array `a`!
 Access to memory cells outside the memory chunk occupied by 
 the array leads to undefined behavior!
 For example, the following code snippet is erroneous.
@@ -82,16 +82,16 @@ For example, the following code snippet is erroneous.
 std::cout << *(p0 + 20) << "\n";
 ```
 
-It might not lead to an immediate program crash.
-However – and it might be even worse – the program's behavior is undefined: 
-it can print any value, or not print anything at all, 
+This might not immediately cause the program to crash.
+However – and this could be even worse – the program's behavior is undefined: 
+it could print any value, or not print anything at all, 
 or do something entirely different. 
 
 <div class="hint">
 
-This is not the first time we encounter the term *undefined behavior*. 
+This is not the first time we've encountered the term *undefined behavior*. 
 We promise that eventually, we will give a more detailed explanation of what it means 
-and what practical consequences it has. 
+and its practical consequences. 
 For now, just remember that you should avoid *undefined behavior* in your programs.
 
 </div>
@@ -106,7 +106,7 @@ std::cout << *q << "\n";
 ```
 
 Besides, it is possible to get the difference between two pointers, 
-that is, to compute the distance between them as the number of memory cells.
+that is, to compute the distance between them in terms of the number of memory cells.
 
 ```c++
 char* p8 = p0 + 8;
@@ -118,14 +118,14 @@ std::cout << diff << "\n";
 The behavior of arithmetic operations on pointers actually depends on the type of the pointer.
 Namely, it depends on the size of the pointed-to type.
 
-For example, let us have an array of type `int` instead of `char`.
+For example, let us consider an array of type `int` instead of `char`.
 
 ```c++
 int b[SIZE] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 ```
 
-Taking a pointer to the beginning of the array and then advancing it by `1`
-would give us a pointer pointing to the second element of the array, 
+If we take a pointer to the beginning of the array and then advance it by `1`,
+we get a pointer pointing to the second element of the array, 
 not the second memory cell. 
 
 ```c++
@@ -136,20 +136,20 @@ std::cout << *r << "\n";
 ```
 
 Recall that `int` typically takes `4` bytes.
-Under this assumption, the variable `r` points to the `4`-th memory cell.   
+Under this assumption, the variable `r` points to the `4`th memory cell.   
 
 In general, given a pointer of type `T*`, the expression `p + n`
 is equivalent to `p + n * sizeof(T)` if we "measure" `p` in terms of memory cells.
 That is, you can view a pointer as a scale with the size of 
-the pointed-to type being its unit of measure.
+the pointed-to type acting as its unit of measurement.
 
 To sum up, all the operations on pointers we mentioned above are known as **pointer arithmetic**.
-It includes:
+This includes:
 
-* adding an integer offset to a pointer: `p + n`;
-* subtracting an integer offset from a pointer: `p - n`;
-* incrementing and decrementing pointers: `p++`, `--p`, etc;
-* computing the distance between pointers: `p - q`.
+* Adding an integer offset to a pointer: `p + n`;
+* Subtracting an integer offset from a pointer: `p - n`;
+* Incrementing and decrementing pointers: `p++`, `--p`, etc;
+* Computing the distance between pointers: `p - q`.
 
 Above, `p` and `q` are pointers and `n` is an integer.
 
@@ -161,10 +161,10 @@ within the range `p` .. `p + size` (inclusive), where:
 
 Besides these arithmetic operations, comparison operators are also applicable to pointers:
 
-* checking pointers for (in)equality: `p == q`, `p != q`;
-* comparing pointers: `p <= q`, `p > q`, etc.
+* Checking pointers for (in)equality: `p == q`, `p != q`;
+* Comparing pointers: `p <= q`, `p > q`, etc.
 
 Note that any two pointers can be checked for (in)equality, 
-but only the pointers pointing to the same memory chunk
+but only pointers pointing to the same memory chunk
 (i.e., occupied by the same array)
 can be compared using the less-than-or-equal-to `<=` and similar operators. 

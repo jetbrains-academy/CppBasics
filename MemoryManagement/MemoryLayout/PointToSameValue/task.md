@@ -6,4 +6,4 @@ bool pointToSameValue(int* a, int* b);
 ```
 
 Make sure you handle the case when one of the pointers is null.
-If both pointers are null, the functions should return `true`.
+If both pointers are null, the function should return `true`.

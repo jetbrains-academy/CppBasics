@@ -8,8 +8,8 @@ const int* q = &b;
 const int* const r = &b; 
 ```
 
-Choose valid assignment statements, 
-which can be successfully compiled without errors:
+Choose the valid assignment statements 
+that can be successfully compiled without errors:
 
 ```c++
 // (1)

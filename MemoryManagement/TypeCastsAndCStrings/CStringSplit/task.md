@@ -19,22 +19,22 @@ std::cout << res[0] << "\n";
 std::cout << res[1] << "\n";
 ```
 
-This function takes as its first argument `str` the string that needs to be split.
-The second argument `seps` is a string consisting of separator characters.
-The third argument `res` is a reference to a pointer to the resulting array of strings –
-the function should store the pointer to the resulting array into this argument.
+This function takes three arguments. The first argument, `str`, is the string that needs to be split.
+The second, `seps`, is a string consisting of separator characters.
+The third argument, `res`, is a reference to a pointer to the resulting array of strings,
+where the function should store the pointer to the array.
 Finally, the function should return the size of the resulting array, 
 that is the number of split substrings.
 
-If the original string contains several subsequent separator characters,
-they should be all skipped. That is, the function should not
-add to the result any empty substrings occurring "between" subsequent separator characters.
+If the original string contains several consecutive separator characters,
+they should all be skipped. That is, the function should not
+add any empty substrings occurring "between" consecutive separator characters to the result.
 
 If there are no substrings, the function should return `0` 
 and store `nullptr` into the `res` argument.
 
-Otherwise, the function should allocate a sufficient amount of memory to store 
-the resulting array and all the substrings. Each substring has to be allocated separately.
+Otherwise, the function should allocate a sufficient amount of memory to store both
+the resulting array and all the substrings. Each substring must be allocated separately.
 Going back to the example above, the user should be able to free the 
 memory allocated by the function in the following manner:
 
@@ -46,8 +46,8 @@ free(res);
 
 <div class="hint">
 
-In order to implement `split`, you might find useful the following 
-functions from the standard library:
+In order to implement `split`, you might find the following 
+functions from the standard library useful:
 
 - [`strpbrk`](https://en.cppreference.com/w/cpp/string/byte/strpbrk) --- 
       searches for the first occurrence of the separator character in the given string;

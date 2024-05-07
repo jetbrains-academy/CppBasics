@@ -17,11 +17,11 @@ a function with two arguments:
 void f(int* p, size_t size);
 ```
 
-In C++ code, you can also often find alternative encoding. 
-Same function can be encoded as a function with two arguments 
-of different kind:
+In C++ code, you can also often find alternative encodings. 
+The same function can be encoded as a function with two different 
+types of arguments:
 * a pointer to the first element, and
-* a pointer to the __one past the last element of the array__.
+* a pointer to __one element past the last element of the array__.
 
 ```c++
 void g(int* begin, int* end);
