@@ -48,4 +48,4 @@ As practice, you will implement a simple text editor that supports the following
 - `undo()` - undo the last operation (either `append` or `delete`)
 - `redo()` - redo the last operation that was undone
 
-Еру `TextEditor` сlass is defined in `/include/textEditor.h`. 
+The `TextEditor` сlass is defined in `/include/textEditor.h`. 
