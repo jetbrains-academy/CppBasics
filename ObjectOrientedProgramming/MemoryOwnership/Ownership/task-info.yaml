@@ -1,7 +1,7 @@
 type: theory
 custom_name: Ownership
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/main.cpp
-    visible: true
+- name: CMakeLists.txt
+  visible: false
+- name: src/main.cpp
+  visible: true
