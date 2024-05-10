@@ -13,11 +13,17 @@ based on the [SFML](https://www.sfml-dev.org/) graphics library (Simple and Fast
 But first, you have to install this library on your system.
 Please find the installation instructions for your system below.
 After installation of the library, you might need to re-load the project.
-In order to do so, please select __File | Reload CMake Project__.
+To do so, please select __File | Reload CMake Project__.
 
-In order to check that you have successfully installed the library, 
-run the program attached to this step. 
-You should see a new application window displaying a small planet in the large cosmic space! 
+In order to check that you have successfully installed the library, run the program attached to this step. 
+You should see a new application window displaying a small planet in the large cosmic space!
+
+To run the game, wait until the `Loading CMake project`
+action is completed and then push the `Run` button
+(a green triangle button located in the top-right corner).
+Please make sure the correct [run configuration](https://www.jetbrains.com/help/clion/run-debug-configuration.html) 
+is selected.
+You need the "WarmUp-MovingOn-StartTheGame-run" configuration.
 
 ### Windows
 
