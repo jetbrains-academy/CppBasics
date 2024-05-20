@@ -84,7 +84,13 @@ int main() {
 }
 ```
 
-You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. Its member functions are defined in the `/include/Cache.h` file. Since cache is a very fast type of storage, you will need to use hashing to implement it. The provided solution uses `std::unordered_map` and `std::list`, but you can choose any container from the STL for your own implementation. The cache should have the following methods:
+You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. Its member functions are defined in the `/include/Cache.h` file. Since cache is a very fast type of storage, you will need to use hashing to implement it. The provided solution uses `std::list` and `std::unordered_map`, but you can choose any container from the STL for your own implementation. At first, define a structure inside `/include/Cache.h` file that will store key-value pairs. Then, define another structure that will store the key and an iterator to the corresponding element in the list. After defining these structures, you can implement the cache operations on `task.cpp`.
+
+<div class="hint">
+  Author's solution uses std::list consisting of std::pair elements of key + value and std::unordered_map with key + value being an iterator to the element of previously defined list. 
+</div>
+
+The cache should have the following methods:
 * `LRUCache(size_t capacity)` - a constructor that sets the maximum number of elements in the cache.
 * `void put(const std::string& key, const std::string& value)` - inserts the key-value pair into the cache. If the cache is full, it should remove the least recently used element.
-* `std::string get(const std::string& key)` - returns the value associated with the key. If the key is not found, it returns `std::nullopt`.
+* `std::string get(const std::string& key)` - returns the value associated with the key. If the key is not found, it returns `std::nullptr`.
