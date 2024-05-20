@@ -13,8 +13,8 @@ set(TEST test/test.cpp)
 
 # Running learner side code
 # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
-add_executable(${PROJECT_NAME}-run ${SRC})
+add_executable(lesson-run ${SRC})
 
 # Running tests
 # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
-configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+configure_test_target(lesson-test ${SRC} ${TEST})
