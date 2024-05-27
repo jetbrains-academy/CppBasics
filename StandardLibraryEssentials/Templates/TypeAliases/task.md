@@ -12,7 +12,7 @@ using ll = long long;
 ll x = 1'234'567'890'987'654'321;
 ```
 
-On top of that, `using` can be employed to create type aliases for templates. This is especially useful when you want to create a type alias for a template with multiple parameters. Here's an example of how you can leverage `using` to create a type alias for a `std::vector` of `int` type (an upgraded version of an array, which will be covered in the next module):
+On top of that, `using` can be employed to create type aliases for templates. This is especially useful when you want to create a type alias for a template with multiple parameters. Here's an example of how you can leverage `using` to create a type alias for a `std::unique_ptr` pointing to an array:
 ```cpp
 template <typename T>
 using unique_array = std::unique_ptr<T[]>;
