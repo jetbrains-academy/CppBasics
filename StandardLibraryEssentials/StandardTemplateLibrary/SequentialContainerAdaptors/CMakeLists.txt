@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(StandardLibraryEssentials-StandardTemplateLibrary-SequentialContainerAdaptors)
+project(SequentialContainerAdaptors)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -13,8 +13,8 @@ set(TEST test/test.cpp)
 
 # Running learner side code
 # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
-add_executable(lesson-run ${SRC})
+add_executable(${PROJECT_NAME}-run ${SRC})
 
 # Running tests
 # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
-configure_test_target(lesson-test ${SRC} ${TEST})
+configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})

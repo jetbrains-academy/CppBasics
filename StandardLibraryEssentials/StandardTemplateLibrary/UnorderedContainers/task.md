@@ -10,11 +10,13 @@ The main methods of `std::unordered_set` and `std::unordered_map` include:
 * `erase(value)` - removes the element `value` from the container
 * `find(value)` - returns an iterator to the element `value` if it is found, otherwise, it returns `end()`
 
-To be fair, all these methods have **amortized** `O(1)` complexity, since sometimes hashes of different keys can be the same. This is called a [collision](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution). In such situations, the whole table needs to be rehashed, which is the reason why the methods of an unordered container can perform in `O(n)` time in the worst-case scenario. 
-
 A hash table is a data structure that uses a [hash function](https://en.wikipedia.org/wiki/Hash_function) to map keys to buckets. Whenever you want to insert or search for an element, you apply hash function to the key and get the bucket number. Then you insert or search for the element in the bucket. 
 
 The standard library provides the `std::hash` function for basic types, and you can define your own hash function for any custom types.
+
+<div class="hint">
+  To be fair, all these methods have amortized O(1) complexity, since sometimes hashes of different keys can be the same. This is called a collision: https://en.wikipedia.org/wiki/Hash_table#Collision_resolution. In such situations, the whole table needs to be rehashed, which is the reason why the methods of an unordered container can perform in O(n) time in the worst-case scenario.
+</div>
 
 There are a few functions for buckets manipulation:
 * `bucket_count()` - returns the number of buckets
@@ -84,7 +86,7 @@ int main() {
 }
 ```
 
-You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. Its member functions are defined in the `/include/Cache.h` file. Since cache is a very fast type of storage, you will need to use hashing to implement it. The provided solution uses `std::list` and `std::unordered_map`, but you can choose any container from the STL for your own implementation. At first, define a structure inside `/include/Cache.h` file that will store key-value pairs. Then, define another structure that will store the key and an iterator to the corresponding element in the list. After defining these structures, you can implement the cache operations on `task.cpp`.
+You need to implement a [cache](https://en.wikipedia.org/wiki/Cache_(computing)) system with an [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) (Least Recently Used) policy. Its member functions are defined in the `/include/Cache.h` file. Since cache is a very fast type of storage, you will need to use hashing to implement it. At first, define a structure inside `/include/Cache.h` file that will store key-value pairs. Then, define another structure that will store the key and an iterator to the corresponding element in the list. After defining these structures, you can implement the cache operations in `task.cpp`.
 
 <div class="hint">
   Author's solution uses std::list consisting of std::pair elements of key + value and std::unordered_map with key + value being an iterator to the element of previously defined list. 

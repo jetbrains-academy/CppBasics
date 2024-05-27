@@ -1,8 +1,8 @@
-Imagine that you have a function for calculating the sum of two numbers. If you want to calculate the sum of two integers, you can write a function that takes two `int` numbers as arguments and returns their sum. However, suppose you also want to have such a function for `double`, `long long`, `float`, and a custom type such as `Fraction`. You will have to write a separate function for each type. This becomes inconvenient, as you end up writing multiple functions that essentially do the same thing but with different data types.
+Imagine that you have a function for calculating the sum of two numbers. If you want to calculate the sum of two integers, you can write a function that takes two `int` numbers as arguments and returns their sum. However, suppose you also want to have such a function for `double`, `long long`, `float`, or some custom data type. You will have to write a separate function for each type. This becomes inconvenient, as you end up writing multiple functions that essentially do the same thing but with different data types.
 
 Templates are designed to address this exact issue. They allow you to write a single function that can work with different types. For instance, you can write a template function that takes two arguments of any type and returns their sum as a variable of the same type.
 
-The syntax for creating a template function is simple: you start with the `template` keyword, followed by the `typename` keyword, and then include the type name you want to use as a template parameter. Then, you can use this type name in the function as if it were a regular type:
+The syntax for creating a template function is simple: you start with the `template` keyword, followed by the `typename` keyword, and then include the type name you want to use as a template parameter. Then, you can use this type name in the function as if it was a regular type:
 
 ```cpp
 template <typename T>
@@ -18,13 +18,9 @@ T1 sum(T1 a, T2 b) {
     return a + b;
 }
 ```
-This function will work with types such that the second type can be cast to the first type, and it supports the `+` operator. Note that the return type of the function is `T1`, so the result of the sum will be of the same type as the first argument.
+This function will work with any pair of types, as long as the first type supports the `+` operator and the second type can be cast to the first type. Note that the return type of the function is `T1`, so the result of the sum will be of the same type as the first argument.
 
-<div class="hint">
-    You can use `std::is_same` to check if two types are the same. This can be useful when you want to restrict the types that can be used with the template function.
-</div>
-
-Templates can also be used with classes. You can create a class template that can work with different types. The syntax is similar to the function template, but you need to specify the template parameters after the class name:
+Templates can also be used with classes. You can create a class template that can work with different types. The syntax is similar to the function template, but you need to specify the template parameters before the class name:
 ```cpp
 template <typename T, typename U>
 class Person {
@@ -59,14 +55,30 @@ int sum(int a, int b) {
     return a + b;
 }
 ```
-and uses it to calculate the sum of two integers.
+and use it to calculate the sum of two integers.
 
 The same process applies to class templates. The key point is that a separate function or class is generated for each type with which a template is used, which is why templates are a compile-time feature.
 
-Sometimes, you may face a template declaration using the `class` keyword instead of `typename`. Both keywords are interchangeable in template declarations, and in most cases, you can use either. However, there are a few exceptions. For more information, refer to [this article](https://mariusbancila.ro/blog/2021/03/15/typename-or-class/).
+<div class="hint">
+    Sometimes, you may face a template declaration using the class keyword instead of typename. Both keywords are interchangeable in template declarations, and in most cases, you can use either. However, there are a few exceptions. For more information, refer to this article: https://mariusbancila.ro/blog/2021/03/15/typename-or-class/
+</div>
+
+If the number of parameters is unknown, you can use variadic templates. This allows you to create a function that can take any number of arguments of any type. Here is the syntax:
+```cpp
+template <typename T>
+T sum(T t) {
+    return t;
+}
+
+template <typename T, typename... Args>
+T sum(T first, Args... args) {
+    return first + sum(args...);
+}
+```
+In this case, the function takes the first argument and then calls itself recursively with the rest of the arguments. The recursion stops when there are no more arguments left. Note that there should be a base case for the recursion — the first function in our example — otherwise, the compiler will generate an error.
 
 In this task, you need to implement an analog of the [`std::pair`](https://en.cppreference.com/w/cpp/utility/pair) class. In essence, it should be a class with two template parameters, `T1` and `T2`, and two fields of these types, to store two values simultaneously.
-Usually, when implementing templates in C++, you need to include the implementation in the header file. Go to the `/include/DataPair.hpp` file and create the `DataPair` class template there. The class should have the following methods:
+Go to the `/include/DataPair.hpp` file and create the `DataPair` class template there. The class should have the following methods:
 - A no-argument constructor that initializes the fields with default values (assuming the types `T1` and `T2` have their own default constructor).
 - A constructor that initializes the fields with the given argument values.
 - `getFirst` and `getSecond` methods that return the values of the corresponding fields.
