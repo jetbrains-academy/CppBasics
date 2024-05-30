@@ -13,7 +13,7 @@ std::cin >> inputNumber;
 std::cout << "You entered: " << inputNumber << std::endl;
 ```
 
-In addition to console I/O, C++ provides the `fstream` library to handle file I/O. Input and output from/to a file are achieved through `ifstream` (input file stream) and `ofstream` (output file stream). These classes are derived from `istream` and `ostream`, respectively.
+In addition to console I/O, C++ provides the `fstream` library to handle file I/O. Input and output to/from a file are achieved through `ifstream` (input file stream) and `ofstream` (output file stream). These classes are derived from `istream` and `ostream`, respectively.
 Here's a simple example of writing to and reading from a file:
 
 ```cpp
@@ -38,7 +38,7 @@ if (inFile.is_open()) {
 }
 ```
 
-Note that in order to access the file, it must be in the same directory as the program or the full path to the file must be specified.
+Note that in order to access the file, it must be in the same directory as the program, or the full path to the file must be specified.
 
 Another important stream type is `stringstream`. It allows you to perform input and output operations on memory-based strings, which can be useful for parsing and formatting text.  Here's an example of how to use `stringstream`:
 
@@ -57,9 +57,9 @@ Another important stream type is `stringstream`. It allows you to perform input 
     std::cout << outputStream.str();
 ```
 
-Moreover, standard library provides several methods for checking and handling I/O errors: for example, `fail()`, `bad()`, `eof()`, `good()`, etc. These methods can be used to check the state of the stream and to clear error flags.
+Moreover, standard library provides several methods for checking and handling I/O errors, such as `fail()`, `bad()`, `eof()`, and `good()`. These methods can be used to check the state of the stream and to clear error flags.
 
-For instance, every stream has an associated *failbit*, *badbit*, *eofbit* and *goodbit* that can be checked to determine the state of the stream. The *failbit* is set when a non-fatal I/O error occurs, such as when an attempted input operation fails to convert a character sequence to a valid value. The *badbit* is set when a fatal I/O error occurs, such as when an attempt to write to a file fails because the disk is full. The *eofbit* is set when an input operation reaches the end of an input sequence. The *goodbit* indicates that none of the other bits is set.
+For instance, every stream has an associated *failbit*, *badbit*, *eofbit*, and *goodbit* that can be checked to determine the state of the stream. The *failbit* is set when a non-fatal I/O error occurs, such as when an attempted input operation fails to convert a character sequence to a valid value. The *badbit* is set when a fatal I/O error occurs, such as when an attempt to write to a file fails because the disk is full. The *eofbit* is set when an input operation reaches the end of an input sequence. The *goodbit* indicates that none of the other bits is set.
 Here is how to check the state of the stream:
 
 ```cpp
