@@ -1,12 +1,12 @@
-During container exploration, you will encounter iterators many times, which is not surprising since they are closely linked with each other. 
+During container exploration, you will encounter iterators many times, which is not surprising, since they are closely linked with each other. 
 
-In C++, [iterators](https://en.cppreference.com/w/cpp/iterator) are objects that allow us to traverse the container and access its elements. Basically, they provide a view of a container element. They offer a unified interface to the elements of various containers.
+In C++, [iterators](https://en.cppreference.com/w/cpp/iterator) are objects that allow us to traverse the container and access its elements. Basically, they provide a view of a container's elements and offer a unified interface to them.
 
 Iterators behave much like pointers, and in the case of certain container types, they are indeed pointers. An iterator is a means to access the elements of an array or any other container sequentially without exposing the underlying representation.
 
 An iterator must be initialized before use. You can initialize an iterator to the beginning of a container using the `begin()` function or to one position past the end of the container using the `end()` function.
 
-You can move an iterator to the next element in the container using the `++` operator or the `std::next` function. To move an iterator to the previous element, use the `--` operator or the `std::prev` function. You can also move an iterator by a specified number of elements using the `+=` and `-=` operators, or by using the `std::advance` function.
+You can move an iterator to the next element in the container using the `++` operator or the `std::next` function. To move an iterator to the previous element, use the `--` operator or the `std::prev` function. You can also move an iterator by a specified number of elements using the `+=` and `-=` operators or by using the `std::advance` function.
 
 Usually, the type of an iterator is a long and complicated expression. The common practise is to use the `auto` keyword when declaring an iterator.
 
