@@ -1,12 +1,12 @@
 In addition to all that we have learned so far, the STL also provides a number of algorithms that can be used on a range of elements. These algorithms are implemented as functions that usually utilize iterators. In this task, we will look at some of the most commonly used algorithms. There are many more algorithms available in the STL, and you can find a complete list [here](https://en.cppreference.com/w/cpp/algorithm).
-We highly encourage you to explore the STL algorithms by yourself and try to use them in your code! They are useful and can save you a lot of time and effort.
+We highly encourage you to explore the STL algorithms yourself and try to use them in your code! They are useful and can save you a lot of time and effort.
 
 #### 1. `std::sort()`
-The [`std::sort()`](https://en.cppreference.com/w/cpp/algorithm/sort) algorithm is used to sort a range of elements. It is implemented as a function template of a `O(n log n)` sorting algorithm (most likely, [introsort](https://en.wikipedia.org/wiki/Introsort)), and the syntax is as follows:
+The [`std::sort()`](https://en.cppreference.com/w/cpp/algorithm/sort) algorithm is used to sort a range of elements. It is implemented as a function template of an `O(n log n)` sorting algorithm (most likely [introsort](https://en.wikipedia.org/wiki/Introsort)), and the syntax is as follows:
 ```cpp
 std::sort(start_iterator, end_iterator, comparator);
 ```
-The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer or a functor. As you might understand, this function requires a Random Access Iterator to enable sorting in any order.
+The first two arguments are iterators that define the range of elements to be sorted. The third argument is an optional comparator used to compare two elements. If no comparator is provided, the elements are sorted in ascending order by default. The comparator can be a function pointer or a functor. As you might expect, this function requires a Random Access Iterator to enable sorting in any order.
 ```cpp
 // Sort a vector of integers in ascending order
 std::vector<int> v1 = {5, 2, 4, 3, 1};
@@ -31,7 +31,7 @@ std::sort(v3.begin(), v3.end(), [](const std::string &a, const std::string &b) {
 ```cpp
 std::reverse(start_iterator, end_iterator);
 ```
-The two arguments are iterators that define the range of elements to be reversed. This function would expect a Bidirectional Iterator.
+The two arguments are iterators that define the range of elements to be reversed. This function requires a Bidirectional Iterator.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 std::reverse(v.begin(), v.end());
@@ -39,11 +39,11 @@ std::reverse(v.begin(), v.end());
 ```
 
 #### 3. `std::find()`
-[`std::find()`](https://en.cppreference.com/w/cpp/algorithm/find) is used to find the first occurrence of a value in a range of elements. It is implemented as a function template of a `O(n)` algorithm, providing the following syntax:
+[`std::find()`](https://en.cppreference.com/w/cpp/algorithm/find) is used to find the first occurrence of a value in a range of elements. It is implemented as a function template of an `O(n)` algorithm and has the following syntax:
 ```cpp
 std::find(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be searched within. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned. When the function doesn't require an execution policy, an Input Iterator will be used; otherwise, it will be a Forward Iterator. 
+The first two arguments are iterators that define the range of elements to be searched within. The third argument is the value to be searched for. If the value is found, an iterator to the first occurrence of the value is returned. Otherwise, an iterator to the end of the range is returned. When the function doesn't require an execution policy, an Input Iterator is used; otherwise, it's a Forward Iterator. 
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 auto it = std::find(v.begin(), v.end(), 3);
@@ -55,7 +55,7 @@ if (it != v.end()) {
 ```
 
 #### 4. `std::max_element()` and `std::min_element()`
-[`std::max_element()`](https://en.cppreference.com/w/cpp/algorithm/max_element) and [`std::min_element()`](https://en.cppreference.com/w/cpp/algorithm/min_element) are used to find the maximum and minimum elements in a range of elements, respectively. They both share `O(n)` complexity, with the following interface:
+[`std::max_element()`](https://en.cppreference.com/w/cpp/algorithm/max_element) and [`std::min_element()`](https://en.cppreference.com/w/cpp/algorithm/min_element) are used to find the maximum and minimum elements in a range of elements, respectively. They both have `O(n)` complexity and share the following interface:
 ```cpp
 std::max_element(start_iterator, end_iterator, comparator);
 std::min_element(start_iterator, end_iterator, comparator);
@@ -74,7 +74,7 @@ std::cout << "Min: " << *min_it << std::endl;
 ```cpp
 std::fill(start_iterator, end_iterator, value);
 ```
-The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be filled. A Forward Iterator is required for this function.
+The first two arguments are iterators that define the range of elements to be filled. The third argument is the value to be used for filling. A Forward Iterator is required for this function.
 ```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 std::fill(v.begin(), v.end(), 0);
@@ -83,7 +83,7 @@ std::fill(v.begin(), v.end(), 0);
 
 There is also a header called [`<numeric>`](https://en.cppreference.com/w/cpp/header/numeric) that contains a number of useful algorithms for numeric operations.
 
-For example, [`std::accumulate()`](https://en.cppreference.com/w/cpp/algorithm/accumulate) is used to calculate the sum of a range of elements. It is implemented as a simple linear `O(n)` traversal, with this syntax:
+For example, [`std::accumulate()`](https://en.cppreference.com/w/cpp/algorithm/accumulate) is used to calculate the sum of a range of elements. It is implemented as a simple linear `O(n)` traversal, with the following syntax:
 ```cpp
 std::accumulate(start_iterator, end_iterator, initial_value);
 ```
