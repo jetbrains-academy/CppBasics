@@ -1,11 +1,11 @@
-Another form of associative containers is [`std::map`](http://en.cppreference.com/w/cpp/container/map). It is similar to `std::set`, but it stores key-value pairs. You can think of it as a dictionary. 
+Another form of associative container is [`std::map`](http://en.cppreference.com/w/cpp/container/map). It is similar to `std::set`, but it stores key-value pairs. You can think of it as a dictionary. 
 
 The keys are unique and, by default, sorted in ascending order. They are immutable, so you cannot change them. 
 The values are not sorted and can be duplicated. 
 
 You can always define your own sorting criteria by providing a custom comparator.
 
-Compared with `std::set` and `std::multiset`, `std::map` and `std::multimap` provide direct access to their elements using `operator[]` and `at()`. However, be aware of the following behavior: if the key is not found, `operator[]` will insert a new element with the specified key and a default value. The `at()` method will throw an exception if the key is not found.
+Compared with `std::set` and `std::multiset`, `std::map` and `std::multimap` provide direct access to their elements using the `operator[]` and `at()` methods. However, be aware of the following behavior: if the key is not found, `operator[]` will insert a new element with the specified key and a default value. In contrast, the `at()` method will throw an exception if the key is not found.
 
 ```cpp
 std::map<std::string, int> people;
@@ -19,7 +19,7 @@ std::cout << "Number of people: " << people.size() << std::endl;
 
 [`std::multimap`](http://en.cppreference.com/w/cpp/container/multimap) offers the same functionality as `std::map`, but it allows duplicate keys.
 
-Note that searching with `find()` can only be performed using a key. There is no way to search by a value, other than iterating through the whole container.
+Note that searching with `find()` can only be performed using a key. There is no way to search by a value other than iterating through the whole container.
 
 Both `std::set` and `std::map` are not stored in a contiguous memory block. Therefore, while the following code works for `std::vector`:
 
@@ -39,6 +39,6 @@ p2 += 1;
 std::cout << p2->first << ' ' << p2->second << std::endl; // Undefined behavior
 ```
 
-Under the hood, both the set and map containers are built upon a [Red-black tree](https://en.wikipedia.org/wiki/Red–black_tree), a balanced binary search tree data structure. This allows achieving logarithmic complexity for insertion and search operations.
+Under the hood, both the set and map containers are built upon a [Red-black tree](https://en.wikipedia.org/wiki/Red–black_tree), a balanced binary search tree data structure. This allows them to achieve logarithmic complexity for insertion and search operations.
 
-As a task, you need to implement a function that counts the appearances of each letter in a text. The function should return a `std::map` with letters as keys and the number of appearances as values. The letters should be sorted in alphabetical order. The function should be case-insensitive, i.e., the letters "A" and "a" should be considered the same. The function should also ignore punctuation marks and numbers.
+As a task, you need to implement a function that counts the appearances of each letter in a text. The function should return a `std::map` with letters as keys and the number of appearances as values. The letters should be sorted in alphabetical order. The function should be case-insensitive; i.e., the letters "A" and "a" should be considered the same. The function should also ignore punctuation marks and numbers.
