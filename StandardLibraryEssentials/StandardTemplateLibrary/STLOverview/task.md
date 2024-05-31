@@ -12,15 +12,15 @@ We will cover the following topics:
 - STL algorithms
 - Input-output streams
 
-The STL consists of hundreds of classes and functions, and it is impossible to cover all of them in a single course.
+The STL comprises hundreds of classes and functions, making it impossible to cover all of them in a single course.
 However, we will introduce the most important ones and provide you with the tools to learn the rest on your own.
 [Cppreference](https://en.cppreference.com/w/)
-is a great resource with detailed information about the STL and the C++ language in general.
+is a great resource offering detailed information about the STL and the C++ language in general.
 
-Sometimes, we will refer to the "complexity" of an operation or an algorithm.
-Complexity is a measure of how much time and memory an operation or an algorithm takes to complete.
-We will use the [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation)
-to describe the complexity of an operation or an algorithm.
+Sometimes, we will refer to the "complexity" of an operation or algorithm.
+Complexity measures how much time and memory an operation or algorithm requires to complete.
+We will use [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation)
+to describe this complexity.
 For example, if an operation takes `O(n)` time,
-it means that the time it takes to complete is proportional to the size of the input.
-`O(1)` or "constant time" means that the time spent performing the operation does not depend on the size of the input.
+it means the time to complete is proportional to the size of the input.
+`O(1)` or "constant time" indicates that the operation's time does not depend on the input's size.
