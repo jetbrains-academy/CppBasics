@@ -1,48 +1,11 @@
+Before that, when developing Planet Game, we focused on the implementation of basic mechanics. Now you will be asked to turn our project into a real game by adding a mandatory feature of any game – a tangible goal (and, moreover, an ability to compete). 
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+In the following lessons, you will add the opportunity to earn points to the game and by collecting them you can compete for the first place in the leaderboard! To do this, we will need the knowledge we gained earlier: working with files, so we can store game results, and also containers from the standard library, so we can properly recalculate leaderboard standings after each game.
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+It would be similar to old arcade games where you could see your name on the leaderboard if you were good enough.
 
-The following features are available in
-**task.md/task.html** which are specific to the JetBrains Academy plugin:
-
-- Hints can be added anywhere in the task text.
-  Type "hint" and press Tab.
-  Hints should be added to an empty line in the task text.
-  In hints you can use both HTML and Markdown.
-<div class="hint">
-
-Text of your hint
-
-</div>
-
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
-
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
-
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
-
-- Insert PSI elements, by using links like
-`[element_description](psi_element://link.to.element)`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a [link to the "contains" method](psi_element://java.lang.String#contains).
-
-- You can add link to file using **full path** like this:
-  `[file_link](file://lesson1/task1/file.txt)`.
+Here is the list of the tasks you will need to complete in the following lessons:
+ * Improving Collision Detection
+ * Adding Score
+ * Data Retrieval
+ * Leaderboard creation

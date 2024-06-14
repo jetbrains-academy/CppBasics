@@ -66,9 +66,11 @@ public:
      */
     static void drawLeaderboard(sf::RenderWindow& window, const TextureManager& textureManager, ScoreMap scores);
 
+protected:
+    ScoreMap scores;
+
 private:
     std::string filepath = "../../../../resources/leaderboard.csv";
-    ScoreMap scores;
 };
 
 sf::Text createText(const std::string &str, const sf::Font &font, unsigned int size, float x, float y);

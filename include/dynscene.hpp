@@ -57,6 +57,7 @@ public:
     void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
 protected:
+    GameObjectList objects;
 
     /**
      * Update the list of objects present on the scene. In particular:
@@ -79,9 +80,6 @@ protected:
      * Updates the player's status.
      */
     void updatePlayerStatus() override;
-
-private:
-    GameObjectList objects;
 };
 
 

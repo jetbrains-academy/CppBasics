@@ -1,48 +1,28 @@
+At this point, we need to understand how we can store game results,
+so that your achievements won't disappear after the program is closed.
+The obvious solution is to save the data to a file.
+We will use a [`.csv`](https://en.wikipedia.org/wiki/Comma-separated_values) file format,
+which is a simple text format for storing tabular data.
+Each line of the file represents a row of the table, and the values in the row are separated by commas.
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+For working with leaderboard data, we will use a `Leaderboard` class, defined in `leaderboard.hpp`.
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+Let's talk about leaderboard structure in general.
+It should be a table, where each result is a pair of player's names and scores.
+The table should be sorted by score in descending order.
+But we also want to allow players to have different records under their name, so we need to store all of them.
+For this scenario, we will use a `std::multimap` container,
+where the key is the player's name and the value is the score.
 
-The following features are available in
-**task.md/task.html** which are specific to the JetBrains Academy plugin:
+`updateScore` method should be called from `GameEngine::run()`, updating the leaderboard with the player's score after the game is over. This function will call three other functions:
+ - `retrieveScores()` - reads the leaderboard data from the file and saves it to the `scores` field.
+ - `addScore()` - adds new player's score to the `scores`.
+ - `saveScores()` - saves the updated leaderboard data to the file.
 
-- Hints can be added anywhere in the task text.
-  Type "hint" and press Tab.
-  Hints should be added to an empty line in the task text.
-  In hints you can use both HTML and Markdown.
-<div class="hint">
+`retrieveScores()` should open the file by the `filepath` path and open it using `std::ifstream`. If the attempt to open the file fails, the function should write an error message to standard output "Unable to open file: (filepath)."
+Otherwise, the function should read the data from the file and save it to the `scores` field.
 
-Text of your hint
+`addScore()` should add a new player's score to the `scores` field. 
+Since our screen is limited in size, we will store only the top 10 scores for each player. Therefore, if after adding a new score the number of records for the player exceeds 10, the function should remove the record with the lowest score.
 
-</div>
-
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
-
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
-
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
-
-- Insert PSI elements, by using links like
-`[element_description](psi_element://link.to.element)`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a [link to the "contains" method](psi_element://java.lang.String#contains).
-
-- You can add link to file using **full path** like this:
-  `[file_link](file://lesson1/task1/file.txt)`.
+`saveScores()` should open the file by the `filepath` path and open it using `std::ofstream`. If the attempt to open the file fails, the function should also write an error message (same as the previous one). Remember the file format we are using!

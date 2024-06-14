@@ -47,6 +47,17 @@ void GameObjectList::foreach(const std::function<void (GameObject&)>& apply) {
     }
 }
 
+GameObject* GameObjectList::findNext(const GameObject* object) {
+    Node* curr = head->next.get();
+    while (curr != tail) {
+        if (curr->object.get() == object) {
+            return curr->next ? curr->next->object.get() : nullptr;
+        }
+        curr = curr->next.get();
+    }
+    return nullptr;
+}
+
 GameObjectList::GameObjectList(const GameObjectList &other) : GameObjectList() {
     Node* cursor = head.get();
     Node* curr = other.head->next.get();

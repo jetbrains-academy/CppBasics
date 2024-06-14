@@ -1,11 +1,18 @@
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
+#include "testscene.hpp"
+#include "dynscene.hpp"
+#include "player.hpp"
 
-// Headers of objects that student should implement:
-int sum(int a, int b);
 
+TEST(PlayerTest, OnCollision) {
+    TestPlayerObject player;
+    TestConsumableObject consumable;
+    CollisionInfo info;
+    info.collide = true;
+    player.onCollision(consumable, info);
+    ASSERT_EQ(player.getScore(), 1000);
+}
 
-// Tests:
-// todo: replace this with an actual test
-TEST(SumTest, Simple) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
-    ASSERT_EQ(sum(1, 2), 3);
+TEST(DynSceneTest, UpdateScore) {
+    // tmp
 }

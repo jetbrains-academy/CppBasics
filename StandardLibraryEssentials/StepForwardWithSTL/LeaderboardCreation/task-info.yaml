@@ -1,7 +1,10 @@
 type: edu
 custom_name: Leaderboard Creation
 files:
+  - name: src/dynscene.cpp
+    visible: true
   - name: src/main.cpp
+    editable: false
     visible: true
   - name: CMakeLists.txt
     visible: false
@@ -14,8 +17,6 @@ files:
   - name: src/scene.cpp
     visible: true
   - name: src/cgobject.cpp
-    visible: true
-  - name: src/dynscene.cpp
     visible: true
   - name: src/consumable.cpp
     visible: true

@@ -1,6 +1,7 @@
 type: theory
 files:
   - name: src/main.cpp
+    editable: false
     visible: true
   - name: CMakeLists.txt
     visible: false

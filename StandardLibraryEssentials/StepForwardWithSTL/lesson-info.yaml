@@ -2,6 +2,7 @@ type: framework
 custom_name: Step Forward with STL
 content:
   - Introduction
+  - ImprovingCollisionDetection
   - AddingScore
   - DataRetrieval
   - LeaderboardCreation

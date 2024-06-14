@@ -33,7 +33,9 @@ void GameplayStaticScene::update(sf::Time delta) {
     move(player, delta);
     move(consumable, delta);
     move(enemy, delta);
-    detectCollision(player, consumable);
+    if (consumable.getStatus() != GameObjectStatus::DESTROYED) {
+        detectCollision(player, consumable);
+    }
     detectCollision(enemy, player);
     detectCollision(enemy, consumable);
 }

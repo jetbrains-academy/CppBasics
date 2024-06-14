@@ -1,7 +1,10 @@
 type: edu
 custom_name: Data Retrieval
 files:
+  - name: src/leaderboard.cpp
+    visible: true
   - name: src/main.cpp
+    editable: false
     visible: true
   - name: CMakeLists.txt
     visible: false
@@ -18,8 +21,6 @@ files:
   - name: src/dynscene.cpp
     visible: true
   - name: src/consumable.cpp
-    visible: true
-  - name: src/leaderboard.cpp
     visible: true
   - name: src/gobjectlist.cpp
     visible: true

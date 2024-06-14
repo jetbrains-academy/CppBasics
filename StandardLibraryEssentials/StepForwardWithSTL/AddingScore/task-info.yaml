@@ -1,7 +1,10 @@
 type: edu
 custom_name: Adding Score
 files:
+  - name: src/player.cpp
+    visible: true
   - name: src/main.cpp
+    editable: false
     visible: true
   - name: CMakeLists.txt
     visible: false
@@ -26,8 +29,6 @@ files:
   - name: src/point.cpp
     visible: true
   - name: src/enemy.cpp
-    visible: true
-  - name: src/player.cpp
     visible: true
   - name: src/direction.cpp
     visible: true

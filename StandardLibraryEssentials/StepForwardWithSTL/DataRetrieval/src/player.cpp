@@ -54,7 +54,7 @@ void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &in
         setStatus(GameObjectStatus::DESTROYED);
     }
     if (info.collide && object.getKind() == GameObjectKind::CONSUMABLE) {
-        score += 500; // since collision is detected twice, we add the score two times
+        score += 1000;
     }
 }
 
