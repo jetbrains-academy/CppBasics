@@ -1,0 +1,16 @@
+type: edu
+custom_name: Sequential Containers
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 123
+        length: 292
+        placeholder_text: /* TODO */
+      - offset: 490
+        length: 237
+        placeholder_text: /* TODO */
+  - name: test/test.cpp
+    visible: false

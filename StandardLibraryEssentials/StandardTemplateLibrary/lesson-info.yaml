@@ -1,0 +1,15 @@
+custom_name: Standard Template Library
+content:
+  - STLOverview
+  - VectorContainer
+  - IteratorIntroduction
+  - EfficientStringUsage
+  - SequentialContainers
+  - SequentialContainerAdaptors
+  - SetContainers
+  - MapContainers
+  - UnorderedContainers
+  - ContainersSummary
+  - IteratorCategories
+  - STLAlgorithms
+  - InputOutputStreams

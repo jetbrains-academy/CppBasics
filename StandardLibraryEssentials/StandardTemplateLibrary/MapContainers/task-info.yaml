@@ -1,0 +1,13 @@
+type: edu
+custom_name: map Containers
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 135
+        length: 214
+        placeholder_text: Your implementation here
+  - name: test/test.cpp
+    visible: false

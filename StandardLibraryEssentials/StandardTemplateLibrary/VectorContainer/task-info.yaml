@@ -1,0 +1,19 @@
+type: edu
+custom_name: std::vector
+files:
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 91
+        length: 64
+        placeholder_text: /* TODO */
+      - offset: 239
+        length: 40
+        placeholder_text: /* TODO */
+      - offset: 334
+        length: 217
+        placeholder_text: /* TODO */
