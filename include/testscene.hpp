@@ -341,7 +341,9 @@ public:
     }
 
     inline void performUpdateScore(unsigned int score) {
-        updateScore(score);
+        retrieveScores();
+        addScore(score);
+        saveScores();
     }
 
     inline void performDrawLeaderboard(sf::RenderWindow& window, const TextureManager& textureManager, ScoreMap scores) {

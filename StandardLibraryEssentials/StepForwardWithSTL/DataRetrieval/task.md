@@ -12,14 +12,14 @@ It should be a table, where each result is a pair of player's names and scores.
 The table should be sorted by score in descending order.
 But we also want to allow players to have different records under their name, so we need to store all of them.
 For this scenario, we will use a `std::multimap` container,
-where the key is the player's name and the value is the score.
+where the key is the score and the value is the player's name.
 
 `updateScore` method should be called from `GameEngine::run()`, updating the leaderboard with the player's score after the game is over. This function will call three other functions:
  - `retrieveScores()` - reads the leaderboard data from the file and saves it to the `scores` field.
  - `addScore()` - adds new player's score to the `scores`.
  - `saveScores()` - saves the updated leaderboard data to the file.
 
-`retrieveScores()` should open the file by the `filepath` path and open it using `std::ifstream`. If the attempt to open the file fails, the function should write an error message to standard output "Unable to open file: (filepath)."
+`retrieveScores()` should open the file by the `filepath` path and open it using `std::ifstream`. If the attempt to open the file fails, the function should write an error message to standard output "Unable to open file: (filepath)".
 Otherwise, the function should read the data from the file and save it to the `scores` field.
 
 `addScore()` should add a new player's score to the `scores` field. 

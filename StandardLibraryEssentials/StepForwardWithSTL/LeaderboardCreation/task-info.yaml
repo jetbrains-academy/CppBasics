@@ -4,8 +4,8 @@ files:
   - name: src/dynscene.cpp
     visible: true
   - name: src/main.cpp
-    editable: false
     visible: true
+    editable: false
   - name: CMakeLists.txt
     visible: false
   - name: test/test.cpp

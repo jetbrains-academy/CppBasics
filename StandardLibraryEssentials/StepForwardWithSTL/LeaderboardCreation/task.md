@@ -2,7 +2,7 @@ We've done all steps for a leaderboard to appear on the screen,
 but the last one is to create a way to identify, when the game should end.
 When enemy reaches our planet, the game should end and the leaderboard should appear on the screen.
 You can explore new look of a `GameEngine::run()` function,
-which will now check the player's state and end the execution of `while` loop when the player is dead.
+which will now check the player's state and end the execution of `while` loop when the player is destroyed.
 ```cpp
 void GameEngine::run() {
     sf::Clock clock;

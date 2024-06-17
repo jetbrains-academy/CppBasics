@@ -167,4 +167,3 @@ void GameplayDynamicScene::updateScore() {
 void GameplayDynamicScene::updatePlayerStatus() {
     // TODO: find a player object and check if it is destroyed
 }
-

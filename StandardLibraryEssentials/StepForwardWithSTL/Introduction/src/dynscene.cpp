@@ -48,7 +48,14 @@ void GameplayDynamicScene::update(sf::Time delta) {
     objects.foreach([this, delta] (GameObject& object) {
         move(object, delta);
     });
-    // TODO: write your solution here
+    // compute collision information for each pair of objects
+    objects.foreach([this] (GameObject& object) {
+        GameObject* other = objects.findNext(&object);
+        while (other) {
+            detectCollision(object, *other);
+            other = objects.findNext(other);
+        }
+    });
     updateScore();
     updatePlayerStatus();
     // update the list of objects
