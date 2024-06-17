@@ -19,13 +19,13 @@ auto b = ref; // b is deduced to be an int
 auto& ref2 = ref; // ref2 is deduced to be an int&
 ```
 
-Another new keyword introduced in C++11 is `decltype`, which allows you to deduce the type of expression without actually evaluating it. This can be useful when you want to declare a variable with the same type as another expression:
+Another new keyword introduced in C++11 is `decltype`, which allows you to deduce the type of the expression without actually evaluating it. This can be useful when you need to declare a variable with the same type as another expression:
 ```cpp
 int a = 42;
 decltype(a) b = 3 + a; // b is deduced to be an int
 ```
 
-For both function and class templates, the compiler can often deduce the types of the template arguments from the types of the provided arguments. This means that you don't always have to explicitly specify the template arguments when calling a function template. This feature is called _template argument deduction_. Here's how it can be used:
+For both function and class templates, the compiler can often deduce the types of the template arguments from the types of the provided arguments. This means you don't always have to explicitly specify the template arguments when calling a function template, a feature called _template argument deduction_. Here's how it can be used:
 ```cpp
 template <typename T>
 void print(T value) {

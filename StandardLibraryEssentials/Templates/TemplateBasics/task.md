@@ -1,6 +1,6 @@
 Imagine that you have a function for calculating the sum of two numbers. If you want to calculate the sum of two integers, you can write a function that takes two `int` numbers as arguments and returns their sum. However, suppose you also want to have such a function for `double`, `long long`, `float`, or some custom data type. You will have to write a separate function for each type. This becomes inconvenient, as you end up writing multiple functions that essentially do the same thing but with different data types.
 
-Templates are designed to address this exact issue. They allow you to write a single function that can work with different types. For instance, you can write a template function that takes two arguments of any type and returns their sum as a variable of the same type.
+Templates are designed to address this exact issue. They allow you to write a single function that works with multiple types. For instance, you can write a template function that takes two arguments of any type and returns their sum as a variable of the same type.
 
 The syntax for creating a template function is simple: you start with the `template` keyword, followed by the `typename` keyword, and then include the type name you want to use as a template parameter. Then, you can use this type name in the function as if it was a regular type:
 
@@ -11,16 +11,16 @@ T sum(T a, T b) {
 }
 ```
 
-The number of template parameters is not limited to one. If you need to use multiple types for the function arguments, you can apply several template parameters. This is an example function featuring two:
+The number of template parameters is not limited to one. If you need to use multiple types for the function arguments, you can apply several template parameters. Here is an example function featuring two:
 ```cpp
 template <typename T1, typename T2>
 T1 sum(T1 a, T2 b) {
     return a + b;
 }
 ```
-This function will work with any pair of types, as long as the first type supports the `+` operator and the second type can be cast to the first type. Note that the return type of the function is `T1`, so the result of the sum will be of the same type as the first argument.
+This function will work with any pair of types, as long as the first type supports the `+` operator and the second type can be cast to the first. Note that the return type of the function is `T1`, so the result of the sum will be of the same type as the first argument.
 
-Templates can also be used with classes. You can create a class template that can work with different types. The syntax is similar to the function template, but you need to specify the template parameters before the class name:
+Templates can also be used with classes. You can create a class template to work with different types. The syntax is similar to the function template, but you need to specify the template parameters before the class name:
 ```cpp
 template <typename T, typename U>
 class Person {
@@ -55,12 +55,12 @@ int sum(int a, int b) {
     return a + b;
 }
 ```
-and use it to calculate the sum of two integers.
+and uses it to calculate the sum of two integers.
 
-The same process applies to class templates. The key point is that a separate function or class is generated for each type with which a template is used, which is why templates are a compile-time feature.
+The same process applies to class templates. The key point is that a separate function or class is generated for each type with which a template is used. This is why templates are a compile-time feature.
 
 <div class="hint">
-    Sometimes, you may face a template declaration using the class keyword instead of typename. Both keywords are interchangeable in template declarations, and in most cases, you can use either. However, there are a few exceptions. For more information, refer to this article: https://mariusbancila.ro/blog/2021/03/15/typename-or-class/
+    Sometimes, you may face a template declaration using the `class` keyword instead of `typename`. Both keywords are interchangeable in template declarations, and in most cases, you can use either. However, there are a few exceptions. For more information, refer to this article: https://mariusbancila.ro/blog/2021/03/15/typename-or-class/.
 </div>
 
 If the number of parameters is unknown, you can use variadic templates. This allows you to create a function that can take any number of arguments of any type. Here is the syntax:

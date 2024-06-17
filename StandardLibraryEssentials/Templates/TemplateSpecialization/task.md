@@ -25,9 +25,9 @@ When the compiler encounters any call to a template function, it first checks fo
 
 There is a technique called metaprogramming, which allows you to write code that generates other code using templates and template specialization. Since it is a complex topic, we will not cover it in this course, but you can find more information about it in the [C++ documentation](https://en.cppreference.com/w/cpp/meta).
 
-Your task would be to create a template function to display information about `DataPair` objects that you've implemented in the previous task. The function should take a `DataPair` object and print the values of its fields. If the type of the field is a pointer, it should print the value of the pointer, otherwise simply print the value. 
+Your task is to create a template function to display information about `DataPair` objects that you've implemented in the previous task. The function should take a `DataPair` object and print the values of its fields. If the field's type is a pointer, it should print the value of the pointer; otherwise, print the value directly. 
 
-Moreover, if two fields are of the same type, the function should print the string `<Typename> DataPair:  <first>, <second>`, where `<Typename>` is the common type name. Since the class name is not a part of the standard C++ library, let's specify it only for `int`, `double` and `std::string` types.
+Moreover, if two fields are of the same type, the function should print the string `<Typename> DataPair:  <first>, <second>`, where `<Typename>` is the common type name. Since the class name is not a part of the standard C++ library, let's specify it only for `int`, `double`, and `std::string` types.
 
 For different types, the function should print `DataPair:  <first>, <second>`. The function should be implemented in the `/include/DataPair.hpp` file.
 
