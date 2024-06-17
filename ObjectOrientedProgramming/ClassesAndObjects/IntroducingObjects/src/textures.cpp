@@ -16,6 +16,8 @@ const char* getTextureFilename(GameTextureID id) {
             return "resources/starConcerned.png";
         case GameTextureID::BLACKHOLE:
             return "resources/blackhole.png";
+        case GameTextureID::LEADERBOARD:
+            return "resources/leaderboardFrame.png";
         default:
             return "";
     }

@@ -67,6 +67,13 @@ public:
      */
     void foreach(const std::function<void (GameObject&)>& apply);
 
+    /**
+     *
+     * @param object the object to find the next object of
+     * @return the next object in the list, or nullptr if the given object is not found or is the last object in the list
+     */
+    GameObject* findNext(const GameObject* object);
+
 private:
 
     /**

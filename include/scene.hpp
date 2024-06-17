@@ -89,6 +89,20 @@ public:
      */
     Rectangle getBoundingBox() const;
 
+    /**
+     * Returns the score of the player.
+     *
+     * @return The score of the player.
+     */
+    unsigned int getScore() const;
+
+    /**
+     * Returns the status (alive/dead) of the player.
+     *
+     * @return true if player is alive, false otherwise.
+     */
+    bool isPlayerAlive() const;
+
 protected:
 
     /**
@@ -142,9 +156,47 @@ protected:
      */
     void drawBackground(sf::RenderWindow &window, const sf::Texture* texture) const;
 
+    /**
+     * Draws score on the window.
+     *
+     * @param window the window to draw on.
+     * @param value the score value to draw.
+     */
+    void drawScore(sf::RenderWindow &window, unsigned int value) const;
+
+    /**
+     * Updates the score of the player.
+     */
+    virtual void updateScore() = 0;
+
+    /**
+     * Updates the status of the player.
+     */
+    virtual void updatePlayerStatus() = 0;
+
+    /**
+     * Updates the score of the player.
+     *
+     * @param value the new score value.
+     *
+     * @note this method should be called by the updateScore() of derived class.
+     */
+    void updateScore(unsigned int value);
+
+    /**
+     * Updates the status of the player.
+     *
+     * @param alive the new status of the player.
+     *
+     * @note this method should be called by the updatePlayerStatus() of derived class.
+     */
+    void updatePlayerStatus(bool alive);
+
 private:
     float width;
     float height;
+    unsigned int score = 0;
+    bool playerAlive = true;
 };
 
 #endif // CPPBASICS_SCENE_HPP

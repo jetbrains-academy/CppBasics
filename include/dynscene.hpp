@@ -57,6 +57,7 @@ public:
     void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
 protected:
+    GameObjectList objects;
 
     /**
      * Update the list of objects present on the scene. In particular:
@@ -70,8 +71,15 @@ protected:
      */
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
-private:
-    GameObjectList objects;
+    /**
+     * Updates the player's score.
+     */
+    void updateScore() override;
+
+    /**
+     * Updates the player's status.
+     */
+    void updatePlayerStatus() override;
 };
 
 

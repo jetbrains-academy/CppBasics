@@ -42,6 +42,10 @@ public:
      */
     const sf::Texture* getTexture(TextureManager& textureManager) const override;
 
+    unsigned int getScore() const;
+
+private:
+    std::size_t score = 0;
 };
 
 #endif // CPPBASICS_PLAYER_HPP
