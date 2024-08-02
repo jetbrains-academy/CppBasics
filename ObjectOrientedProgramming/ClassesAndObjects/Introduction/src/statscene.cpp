@@ -44,11 +44,3 @@ void GameplayStaticScene::draw(sf::RenderWindow &window, TextureManager& texture
     consumable.draw(window, textureManager);
     enemy.draw(window, textureManager);
 }
-
-void GameplayStaticScene::updateScore() {
-    // Will be implemented in future lessons
-}
-
-void GameplayStaticScene::updatePlayerStatus() {
-    // Will be implemented in future lessons
-}

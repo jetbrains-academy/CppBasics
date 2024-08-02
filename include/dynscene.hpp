@@ -56,6 +56,15 @@ public:
      */
     void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
+    /**
+     * Returns the score of the player.
+     *
+     * @return The score of the player.
+     */
+    unsigned int getScore() const;
+
+
+
 protected:
     GameObjectList objects;
 
@@ -72,15 +81,42 @@ protected:
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
     /**
-     * Updates the player's score.
+     * Returns the status (alive/dead) of the player.
+     *
+     * @return true if player is alive, false otherwise.
      */
-    void updateScore() override;
+    bool isPlayerAlive() const;
+
+private:
+    /**
+     * Draws score on the window.
+     *
+     * @param window the window to draw on.
+     * @param value the score value to draw.
+     */
+    void drawScore(sf::RenderWindow &window, unsigned int value) const;
 
     /**
-     * Updates the player's status.
+     * Updates the score of the player.
      */
-    void updatePlayerStatus() override;
-};
+    void updateScore();
 
+    /**
+     * Updates the status of the player.
+     */
+    void updatePlayerStatus();
+
+    /**
+     * Updates the score of the player.
+     *
+     * @param value the new score value.
+     *
+     * @note this method should be called by the updateScore() of derived class.
+     */
+    void updateScore(unsigned int value);
+
+    unsigned int score = 0;
+    bool playerAlive = true;
+};
 
 #endif // CPPBASICS_DYNSCENE_HPP

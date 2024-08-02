@@ -45,11 +45,3 @@ void Scene::drawBackground(sf::RenderWindow &window, const sf::Texture* texture)
     background.setTextureRect(sf::IntRect(0, 0, width, height));
     window.draw(background);
 }
-
-void Scene::updateScore(unsigned int value) {
-    // Will be implemented in future lessons
-}
-
-void Scene::updatePlayerStatus(bool alive) {
-    // Will be implemented in future lessons
-}

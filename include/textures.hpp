@@ -2,7 +2,7 @@
 #define CPPBASICS_TEXTURES_HPP
 
 #include <cstddef>
-
+#include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
 #include "enums.hpp"
@@ -30,6 +30,13 @@ public:
      *  since the texture manager itself is the owner of all the textures.
      */
     const sf::Texture* getTexture(GameTextureID id) const;
+
+    /**
+     * Get the font used for rendering text in the game.
+     *
+     * @return instance @sf::Font initialized with the custom font from the file.
+     */
+    sf::Font getFont();
 
 private:
     static const size_t SIZE = static_cast<size_t>(GameTextureID::SIZE);

@@ -68,11 +68,13 @@ public:
     void foreach(const std::function<void (GameObject&)>& apply);
 
     /**
+     * Applies a given function to each game object inside the list.
      *
-     * @param object the object to find the next object of
-     * @return the next object in the list, or nullptr if the given object is not found or is the last object in the list
+     * @param apply A function that accept a single game object reference parameter.
+     *
+     * @note This function is a const-qualified version of the non-const @foreach method.
      */
-    GameObject* findNext(const GameObject* object);
+    void foreach(const std::function<void (const GameObject&)>& apply) const;
 
 private:
 

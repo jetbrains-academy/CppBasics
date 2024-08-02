@@ -26,7 +26,7 @@ public:
     /**
      * Gets scores with corresponding player names from file.
      */
-    void retrieveScores();
+    void loadScores();
 
     /**
      * Adds a new score to the leaderboard.
@@ -34,7 +34,7 @@ public:
      * @param score the score to add
      * @param name the name of the player
      */
-    void addScore(unsigned int score, std::string name = "Student");
+    void addScore(unsigned int score, std::string & name);
 
     /**
      * Writes scores back to file.
@@ -44,9 +44,9 @@ public:
     /**
      * Returns the scores.
      *
-     * @return the scores
+     * @return the @ScoreMap of scores
      */
-    [[nodiscard]] ScoreMap getScores() const {
+    const ScoreMap& getScores() const {
         return scores;
     }
 
@@ -54,23 +54,15 @@ public:
      * Calls three functions: retrieveScores, addScore, and saveScores.
      *
      * @param score the score to update
+     * @param name the name of the player that was inputted
      */
-    void updateScore(unsigned int score);
-
-    /**
-     * Draws the leaderboard on the window.
-     *
-     * @param window the window to draw the leaderboard on
-     * @param textureManager the texture manager
-     * @param scores the scores to draw
-     */
-    static void drawLeaderboard(sf::RenderWindow& window, const TextureManager& textureManager, ScoreMap scores);
+    void updateScore(unsigned int score, std::string & name);
 
 protected:
     ScoreMap scores;
 
 private:
-    std::string filepath = "../../../../resources/leaderboard.csv";
+    std::string filepath = "resources/leaderboard.csv";
 };
 
 sf::Text createText(const std::string &str, const sf::Font &font, unsigned int size, float x, float y);

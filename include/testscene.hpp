@@ -1,8 +1,6 @@
 #ifndef CPPBASICS_TESTSCENE_HPP
 #define CPPBASICS_TESTSCENE_HPP
 
-#include <dynscene.hpp>
-#include <leaderboard.hpp>
 #include <utility>
 
 #include "scene.hpp"
@@ -12,6 +10,8 @@
 #include "consumable.hpp"
 #include "enemy.hpp"
 #include "constants.hpp"
+#include "dynscene.hpp"
+#include "leaderboard.hpp"
 
 class TestGameObject : public GameObject {
 public:
@@ -230,124 +230,6 @@ public:
 
     inline void performMove(GameObject& object, Point2D vector) {
         move(object, vector);
-    }
-
-    inline void updateScore() override {
-        Scene::updateScore(0);
-    }
-
-    inline void updatePlayerStatus() override {
-        Scene::updatePlayerStatus(true);
-    }
-};
-
-class TestGameplayDynamicScene : public GameplayDynamicScene {
-public:
-
-    inline TestGameplayDynamicScene() : GameplayDynamicScene() {}
-
-    inline void activate() override {
-        GameplayDynamicScene::activate();
-    }
-
-    inline void deactivate() override {
-        GameplayDynamicScene::deactivate();
-    }
-
-    inline SceneID getID() const override {
-        return GameplayDynamicScene::getID();
-    }
-
-    inline SceneID getNextSceneID() const override {
-        return GameplayDynamicScene::getNextSceneID();
-    }
-
-    inline void processEvent(const sf::Event& event) override {
-        GameplayDynamicScene::processEvent(event);
-    }
-
-    inline void update(sf::Time delta) override {
-        GameplayDynamicScene::update(delta);
-    }
-
-    inline void draw(sf::RenderWindow &window, TextureManager& textureManager) override {
-        GameplayDynamicScene::draw(window, textureManager);
-    }
-
-    inline void performUpdateObjectsList() {
-        updateObjectsList();
-    }
-
-    inline std::shared_ptr<GameObject> performAddNewGameObject(GameObjectKind kind) {
-        return addNewGameObject(kind);
-    }
-
-    inline void performUpdateScore() {
-        updateScore();
-    }
-
-    inline void performUpdatePlayerStatus() {
-        updatePlayerStatus();
-    }
-
-    inline void insertPlayerObject(TestPlayerObject& object) {
-        objects.insert(std::make_shared<TestPlayerObject>(object));
-    }
-
-    inline void insertConsumableObject(TestConsumableObject& object) {
-        objects.insert(std::make_shared<TestConsumableObject>(object));
-    }
-};
-
-class TestLeaderboard : public Leaderboard {
-public:
-    std::string testFilepath = "../../../../resources/test.csv";
-
-    inline TestLeaderboard() : Leaderboard() {}
-
-    inline void retrieveScores() {
-        std::ifstream file(testFilepath);
-        if (file.is_open()) {
-            std::string line;
-            while (getline(file, line)) {
-                std::stringstream ss(line);
-                std::string name;
-                unsigned int score;
-                getline(ss, name, ',');
-                ss >> score;
-                this->scores.insert({score, name});
-            }
-            file.close();
-        } else {
-            std::cout << "Unable to open file: " << this->testFilepath << std::endl;
-        }
-    }
-
-    inline void addScore(unsigned int score, std::string name = "Tester") {
-        Leaderboard::addScore(score, std::move(name));
-    }
-
-    inline void saveScores() {
-        std::ofstream
-            file(testFilepath);
-        if (file.is_open()) {
-            for (const auto &[score, name]: scores) {
-                file << name << "," << score << std::endl;
-            }
-            file.close();
-        } else {
-            std::cout << "Unable to open file: " << this->testFilepath << std::endl;
-        }
-    }
-
-    inline void performUpdateScore(unsigned int score) {
-        retrieveScores();
-        addScore(score);
-        saveScores();
-    }
-
-    inline void performDrawLeaderboard(sf::RenderWindow& window, const TextureManager& textureManager, ScoreMap scores) {
-        drawLeaderboard(window, textureManager, std::move(scores));
     }
 };
 

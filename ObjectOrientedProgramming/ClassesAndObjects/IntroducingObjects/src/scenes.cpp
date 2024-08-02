@@ -9,6 +9,6 @@ Scene* SceneManager::getCurrentScene() {
     return &staticScene;
 }
 
-void SceneManager::transitionScene(SceneID id) {
-    return;
+Scene* SceneManager::transitionScene(SceneID sceneID, Scene* currentScene, unsigned int score) {
+    return nullptr;
 }

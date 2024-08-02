@@ -16,8 +16,6 @@ const char* getTextureFilename(GameTextureID id) {
             return "resources/starConcerned.png";
         case GameTextureID::BLACKHOLE:
             return "resources/blackhole.png";
-        case GameTextureID::LEADERBOARD:
-            return "resources/leaderboardFrame.png";
         default:
             return "";
     }
@@ -41,4 +39,12 @@ bool TextureManager::initialize() {
 
 const sf::Texture* TextureManager::getTexture(GameTextureID id) const {
     return &textures[static_cast<size_t>(id)];
+}
+
+sf::Font TextureManager::getFont() {
+    sf::Font font;
+    if (!font.loadFromFile("resources/pixelLetters.ttf")) {
+        std::cerr << "Could not load font\n";
+    }
+    return font;
 }

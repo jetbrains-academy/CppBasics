@@ -76,7 +76,7 @@ void GameEngine::render() {
 
 void GameEngine::sceneTransition() {
     if (scene->getNextSceneID() != scene->getID()) {
-        sceneManager.transitionScene(scene->getNextSceneID());
+        sceneManager.transitionScene(scene->getNextSceneID(), scene, 0);
         scene = sceneManager.getCurrentScene();
         resizeWindow();
     }

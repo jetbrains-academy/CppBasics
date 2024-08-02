@@ -4,6 +4,7 @@
 enum class SceneID {
     STATIC_GAME_FIELD,
     DYNAMIC_GAME_FIELD,
+    LEADERBOARD,
 };
 
 /**
@@ -17,7 +18,6 @@ enum class GameTextureID {
     STAR,
     STAR_CONCERNED,
     BLACKHOLE,
-    LEADERBOARD,
     SIZE // dummy value to represent the number of texture IDs
 };
 

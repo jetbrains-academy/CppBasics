@@ -11,6 +11,7 @@ set(SRC
         src/collision.cpp src/direction.cpp
         src/rectangle.cpp src/point.cpp
         src/operators.cpp src/utils.cpp
+        src/leaderboard.cpp src/leaderboardscene.cpp
 )
 
 set(TEST
