@@ -56,7 +56,6 @@ void GameplayDynamicScene::update(sf::Time delta) {
         });
     });
     updateScore();
-    updatePlayerStatus();
     // update the list of objects
     updateObjectsList();
 }
@@ -170,18 +169,6 @@ void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int valu
 
 void GameplayDynamicScene::updateScore() {
     // TODO: write your solution here
-}
-
-void GameplayDynamicScene::updatePlayerStatus() {
-    objects.foreach([this] (GameObject& object) {
-        if (object.getKind() == GameObjectKind::PLAYER) {
-            if (object.getStatus() != GameObjectStatus::DESTROYED) {
-                playerAlive = true;
-            } else {
-                playerAlive = false;
-            }
-        }
-    });
 }
 
 unsigned int GameplayDynamicScene::getScore() const {

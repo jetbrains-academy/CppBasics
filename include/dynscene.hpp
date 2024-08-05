@@ -84,11 +84,6 @@ protected:
         */
     void updateScore();
 
-    /**
-     * Updates the status of the player.
-     */
-    void updatePlayerStatus();
-
 private:
     /**
      * Draws score on the window.
@@ -99,7 +94,6 @@ private:
     void drawScore(sf::RenderWindow &window, unsigned int value) const;
 
     unsigned int score = 0;
-    bool playerAlive = true;
 };
 
 #endif // CPPBASICS_DYNSCENE_HPP
