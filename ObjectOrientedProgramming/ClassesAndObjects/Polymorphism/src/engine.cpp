@@ -75,12 +75,20 @@ void GameEngine::render() {
 }
 
 void GameEngine::sceneTransition() {
-    if (scene->getNextSceneID() != scene->getID()) {
-        sceneManager.transitionScene(scene->getNextSceneID(), scene, 0);
-        scene = sceneManager.getCurrentScene();
-        resizeWindow();
+    SceneID nextSceneID = scene->getNextSceneID();
+    if (nextSceneID != scene->getID()) {
+        if (scene->getID() == SceneID::DYNAMIC_GAME_FIELD && nextSceneID == SceneID::LEADERBOARD) {
+            GameplayDynamicScene* dynamicScene = dynamic_cast<GameplayDynamicScene*>(scene);
+            if (dynamicScene) {
+                unsigned int score = dynamicScene->getScore();
+                scene = sceneManager.transitionScene(nextSceneID, scene, score);
+            }
+        } else {
+            scene = sceneManager.transitionScene(nextSceneID, scene);
+        }
     }
 }
+
 
 void GameEngine::resizeWindow() {
     Rectangle sceneBox = scene->getBoundingBox();

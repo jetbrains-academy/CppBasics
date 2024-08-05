@@ -11,4 +11,5 @@ Scene* SceneManager::getCurrentScene() {
 
 Scene* SceneManager::transitionScene(SceneID sceneID, Scene* currentScene, unsigned int score) {
     return nullptr;
+    // TODO: Implement your solution here.
 }

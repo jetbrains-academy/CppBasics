@@ -1,9 +1,13 @@
 type: edu
+custom_name: Adding Score
 files:
+  - name: src/player.cpp
+    visible: true
   - name: CMakeLists.txt
     visible: false
   - name: test/test.cpp
     visible: false
+    propagatable: false
   - name: src/cgobject.cpp
     visible: true
   - name: src/collision.cpp
@@ -29,8 +33,6 @@ files:
   - name: src/main.cpp
     visible: true
   - name: src/operators.cpp
-    visible: true
-  - name: src/player.cpp
     visible: true
   - name: src/point.cpp
     visible: true

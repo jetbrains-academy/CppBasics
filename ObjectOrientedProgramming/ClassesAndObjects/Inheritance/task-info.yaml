@@ -44,6 +44,7 @@ files:
     editable: false
   - name: test/test.cpp
     visible: false
+    propagatable: false
   - name: src/leaderboard.cpp
     visible: true
   - name: src/leaderboardscene.cpp

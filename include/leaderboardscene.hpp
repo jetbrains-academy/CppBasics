@@ -8,8 +8,7 @@
 
 enum class LeaderboardState {
     INSERTNAME,
-    SHOWLEADERBOARD,
-    GAMEOVER
+    SHOWLEADERBOARD
 };
 
 class LeaderboardScene : public Scene {
@@ -72,13 +71,14 @@ public:
      */
     void recieveScore(unsigned int score) { playerScore = score; }
 
-private:
-    TextureManager textureManager;
-    LeaderboardState state;
-    Leaderboard leaderboard;
+protected:
     std::string playerName;
     unsigned int playerScore;
-    sf::RectangleShape inputBox;
+    LeaderboardState state;
+
+private:
+    TextureManager textureManager;
+    Leaderboard leaderboard;
     sf::Font font;
 };
 

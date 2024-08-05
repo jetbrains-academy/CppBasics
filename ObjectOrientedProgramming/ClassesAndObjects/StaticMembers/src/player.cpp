@@ -54,5 +54,5 @@ void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &in
 }
 
 unsigned int PlayerObject::getScore() const {
-    // Will be implemented in future lessons
+    return score;
 }

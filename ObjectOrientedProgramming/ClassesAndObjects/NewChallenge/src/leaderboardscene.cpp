@@ -1,6 +1,6 @@
-#include "../include/leaderboardscene.hpp"
-#include "../include/constants.hpp"
-#include "../include/operators.hpp"
+#include "leaderboardscene.hpp"
+#include "constants.hpp"
+#include "operators.hpp"
 
 LeaderboardScene::LeaderboardScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {
     state = LeaderboardState::INSERTNAME;
@@ -8,12 +8,6 @@ LeaderboardScene::LeaderboardScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {
     playerScore = 0;
     textureManager.initialize();
     font = textureManager.getFont();
-
-    inputBox.setSize(sf::Vector2f(INPUTBOX_WIDTH, INPUTBOX_HEIGHT));
-    inputBox.setFillColor(sf::Color::Black);
-    inputBox.setOutlineColor(sf::Color::White);
-    inputBox.setOutlineThickness(2);
-    inputBox.setPosition(SCENE_WIDTH / 2 - inputBox.getSize().x / 2, SCENE_HEIGHT / 2 - inputBox.getSize().y / 2);
 }
 
 void LeaderboardScene::activate() {
@@ -35,17 +29,13 @@ SceneID LeaderboardScene::getNextSceneID() const {
 void LeaderboardScene::processEvent(const sf::Event &event) {
     if (state == LeaderboardState::INSERTNAME) {
         if (event.type == sf::Event::TextEntered) {
-            if (isalnum(event.text.unicode) && playerName.size() < MAX_PLAYER_NAME_LENGTH) {
-                playerName += static_cast<char>(event.text.unicode);
-            }
+            char character = event.text.unicode;
+            // TODO: Write your solution here
         } else if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::BackSpace) {
-                if (!playerName.empty()) {
-                    playerName.pop_back();
-                }
+                // TODO: Write your solution here
             } else if (event.key.code == sf::Keyboard::Enter) {
-                state = LeaderboardState::SHOWLEADERBOARD;
-                leaderboard.updateScore(playerScore, playerName);
+                // TODO: Write your solution here
             }
         }
     }
@@ -65,6 +55,13 @@ void LeaderboardScene::draw(sf::RenderWindow &window, TextureManager &textureMan
 }
 
 void LeaderboardScene::drawInsertNameScreen(sf::RenderWindow &window) {
+    sf::RectangleShape inputBox(sf::Vector2f(INPUTBOX_WIDTH, INPUTBOX_HEIGHT));
+    inputBox.setSize(sf::Vector2f(INPUTBOX_WIDTH, INPUTBOX_HEIGHT));
+    inputBox.setFillColor(sf::Color::Black);
+    inputBox.setOutlineColor(sf::Color::White);
+    inputBox.setOutlineThickness(2);
+    inputBox.setPosition(SCENE_WIDTH / 2 - inputBox.getSize().x / 2, SCENE_HEIGHT / 2 - inputBox.getSize().y / 2);
+
     sf::Text prompt;
     prompt.setFont(font);
     prompt.setString("Insert Name");
@@ -84,8 +81,8 @@ void LeaderboardScene::drawInsertNameScreen(sf::RenderWindow &window) {
     float inputBoxCenterY = inputBox.getPosition().y + inputBox.getSize().y / 2;
     nameText.setPosition(SCENE_WIDTH / 2 - textBounds.width / 2, inputBoxCenterY - textHeight / 2 - textYOffset);
 
-    window.draw(prompt);
     window.draw(inputBox);
+    window.draw(prompt);
     window.draw(nameText);
 }
 

@@ -1,13 +1,12 @@
 #ifndef CPPBASICS_DYNSCENE_HPP
 #define CPPBASICS_DYNSCENE_HPP
 
-#include <memory>
-
 #include <SFML/Graphics.hpp>
+
+#include <iostream>
 
 #include "scene.hpp"
 #include "gobjectlist.hpp"
-#include "player.hpp"
 
 /**
  * DynamicScene is a scene capable of managing and updating the list of game objects in the scene:
@@ -81,11 +80,14 @@ protected:
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
     /**
-     * Returns the status (alive/dead) of the player.
-     *
-     * @return true if player is alive, false otherwise.
+        * Updates the score of the player.
+        */
+    void updateScore();
+
+    /**
+     * Updates the status of the player.
      */
-    bool isPlayerAlive() const;
+    void updatePlayerStatus();
 
 private:
     /**
@@ -95,25 +97,6 @@ private:
      * @param value the score value to draw.
      */
     void drawScore(sf::RenderWindow &window, unsigned int value) const;
-
-    /**
-     * Updates the score of the player.
-     */
-    void updateScore();
-
-    /**
-     * Updates the status of the player.
-     */
-    void updatePlayerStatus();
-
-    /**
-     * Updates the score of the player.
-     *
-     * @param value the new score value.
-     *
-     * @note this method should be called by the updateScore() of derived class.
-     */
-    void updateScore(unsigned int value);
 
     unsigned int score = 0;
     bool playerAlive = true;

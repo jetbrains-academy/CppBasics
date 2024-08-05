@@ -114,3 +114,5 @@ You need to create a program that reads all input string by string, until the st
 
   A number is a sequence of digits, optionally containing one decimal point and a minus sign at the beginning.
 </div>
+
+*Congratulations on finishing this module! We highly encourage you to get back to the [Scoreboard](course://ObjectOrientedProgramming/ClassesAndObjects/Scoreboard) task and extend Planet Game with new features!* 

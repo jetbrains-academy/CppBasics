@@ -26,11 +26,12 @@ void GameplayDynamicScene::deactivate() {
 }
 
 SceneID GameplayDynamicScene::getID() const {
-    return SceneID::DYNAMIC_GAME_FIELD;
+    return SceneID::STATIC_GAME_FIELD;
 }
 
 SceneID GameplayDynamicScene::getNextSceneID() const {
-    return SceneID::DYNAMIC_GAME_FIELD;
+    return SceneID::STATIC_GAME_FIELD;
+    // TODO: write your solution here
 }
 
 void GameplayDynamicScene::processEvent(const sf::Event& event) {
@@ -54,6 +55,8 @@ void GameplayDynamicScene::update(sf::Time delta) {
             }
         });
     });
+    updateScore();
+    updatePlayerStatus();
     // update the list of objects
     updateObjectsList();
 }
@@ -64,7 +67,7 @@ void GameplayDynamicScene::updateObjectsList() {
         return (object.getStatus() == GameObjectStatus::DESTROYED)
             && (object.getKind() != GameObjectKind::PLAYER);
     });
-    // count the number of the different kinds of objects present on the scene
+    // count the number of the different kinds of objects present on the dynamicScene
     int consumableCount = 0;
     int enemyCount = 0;
     objects.foreach([&] (const GameObject& object) {
@@ -79,7 +82,7 @@ void GameplayDynamicScene::updateObjectsList() {
                 break;
         }
     });
-    // add new objects of randomly chosen kind if there is enough room for them on the scene
+    // add new objects of randomly chosen kind if there is enough room for them on the dynamicScene
     int dynamicObjectsCount = consumableCount + enemyCount;
     if (dynamicObjectsCount < MAX_DYNAMIC_OBJECTS_ON_SCENE) {
         int r = rand() % 100;
@@ -136,17 +139,51 @@ std::shared_ptr<GameObject> GameplayDynamicScene::addNewGameObject(GameObjectKin
 void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textureManager) {
     // draw background
     drawBackground(window, textureManager.getTexture(GameTextureID::SPACE));
-    // draw all objects on the scene
+    // draw all objects on the dynamicScene
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
     });
+    // find player object
+    PlayerObject* player = nullptr;
+    objects.foreach([this, &player] (GameObject& object) {
+        if (object.getKind() == GameObjectKind::PLAYER) {
+            player = dynamic_cast<PlayerObject*>(&object);
+        }
+    });
+    // draw player's score
+    drawScore(window, player->getScore());
+}
+
+void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int value) const {
+    sf::Text text;
+    sf::Font font;
+    if (!font.loadFromFile("resources/pixelLetters.ttf")) {
+        std::cerr << "Could not load font\n";
+    }
+    text.setFont(font);
+    text.setString("Score: " + std::to_string(value));
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(SCENE_WIDTH - 120, 0); // top right corner
+    window.draw(text);
 }
 
 void GameplayDynamicScene::updateScore() {
-    // Will be implemented in future lessons
+    // TODO: write your solution here
 }
 
 void GameplayDynamicScene::updatePlayerStatus() {
-    // Will be implemented in future lessons
+    objects.foreach([this] (GameObject& object) {
+        if (object.getKind() == GameObjectKind::PLAYER) {
+            if (object.getStatus() != GameObjectStatus::DESTROYED) {
+                playerAlive = true;
+            } else {
+                playerAlive = false;
+            }
+        }
+    });
 }
 
+unsigned int GameplayDynamicScene::getScore() const {
+    return score;
+}
