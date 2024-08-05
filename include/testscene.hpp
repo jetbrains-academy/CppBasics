@@ -284,10 +284,6 @@ public:
         updateScore();
     }
 
-    inline void performUpdatePlayerStatus() {
-        updatePlayerStatus();
-    }
-
     inline unsigned int performGetScore() const {
         return getScore();
     }
