@@ -7,6 +7,7 @@
 
 #include "scene.hpp"
 #include "gobjectlist.hpp"
+#include "player.hpp"
 
 /**
  * DynamicScene is a scene capable of managing and updating the list of game objects in the scene:
@@ -94,6 +95,7 @@ private:
     void drawScore(sf::RenderWindow &window, unsigned int value) const;
 
     unsigned int score = 0;
+    std::shared_ptr<PlayerObject> player;
 };
 
 #endif // CPPBASICS_DYNSCENE_HPP

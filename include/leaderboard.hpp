@@ -62,7 +62,7 @@ protected:
     ScoreMap scores;
 
 private:
-    std::string filepath = "../../../../resources/leaderboard.csv";
+    std::string filepath = "resources/leaderboard.csv";
 };
 
 sf::Text createText(const std::string &str, const sf::Font &font, unsigned int size, float x, float y);

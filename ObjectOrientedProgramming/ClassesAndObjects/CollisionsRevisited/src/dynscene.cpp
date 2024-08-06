@@ -103,6 +103,7 @@ std::shared_ptr<GameObject> GameplayDynamicScene::addNewGameObject(GameObjectKin
         switch (kind) {
             case GameObjectKind::PLAYER: {
                 object = std::make_shared<PlayerObject>();
+                player = std::dynamic_pointer_cast<PlayerObject>(object);
                 break;
             }
             case GameObjectKind::CONSUMABLE: {
@@ -141,13 +142,6 @@ void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textur
     // draw all objects on the dynamicScene
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
-    });
-    // find player object
-    PlayerObject* player = nullptr;
-    objects.foreach([this, &player] (GameObject& object) {
-        if (object.getKind() == GameObjectKind::PLAYER) {
-            player = dynamic_cast<PlayerObject*>(&object);
-        }
     });
     // draw player's score
     drawScore(window, player->getScore());

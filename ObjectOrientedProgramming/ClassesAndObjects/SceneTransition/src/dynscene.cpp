@@ -32,15 +32,7 @@ SceneID GameplayDynamicScene::getID() const {
 }
 
 SceneID GameplayDynamicScene::getNextSceneID() const {
-    bool playerDestroyed = false;
-    objects.foreach([&playerDestroyed](const GameObject& object) {
-        if (object.getKind() == GameObjectKind::PLAYER) {
-            if (object.getStatus() == GameObjectStatus::DESTROYED) {
-                playerDestroyed = true;
-            }
-        }
-    });
-    if (playerDestroyed) {
+    if (player->getStatus() == GameObjectStatus::DESTROYED) {
         return SceneID::LEADERBOARD;
     }
     return SceneID::DYNAMIC_GAME_FIELD;
@@ -115,6 +107,7 @@ std::shared_ptr<GameObject> GameplayDynamicScene::addNewGameObject(GameObjectKin
         switch (kind) {
             case GameObjectKind::PLAYER: {
                 object = std::make_shared<PlayerObject>();
+                player = std::dynamic_pointer_cast<PlayerObject>(object);
                 break;
             }
             case GameObjectKind::CONSUMABLE: {
@@ -154,13 +147,6 @@ void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textur
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
     });
-    // find player object
-    PlayerObject* player = nullptr;
-    objects.foreach([this, &player] (GameObject& object) {
-        if (object.getKind() == GameObjectKind::PLAYER) {
-            player = dynamic_cast<PlayerObject*>(&object);
-        }
-    });
     // draw player's score
     drawScore(window, player->getScore());
 }
@@ -180,12 +166,7 @@ void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int valu
 }
 
 void GameplayDynamicScene::updateScore() {
-    // find a player object and update the score
-    objects.foreach([this] (GameObject& object) {
-        if (object.getKind() == GameObjectKind::PLAYER) {
-            score = dynamic_cast<PlayerObject&>(object).getScore();
-        }
-    });
+    score = player->getScore();
 }
 
 unsigned int GameplayDynamicScene::getScore() const {
