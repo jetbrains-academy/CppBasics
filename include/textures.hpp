@@ -36,7 +36,7 @@ public:
      *
      * @return instance @sf::Font initialized with the custom font from the file.
      */
-    sf::Font getFont();
+    static sf::Font getFont();
 
 private:
     static const size_t SIZE = static_cast<size_t>(GameTextureID::SIZE);

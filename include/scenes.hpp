@@ -33,12 +33,13 @@ public:
      * This function checks if the transition to a new scene is necessary by querying the current scene
      * and performs this transition if required.
      */
-    Scene* transitionScene(SceneID sceneID, Scene* currentScene, unsigned int score = 0);
+    Scene* transitionScene(SceneID sceneID);
 
 private:
     GameplayStaticScene staticScene;
     GameplayDynamicScene dynamicScene;
     LeaderboardScene leaderboardScene;
+    Scene* currentScene = &dynamicScene;
 };
 
 

@@ -3,11 +3,10 @@
 #include "operators.hpp"
 
 LeaderboardScene::LeaderboardScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {
-    state = LeaderboardState::INSERTNAME;
+    state = LeaderboardState::INSERT_NAME;
     playerName = "";
     playerScore = 0;
-    textureManager.initialize();
-    font = textureManager.getFont();
+    font = TextureManager::getFont();
 }
 
 void LeaderboardScene::activate() {
@@ -26,21 +25,33 @@ SceneID LeaderboardScene::getNextSceneID() const {
     return SceneID::LEADERBOARD;
 }
 
+void LeaderboardScene::processText(const sf::Event &event) {
+    char character = event.text.unicode;
+    if (isalnum(character) && playerName.size() < MAX_PLAYER_NAME_LENGTH) {
+        playerName += character;
+    }
+}
+
+void LeaderboardScene::processBackspace() {
+    if (!playerName.empty()) {
+        playerName.pop_back();
+    }
+}
+
+void LeaderboardScene::processEnter() {
+    state = LeaderboardState::SHOW_LEADERBOARD;
+    leaderboard.updateScore(playerScore, playerName);
+}
+
 void LeaderboardScene::processEvent(const sf::Event &event) {
-    if (state == LeaderboardState::INSERTNAME) {
+    if (state == LeaderboardState::INSERT_NAME) {
         if (event.type == sf::Event::TextEntered) {
-            char character = event.text.unicode;
-            if (isalnum(character) && playerName.size() < MAX_PLAYER_NAME_LENGTH) {
-                playerName += character;
-            }
+            processText(event);
         } else if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::BackSpace) {
-                if (!playerName.empty()) {
-                    playerName.pop_back();
-                }
+                processBackspace();
             } else if (event.key.code == sf::Keyboard::Enter) {
-                state = LeaderboardState::SHOWLEADERBOARD;
-                leaderboard.updateScore(playerScore, playerName);
+                processEnter();
             }
         }
     }
@@ -52,9 +63,9 @@ void LeaderboardScene::update(sf::Time delta) {
 
 void LeaderboardScene::draw(sf::RenderWindow &window, TextureManager &textureManager) {
     window.clear(sf::Color::Black);
-    if (state == LeaderboardState::INSERTNAME) {
+    if (state == LeaderboardState::INSERT_NAME) {
         drawInsertNameScreen(window);
-    } else if (state == LeaderboardState::SHOWLEADERBOARD) {
+    } else if (state == LeaderboardState::SHOW_LEADERBOARD) {
         drawLeaderboard(window);
     }
 }

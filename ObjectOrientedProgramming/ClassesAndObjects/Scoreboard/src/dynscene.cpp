@@ -5,6 +5,7 @@
 #include "consumable.hpp"
 #include "enemy.hpp"
 #include "utils.hpp"
+#include "textures.hpp"
 
 const int MAX_DYNAMIC_OBJECTS_ON_SCENE = 10;
 const int MAX_ENEMY_OBJECTS_ON_SCENE = 4;
@@ -66,7 +67,7 @@ void GameplayDynamicScene::updateObjectsList() {
         return (object.getStatus() == GameObjectStatus::DESTROYED)
             && (object.getKind() != GameObjectKind::PLAYER);
     });
-    // count the number of the different kinds of objects present on the dynamicScene
+    // count the number of the different kinds of objects present on the scene
     int consumableCount = 0;
     int enemyCount = 0;
     objects.foreach([&] (const GameObject& object) {
@@ -81,7 +82,7 @@ void GameplayDynamicScene::updateObjectsList() {
                 break;
         }
     });
-    // add new objects of randomly chosen kind if there is enough room for them on the dynamicScene
+    // add new objects of randomly chosen kind if there is enough room for them on the scene
     int dynamicObjectsCount = consumableCount + enemyCount;
     if (dynamicObjectsCount < MAX_DYNAMIC_OBJECTS_ON_SCENE) {
         int r = rand() % 100;
@@ -139,7 +140,7 @@ std::shared_ptr<GameObject> GameplayDynamicScene::addNewGameObject(GameObjectKin
 void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textureManager) {
     // draw background
     drawBackground(window, textureManager.getTexture(GameTextureID::SPACE));
-    // draw all objects on the dynamicScene
+    // draw all objects on the scene
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
     });
@@ -149,10 +150,7 @@ void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textur
 
 void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int value) const {
     sf::Text text;
-    sf::Font font;
-    if (!font.loadFromFile("resources/pixelLetters.ttf")) {
-        std::cerr << "Could not load font\n";
-    }
+    sf::Font font = TextureManager::getFont();
     text.setFont(font);
     text.setString("Score: " + std::to_string(value));
     text.setCharacterSize(24);

@@ -80,11 +80,10 @@ void GameEngine::sceneTransition() {
         if (scene->getID() == SceneID::DYNAMIC_GAME_FIELD && nextSceneID == SceneID::LEADERBOARD) {
             GameplayDynamicScene* dynamicScene = dynamic_cast<GameplayDynamicScene*>(scene);
             if (dynamicScene) {
-                unsigned int score = dynamicScene->getScore();
-                scene = sceneManager.transitionScene(nextSceneID, scene, score);
+                scene = sceneManager.transitionScene(nextSceneID);
             }
         } else {
-            scene = sceneManager.transitionScene(nextSceneID, scene);
+            scene = sceneManager.transitionScene(nextSceneID);
         }
     }
 }

@@ -3,8 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <iostream>
-
 #include "scene.hpp"
 #include "gobjectlist.hpp"
 #include "player.hpp"

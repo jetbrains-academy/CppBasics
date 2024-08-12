@@ -7,8 +7,8 @@
 #include <string>
 
 enum class LeaderboardState {
-    INSERTNAME,
-    SHOWLEADERBOARD
+    INSERT_NAME,
+    SHOW_LEADERBOARD
 };
 
 class LeaderboardScene : public Scene {
@@ -37,6 +37,25 @@ public:
      * Returns the ID of the next scene to transition into.
      */
     SceneID getNextSceneID() const override;
+
+
+    /**
+     * Processes the text input event.
+     * This function is called inside @processEvent.
+     */
+    void processText(const sf::Event& event);
+
+    /**
+     * Processes the backspace event.
+     * This function is called inside @processEvent.
+     */
+    void processBackspace();
+
+    /**
+     * Processes the enter event.
+     * This function is called inside @processEvent.
+     */
+    void processEnter();
 
     /**
      * Processes scene-related input event.
@@ -77,7 +96,6 @@ protected:
     LeaderboardState state;
 
 private:
-    TextureManager textureManager;
     Leaderboard leaderboard;
     sf::Font font;
 };

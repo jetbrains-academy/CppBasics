@@ -3,11 +3,10 @@
 #include "operators.hpp"
 
 LeaderboardScene::LeaderboardScene() : Scene(SCENE_WIDTH, SCENE_HEIGHT) {
-    state = LeaderboardState::INSERTNAME;
+    state = LeaderboardState::INSERT_NAME;
     playerName = "";
     playerScore = 0;
-    textureManager.initialize();
-    font = textureManager.getFont();
+    font = TextureManager::getFont();
 }
 
 void LeaderboardScene::activate() {
@@ -26,16 +25,27 @@ SceneID LeaderboardScene::getNextSceneID() const {
     return SceneID::LEADERBOARD;
 }
 
+void LeaderboardScene::processText(const sf::Event &event) {
+    // TODO: Write your solution here
+}
+
+void LeaderboardScene::processBackspace() {
+    // TODO: Write your solution here
+}
+
+void LeaderboardScene::processEnter() {
+    // TODO: Write your solution here
+}
+
 void LeaderboardScene::processEvent(const sf::Event &event) {
-    if (state == LeaderboardState::INSERTNAME) {
+    if (state == LeaderboardState::INSERT_NAME) {
         if (event.type == sf::Event::TextEntered) {
-            char character = event.text.unicode;
-            // TODO: Write your solution here
+            processText(event);
         } else if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::BackSpace) {
-                // TODO: Write your solution here
+                processBackspace();
             } else if (event.key.code == sf::Keyboard::Enter) {
-                // TODO: Write your solution here
+                processEnter();
             }
         }
     }
@@ -47,9 +57,9 @@ void LeaderboardScene::update(sf::Time delta) {
 
 void LeaderboardScene::draw(sf::RenderWindow &window, TextureManager &textureManager) {
     window.clear(sf::Color::Black);
-    if (state == LeaderboardState::INSERTNAME) {
+    if (state == LeaderboardState::INSERT_NAME) {
         drawInsertNameScreen(window);
-    } else if (state == LeaderboardState::SHOWLEADERBOARD) {
+    } else if (state == LeaderboardState::SHOW_LEADERBOARD) {
         drawLeaderboard(window);
     }
 }

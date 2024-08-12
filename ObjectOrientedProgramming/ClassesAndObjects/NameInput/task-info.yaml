@@ -1,50 +1,50 @@
 type: edu
 custom_name: Name Input
 files:
-  - name: src/leaderboardscene.cpp
-    visible: true
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/cgobject.cpp
-    visible: true
-  - name: src/collision.cpp
-    visible: true
-  - name: src/consumable.cpp
-    visible: true
-  - name: src/direction.cpp
-    visible: true
-  - name: src/dynscene.cpp
-    visible: true
-  - name: src/enemy.cpp
-    visible: true
-  - name: src/engine.cpp
-    visible: true
-  - name: src/gobject.cpp
-    visible: true
-  - name: src/gobjectlist.cpp
-    visible: true
-  - name: src/leaderboard.cpp
-    visible: true
-  - name: src/main.cpp
-    visible: true
-  - name: src/operators.cpp
-    visible: true
-  - name: src/player.cpp
-    visible: true
-  - name: src/point.cpp
-    visible: true
-  - name: src/rectangle.cpp
-    visible: true
-  - name: src/scene.cpp
-    visible: true
-  - name: src/scenes.cpp
-    visible: true
-  - name: src/statscene.cpp
-    visible: true
-  - name: src/textures.cpp
-    visible: true
-  - name: src/utils.cpp
-    visible: true
-  - name: test/test.cpp
-    visible: false
-    propagatable: false
+- name: src/leaderboardscene.cpp
+  visible: true
+- name: CMakeLists.txt
+  visible: false
+- name: src/cgobject.cpp
+  visible: true
+- name: src/collision.cpp
+  visible: true
+- name: src/consumable.cpp
+  visible: true
+- name: src/direction.cpp
+  visible: true
+- name: src/dynscene.cpp
+  visible: true
+- name: src/enemy.cpp
+  visible: true
+- name: src/engine.cpp
+  visible: true
+- name: src/gobject.cpp
+  visible: true
+- name: src/gobjectlist.cpp
+  visible: true
+- name: src/leaderboard.cpp
+  visible: true
+- name: src/main.cpp
+  visible: true
+- name: src/operators.cpp
+  visible: true
+- name: src/player.cpp
+  visible: true
+- name: src/point.cpp
+  visible: true
+- name: src/rectangle.cpp
+  visible: true
+- name: src/scene.cpp
+  visible: true
+- name: src/scenes.cpp
+  visible: true
+- name: src/statscene.cpp
+  visible: true
+- name: src/textures.cpp
+  visible: true
+- name: src/utils.cpp
+  visible: true
+- name: test/test.cpp
+  visible: false
+  propagatable: false

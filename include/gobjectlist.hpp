@@ -71,8 +71,6 @@ public:
      * Applies a given function to each game object inside the list.
      *
      * @param apply A function that accept a single game object reference parameter.
-     *
-     * @note This function is a const-qualified version of the non-const @foreach method.
      */
     void foreach(const std::function<void (const GameObject&)>& apply) const;
 
