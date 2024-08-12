@@ -29,6 +29,6 @@ TEST(SceneManagerTest, transitionScene) {
     manager.initialize();
     Scene *scene = manager.getCurrentScene();
     ASSERT_EQ(scene->getID(), SceneID::DYNAMIC_GAME_FIELD);
-    scene = manager.transitionScene(SceneID::LEADERBOARD, scene, 100);
+    scene = manager.transitionScene(SceneID::LEADERBOARD);
     ASSERT_EQ(scene->getID(), SceneID::LEADERBOARD);
 }

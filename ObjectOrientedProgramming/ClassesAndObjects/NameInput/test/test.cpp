@@ -31,7 +31,7 @@ TEST(LeaderboardSceneTest, ProcessEventEnter) {
     event.type = sf::Event::KeyPressed;
     event.key.code = sf::Keyboard::Enter;
     scene.processEvent(event);
-    ASSERT_EQ(scene.getState(), LeaderboardState::SHOWLEADERBOARD);
+    ASSERT_EQ(scene.getState(), LeaderboardState::SHOW_LEADERBOARD);
 }
 
 TEST(LeaderboardSceneTest, ProcessEventInvalidCharacter) {
