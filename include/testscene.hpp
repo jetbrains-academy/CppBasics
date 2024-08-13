@@ -290,10 +290,15 @@ public:
 
     inline void insertPlayerObject(TestPlayerObject& object) {
         objects.insert(std::make_shared<TestPlayerObject>(object));
+        player = std::make_shared<TestPlayerObject>(object);
     }
 
     inline void insertEnemyObject(TestEnemyObject& object) {
         objects.insert(std::make_shared<TestEnemyObject>(object));
+    }
+
+    std::shared_ptr<PlayerObject> getPlayer() {
+        return player;
     }
 };
 

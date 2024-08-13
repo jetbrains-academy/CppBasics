@@ -65,6 +65,7 @@ public:
 
 protected:
     GameObjectList objects;
+    std::shared_ptr<PlayerObject> player;
 
     /**
      * Update the list of objects present on the scene. In particular:
@@ -93,7 +94,6 @@ private:
     void drawScore(sf::RenderWindow &window, unsigned int value) const;
 
     unsigned int score = 0;
-    std::shared_ptr<PlayerObject> player;
 };
 
 #endif // CPPBASICS_DYNSCENE_HPP

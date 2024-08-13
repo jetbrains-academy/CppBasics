@@ -13,12 +13,10 @@ TEST(GameplayDynamicSceneTest, getNextSceneIdInitial) {
 
 TEST(GameplayDynamicSceneTest, getNextSceneIdComplex) {
     TestGameplayDynamicScene scene;
-    TestPlayerObject player;
-    player.performSetPosition({50,50});
-    scene.insertPlayerObject(player);
+    scene.performAddNewGameObject(GameObjectKind::PLAYER);
     ASSERT_EQ(scene.getNextSceneID(), SceneID::DYNAMIC_GAME_FIELD);
     TestEnemyObject enemy;
-    enemy.performSetPosition({50,50});
+    enemy.performSetPosition({400,300});
     scene.insertEnemyObject(enemy);
     scene.update(sf::seconds(1));
     ASSERT_EQ(scene.getNextSceneID(), SceneID::LEADERBOARD);
