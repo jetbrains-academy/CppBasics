@@ -7,5 +7,7 @@ Look at `sceneTransition()` and understand how it works. You will need to implem
  - `scene->getNextSceneID()`. Since we are now covering only switching from the dynamic scene to the leaderboard scene, this is the instance of the function from GameplayDynamicScene. It should return the ID of the dynamic scene if player has not lost yet, and the ID of the leaderboard otherwise.
  - `sceneManager.transitionScene`. You need to correctly handle the transition between scenes, activating the appropriate scene and passing any necessary data, such as the score, to the new scene.
 
+Also, make sure that in `scenes.cpp` file both `initialize()` and `getCurrentScene()` functions are working with `dynamicScene` instance (and not `staticScene`, which can happen due to incorrect code transfer), so that your game could be properly played. 
+
 When you finish, you can run the game, see the score in the top right corner of the screen,
 and try to beat the results that our team has achieved!
