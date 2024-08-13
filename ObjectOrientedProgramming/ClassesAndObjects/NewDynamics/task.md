@@ -149,4 +149,6 @@ GameObjectList& operator=(GameObjectList other);
 friend void swap(GameObjectList& first, GameObjectList& second);
 ```
 
+Lastly, you need to change `initialize()` and `getCurrentScene()` functions in `scenes.cpp` file, because previously we used the `GameplayStaticScene` class with `staticScene` instance, and now we need to use `dynamicScene` instance of `GameplayDynamicScene` class.
+
 Once you do this, you should be able to run the instance of the game with the new dynamic scene!
