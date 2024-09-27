@@ -52,3 +52,7 @@ const sf::Texture* PlayerObject::getTexture(TextureManager& textureManager) cons
 void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &info) {
     // TODO: write your solution here
 }
+
+unsigned int PlayerObject::getScore() const {
+    return score;
+}

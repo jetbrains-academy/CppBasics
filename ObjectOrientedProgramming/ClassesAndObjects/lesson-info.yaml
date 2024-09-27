@@ -11,4 +11,9 @@ content:
 - CollisionsRevisited
 - NewChallenge
 - NewDynamics
+- Scoreboard
+- AddingScore
+- NameInput
+- DataRetrieval
+- SceneTransition
 is_template_based: false

@@ -40,3 +40,11 @@ bool TextureManager::initialize() {
 const sf::Texture* TextureManager::getTexture(GameTextureID id) const {
     return &textures[static_cast<size_t>(id)];
 }
+
+sf::Font TextureManager::getFont() {
+    sf::Font font;
+    if (!font.loadFromFile("resources/pixelLetters.ttf")) {
+        std::cerr << "Could not load font\n";
+    }
+    return font;
+}

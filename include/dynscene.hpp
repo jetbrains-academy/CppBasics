@@ -1,8 +1,6 @@
 #ifndef CPPBASICS_DYNSCENE_HPP
 #define CPPBASICS_DYNSCENE_HPP
 
-#include <memory>
-
 #include <SFML/Graphics.hpp>
 
 #include "scene.hpp"
@@ -56,7 +54,18 @@ public:
      */
     void draw(sf::RenderWindow &window, TextureManager& textureManager) override;
 
+    /**
+     * Returns the score of the player.
+     *
+     * @return The score of the player.
+     */
+    unsigned int getScore() const;
+
+
+
 protected:
+    GameObjectList objects;
+    std::shared_ptr<PlayerObject> player;
 
     /**
      * Update the list of objects present on the scene. In particular:
@@ -70,9 +79,21 @@ protected:
      */
     std::shared_ptr<GameObject> addNewGameObject(GameObjectKind kind);
 
-private:
-    GameObjectList objects;
-};
+    /**
+        * Updates the score of the player.
+        */
+    void updateScore();
 
+private:
+    /**
+     * Draws score on the window.
+     *
+     * @param window the window to draw on.
+     * @param value the score value to draw.
+     */
+    void drawScore(sf::RenderWindow &window, unsigned int value) const;
+
+    unsigned int score = 0;
+};
 
 #endif // CPPBASICS_DYNSCENE_HPP

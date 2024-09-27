@@ -42,3 +42,7 @@ files:
 - name: src/main.cpp
   visible: true
   editable: false
+- name: src/leaderboard.cpp
+  visible: false
+- name: src/leaderboardscene.cpp
+  visible: false

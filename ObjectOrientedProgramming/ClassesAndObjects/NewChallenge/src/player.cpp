@@ -54,3 +54,7 @@ void PlayerObject::onCollision(const GameObject &object, const CollisionInfo &in
         setStatus(GameObjectStatus::DESTROYED);
     }
 }
+
+unsigned int PlayerObject::getScore() const {
+    return score;
+}

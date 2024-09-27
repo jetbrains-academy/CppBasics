@@ -34,7 +34,6 @@ void Scene::fitInto(GameObject &object) {
 void Scene::detectCollision(GameObject& object1, GameObject& object2) {
     CollisionInfo info = collisionInfo(object1, object2);
     object1.onCollision(object2, info);
-    object2.onCollision(object1, info);
 }
 
 void Scene::drawBackground(sf::RenderWindow &window, const sf::Texture* texture) const {
