@@ -1,12 +1,12 @@
 #include "scenes.hpp"
 
 bool SceneManager::initialize() {
-    staticScene.activate();
+    dynamicScene.activate();
     return true;
 }
 
 Scene* SceneManager::getCurrentScene() {
-    return &staticScene;
+    return &dynamicScene;
 }
 
 Scene* SceneManager::transitionScene(SceneID sceneID) {
