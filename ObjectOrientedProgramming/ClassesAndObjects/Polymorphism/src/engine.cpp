@@ -88,7 +88,6 @@ void GameEngine::sceneTransition() {
     }
 }
 
-
 void GameEngine::resizeWindow() {
     Rectangle sceneBox = scene->getBoundingBox();
     sf::Vector2u sceneSize = sf::Vector2u(width(sceneBox), height(sceneBox));
