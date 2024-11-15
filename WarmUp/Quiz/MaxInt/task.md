@@ -17,7 +17,7 @@ Besides the conditional `if` statement, the C++ language also has a
 
 The expression `b ? t : e` evaluates to 
 * `t` if `b` evaluates to `true` (or any non-zero integer value),
-* `f` if `b` evaluates to `false` (or zero integer value).
+* `e` if `b` evaluates to `false` (or zero integer value).
 
 </div>
 
