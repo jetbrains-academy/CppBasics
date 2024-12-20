@@ -43,7 +43,7 @@ const sf::Texture* TextureManager::getTexture(GameTextureID id) const {
 
 sf::Font TextureManager::getFont() {
     sf::Font font;
-    if (!font.loadFromFile("resources/pixelLetters.ttf")) {
+    if (!font.loadFromFile("resources/JetBrainsMono-Light.ttf")) {
         std::cerr << "Could not load font\n";
     }
     return font;

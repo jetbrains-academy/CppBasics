@@ -40,19 +40,19 @@ const float MAX_PLAYER_NAME_LENGTH = 16.0f;
 
 const float MAX_LINES = 10.0f;
 
-const unsigned int HEADER_FONT_SIZE = 40;
-const float HEADER_X = 300.0f;
+const unsigned int HEADER_FONT_SIZE = 36;
+const float HEADER_X = 280.0f;
 const float HEADER_Y = 40.0f;
 
-const unsigned int LEADERBOARD_FONT_SIZE = 26;
-const float POS_HEADER_X = 108.0f;
-const float POS_HEADER_Y = HEADER_Y + 61.0f;
-const float NAME_HEADER_X = 330.0f;
-const float NAME_HEADER_Y = HEADER_Y + 61.0f;
-const float SCORE_HEADER_X = 593.0f;
-const float SCORE_HEADER_Y = HEADER_Y + 61.0f;
+const unsigned int LEADERBOARD_FONT_SIZE = 22;
+const float POS_HEADER_X = 106.0f;
+const float POS_HEADER_Y = HEADER_Y + 65.0f;
+const float NAME_HEADER_X = 320.0f;
+const float NAME_HEADER_Y = HEADER_Y + 65.0f;
+const float SCORE_HEADER_X = 592.0f;
+const float SCORE_HEADER_Y = HEADER_Y + 65.0f;
 
-const float PADDING = 8.0f;
+const float PADDING = 8.5f;
 const float LEADERBOARD_WIDTH = 600.0f;
 const float ROW_HEIGHT = LEADERBOARD_FONT_SIZE + PADDING * 2.0f;
 const float LEADERBOARD_X = SCENE_WIDTH / 2.0f - LEADERBOARD_WIDTH / 2.0f;
@@ -62,9 +62,10 @@ const float ONE_DIGIT_POS_OFFSET = 14.0f;
 const float TWO_DIGIT_POS_OFFSET = 19.0f;
 const float NAME_X_OFFSET = 60.0f;
 const float ONE_DIGIT_SCORE_OFFSET = 520.0f;
-const float FOUR_DIGIT_SCORE_OFFSET = 505.0f;
-const float FIVE_DIGIT_SCORE_OFFSET = 500.0f;
+const float SCORE_X_OFFSET_DIFF = 9.0f;
+const float FOUR_DIGIT_SCORE_OFFSET = ONE_DIGIT_SCORE_OFFSET - SCORE_X_OFFSET_DIFF * 2;
+const float FIVE_DIGIT_SCORE_OFFSET = ONE_DIGIT_SCORE_OFFSET - SCORE_X_OFFSET_DIFF * 3;
 
-const float BORDER_OFFSET = 3.0f;
+const float BORDER_OFFSET = 6.0f;
 
 #endif // CPPBASICS_CONSTANTS_HPP

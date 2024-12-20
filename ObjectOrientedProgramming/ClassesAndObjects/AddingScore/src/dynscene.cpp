@@ -153,9 +153,9 @@ void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int valu
     sf::Font font = TextureManager::getFont();
     text.setFont(font);
     text.setString("Score: " + std::to_string(value));
-    text.setCharacterSize(24);
+    text.setCharacterSize(20);
     text.setFillColor(sf::Color::White);
-    text.setPosition(SCENE_WIDTH - 120, 0); // top right corner
+    text.setPosition(SCENE_WIDTH - 160, 0); // top right corner
     window.draw(text);
 }
 
