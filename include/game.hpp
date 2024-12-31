@@ -36,7 +36,7 @@ inline int initWindow(sf::RenderWindow& window) {
     return 0;
 }
 
-inline int initBackrground(sf::Sprite& sprite, sf::Texture& texture) {
+inline int initBackground(sf::Sprite& sprite, sf::Texture& texture) {
     if (!texture.loadFromFile("resources/space.png")) {
         return 1;
     }
