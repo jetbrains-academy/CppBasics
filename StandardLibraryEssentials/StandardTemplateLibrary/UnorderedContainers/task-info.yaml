@@ -1,22 +1,22 @@
 type: edu
 custom_name: Unordered Containers
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 153
-        length: 202
-        placeholder_text: /* TODO */
-      - offset: 434
-        length: 347
-        placeholder_text: /* TODO */
-  - name: test/test.cpp
-    visible: false
-  - name: include/Cache.h
-    visible: true
-    placeholders:
-      - offset: 342
-        length: 153
-        placeholder_text: /* TODO */
+ - name: CMakeLists.txt
+   visible: false
+ - name: src/task.cpp
+   visible: true
+   placeholders:
+    - offset: 153
+      length: 202
+      placeholder_text: /* TODO */
+    - offset: 434
+      length: 347
+      placeholder_text: /* TODO */
+ - name: test/test.cpp
+   visible: false
+ - name: include/Cache.h
+   visible: true
+   placeholders:
+    - offset: 342
+      length: 153
+      placeholder_text: /* TODO */

@@ -1,16 +1,16 @@
 type: edu
 custom_name: Input/Output Streams
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 105
-        length: 660
-        placeholder_text: /* TODO */
-      - offset: 795
-        length: 393
-        placeholder_text: /* TODO */
-  - name: test/test.cpp
-    visible: false
+ - name: CMakeLists.txt
+   visible: false
+ - name: src/task.cpp
+   visible: true
+   placeholders:
+    - offset: 105
+      length: 660
+      placeholder_text: /* TODO */
+    - offset: 795
+      length: 393
+      placeholder_text: /* TODO */
+ - name: test/test.cpp
+   visible: false

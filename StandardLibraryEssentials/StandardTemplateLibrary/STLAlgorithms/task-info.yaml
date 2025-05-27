@@ -1,13 +1,13 @@
 type: edu
 custom_name: STL Algorithms
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: test/test.cpp
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 155
-        length: 221
-        placeholder_text: /* TODO */
+ - name: CMakeLists.txt
+   visible: false
+ - name: test/test.cpp
+   visible: false
+ - name: src/task.cpp
+   visible: true
+   placeholders:
+    - offset: 155
+      length: 221
+      placeholder_text: /* TODO */

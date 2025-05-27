@@ -1,6 +1,6 @@
 content:
-  - Introduction
-  - TemplateBasics
-  - TypeInference
-  - TypeAliases
-  - TemplateSpecialization
+ - Introduction
+ - TemplateBasics
+ - TypeInference
+ - TypeAliases
+ - TemplateSpecialization
