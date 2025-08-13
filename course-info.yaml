@@ -57,6 +57,8 @@ content:
  - MemoryManagement
  - ObjectOrientedProgramming
  - StandardLibraryEssentials
+tags:
+- Beginner-friendly
 additional_files:
  - name: CMakeLists.txt
  - name: LICENSE
