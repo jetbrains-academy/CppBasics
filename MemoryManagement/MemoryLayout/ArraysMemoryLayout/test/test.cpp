@@ -12,7 +12,7 @@ int sum(int* p, size_t size) {
 }
 
 TEST(SumTest, SumTestEmpty) {
-    int a[0];
+    int a[10];
     ASSERT_EQ(0, sum_size(a, 0));
     ASSERT_EQ(0, sum_ptrs(a, a));
 }
