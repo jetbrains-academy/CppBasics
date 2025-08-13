@@ -17,6 +17,7 @@ int main() {
     std::cout << sizeof(float) << "\n";
     std::cout << sizeof(double) << "\n";
     std::cout << sizeof(char) << "\n";
+    std::cout << sizeof(unsigned char) << "\n";
     std::cout << sizeof(bool) << "\n";
     return 0;
 }
