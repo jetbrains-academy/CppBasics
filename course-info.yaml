@@ -28,14 +28,11 @@ Some of the topics covered in the course are listed below.
   <li> Basic programming primitives in C++. </li> 
   <li> Manual memory management. </li> 
   <li> Object-oriented programming in C++. </li>
-  <li> Template meta-programming and functional programming features of C++. </li>
   <li> Overview of the standard library. </li>
-  <li> Multi-file projects and program compilation process overview. </li>
 </ul>
 </p>
 
 <p>
-The released part of the course covers C++ basic programming primitives. 
 Stay tuned for more parts of our course coming soon!
 </p>
 
@@ -50,10 +47,7 @@ Before starting this course, check the following requirements.
 
 <p>
 The course is integrated into the <a href=\"https://www.jetbrains.com/clion/\"> CLion IDE </a>,
-which has only a commercial license.
-You may request a trial license in order to complete the course. 
-If you have already used your trial license before, please contact us at 
-<a href=\"mailto:education@jetbrains.com\">education@jetbrains.com</a>.
+which is now free for educational and non-commercial use!.
 </p>
 "
 programming_language: C/C++

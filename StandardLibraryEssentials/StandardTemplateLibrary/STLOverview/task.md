@@ -3,7 +3,7 @@ Besides the basic language functionality, every C++ compiler provides access to 
 data structures, and other generic classes and functions.
 We will cover the following topics:
 - `std::vector` functionality
-- `std::string` and it's optimizations
+- `std::string` and its optimizations
 - Sequential containers, such as `std::forward_list`, `std::deque`, `std::list`, and `std::array`
 - Sequential container adapters, such as `std::stack`, `std::queue`, and `std::priority_queue`
 - Associative containers, such as `std::set`, `std::map`
