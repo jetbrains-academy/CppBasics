@@ -1,22 +1,21 @@
 custom_name: Memory Layout
 content:
-- Introduction
-- SizeOf
-- AddressOf
-- Pointers
-- Swap
-- NullPointer
-- PointToSameValue
-- PointerArithmetic
-- SizeOfPointer
-- ArraysMemoryLayout
-- CustomTypesMemoryLayout
-- FunctionPointers
-- MemoryRegions
-- StaticMemory
-- StackMemory
-- AddressEscape
-- DynamicMemory
-- CopyArray
-- MemoryErrors
-
+ - Introduction
+ - SizeOf
+ - AddressOf
+ - Pointers
+ - Swap
+ - NullPointer
+ - PointToSameValue
+ - PointerArithmetic
+ - SizeOfPointer
+ - ArraysMemoryLayout
+ - CustomTypesMemoryLayout
+ - FunctionPointers
+ - MemoryRegions
+ - StaticMemory
+ - StackMemory
+ - AddressEscape
+ - DynamicMemory
+ - CopyArray
+ - MemoryErrors

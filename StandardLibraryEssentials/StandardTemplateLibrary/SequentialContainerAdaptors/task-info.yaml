@@ -1,27 +1,27 @@
 type: edu
 custom_name: Sequential Container Adaptors
 files:
-  - name: CMakeLists.txt
-    visible: false
-  - name: src/task.cpp
-    visible: true
-    placeholders:
-      - offset: 125
-        length: 46
-        placeholder_text: /* TODO */
-      - offset: 238
-        length: 47
-        placeholder_text: /* TODO */
-      - offset: 319
-        length: 118
-        placeholder_text: /* TODO */
-      - offset: 471
-        length: 118
-        placeholder_text: /* TODO */
-      - offset: 639
-        length: 12
-        placeholder_text: /* TODO */
-  - name: test/test.cpp
-    visible: false
-  - name: include/textEditor.h
-    visible: true
+ - name: CMakeLists.txt
+   visible: false
+ - name: src/task.cpp
+   visible: true
+   placeholders:
+    - offset: 125
+      length: 46
+      placeholder_text: /* TODO */
+    - offset: 238
+      length: 47
+      placeholder_text: /* TODO */
+    - offset: 319
+      length: 118
+      placeholder_text: /* TODO */
+    - offset: 471
+      length: 118
+      placeholder_text: /* TODO */
+    - offset: 639
+      length: 12
+      placeholder_text: /* TODO */
+ - name: test/test.cpp
+   visible: false
+ - name: include/textEditor.h
+   visible: true

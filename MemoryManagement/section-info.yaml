@@ -1,6 +1,6 @@
 custom_name: Memory Management
 content:
-- MemoryLayout
-- LinkedList
-- ConstAndReferences
-- TypeCastsAndCStrings
+ - MemoryLayout
+ - LinkedList
+ - ConstAndReferences
+ - TypeCastsAndCStrings
