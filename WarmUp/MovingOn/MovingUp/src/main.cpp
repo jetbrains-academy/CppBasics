@@ -46,7 +46,7 @@ int main() {
 
     sf::Sprite background;
     sf::Texture backgroundTexture;
-    status = initBackrground(background, backgroundTexture);
+    status = initBackground(background, backgroundTexture);
     if (status != 0) {
         return status;
     }
