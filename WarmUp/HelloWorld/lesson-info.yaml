@@ -1,7 +1,7 @@
 custom_name: Hello World!
 content:
-- Welcome
-- FirstWords
-- IntroduceYourself
-- AgeDoestNotMatter
-- TypesOfVariables
+  - Welcome
+  - FirstWords
+  - IntroduceYourself
+  - AgeDoestNotMatter
+  - TypesOfVariables

@@ -1,24 +1,24 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: int x = 0;
-  is_correct: true
-- text: int y = "abc";
-  is_correct: false
-- text: int z;
-  is_correct: false
-- text: char c = "abc";
-  is_correct: false
-- text: std::string s;
-  is_correct: true
-- text: bool b = true;
-  is_correct: true
-quiz_header: 'Select options from the list:'
+  - text: int x = 0;
+    is_correct: true
+  - text: int y = "abc";
+    is_correct: false
+  - text: int z;
+    is_correct: false
+  - text: char c = "abc";
+    is_correct: false
+  - text: std::string s;
+    is_correct: true
+  - text: bool b = true;
+    is_correct: true
+quiz_header: "Select options from the list:"
 files:
-- name: CMakeLists.txt
-  visible: false
-- name: src/main.cpp
-  visible: true
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/main.cpp
+    visible: true
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Quiz/Initialization
 custom_name: Initialization
 local_check: true
-feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Quiz/Initialization

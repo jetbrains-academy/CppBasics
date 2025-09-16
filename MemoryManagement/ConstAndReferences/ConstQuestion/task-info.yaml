@@ -1,23 +1,23 @@
 type: choice
-custom_name: Mutable or Immutable?
 is_multiple_choice: true
-quiz_header: 'Select options from the list:'
 options:
-- text: (1)
-  is_correct: true
-- text: (2)
-  is_correct: false
-- text: (3)
-  is_correct: false
-- text: (4)
-  is_correct: true
-- text: (5)
-  is_correct: false
-- text: (6)
-  is_correct: false
+  - text: (1)
+    is_correct: true
+  - text: (2)
+    is_correct: false
+  - text: (3)
+    is_correct: false
+  - text: (4)
+    is_correct: true
+  - text: (5)
+    is_correct: false
+  - text: (6)
+    is_correct: false
+quiz_header: "Select options from the list:"
 files:
-- name: CMakeLists.txt
-  visible: false
-- name: src/main.cpp
-  visible: true
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/main.cpp
+    visible: true
+custom_name: Mutable or Immutable?
 local_check: true

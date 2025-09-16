@@ -1,13 +1,13 @@
 type: edu
 custom_name: Swap Again
 files:
-- name: src/task.cpp
-  visible: true
-  placeholders:
-  - offset: 32
-    length: 32
-    placeholder_text: /* TODO */
-- name: CMakeLists.txt
-  visible: false
-- name: test/test.cpp
-  visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 32
+        length: 32
+        placeholder_text: /* TODO */
+  - name: CMakeLists.txt
+    visible: false
+  - name: test/test.cpp
+    visible: false

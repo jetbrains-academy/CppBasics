@@ -1,16 +1,16 @@
 type: edu
 custom_name: Move an Object
 files:
-- name: CMakeLists.txt
-  visible: false
-- name: src/move.cpp
-  visible: true
-  placeholders:
-  - offset: 69
-    length: 27
-    placeholder_text: position
-- name: test/test.cpp
-  visible: false
-- name: src/main.cpp
-  visible: false
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/move.cpp
+    visible: true
+    placeholders:
+      - offset: 69
+        length: 27
+        placeholder_text: position
+  - name: test/test.cpp
+    visible: false
+  - name: src/main.cpp
+    visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Move+an+Object
