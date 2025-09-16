@@ -1,15 +1,9 @@
 type: marketplace
 title: C++ Basics
 language: English
-summary: "<p>This beginner-friendly course helps you start writing C++ with confidence.\
-  \ Each lesson offers clear, step-by-step guidance and hands-on practice in a professional\
-  \ IDE tailored for learners.</p><br><p>You’ll learn to write and organize multi-file\
-  \ programs from scratch while exploring C++’s unique features: manual memory management,\
-  \ pointers, references, and low-level control.</p><br><p>Along the way, you’ll build\
-  \ a simple 2D arcade game, a practical project to reinforce your skills and experience\
-  \ how C++ powers real-world applications.</p><br><p>Your result: a solid foundation\
-  \ in modern C++ and the skills to move into systems programming, game development,\
-  \ or performance-critical software.</p>"
+summary: "<p>C++ programming is a superpower! Master memory management, build fast\
+  \ programs, and create a 2D game from scratch. No experience needed—this course\
+  \ makes C++ fundamentals beginner-friendly and fun."
 vendor:
   name: JetBrains
   email: support@jetbrains.com
