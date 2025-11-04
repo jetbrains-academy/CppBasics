@@ -1,0 +1,18 @@
+type: edu
+custom_name: Template Basics
+files:
+ - name: src/task.cpp
+   visible: true
+ - name: test/test.cpp
+   visible: false
+ - name: CMakeLists.txt
+   visible: false
+ - name: include/DataPair.hpp
+   visible: true
+   placeholders:
+    - offset: 63
+      length: 450
+      placeholder_text: Implement DataPair template class here
+    - offset: 515
+      length: 130
+      placeholder_text: Implement makePair template function here

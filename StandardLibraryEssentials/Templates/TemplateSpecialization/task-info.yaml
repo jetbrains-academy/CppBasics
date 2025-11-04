@@ -1,0 +1,15 @@
+type: edu
+custom_name: Template Specialization
+files:
+ - name: src/task.cpp
+   visible: true
+ - name: test/test.cpp
+   visible: false
+ - name: CMakeLists.txt
+   visible: false
+ - name: include/DataPair.hpp
+   visible: true
+   placeholders:
+    - offset: 559
+      length: 649
+      placeholder_text: /* TODO */

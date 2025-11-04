@@ -1,14 +1,19 @@
 type: framework
 custom_name: Classes And Objects
 content:
-- Introduction
-- OperatorsOverloading
-- IntroducingObjects
-- Inheritance
-- Polymorphism
-- Encapsulation
-- StaticMembers
-- CollisionsRevisited
-- NewChallenge
-- NewDynamics
+ - Introduction
+ - OperatorsOverloading
+ - IntroducingObjects
+ - Inheritance
+ - Polymorphism
+ - Encapsulation
+ - StaticMembers
+ - CollisionsRevisited
+ - NewChallenge
+ - NewDynamics
+ - Scoreboard
+ - AddingScore
+ - NameInput
+ - DataRetrieval
+ - SceneTransition
 is_template_based: false

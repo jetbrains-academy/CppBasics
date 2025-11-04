@@ -4,6 +4,7 @@
 #include "scene.hpp"
 #include "statscene.hpp"
 #include "dynscene.hpp"
+#include "leaderboardscene.hpp"
 
 /**
  * The SceneManager class is responsible for loading and managing the different scenes in a game.
@@ -32,10 +33,13 @@ public:
      * This function checks if the transition to a new scene is necessary by querying the current scene
      * and performs this transition if required.
      */
-    void transitionScene(SceneID id);
+    Scene* transitionScene(SceneID sceneID);
 
 private:
     GameplayStaticScene staticScene;
+    GameplayDynamicScene dynamicScene;
+    LeaderboardScene leaderboardScene;
+    Scene* currentScene = &dynamicScene;
 };
 
 

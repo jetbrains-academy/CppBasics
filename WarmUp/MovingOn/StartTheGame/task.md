@@ -37,10 +37,10 @@ The script to download the sources and build the library is included in the cour
 ### MacOS
 
 On macOS, please use the [brew](https://brew.sh/) package manager 
-to install the `sfml` library.
+to install the `sfml@2` library.
 
 ```shell
-brew install sfml
+brew install sfml@2
 ```
 
 ### Ubuntu

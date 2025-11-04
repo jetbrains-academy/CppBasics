@@ -1,11 +1,12 @@
 type: theory
 custom_name: Start the Game
 files:
-- name: CMakeLists.txt
-  visible: false
-  editable: false
-- name: src/empty.cpp
-  visible: true
-- name: src/main.cpp
-  visible: false
+ - name: CMakeLists.txt
+   visible: false
+   editable: false
+   propagatable: false
+ - name: src/empty.cpp
+   visible: true
+ - name: src/main.cpp
+   visible: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Start+the+Game

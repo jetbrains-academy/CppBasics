@@ -5,6 +5,7 @@
 #include "consumable.hpp"
 #include "enemy.hpp"
 #include "utils.hpp"
+#include "textures.hpp"
 
 const int MAX_DYNAMIC_OBJECTS_ON_SCENE = 10;
 const int MAX_ENEMY_OBJECTS_ON_SCENE = 4;
@@ -31,6 +32,7 @@ SceneID GameplayDynamicScene::getID() const {
 
 SceneID GameplayDynamicScene::getNextSceneID() const {
     return SceneID::DYNAMIC_GAME_FIELD;
+    // TODO: write your solution here
 }
 
 void GameplayDynamicScene::processEvent(const sf::Event& event) {
@@ -54,6 +56,7 @@ void GameplayDynamicScene::update(sf::Time delta) {
             }
         });
     });
+    updateScore();
     // update the list of objects
     updateObjectsList();
 }
@@ -101,6 +104,7 @@ std::shared_ptr<GameObject> GameplayDynamicScene::addNewGameObject(GameObjectKin
         switch (kind) {
             case GameObjectKind::PLAYER: {
                 object = std::make_shared<PlayerObject>();
+                player = std::dynamic_pointer_cast<PlayerObject>(object);
                 break;
             }
             case GameObjectKind::CONSUMABLE: {
@@ -140,5 +144,25 @@ void GameplayDynamicScene::draw(sf::RenderWindow &window, TextureManager& textur
     objects.foreach([&] (const GameObject& object) {
         object.draw(window, textureManager);
     });
+    // draw player's score
+    drawScore(window, player->getScore());
 }
 
+void GameplayDynamicScene::drawScore(sf::RenderWindow &window, unsigned int value) const {
+    sf::Text text;
+    sf::Font font = TextureManager::getFont();
+    text.setFont(font);
+    text.setString("Score: " + std::to_string(value));
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(SCENE_WIDTH - 120, 0); // top right corner
+    window.draw(text);
+}
+
+void GameplayDynamicScene::updateScore() {
+    // TODO: write your solution here
+}
+
+unsigned int GameplayDynamicScene::getScore() const {
+    return score;
+}

@@ -35,6 +35,14 @@ void GameObjectList::foreach(const std::function<void (GameObject&)>& apply) {
     }
 }
 
+void GameObjectList::foreach(const std::function<void (const GameObject&)>& apply) const {
+    Node* curr = head->next.get();
+    while (curr != tail) {
+        apply(*curr->object);
+        curr = curr->next.get();
+    }
+}
+
 GameObjectList::GameObjectList(const GameObjectList &other) : GameObjectList() {
     // TODO: write your solution here
 }

@@ -1,0 +1,13 @@
+type: edu
+custom_name: set Containers
+files:
+ - name: CMakeLists.txt
+   visible: false
+ - name: test/test.cpp
+   visible: false
+ - name: src/task.cpp
+   visible: true
+   placeholders:
+    - offset: 139
+      length: 344
+      placeholder_text: Your implementation here

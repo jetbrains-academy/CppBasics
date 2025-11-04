@@ -67,6 +67,13 @@ public:
      */
     void foreach(const std::function<void (GameObject&)>& apply);
 
+    /**
+     * Applies a given function to each game object inside the list.
+     *
+     * @param apply A function that accept a single game object reference parameter.
+     */
+    void foreach(const std::function<void (const GameObject&)>& apply) const;
+
 private:
 
     /**

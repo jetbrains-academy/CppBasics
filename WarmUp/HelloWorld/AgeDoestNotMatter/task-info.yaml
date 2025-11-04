@@ -1,22 +1,22 @@
 type: output
 custom_name: Age Does Not Matter
 files:
-- name: test/output.txt
-  visible: false
-- name: CMakeLists.txt
-  visible: false
-- name: test/input.txt
-  visible: false
-- name: src/main.cpp
-  visible: true
-  placeholders:
-  - offset: 136
-    length: 17
-    placeholder_text: /* TODO */
-  - offset: 198
-    length: 16
-    placeholder_text: /* TODO */
-  - offset: 219
-    length: 63
-    placeholder_text: /* TODO */
+ - name: test/output.txt
+   visible: false
+ - name: CMakeLists.txt
+   visible: false
+ - name: test/input.txt
+   visible: false
+ - name: src/main.cpp
+   visible: true
+   placeholders:
+    - offset: 136
+      length: 17
+      placeholder_text: /* TODO */
+    - offset: 198
+      length: 16
+      placeholder_text: /* TODO */
+    - offset: 219
+      length: 63
+      placeholder_text: /* TODO */
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Hello+World!/Age+Does+Not+Matter

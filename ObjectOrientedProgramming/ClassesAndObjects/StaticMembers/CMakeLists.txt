@@ -4,13 +4,14 @@ project(ObjectOrientedProgramming-ClassesAndObjects-StaticMembers)
 
 set(SRC
         src/main.cpp
-        src/engine.cpp src/scenes.cpp src/textures.cpp
-        src/scene.cpp src/statscene.cpp src/dynscene.cpp
+        src/engine.cpp src/scenes.cpp src/textures.cpp src/leaderboard.cpp
+        src/scene.cpp src/statscene.cpp src/dynscene.cpp src/leaderboardscene.cpp
         src/gobject.cpp src/gobjectlist.cpp src/cgobject.cpp
         src/player.cpp src/consumable.cpp src/enemy.cpp
         src/collision.cpp src/direction.cpp
         src/rectangle.cpp src/point.cpp
         src/operators.cpp src/utils.cpp
+        src/leaderboardscene.cpp src/leaderboard.cpp
 )
 
 set(TEST

@@ -1,10 +1,9 @@
 custom_name: Type casts and C style Strings
 content:
-- CStyle
-- CCast
-- CppCast
-- TypeCastsQuestion
-- CStrings
-- CStringConcat
-- CStringSplit
-- Survey
+ - CStyle
+ - CCast
+ - CppCast
+ - TypeCastsQuestion
+ - CStrings
+ - CStringConcat
+ - CStringSplit

@@ -37,7 +37,7 @@ if (${BUILD_SFML_SRC})
     )
 # Otherwise, assume SFML is installed on user machine and try to find it
 else()
-    find_package(SFML 2.5.1 COMPONENTS system window graphics network audio)
+    find_package(SFML 2.5.1...<3.0.0 COMPONENTS system window graphics REQUIRED)
 endif()
 
 include(cmake/utils.cmake)

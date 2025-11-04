@@ -1,64 +1,80 @@
 type: marketplace
-title: 'C++Basics'
+title: C++ Basics
 language: English
+summary: "
+<p>
+C++ programming is a superpower! Master memory management, build fast 
+programs, and create a 2D game from scratch. No experience needed—this course 
+makes C++ fundamentals beginner-friendly and fun.
+</p>
+"
 vendor:
   name: JetBrains
   email: support@jetbrains.com
   url: https://www.jetbrains.com/
-summary: "The course is designed for beginners who want to learn the basics of the C/C++ language. <br>
-
-<p>
-The main goal of the course is to introduce the C++ language, its philosophy of zero-cost abstractions; 
-its distinctive features compared to other languages, and, in particular, manual memory management, 
-and its areas of use, such as high-performance applications, graphics, and system programming. 
-After successfully completing this course, you will be able to read and write C++ code 
-and develop your own programs of medium complexity. 
-</p>
-
-<p>
-During this course, you will be developing a simple 2D arcade game. 
-In this game, the player controls a planet that moves through space, consuming smaller asteroids and dodging black holes. 
-With each new topic covered, you will improve the game by implementing new functionality based on the concepts you have learned. 
-In the end, you will get a working game, which you can further modify as you like.
-</p>
-
-<p>
-Some of the topics covered in the course are listed below.
-<ul> 
-  <li> Basic programming primitives in C++. </li> 
-  <li> Manual memory management. </li> 
-  <li> Object-oriented programming in C++. </li>
-  <li> Template meta-programming and functional programming features of C++. </li>
-  <li> Overview of the standard library. </li>
-  <li> Multi-file projects and program compilation process overview. </li>
-</ul>
-</p>
-
-<p>
-The released part of the course covers C++ basic programming primitives. 
-Stay tuned for more parts of our course coming soon!
-</p>
-
-<p>
-Before starting this course, check the following requirements.
-<ol>
-  <li> Your computer needs to have a stable internet connection. </li> 
-  <li> <a href=\"https://git-scm.com/\"> Git </a> version control system needs to be installed on your computer. </li>
-  <li> Make sure that the path to the root folder of the course does not contain spaces, special characters, or non-latin characters. </li>
-</ol>
-</p>
-
-<p>
-The course is integrated into the <a href=\"https://www.jetbrains.com/clion/\"> CLion IDE </a>,
-which has only a commercial license.
-You may request a trial license in order to complete the course. 
-If you have already used your trial license before, please contact us at 
-<a href=\"mailto:education@jetbrains.com\">education@jetbrains.com</a>.
-</p>
-"
 programming_language: C/C++
 environment: GoogleTest
 content:
-- WarmUp
-- MemoryManagement
-- ObjectOrientedProgramming
+ - WarmUp
+ - MemoryManagement
+ - ObjectOrientedProgramming
+ - StandardLibraryEssentials
+tags:
+ - Beginner-friendly
+additional_files:
+ - name: CMakeLists.txt
+ - name: LICENSE
+ - name: README.md
+ - name: cmake/googletest.cmake
+ - name: cmake/googletest-download.cmake
+ - name: cmake/sfml.cmake
+ - name: cmake/sfml-download.cmake
+ - name: cmake/utils.cmake
+ - name: images/heap.svg
+ - name: images/memory.svg
+ - name: images/stack.svg
+ - name: images/static.svg
+ - name: include/cgobject.hpp
+ - name: include/circle.hpp
+ - name: include/collision.hpp
+ - name: include/constants.hpp
+ - name: include/consumable.hpp
+ - name: include/direction.hpp
+ - name: include/dllist.hpp
+ - name: include/dynscene.hpp
+ - name: include/enemy.hpp
+ - name: include/engine.hpp
+ - name: include/enums.hpp
+ - name: include/game.hpp
+ - name: include/gobject.hpp
+ - name: include/gobjectlist.hpp
+ - name: include/leaderboard.hpp
+ - name: include/leaderboardscene.hpp
+ - name: include/operators.hpp
+ - name: include/player.hpp
+ - name: include/point.hpp
+ - name: include/rectangle.hpp
+ - name: include/scene.hpp
+ - name: include/scenes.hpp
+ - name: include/statscene.hpp
+ - name: include/testing.hpp
+ - name: include/testscene.hpp
+ - name: include/textures.hpp
+ - name: include/utils.hpp
+ - name: resources/blackhole.png
+   is_binary: true
+ - name: resources/leaderboard.csv
+ - name: resources/pixelLetters.ttf
+   is_binary: true
+ - name: resources/planet.png
+   is_binary: true
+ - name: resources/planetDead.png
+   is_binary: true
+ - name: resources/space.png
+   is_binary: true
+ - name: resources/star.png
+   is_binary: true
+ - name: resources/starConcerned.png
+   is_binary: true
+ - name: resources/test.csv
+yaml_version: 4
