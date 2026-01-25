@@ -3,7 +3,7 @@ it has pure virtual methods and thus cannot be instantiated.
 This gives us the flexibility of having different implementations of the `Scene` class.
 
 One such implementation is provided by the `GameplayStaticScene` subclass
-(see files `statscene.hpp` and `statscene.cpp`).
+(see file `statscene.cpp`).
 This scene implementation is called static because it contains only
 a static predefined number of game objects: 
 one player object, one consumable object, and one enemy object, 
@@ -17,7 +17,7 @@ While the `Scene` class is very important and does a lot of work,
 like maintaining game objects and drawing scenes, 
 it is not responsible for managing the game itself. 
 This responsibility lies with another class — `GameEngine`
-(see files `engine.hpp` and `engine.cpp`).
+(see file `engine.cpp`).
 This class, in particular, controls the application window and the currently active scene. 
 
 <div class="hint">
