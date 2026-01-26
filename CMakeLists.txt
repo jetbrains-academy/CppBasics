@@ -43,7 +43,16 @@ endif()
 include(cmake/utils.cmake)
 
 # Add tasks subprojects
-set(SUBPROJECTS_IGNORE_DIRS ${TEST_DIR} ${SFML_CUSTOM_DIR})
+set(SUBPROJECTS_IGNORE_DIRS
+        ${TEST_DIR}
+        ${SFML_CUSTOM_DIR}
+        _deps
+        cmake-build-debug
+        cmake-build-release
+        build
+        .git
+        .idea
+)
 add_subprojects(${CMAKE_SOURCE_DIR} "${SUBPROJECTS_IGNORE_DIRS}")
 unset(SUBPROJECTS_IGNORE_DIRS)
 
