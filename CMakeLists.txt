@@ -28,16 +28,16 @@ if (${WIN32})
     set(BUILD_SFML_SRC TRUE)
 endif()
 
-# If required, download and build SFML sources
-if (${BUILD_SFML_SRC})
+# If SFML is expected to be available on the system, try to locate an installed version
+if ({BUILD_SFML_SRC})
+    find_package(SFML 2.5.1...<3.0.0 COMPONENTS system window graphics REQUIRED)
+# Otherwise, download and build SFML from source as part of the project
+else()
     include(cmake/sfml.cmake)
     fetch_sfml(
             ${PROJECT_SOURCE_DIR}/cmake
             ${PROJECT_SOURCE_DIR}/${SFML_CUSTOM_DIR}
     )
-# Otherwise, assume SFML is installed on user machine and try to find it
-else()
-    find_package(SFML 2.5.1...<3.0.0 COMPONENTS system window graphics REQUIRED)
 endif()
 
 include(cmake/utils.cmake)
