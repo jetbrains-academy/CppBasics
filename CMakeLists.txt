@@ -6,7 +6,6 @@
 # one task don't affect another task.
 
 cmake_minimum_required(VERSION 3.22)
-set(CMAKE_OBJECT_PATH_MAX 400)
 project(cppbasics)
 
 set(CMAKE_CXX_STANDARD 14)
