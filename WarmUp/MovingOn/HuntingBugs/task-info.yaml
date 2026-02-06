@@ -1,155 +1,155 @@
 type: edu
 custom_name: Hunting Bugs
 files:
- - name: src/approaching.cpp
-   visible: true
-   placeholders:
-    - offset: 113
-      length: 215
-      placeholder_text: |-
-       for (int i = 0; i <= size; ++i) {
-               float dist = distance(player.center, consumable[i].center);
-               float warnDist = 3 * player.radius + consumable[i].radius;
-               if (concerned[i] = false) {
-                   concerned[i] = dist < warnDist;
-               }
-           }
- - name: src/loop.cpp
-   visible: true
-   placeholders:
-    - offset: 109
-      length: 136
-      placeholder_text: return;
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/loop.cpp
-       placeholder: 1
-       is_visible: false
- - name: src/generate.cpp
-   visible: true
-   placeholders:
-    - offset: 120
-      length: 197
-      placeholder_text: /* TODO */
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/generate.cpp
-       placeholder: 1
-       is_visible: false
-    - offset: 393
-      length: 49
-      placeholder_text: return min;
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/generate.cpp
-       placeholder: 2
-       is_visible: false
- - name: src/collision.cpp
-   visible: true
-   placeholders:
-    - offset: 82
-      length: 83
-      placeholder_text: return 0.0f;
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/collision.cpp
-       placeholder: 1
-       is_visible: false
-    - offset: 222
-      length: 82
-      placeholder_text: return false;
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/collision.cpp
-       placeholder: 2
-       is_visible: false
- - name: src/borders.cpp
-   visible: true
-   placeholders:
-    - offset: 100
-      length: 359
-      placeholder_text: /* TODO */
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/borders.cpp
-       placeholder: 1
-       is_visible: false
- - name: src/direction.cpp
-   visible: true
-   placeholders:
-    - offset: 69
-      length: 304
-      placeholder_text: "return { 0.0f, 0.0f };"
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/direction.cpp
-       placeholder: 1
-       is_visible: false
- - name: src/point.cpp
-   visible: true
-   placeholders:
-    - offset: 87
-      length: 37
-      placeholder_text: /* TODO */
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/point.cpp
-       placeholder: 1
-       is_visible: false
-    - offset: 206
-      length: 33
-      placeholder_text: /* TODO */
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/point.cpp
-       placeholder: 2
-       is_visible: false
-    - offset: 332
-      length: 35
-      placeholder_text: position
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/point.cpp
-       placeholder: 3
-       is_visible: false
- - name: src/move.cpp
-   visible: true
-   placeholders:
-    - offset: 69
-      length: 27
-      placeholder_text: position
-      dependency:
-       section: WarmUp
-       lesson: MovingOn
-       task: LimitsOfPossible
-       file: src/move.cpp
-       placeholder: 1
-       is_visible: false
- - name: src/main.cpp
-   visible: true
- - name: test/test.cpp
-   visible: false
- - name: CMakeLists.txt
-   visible: false
-   propagatable: false
+  - name: src/approaching.cpp
+    visible: true
+    placeholders:
+      - offset: 112
+        length: 215
+        placeholder_text: |-
+          for (int i = 0; i <= size; ++i) {
+                  float dist = distance(player.center, consumable[i].center);
+                  float warnDist = 3 * player.radius + consumable[i].radius;
+                  if (concerned[i] = false) {
+                      concerned[i] = dist < warnDist;
+                  }
+              }
+  - name: src/loop.cpp
+    visible: true
+    placeholders:
+      - offset: 109
+        length: 136
+        placeholder_text: return;
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/loop.cpp
+          placeholder: 1
+        is_visible: false
+  - name: src/generate.cpp
+    visible: true
+    placeholders:
+      - offset: 120
+        length: 197
+        placeholder_text: /* TODO */
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/generate.cpp
+          placeholder: 1
+        is_visible: false
+      - offset: 393
+        length: 49
+        placeholder_text: return min;
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/generate.cpp
+          placeholder: 2
+        is_visible: false
+  - name: src/collision.cpp
+    visible: true
+    placeholders:
+      - offset: 82
+        length: 83
+        placeholder_text: return 0.0f;
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/collision.cpp
+          placeholder: 1
+        is_visible: false
+      - offset: 222
+        length: 82
+        placeholder_text: return false;
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/collision.cpp
+          placeholder: 2
+        is_visible: false
+  - name: src/borders.cpp
+    visible: true
+    placeholders:
+      - offset: 100
+        length: 359
+        placeholder_text: /* TODO */
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/borders.cpp
+          placeholder: 1
+        is_visible: false
+  - name: src/direction.cpp
+    visible: true
+    placeholders:
+      - offset: 69
+        length: 304
+        placeholder_text: "return { 0.0f, 0.0f };"
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/direction.cpp
+          placeholder: 1
+        is_visible: false
+  - name: src/point.cpp
+    visible: true
+    placeholders:
+      - offset: 87
+        length: 37
+        placeholder_text: /* TODO */
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/point.cpp
+          placeholder: 1
+        is_visible: false
+      - offset: 206
+        length: 33
+        placeholder_text: /* TODO */
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/point.cpp
+          placeholder: 2
+        is_visible: false
+      - offset: 332
+        length: 35
+        placeholder_text: position
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/point.cpp
+          placeholder: 3
+        is_visible: false
+  - name: src/move.cpp
+    visible: true
+    placeholders:
+      - offset: 69
+        length: 27
+        placeholder_text: position
+        dependency:
+          section: WarmUp
+          lesson: MovingOn
+          task: LimitsOfPossible
+          file: src/move.cpp
+          placeholder: 1
+        is_visible: false
+  - name: src/main.cpp
+    visible: true
+  - name: test/test.cpp
+    visible: false
+  - name: CMakeLists.txt
+    visible: false
+    propagatable: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLScfBp0gzdxWOmXvQVdyNmeO1od7CG7zxLgNUP4LzKxLBCzkhQ/viewform?usp=pp_url&entry.2103429047=Warm+Up/Moving+On/Hunting+Bugs

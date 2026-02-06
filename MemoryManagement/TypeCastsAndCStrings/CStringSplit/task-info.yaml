@@ -10,6 +10,6 @@ files:
       length: 913
       placeholder_text: |-
        res = nullptr;
-       return 0;
+           return 0;
  - name: test/test.cpp
    visible: false

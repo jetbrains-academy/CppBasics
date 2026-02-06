@@ -1,29 +1,29 @@
 type: edu
 custom_name: Placement New
 files:
- - name: CMakeLists.txt
-   visible: false
- - name: src/animal.cpp
-   visible: true
-   editable: false
- - name: include/animal.hpp
-   visible: true
-   editable: false
- - name: src/task.cpp
-   visible: true
-   placeholders:
-   - offset: 85
-     length: 31
-     placeholder_text: // create Cat object with the name Tom in the given memory block
-   - offset: 156
-     length: 39
-     placeholder_text: // destroy Cat object stored in the given memory block
-   - offset: 238
-     length: 35
-     placeholder_text: // create Mouse object with the name Jerry in the given memory
-       block
-   - offset: 315
-     length: 43
-     placeholder_text: // destroy Mouse object stored in the given memory block
- - name: test/test.cpp
-   visible: false
+  - name: src/task.cpp
+    visible: true
+    placeholders:
+      - offset: 85
+        length: 31
+        placeholder_text: // create Cat object with the name Tom in the given memory block
+      - offset: 156
+        length: 39
+        placeholder_text: // destroy Cat object stored in the given memory block
+      - offset: 238
+        length: 35
+        placeholder_text: // create Mouse object with the name Jerry in the given memory
+          block
+      - offset: 315
+        length: 43
+        placeholder_text: // destroy Mouse object stored in the given memory block
+  - name: CMakeLists.txt
+    visible: false
+  - name: src/animal.cpp
+    visible: true
+    editable: false
+  - name: include/animal.hpp
+    visible: true
+    editable: false
+  - name: test/test.cpp
+    visible: false
